@@ -1,0 +1,64 @@
+{
+  "name": "bhai-lang",
+  "version": "0.0.1",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "lint": "turbo run lint",
+    "test": "turbo run test --parallel",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "devDependencies": {
+    "prettier": "^2.5.1",
+    "turbo": "latest"
+  },
+  "turbo": {
+    "pipeline": {
+      "build": {
+        "dependsOn": [
+          "^build"
+        ],
+        "outputs": [
+          "dist/**",
+          ".next/**"
+        ]
+      },
+      "lint": {
+        "outputs": []
+      },
+      "dev": {
+        "cache": false
+      },
+      "test":{
+        "cache": false
+      }
+    }
+  },
+  "keywords":[
+    "bhai-lang",
+    "programming language",
+    "compiler",
+    "parser",
+    "javascript",
+    "typescript" 
+  ],
+  "contributors": [
+    {
+      "name": "Aniket Singh",
+      "url": "https://github.com/aniketsingh0104"
+    },
+    {
+      "name": "Rishabh Tripathi",
+      "url": "https://github.com/ristri"
+    }
+  ],
+  "engines": {
+    "npm": ">=7.0.0",
+    "node": ">=14.0.0"
+  }
+}

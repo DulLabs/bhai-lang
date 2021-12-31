@@ -1,0 +1,35 @@
+{
+  "name": "bhai-lang-parser",
+  "version": "0.0.1",
+  "description": "Parser for bhai-lang",
+  "main": "index.ts",
+  "scripts": {
+    "dev": "ts-node index.ts",
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DulLabs/bhai-lang.git"
+  },
+  "keywords": [
+    "programming",
+    "language",
+    "bhai-lang",
+    "bl",
+    "javascript",
+    "typescript"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DulLabs/bhai-lang/issues"
+  },
+  "homepage": "https://github.com/DulLabs/bhai-lang#readme",
+  "devDependencies": {
+    "ts-node": "^10.4.0",
+    "ts-jest": "^27.1.2",
+    "jest": "^27.4.5",
+    "@types/jest": "^24.4.0",
+    "config": "*",
+    "tsconfig": "*"
+  }
+}
