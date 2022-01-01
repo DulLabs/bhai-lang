@@ -34,18 +34,18 @@
       "dev": {
         "cache": false
       },
-      "test":{
+      "test": {
         "cache": false
       }
     }
   },
-  "keywords":[
+  "keywords": [
     "bhai-lang",
     "programming language",
     "compiler",
     "parser",
     "javascript",
-    "typescript" 
+    "typescript"
   ],
   "contributors": [
     {
