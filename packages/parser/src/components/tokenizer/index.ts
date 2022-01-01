@@ -1,15 +1,15 @@
-import { Spec } from '../../constants/bhaiLangSpec';
-import {
-  Token,
-  Tokenizer,
-} from './types';
+import { inject, injectable } from "inversify";
+import { Spec } from "../../constants/bhaiLangSpec";
+import { TYPES } from "../../container/types";
+import { Token, Tokenizer } from "./types";
 
+@injectable()
 export default class TokenizerImpl implements Tokenizer {
   private _spec: Spec;
   private _string: String;
   private _cursor: number;
 
-  constructor(spec: Spec) {
+  constructor(@inject(TYPES.Spec) spec: Spec) {
     this._spec = spec;
     this._string = "";
     this._cursor = 0;
@@ -35,7 +35,7 @@ export default class TokenizerImpl implements Tokenizer {
 
     const string = this._string.slice(this._cursor);
 
-    for (const {regex, tokenType} of this._spec) {
+    for (const { regex, tokenType } of this._spec) {
       const tokenValue = this._matched(regex, string);
 
       if (tokenValue === null) {

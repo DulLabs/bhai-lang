@@ -1,17 +1,14 @@
-import TokenizerImpl from "../../src/components/tokenizer"
-import { SPEC } from "../../src/constants/bhaiLangSpec"
+import { Tokenizer } from "../../src/components/tokenizer/types";
+import { bhaiLangContainer } from "../../src/container/inversify.config";
+import { TYPES } from "../../src/container/types";
 
+const tokenizer = bhaiLangContainer.get<Tokenizer>(TYPES.Tokenizer)
 
-const tokenizer = new TokenizerImpl(SPEC)
+test("test Tokenizer.getNextToken", () => {
+  tokenizer.initTokenizer(`"hello"`);
 
-
-test('test Tokenizer.getNextToken', () => {
-
-    tokenizer.initTokenizer(`"hello"`);
-
-    expect(tokenizer.getNextToken()).toStrictEqual({
-        type: 'STRING',
-        value: '"hello"'
-    });
-})
-
+  expect(tokenizer.getNextToken()).toStrictEqual({
+    type: "STRING",
+    value: '"hello"',
+  });
+});

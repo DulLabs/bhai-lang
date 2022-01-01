@@ -9,7 +9,7 @@ export interface Tokenizer {
 }
 
 export interface Token {
-    type: string;
+  type: string;
 
-    value: string;
+  value: string;
 }
