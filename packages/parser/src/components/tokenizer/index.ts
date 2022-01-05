@@ -1,15 +1,12 @@
-import { inject, injectable } from "inversify";
 import { Spec } from "../../constants/bhaiLangSpec";
-import { TYPES } from "../../container/types";
 import { Token, Tokenizer } from "./types";
 
-@injectable()
 export default class TokenizerImpl implements Tokenizer {
   private _spec: Spec;
   private _string: String;
   private _cursor: number;
 
-  constructor(@inject(TYPES.Spec) spec: Spec) {
+  constructor(spec: Spec) {
     this._spec = spec;
     this._string = "";
     this._cursor = 0;
