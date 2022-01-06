@@ -1,5 +1,5 @@
-import TokenizerImpl from "../../src/components/tokenizer";
-import { SPEC } from "../../src/constants/bhaiLangSpec";
+import TokenizerImpl from '../../src/components/tokenizer';
+import { SPEC } from '../../src/constants/bhaiLangSpec';
 
 const tokenizer = new TokenizerImpl(SPEC)
 

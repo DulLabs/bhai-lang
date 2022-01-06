@@ -1,5 +1,8 @@
-import { Spec } from "../../constants/bhaiLangSpec";
-import { Token, Tokenizer } from "./types";
+import { Spec } from '../../constants/bhaiLangSpec';
+import {
+  Token,
+  Tokenizer,
+} from './types';
 
 export default class TokenizerImpl implements Tokenizer {
   private _spec: Spec;
