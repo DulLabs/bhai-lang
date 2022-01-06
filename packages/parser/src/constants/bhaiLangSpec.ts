@@ -17,8 +17,13 @@ export const SPEC = [
   { regex: /^,/, tokenType: "," },
 
   //Keywords
-  { regex: /^\blet\b/, tokenType: "let" },
+  { regex: /^\bhi bhai\b/, tokenType: "hi bhai" },
+  { regex: /^\bbye bhai\b/, tokenType: "bye bhai" },
+  { regex: /^\bbol bhai\b/, tokenType: "bol bhai" },
+  { regex: /^\bhai bhai\b/, tokenType: "hai bhai" },
+  { regex: /^\bye\b/, tokenType: "ye" },
 
+  
   // Number
   { regex: /^\d+/, tokenType: "NUMBER" },
 
