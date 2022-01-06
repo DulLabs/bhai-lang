@@ -8,8 +8,8 @@ export interface Tokenizer {
   getNextToken(): Token | null;
 }
 
-export type Token = {
+export interface Token {
   type: string;
 
   value: string;
-} | null
+}
