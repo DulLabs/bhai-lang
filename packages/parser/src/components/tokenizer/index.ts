@@ -1,14 +1,7 @@
-import {
-  inject,
-  injectable,
-} from 'inversify';
-
-import { Spec } from '../../constants/bhaiLangSpec';
-import { TYPES } from '../../container/types';
-import {
-  Token,
-  Tokenizer,
-} from './types';
+import { inject, injectable } from "inversify";
+import { Spec } from "../../constants/bhaiLangSpec";
+import { TYPES } from "../../container/types";
+import { Token, Tokenizer } from "./types";
 
 @injectable()
 export default class TokenizerImpl implements Tokenizer {
@@ -35,7 +28,7 @@ export default class TokenizerImpl implements Tokenizer {
     return this._cursor < this._string.length;
   }
 
-  getNextToken(): Token {
+  getNextToken(): Token | null {
     if (!this.hasMoreTokens()) {
       return null;
     }
