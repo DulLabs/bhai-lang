@@ -1,4 +1,5 @@
 import { Spec } from '../../constants/bhaiLangSpec';
+import InvalidStateException from '../../exceptions/invalidStateException';
 import {
   Token,
   Tokenizer,
@@ -6,12 +7,11 @@ import {
 
 export default class TokenizerImpl implements Tokenizer {
   private _spec: Spec;
-  private _string: String;
+  private _string: String | undefined = undefined;
   private _cursor: number;
 
   constructor(spec: Spec) {
     this._spec = spec;
-    this._string = "";
     this._cursor = 0;
   }
 
@@ -21,14 +21,25 @@ export default class TokenizerImpl implements Tokenizer {
   }
 
   isEOF() {
+    if (!this._string)
+      return true;
+
     return this._cursor === this._string.length;
   }
 
   hasMoreTokens() {
-    return this._cursor < this._string.length;
+    if (!this._string)
+      return false;
+
+    return this._cursor < this._string?.length;
   }
 
   getNextToken(): Token | null {
+
+    if (!this._string)
+      throw new InvalidStateException("Tokenizer is not initialized with string. " + 
+      "Please call initTokenizer method first.");
+
     if (!this.hasMoreTokens()) {
       return null;
     }

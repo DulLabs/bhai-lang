@@ -1,0 +1,24 @@
+{
+    "autoFormat": "onSave",
+    "quoteMark": "single",
+    "emptyLinesAfterAllImports": 2,
+    "trailingComma": "none",
+    "wrappingStyle": {
+      "maxBindingNamesPerLine": 3,
+      "maxDefaultAndBindingNamesPerLine": 3
+    },
+    "groupRules": [
+      "^react",
+      {},
+      "^../",
+      "^./",
+      {
+        "flags": "scripts"
+      }
+    ],
+    "exclude": [
+      "node_modules"
+    ],
+    "removeLastSlashInPath": true,
+    "removeLastIndexInPath": true
+  }

@@ -1,23 +1,31 @@
-import { Token, Tokenizer } from "../tokenizer/types";
+import { TokenTypes } from "../../constants/bhaiLangSpec";
 import Statement from "./statement";
+import TokenExecutor from "./tokenExecutor";
 
 export default class StatementList {
 
-    _tokenizer: Tokenizer;
+    private _tokenExecutor: TokenExecutor;
 
-    constructor(tokenizer: Tokenizer){
-        this._tokenizer = tokenizer;
+    constructor(tokenExecutor: TokenExecutor){
+        this._tokenExecutor = tokenExecutor;
     }
 
-    getStatementList(lookahead: Token) {
-        while (lookahead !== null && lookahead.type !== 'hi bhai'){
-            //TODO: Eat token
-            // eatToken(this._lookahead.type, this._lookahead, this._tokenizer.getNextToken);
+    getInitialStatementList() {
+        const lookahead = this._tokenExecutor.getLookahead();
+
+        while (lookahead !== null && lookahead.type !== TokenTypes.HI_BHAI_TYPE) {
+            this._tokenExecutor.eatTokenAndForwardLookahead(lookahead.type);
         }
+
+        return this.getStatementList(null);
+    }
+
+    getStatementList(stopLookaheadType: string | null = null) {
+        const lookahead = this._tokenExecutor.getLookahead();
 
         const statementlist = [];
 
-        while (lookahead !== null ) {
+        while (lookahead !== null && lookahead.type !== stopLookaheadType) {
             
             // Statement.getStatementImpl(lookahead) -> this will get the Statement 
             // implementation according to look ahead
