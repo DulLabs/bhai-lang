@@ -28,7 +28,7 @@
     "ts-node": "^10.4.0",
     "ts-jest": "^27.1.2",
     "jest": "^27.4.5",
-    "@types/jest": "^24.4.0",
+    "@types/jest": "^27.4.0",
     "config": "*",
     "tsconfig": "*"
   }
