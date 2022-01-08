@@ -7,7 +7,7 @@ export default abstract class Statement {
 
     static getStatementImpl(lookahead: Token) {
         switch (lookahead?.type) {
-          case '{':
+          case 'hi bhai':
             return BhaiLangModule.getInitStatement()
         }
       }
