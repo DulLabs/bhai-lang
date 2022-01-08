@@ -6,6 +6,8 @@ export const TokenTypes = {
 
   HI_BHAI_TYPE: "hi bhai",
 
+  BYE_BHAI_TYPE: "bye bhai",
+
   SEMI_COLON_TYPE: ";",
 
   OPEN_CURLY_BRACE_TYPE: "{",
