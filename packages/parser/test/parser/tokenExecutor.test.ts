@@ -1,19 +1,10 @@
 import TokenExecutor from '../../src/components/parser/tokenExecutor';
-import { Tokenizer } from '../../src/components/tokenizer/types';
+import TokenizerImpl from '../../src/components/tokenizer';
 import { TokenTypes } from '../../src/constants/bhaiLangSpec';
 
+const tokenizerMock = new (<new () => TokenizerImpl>TokenizerImpl)() as  jest.Mocked<TokenizerImpl>
 
-const mockGetNextToken = jest.fn().mockImplementation(() => {
-    return null;
-});
-
-const tokenizer: jest.Mocked<Tokenizer> = {
-    getNextToken: mockGetNextToken,
-    initTokenizer: jest.fn(),
-    isEOF: jest.fn(),
-    hasMoreTokens: jest.fn(),
-}
-
+tokenizerMock.getNextToken = jest.fn();
 
 test("test eatTokenAndForwardLookahead", () => {
 
@@ -22,7 +13,9 @@ test("test eatTokenAndForwardLookahead", () => {
       value: "hi bhai",
     }
 
-    const tokenExecutor = new TokenExecutor(tokenizer);
+    tokenizerMock.getNextToken.mockReturnValueOnce(null);
+
+    const tokenExecutor = new TokenExecutor(tokenizerMock);
 
     tokenExecutor.setLookahead(lookahead);
 
