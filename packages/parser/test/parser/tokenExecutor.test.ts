@@ -1,82 +1,79 @@
-import TokenExecutor from '../../src/components/parser/tokenExecutor';
-import TokenizerImpl from '../../src/components/tokenizer';
-import { TokenTypes } from '../../src/constants/bhaiLangSpec';
+import TokenExecutor from "../../src/components/parser/tokenExecutor";
+import TokenizerImpl from "../../src/components/tokenizer";
+import { TokenTypes } from "../../src/constants/bhaiLangSpec";
 
-const tokenizerMock = new (<any>TokenizerImpl)() as  jest.Mocked<TokenizerImpl>;
+const tokenizerMock = new (<any>TokenizerImpl)() as jest.Mocked<TokenizerImpl>;
 
 tokenizerMock.getNextToken = jest.fn();
 
 afterEach(() => {
-    jest.clearAllMocks();
-  });
+  jest.clearAllMocks();
+});
 
 test("test eatTokenAndForwardLookahead success", () => {
+  const lookahead = {
+    type: TokenTypes.HI_BHAI_TYPE,
+    value: "hi bhai",
+  };
 
-    const lookahead = {
-        type: TokenTypes.HI_BHAI_TYPE,
-      value: "hi bhai",
-    }
+  tokenizerMock.getNextToken.mockReturnValueOnce(null);
 
-    tokenizerMock.getNextToken.mockReturnValueOnce(null);
+  const tokenExecutor = new TokenExecutor(tokenizerMock);
 
-    const tokenExecutor = new TokenExecutor(tokenizerMock);
+  tokenExecutor.setLookahead(lookahead);
 
-    tokenExecutor.setLookahead(lookahead);
-
-    expect(tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.HI_BHAI_TYPE)).toStrictEqual({
-        type: TokenTypes.HI_BHAI_TYPE,
-        value: "hi bhai"
-    });
-
-    expect(tokenizerMock.getNextToken).toHaveBeenCalledTimes(1);
-
+  expect(
+    tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.HI_BHAI_TYPE)
+  ).toStrictEqual({
+    type: TokenTypes.HI_BHAI_TYPE,
+    value: "hi bhai",
   });
 
+  expect(tokenizerMock.getNextToken).toHaveBeenCalledTimes(1);
+});
 
-  test("test eatTokenAndForwardLookahead with null lookahead should throw exception", () => {
+test("test eatTokenAndForwardLookahead with null lookahead should throw exception", () => {
+  tokenizerMock.getNextToken.mockReturnValueOnce(null);
 
-    tokenizerMock.getNextToken.mockReturnValueOnce(null);
+  const tokenExecutor = new TokenExecutor(tokenizerMock);
 
-    const tokenExecutor = new TokenExecutor(tokenizerMock);
+  tokenExecutor.setLookahead(null);
 
-    tokenExecutor.setLookahead(null);
+  expect(() =>
+    tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.HI_BHAI_TYPE)
+  ).toThrow(SyntaxError);
 
-    expect(() => tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.HI_BHAI_TYPE)).toThrow(SyntaxError);
+  expect(tokenizerMock.getNextToken).toHaveBeenCalledTimes(0);
+});
 
-    expect(tokenizerMock.getNextToken).toHaveBeenCalledTimes(0);
-  });
+test("test eatTokenAndForwardLookahead with token not matching the expected token type lookahead should throw exception", () => {
+  const lookahead = {
+    type: TokenTypes.BYE_BHAI_TYPE,
+    value: "bye bhai",
+  };
 
-  test("test eatTokenAndForwardLookahead with token not matching the expected token type lookahead should throw exception", () => {
+  tokenizerMock.getNextToken.mockReturnValueOnce(null);
 
-    const lookahead = {
-        type: TokenTypes.BYE_BHAI_TYPE,
-      value: "bye bhai",
-    }
+  const tokenExecutor = new TokenExecutor(tokenizerMock);
 
-    tokenizerMock.getNextToken.mockReturnValueOnce(null);
+  tokenExecutor.setLookahead(lookahead);
 
-    const tokenExecutor = new TokenExecutor(tokenizerMock);
+  expect(() =>
+    tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.HI_BHAI_TYPE)
+  ).toThrow(SyntaxError);
 
-    tokenExecutor.setLookahead(lookahead);
+  expect(tokenizerMock.getNextToken).toHaveBeenCalledTimes(0);
+});
 
-    expect(() => tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.HI_BHAI_TYPE)).toThrow(SyntaxError);
+test("test getLookahead success", () => {
+  const lookahead = {
+    type: TokenTypes.BYE_BHAI_TYPE,
+    value: "bye bhai",
+  };
 
-    expect(tokenizerMock.getNextToken).toHaveBeenCalledTimes(0);
-  });
+  const tokenExecutor = new TokenExecutor(tokenizerMock);
 
+  tokenExecutor.setLookahead(lookahead);
 
-  test("test getLookahead success", () => {
-
-    const lookahead = {
-        type: TokenTypes.BYE_BHAI_TYPE,
-      value: "bye bhai",
-    }
-
-    const tokenExecutor = new TokenExecutor(tokenizerMock);
-
-    tokenExecutor.setLookahead(lookahead);
-
-    expect(tokenExecutor.getLookahead()).toStrictEqual(lookahead);
-
-  });
-
+  expect(tokenExecutor.getLookahead()).toStrictEqual(lookahead);
+});
