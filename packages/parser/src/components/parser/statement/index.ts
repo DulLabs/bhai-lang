@@ -1,4 +1,5 @@
 import { TokenTypes } from "../../../constants/bhaiLangSpec";
+import UnsupportedTypeException from "../../../exceptions/unsupportedTypeException";
 import BhaiLangModule from "../../../module/bhaiLangModule";
 import { Token } from "../../tokenizer/types";
 import StatementList from "../statementList";
@@ -17,9 +18,11 @@ export default abstract class Statement {
     abstract getStatement(): any;
 
     static getStatementImpl(lookahead: Token) {
-        switch (lookahead?.type) {
+        switch (lookahead.type) {
           case TokenTypes.HI_BHAI_TYPE:
             return BhaiLangModule.getInitStatement()
+          default:
+            throw new UnsupportedTypeException(`lookhead type not supported: "${lookahead}"`);
         }
       }
 }
