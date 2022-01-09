@@ -31,7 +31,7 @@ export default class TokenizerImpl implements Tokenizer {
     if (!this._string)
       return false;
 
-    return this._cursor < this._string?.length;
+    return this._cursor < this._string.length;
   }
 
   getNextToken(): Token | null {

@@ -10,7 +10,7 @@ export default class Program {
     getProgram() {
       return {
         type : 'Program',
-        body : this._statementList.getStatementList()
+        body : this._statementList.getInitialStatementList()
     };
     }
 }
