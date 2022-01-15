@@ -1,9 +1,10 @@
 import Statement from '.';
 
 import { TokenTypes } from '../../../constants/bhaiLangSpec';
+import { ExpressionType } from '../../../constants/constants';
 
 import Expression from './expression';
-import { ExpressionType } from './expression/constants';
+
 
 
 export default class ExpressionStatement extends Statement {

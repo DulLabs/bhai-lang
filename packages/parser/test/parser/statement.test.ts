@@ -1,8 +1,8 @@
-import Statement from "../../src/components/parser/statement";
-import InitStatement from "../../src/components/parser/statement/initStatement";
-import { TokenTypes } from "../../src/constants/bhaiLangSpec";
-import UnsupportedTypeException from "../../src/exceptions/unsupportedTypeException";
-import BhaiLangModule from "../../src/module/bhaiLangModule";
+import Statement from '../../src/components/parser/statement';
+import InitStatement from '../../src/components/parser/statement/initStatement';
+import { TokenTypes } from '../../src/constants/bhaiLangSpec';
+import BhaiLangModule from '../../src/module/bhaiLangModule';
+
 
 jest.mock("../../src/module/bhaiLangModule");
 
@@ -31,15 +31,3 @@ test("test getStatementImpl of statement class with should success", () => {
   expect(BhaiLangModule.getInitStatement).toHaveBeenCalledTimes(1);
 });
 
-test("test getStatementImpl with unsupported lookahead should throw an exception", () => {
-  const lookahead = {
-    type: TokenTypes.BYE_BHAI_TYPE,
-    value: "bye bhai",
-  };
-
-  expect(() => Statement.getStatementImpl(lookahead)).toThrow(
-    UnsupportedTypeException
-  );
-
-  expect(BhaiLangModule.getInitStatement).toHaveBeenCalledTimes(0);
-});

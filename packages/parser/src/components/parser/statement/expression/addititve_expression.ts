@@ -1,14 +1,15 @@
 import Expression from '.';
 
 import { TokenTypes } from '../../../../constants/bhaiLangSpec';
-import TokenExecutor from '../../tokenExecutor';
 
-import { ExpressionType } from './constants';
+import { ExpressionType } from '../../../../constants/constants';
+import TokenExecutor from '../../tokenExecutor';
 
 
 export default class AdditiveExpression extends Expression {
   
-  _multiplicativeExpression= Expression.getExpressionImpl(ExpressionType.MultiplicativeExpression).getExpression();
+  _multiplicativeExpression= Expression.getExpressionImpl(ExpressionType.MultiplicativeExpression);
+
 
   constructor(tokenExecutor: TokenExecutor ) {
     super(tokenExecutor);

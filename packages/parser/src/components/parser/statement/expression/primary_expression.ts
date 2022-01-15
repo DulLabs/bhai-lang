@@ -2,7 +2,8 @@ import Expression from '.';
 
 import { TokenTypes } from '../../../../constants/bhaiLangSpec';
 
-import { ExpressionType } from './constants';
+import { ExpressionType } from '../../../../constants/constants';
+
 import Literal from './literals';
 
 
@@ -14,7 +15,7 @@ export default class PrimaryExpression extends Expression {
       case TokenTypes.OPEN_PARENTHESIS_TYPE:
         return Expression.getExpressionImpl(ExpressionType.ParanthesizedExpression).getExpression();
       default:
-        return Literal.getLiteralImpl(token?.type);
+        return Literal.getLiteralImpl(token?.type).getLiteral();
     }
   }
 }
