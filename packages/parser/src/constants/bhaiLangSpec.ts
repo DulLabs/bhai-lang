@@ -30,7 +30,7 @@ export const TokenTypes = {
 
   ADDITIVE_OPERATOR_TYPE: "ADDITIVE_OPERATOR",
 
-  MULTIPLICATIVE_OPERATOR: "MULTIPLICATIVE_OPERATOR",
+  MULTIPLICATIVE_OPERATOR_TYPE: "MULTIPLICATIVE_OPERATOR",
 
   STRING_TYPE: "STRING"
 }
@@ -68,7 +68,7 @@ export const SPEC = [
 
   // operator
   { regex: /^[+\-]/, tokenType: TokenTypes.ADDITIVE_OPERATOR_TYPE },
-  { regex: /^[*\/]/, tokenType: TokenTypes.MULTIPLICATIVE_OPERATOR },
+  { regex: /^[*\/]/, tokenType: TokenTypes.MULTIPLICATIVE_OPERATOR_TYPE },
 
   // String
   { regex: /^"[^"]*"/, tokenType: TokenTypes.STRING_TYPE },

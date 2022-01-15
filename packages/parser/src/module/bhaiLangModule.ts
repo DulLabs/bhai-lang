@@ -1,20 +1,33 @@
-import { Parser } from "../components/parser";
-import Program from "../components/parser/program";
-import InitStatement from "../components/parser/statement/initStatement";
-import StatementList from "../components/parser/statementList";
-import TokenExecutor from "../components/parser/tokenExecutor";
-import TokenizerImpl from "../components/tokenizer";
-import { Tokenizer } from "../components/tokenizer/types";
-import { SPEC } from "../constants/bhaiLangSpec";
+import { Parser } from '../components/parser';
+import Program from '../components/parser/program';
+import AdditiveExpression
+  from '../components/parser/statement/expression/addititve_expression';
+import MultiplicativeExpression
+  from '../components/parser/statement/expression/multiplicative_expression';
+import PrimaryExpression
+  from '../components/parser/statement/expression/primary_expression';
+import ExpressionStatement
+  from '../components/parser/statement/expressionStatement';
+import InitStatement from '../components/parser/statement/initStatement';
+import StatementList from '../components/parser/statementList';
+import TokenExecutor from '../components/parser/tokenExecutor';
+import TokenizerImpl from '../components/tokenizer';
+import { Tokenizer } from '../components/tokenizer/types';
+import { SPEC } from '../constants/bhaiLangSpec';
+
 
 export default class BhaiLangModule {
 
-    private static _tokenizer: Tokenizer | undefined = undefined;
-    private static _initStatement: InitStatement | undefined = undefined;
-    private static _parser: Parser | undefined = undefined;
-    private static _program: Program | undefined = undefined;
-    private static _statementList: StatementList | undefined = undefined;
-    private static _tokenExecutor: TokenExecutor | undefined = undefined;
+    private static _tokenizer?: Tokenizer;
+    private static _initStatement?: InitStatement  
+    private static _parser?: Parser  
+    private static _program?: Program  
+    private static _statementList?: StatementList  
+    private static _tokenExecutor?: TokenExecutor  
+    private static _expresionStatement?: ExpressionStatement 
+    private static _additiveExpression?: AdditiveExpression;
+    private static _multiplicativeExpression?: MultiplicativeExpression;
+    private static _primaryExpression?: PrimaryExpression;
 
     static getTokenizer() {
         if (!this._tokenizer)
@@ -42,6 +55,38 @@ export default class BhaiLangModule {
             this._initStatement = new InitStatement(this.getTokenExecutor(), this.getStatementList());
 
         return this._initStatement;
+    }
+
+    static getExpressionStatement() {
+        if (!this._expresionStatement) {
+            this._expresionStatement = new ExpressionStatement(this.getTokenExecutor());
+        }
+
+        return this._expresionStatement;
+    }
+
+    static getAdditiveExpression() {
+        if (!this._additiveExpression) {
+            this._additiveExpression = new AdditiveExpression(this.getTokenExecutor());
+        }
+
+        return this._additiveExpression;
+    }
+
+    static getMultiplicativeExpression() {
+        if (!this._multiplicativeExpression) {
+            this._multiplicativeExpression = new MultiplicativeExpression(this.getTokenExecutor() );
+        }
+
+        return this._multiplicativeExpression;
+    }
+
+    static getPrimaryExpression() {
+        if (!this._primaryExpression) {
+            this._primaryExpression = new PrimaryExpression(this.getTokenExecutor());
+        }
+
+        return this._primaryExpression;
     }
 
     static getProgram() {
