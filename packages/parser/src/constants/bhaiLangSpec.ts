@@ -1,5 +1,4 @@
 export const TokenTypes = {
-
   NULL_TYPE: null,
 
   LET_TYPE: "let",
@@ -32,8 +31,8 @@ export const TokenTypes = {
 
   MULTIPLICATIVE_OPERATOR_TYPE: "MULTIPLICATIVE_OPERATOR",
 
-  STRING_TYPE: "STRING"
-} 
+  STRING_TYPE: "STRING",
+};
 
 export const SPEC = [
   // Whitespcaes
@@ -55,6 +54,8 @@ export const SPEC = [
 
   //Keywords
   { regex: /^\blet\b/, tokenType: TokenTypes.LET_TYPE },
+  { regex: /^\bhi bhai\b/, tokenType: TokenTypes.HI_BHAI_TYPE },
+  { regex: /^\bbye bhai\b/, tokenType: TokenTypes.BYE_BHAI_TYPE },
 
   // Number
   { regex: /^\d+/, tokenType: TokenTypes.NUMBER_TYPE },
