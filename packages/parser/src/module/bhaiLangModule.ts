@@ -2,8 +2,14 @@ import { Parser } from '../components/parser';
 import Program from '../components/parser/program';
 import AdditiveExpression
   from '../components/parser/statement/expression/addititve_expression';
+import NumericLiteral
+  from '../components/parser/statement/expression/literals/numeric_literal';
+import StringLiteral
+  from '../components/parser/statement/expression/literals/string_literal';
 import MultiplicativeExpression
   from '../components/parser/statement/expression/multiplicative_expression';
+import ParanthesizedExpression
+  from '../components/parser/statement/expression/paranthesized_expression';
 import PrimaryExpression
   from '../components/parser/statement/expression/primary_expression';
 import ExpressionStatement
@@ -28,6 +34,9 @@ export default class BhaiLangModule {
     private static _additiveExpression?: AdditiveExpression;
     private static _multiplicativeExpression?: MultiplicativeExpression;
     private static _primaryExpression?: PrimaryExpression;
+    private static _paranthesizedExpression?: ParanthesizedExpression;
+    private static _numericLiteral?: NumericLiteral;
+    private static _stringLiteral?: StringLiteral;
 
     static getTokenizer() {
         if (!this._tokenizer)
@@ -87,6 +96,30 @@ export default class BhaiLangModule {
         }
 
         return this._primaryExpression;
+    }
+
+    static getParanthesizedExpression() {
+        if (!this._paranthesizedExpression) {
+            this._paranthesizedExpression = new ParanthesizedExpression(this.getTokenExecutor());
+        }
+
+        return this._paranthesizedExpression;
+    }
+
+    static getNumericLiteral() {
+        if (!this._numericLiteral) {
+            this._numericLiteral = new NumericLiteral(this.getTokenExecutor());
+        }
+
+        return this._numericLiteral;
+    }
+
+    static getStringLiteral() {
+        if (!this._stringLiteral) {
+            this._stringLiteral = new StringLiteral(this.getTokenExecutor());
+        }
+
+        return this._stringLiteral;
     }
 
     static getProgram() {
