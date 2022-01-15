@@ -1,2 +1,4 @@
-console.log("Hello Bhai");
-export {};
+import { Parser } from './src/components/parser';
+
+
+export default Parser;

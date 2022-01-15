@@ -1,7 +1,8 @@
-import { TokenTypes } from "../../../constants/bhaiLangSpec";
-import BhaiLangModule from "../../../module/bhaiLangModule";
-import { Token } from "../../tokenizer/types";
-import TokenExecutor from "../tokenExecutor";
+import { TokenTypes } from '../../../constants/bhaiLangSpec';
+import BhaiLangModule from '../../../module/bhaiLangModule';
+import { Token } from '../../tokenizer/types';
+import TokenExecutor from '../tokenExecutor';
+
 
 export default abstract class Statement {
   protected _tokenExecutor: TokenExecutor;

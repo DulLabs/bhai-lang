@@ -1,7 +1,6 @@
+import { ExpressionType } from '../../../../constants/constants';
 import BhaiLangModule from '../../../../module/bhaiLangModule';
 import TokenExecutor from '../../tokenExecutor';
-
-import { ExpressionType } from './constants';
 
 
 export default abstract class Expression {

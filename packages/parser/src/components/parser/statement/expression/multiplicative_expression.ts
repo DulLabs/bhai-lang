@@ -1,9 +1,8 @@
 import Expression from '.';
 
 import { TokenTypes } from '../../../../constants/bhaiLangSpec';
+import { ExpressionType } from '../../../../constants/constants';
 import TokenExecutor from '../../tokenExecutor';
-
-import { ExpressionType } from './constants';
 
 
 export default class MultiplicativeExpression extends Expression {
