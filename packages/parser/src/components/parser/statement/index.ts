@@ -1,11 +1,9 @@
-import { TokenTypes } from '../../../constants/bhaiLangSpec';
-import BhaiLangModule from '../../../module/bhaiLangModule';
-import { Token } from '../../tokenizer/types';
-import TokenExecutor from '../tokenExecutor';
-
+import { TokenTypes } from "../../../constants/bhaiLangSpec";
+import BhaiLangModule from "../../../module/bhaiLangModule";
+import { Token } from "../../tokenizer/types";
+import TokenExecutor from "../tokenExecutor";
 
 export default abstract class Statement {
-
   protected _tokenExecutor: TokenExecutor;
 
     constructor(tokenExecutor: TokenExecutor) {
@@ -15,7 +13,7 @@ export default abstract class Statement {
     abstract getStatement(): any;
 
     static getStatementImpl(lookahead: Token) {
-        switch (lookahead?.type) {
+        switch (lookahead.type) {
           case TokenTypes.HI_BHAI_TYPE:
             return BhaiLangModule.getInitStatement()
           
