@@ -10,7 +10,7 @@ export default class ExpressionStatement extends Statement {
 
 
   getStatement() {
-    const expression = Expression.getExpressionImpl(ExpressionType.AdditiveExpression); 
+    const expression = Expression.getExpressionImpl(ExpressionType.AdditiveExpression).getExpression(); 
     
     this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.SEMI_COLON_TYPE);
 

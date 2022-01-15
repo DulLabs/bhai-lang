@@ -8,7 +8,7 @@ import { ExpressionType } from './constants';
 
 export default class AdditiveExpression extends Expression {
   
-  _multiplicativeExpression= Expression.getExpressionImpl(ExpressionType.MultiplicativeExpression);
+  _multiplicativeExpression= Expression.getExpressionImpl(ExpressionType.MultiplicativeExpression).getExpression();
 
   constructor(tokenExecutor: TokenExecutor ) {
     super(tokenExecutor);

@@ -12,7 +12,7 @@ export default class PrimaryExpression extends Expression {
 
     switch (token?.type) {
       case TokenTypes.OPEN_PARENTHESIS_TYPE:
-        return Expression.getExpressionImpl(ExpressionType.ParanthesizedExpression);
+        return Expression.getExpressionImpl(ExpressionType.ParanthesizedExpression).getExpression();
       default:
         return Literal.getLiteralImpl(token?.type);
     }
