@@ -33,7 +33,7 @@ export const TokenTypes = {
   MULTIPLICATIVE_OPERATOR_TYPE: "MULTIPLICATIVE_OPERATOR",
 
   STRING_TYPE: "STRING"
-}
+} 
 
 export const SPEC = [
   // Whitespcaes

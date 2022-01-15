@@ -23,6 +23,9 @@ export default abstract class Expression {
       
       case ExpressionType.PrimaryExpression:
         return BhaiLangModule.getPrimaryExpression();
+
+      case ExpressionType.ParanthesizedExpression:
+        return BhaiLangModule.getParanthesizedExpression();
     }
     
   }
