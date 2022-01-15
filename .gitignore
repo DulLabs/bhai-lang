@@ -16,6 +16,10 @@ build
 # misc
 .DS_Store
 *.pem
+.parcel-cache
+
+# distribution
+dist
 
 # debug
 npm-debug.log*
