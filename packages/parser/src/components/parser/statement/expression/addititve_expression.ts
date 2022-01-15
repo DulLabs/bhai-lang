@@ -7,7 +7,7 @@ import TokenExecutor from '../../tokenExecutor';
 
 export default class AdditiveExpression extends Expression {
   
-  _multiplicativeExpression= Expression.getExpressionImpl(ExpressionType.MultiplicativeExpression).getExpression();
+  _multiplicativeExpression= Expression.getExpressionImpl(ExpressionType.MultiplicativeExpression);
 
   constructor(tokenExecutor: TokenExecutor ) {
     super(tokenExecutor);

@@ -1,6 +1,8 @@
-import { TokenTypes } from "../../constants/bhaiLangSpec";
-import Statement from "./statement";
-import TokenExecutor from "./tokenExecutor";
+import { TokenTypes } from '../../constants/bhaiLangSpec';
+
+import Statement from './statement';
+import TokenExecutor from './tokenExecutor';
+
 
 export default class StatementList {
   private _tokenExecutor: TokenExecutor;
@@ -10,9 +12,8 @@ export default class StatementList {
   }
 
   getInitialStatementList() {
-    const lookahead = this._tokenExecutor.getLookahead();
 
-    while (lookahead !== null && lookahead.type !== TokenTypes.HI_BHAI_TYPE) {
+    for (let lookahead = this._tokenExecutor.getLookahead(); lookahead !== null && lookahead.type !== TokenTypes.HI_BHAI_TYPE; lookahead = this._tokenExecutor.getLookahead()) {
       this._tokenExecutor.eatTokenAndForwardLookahead(lookahead.type);
     }
 
@@ -20,16 +21,15 @@ export default class StatementList {
   }
 
   getStatementList(stopLookaheadType: string | null = null) {
-    const lookahead = this._tokenExecutor.getLookahead();
 
     const statementlist = [];
 
-    while (lookahead !== null && lookahead.type !== stopLookaheadType) {
+    for (let lookahead = this._tokenExecutor.getLookahead(); lookahead !== null && this._tokenExecutor.getLookahead()?.type !== stopLookaheadType; lookahead = this._tokenExecutor.getLookahead()) {
       // Statement.getStatementImpl(lookahead) -> this will get the Statement
       // implementation according to look ahead
       // and we will get the statement by calling getStatement() function
 
-      statementlist.push(Statement.getStatementImpl(lookahead)?.getStatement());
+      statementlist.push(Statement.getStatementImpl(lookahead).getStatement());
     }
 
     return statementlist;

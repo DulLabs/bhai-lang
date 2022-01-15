@@ -1,4 +1,7 @@
-import { Parser } from './src/components/parser';
+import BhaiLangModule from './src/module/bhaiLangModule';
 
 
-export default Parser;
+const parser = BhaiLangModule.getParser();
+console.log(JSON.stringify(parser.parse(`
+hi bhai
+ bye bhai`)));
