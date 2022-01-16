@@ -18,12 +18,15 @@ export default abstract class Statement {
           case TokenTypes.HI_BHAI_TYPE:
             return BhaiLangModule.getInitStatement()
 
+          case TokenTypes.BOL_BHAI_TYPE:
+            return BhaiLangModule.getPrintStatement()
+            
           case TokenTypes.SEMI_COLON_TYPE:
             return BhaiLangModule.getEmptyStatement()
 
           case TokenTypes.OPEN_CURLY_BRACE_TYPE:
             return BhaiLangModule.getBlockStatement()
-          
+
           default:
             return BhaiLangModule.getExpressionStatement()
         }

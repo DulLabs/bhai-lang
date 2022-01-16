@@ -1,7 +1,6 @@
 import Expression from '.';
 
 import { TokenTypes } from '../../../../constants/bhaiLangSpec';
-
 import { ExpressionType } from '../../../../constants/constants';
 import TokenExecutor from '../../tokenExecutor';
 
@@ -19,10 +18,10 @@ export default class MultiplicativeExpression extends Expression {
     let left: any = this._primaryexpression.getExpression();
 
     while (this._tokenExecutor.getLookahead()?.type === TokenTypes.MULTIPLICATIVE_OPERATOR_TYPE) {
-      const operator = this._tokenExecutor.eatTokenAndForwardLookahead ('MULTIPLICATIVE_OPERATOR');
+      const operator = this._tokenExecutor.eatTokenAndForwardLookahead (TokenTypes.MULTIPLICATIVE_OPERATOR_TYPE);
       const right = this._primaryexpression.getExpression();
       left = {
-        type: 'BINARY_EXPRESSION',
+        type: 'BinaryExpression',
         operator: operator.value,
         left,
         right

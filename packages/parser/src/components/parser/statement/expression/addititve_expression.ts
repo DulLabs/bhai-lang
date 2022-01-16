@@ -1,7 +1,6 @@
 import Expression from '.';
 
 import { TokenTypes } from '../../../../constants/bhaiLangSpec';
-
 import { ExpressionType } from '../../../../constants/constants';
 import TokenExecutor from '../../tokenExecutor';
 
@@ -22,7 +21,7 @@ export default class AdditiveExpression extends Expression {
       const operator = this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.ADDITIVE_OPERATOR_TYPE);
       const right = this._multiplicativeExpression.getExpression();
       left = {
-        type: 'BINARY_EXPRESSION',
+        type: 'BinaryExpression',
         operator: operator.value,
         left,
         right

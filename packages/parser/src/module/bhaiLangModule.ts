@@ -17,6 +17,7 @@ import PrimaryExpression
 import ExpressionStatement
   from '../components/parser/statement/expressionStatement';
 import InitStatement from '../components/parser/statement/initStatement';
+import PrintStatement from '../components/parser/statement/printStatement';
 import StatementList from '../components/parser/statementList';
 import TokenExecutor from '../components/parser/tokenExecutor';
 import TokenizerImpl from '../components/tokenizer';
@@ -33,6 +34,7 @@ export default class BhaiLangModule {
     private static _statementList?: StatementList  
     private static _tokenExecutor?: TokenExecutor  
     private static _expresionStatement?: ExpressionStatement 
+    private static _printStatement?: PrintStatement
     private static _emptyStatement?: EmptyStatement
     private static _blockStatement?: BlockStatement
     private static _additiveExpression?: AdditiveExpression;
@@ -70,6 +72,14 @@ export default class BhaiLangModule {
       );
 
     return this._initStatement;
+  }
+
+  static getPrintStatement() {
+    if (!this._printStatement) {
+      this._printStatement = new PrintStatement(this.getTokenExecutor());
+    }
+
+    return this._printStatement;
   }
 
     static getExpressionStatement() {
