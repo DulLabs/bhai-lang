@@ -4,6 +4,8 @@ import BlockStatement from '../components/parser/statement/blockStatement';
 import EmptyStatement from '../components/parser/statement/emptyStatement';
 import AdditiveExpression
   from '../components/parser/statement/expression/addititve_expression';
+import BooleanLiteral
+  from '../components/parser/statement/expression/literals/boolean_literal';
 import NumericLiteral
   from '../components/parser/statement/expression/literals/numeric_literal';
 import StringLiteral
@@ -43,6 +45,7 @@ export default class BhaiLangModule {
     private static _paranthesizedExpression?: ParanthesizedExpression;
     private static _numericLiteral?: NumericLiteral;
     private static _stringLiteral?: StringLiteral;
+    private static _booleanLiteral?: BooleanLiteral;
   
   static getTokenizer() {
     if (!this._tokenizer) this._tokenizer = new TokenizerImpl(SPEC);
@@ -153,6 +156,14 @@ export default class BhaiLangModule {
 
         return this._stringLiteral;
     }
+
+  static getBooleanLiteral() {
+    if (!this._booleanLiteral) {
+      this._booleanLiteral = new BooleanLiteral(this.getTokenExecutor());
+    }
+
+    return this._booleanLiteral;
+  }
 
     static getProgram() {
         if (!this._program)

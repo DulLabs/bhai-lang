@@ -7,7 +7,7 @@
   "main": "dist/index.js",
   "module": "dist/module.js",
   "scripts": {
-    "dev": "ts-node index.ts",
+    "dev": "ts-node src/index.ts",
     "watch": "parcel watch",
     "build": "parcel build",
     "test": "jest --coverage"

@@ -18,6 +18,9 @@ export default abstract class Literal {
         return BhaiLangModule.getNumericLiteral();
       case TokenTypes.STRING_TYPE:
         return BhaiLangModule.getStringLiteral();
+
+      case TokenTypes.BOOLEAN_TYPE:
+        return BhaiLangModule.getBooleanLiteral();
     }
   }
 }

@@ -34,6 +34,8 @@ export const TokenTypes = {
   MULTIPLICATIVE_OPERATOR_TYPE: "MULTIPLICATIVE_OPERATOR",
 
   STRING_TYPE: "STRING",
+
+  BOOLEAN_TYPE: "BOOLEAN",
 };
 
 export const SPEC = [
@@ -63,6 +65,10 @@ export const SPEC = [
 
   // Number
   { regex: /^\d+/, tokenType: TokenTypes.NUMBER_TYPE },
+  
+  // Boolean
+  { regex: /^sahi/, tokenType: TokenTypes.BOOLEAN_TYPE },
+  { regex: /^galat/, tokenType: TokenTypes.BOOLEAN_TYPE },
 
   // Identifier
   { regex: /^\w+/, tokenType: TokenTypes.IDENTIFIER_TYPE },
