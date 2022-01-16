@@ -1,5 +1,7 @@
 import { Parser } from '../components/parser';
 import Program from '../components/parser/program';
+import BlockStatement from '../components/parser/statement/blockStatement';
+import EmptyStatement from '../components/parser/statement/emptyStatement';
 import AdditiveExpression
   from '../components/parser/statement/expression/addititve_expression';
 import NumericLiteral
@@ -31,6 +33,8 @@ export default class BhaiLangModule {
     private static _statementList?: StatementList  
     private static _tokenExecutor?: TokenExecutor  
     private static _expresionStatement?: ExpressionStatement 
+    private static _emptyStatement?: EmptyStatement
+    private static _blockStatement?: BlockStatement
     private static _additiveExpression?: AdditiveExpression;
     private static _multiplicativeExpression?: MultiplicativeExpression;
     private static _primaryExpression?: PrimaryExpression;
@@ -75,6 +79,22 @@ export default class BhaiLangModule {
 
         return this._expresionStatement;
     }
+
+  static getEmptyStatement() {
+    if (!this._emptyStatement) {
+      this._emptyStatement = new EmptyStatement(this.getTokenExecutor());
+    }
+
+    return this._emptyStatement;
+  }
+
+  static getBlockStatement() {
+    if (!this._blockStatement) {
+      this._blockStatement = new BlockStatement(this.getTokenExecutor(), this.getStatementList());
+    }
+
+    return this._blockStatement;
+  }
 
     static getAdditiveExpression() {
         if (!this._additiveExpression) {
