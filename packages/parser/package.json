@@ -2,9 +2,14 @@
   "name": "bhai-lang-parser",
   "version": "0.0.1",
   "description": "Parser for bhai-lang",
-  "main": "index.ts",
+  "source": "src/index.ts",
+  "types": "dist/types.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/module.js",
   "scripts": {
     "dev": "ts-node index.ts",
+    "watch": "parcel watch",
+    "build": "parcel build",
     "test": "jest --coverage"
   },
   "repository": {
@@ -26,6 +31,7 @@
   "homepage": "https://github.com/DulLabs/bhai-lang#readme",
   "devDependencies": {
     "ts-node": "^10.4.0",
+    "parcel": "^2.2.0",
     "ts-jest": "^27.1.2",
     "jest": "^27.4.5",
     "@types/jest": "^27.4.0",
