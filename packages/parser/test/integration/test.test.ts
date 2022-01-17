@@ -1,8 +1,8 @@
 import bhaiLangModule from "../../src/module/bhaiLangModule";
 
-import { Tests } from "./test_helper";
+import { StatementTests } from "./test_helper";
 
-Tests.forEach((testCase) => {
+StatementTests.forEach((testCase) => {
   test(testCase.name, () => {
     const parser = bhaiLangModule.getParser();
     const ast = parser.parse(testCase.input);
