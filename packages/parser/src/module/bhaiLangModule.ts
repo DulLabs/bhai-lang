@@ -5,8 +5,7 @@ import EmptyStatement from "../components/parser/statement/emptyStatement";
 import AdditiveExpression from "../components/parser/statement/expression/addititve_expression";
 import AssignmentExpression from "../components/parser/statement/expression/assignment_expression";
 import IdentifierExpression from "../components/parser/statement/expression/identifier_expression";
-import BooleanLiteral
-  from '../components/parser/statement/expression/literals/boolean_literal';
+import BooleanLiteral from "../components/parser/statement/expression/literals/boolean_literal";
 import NumericLiteral from "../components/parser/statement/expression/literals/numeric_literal";
 import StringLiteral from "../components/parser/statement/expression/literals/string_literal";
 import MultiplicativeExpression from "../components/parser/statement/expression/multiplicative_expression";
@@ -43,7 +42,6 @@ export default class BhaiLangModule {
   private static _variableStatement?: VariableStatement;
   private static _assignmentExpression?: AssignmentExpression;
   private static _booleanLiteral?: BooleanLiteral;
-
 
   static getTokenizer() {
     if (!this._tokenizer) this._tokenizer = new TokenizerImpl(SPEC);
@@ -190,7 +188,6 @@ export default class BhaiLangModule {
     return this._stringLiteral;
   }
 
-
   static getBooleanLiteral() {
     if (!this._booleanLiteral) {
       this._booleanLiteral = new BooleanLiteral(this.getTokenExecutor());
@@ -198,7 +195,6 @@ export default class BhaiLangModule {
 
     return this._booleanLiteral;
   }
-
 
   static getProgram() {
     if (!this._program) this._program = new Program(this.getStatementList());
