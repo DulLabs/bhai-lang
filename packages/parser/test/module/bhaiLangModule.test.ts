@@ -1,9 +1,8 @@
-import { Parser } from '../../src/components/parser';
-import Program from '../../src/components/parser/program';
-import TokenExecutor from '../../src/components/parser/tokenExecutor';
-import Tokenizer from '../../src/components/tokenizer';
-import BhaiLangModule from '../../src/module/bhaiLangModule';
-
+import { Parser } from "../../src/components/parser";
+import Program from "../../src/components/parser/program";
+import TokenExecutor from "../../src/components/parser/tokenExecutor";
+import Tokenizer from "../../src/components/tokenizer";
+import BhaiLangModule from "../../src/module/bhaiLangModule";
 
 test("test bhaiLangModule should success", () => {
   expect(BhaiLangModule.getTokenizer()).toBeInstanceOf(Tokenizer);

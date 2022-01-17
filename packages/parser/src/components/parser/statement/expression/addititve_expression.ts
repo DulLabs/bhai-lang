@@ -1,33 +1,13 @@
-import Expression from '.';
+import Expression from ".";
 
-import { TokenTypes } from '../../../../constants/bhaiLangSpec';
-import { ExpressionType } from '../../../../constants/constants';
-import TokenExecutor from '../../tokenExecutor';
-
+import { TokenTypes } from "../../../../constants/bhaiLangSpec";
+import { ExpressionType } from "../../../../constants/constants";
 
 export default class AdditiveExpression extends Expression {
-  
-  _multiplicativeExpression= Expression.getExpressionImpl(ExpressionType.MultiplicativeExpression);
-
-
-  constructor(tokenExecutor: TokenExecutor ) {
-    super(tokenExecutor);
-  }
-
   getExpression() {
-    let left: any = this._multiplicativeExpression.getExpression();
-
-    while (this._tokenExecutor.getLookahead()?.type === TokenTypes.ADDITIVE_OPERATOR_TYPE) {
-      const operator = this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.ADDITIVE_OPERATOR_TYPE);
-      const right = this._multiplicativeExpression.getExpression();
-      left = {
-        type: 'BinaryExpression',
-        operator: operator.value,
-        left,
-        right
-      }
-    }
-
-    return left;
+    return this.getBinaryExpression(
+      ExpressionType.MultiplicativeExpression,
+      TokenTypes.ADDITIVE_OPERATOR_TYPE
+    );
   }
 }

@@ -1,9 +1,9 @@
-import Statement from '.';
+import Statement from ".";
 
-import { TokenTypes } from '../../../constants/bhaiLangSpec';
-import StatementList from '../statementList';
-import TokenExecutor from '../tokenExecutor';
-
+import { TokenTypes } from "../../../constants/bhaiLangSpec";
+import { StatementTypes } from "../../../constants/constants";
+import StatementList from "../statementList";
+import TokenExecutor from "../tokenExecutor";
 
 export default class BlockStatement extends Statement {
   _statementList: StatementList;
@@ -14,15 +14,25 @@ export default class BlockStatement extends Statement {
   }
 
   getStatement() {
-      this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.OPEN_CURLY_BRACE_TYPE);
+    this._tokenExecutor.eatTokenAndForwardLookahead(
+      TokenTypes.OPEN_CURLY_BRACE_TYPE
+    );
 
-    const body = this._tokenExecutor.getLookahead()?.type === TokenTypes.CLOSED_CURLY_BRACE_TYPE ? [] : this._statementList.getStatementList(TokenTypes.CLOSED_CURLY_BRACE_TYPE);
-    
-    this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.CLOSED_CURLY_BRACE_TYPE);
+    const body =
+      this._tokenExecutor.getLookahead()?.type ===
+      TokenTypes.CLOSED_CURLY_BRACE_TYPE
+        ? []
+        : this._statementList.getStatementList(
+            TokenTypes.CLOSED_CURLY_BRACE_TYPE
+          );
+
+    this._tokenExecutor.eatTokenAndForwardLookahead(
+      TokenTypes.CLOSED_CURLY_BRACE_TYPE
+    );
 
     return {
-      type: "BlockStatement",
-      body
+      type: StatementTypes.BlockStatement,
+      body,
     };
   }
 }
