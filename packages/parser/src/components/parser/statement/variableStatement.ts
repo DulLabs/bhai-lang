@@ -56,6 +56,8 @@ export default class VariableStatement extends Statement {
       TokenTypes.SIMPLE_ASSIGN_TYPE
     );
 
-    return Expression.getExpressionImpl(ExpressionType.AssignmentExpression);
+    return Expression.getExpressionImpl(
+      ExpressionType.AssignmentExpression
+    ).getExpression();
   }
 }
