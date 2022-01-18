@@ -9,15 +9,32 @@ export default class PrintStatement extends Statement {
   getStatement(): any {
     this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.BOL_BHAI_TYPE);
 
-    const expression = Expression.getExpressionImpl(
-      ExpressionType.AdditiveExpression
-    ).getExpression();
+    const expressions = this._getExpressionList();
 
     this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.SEMI_COLON_TYPE);
 
     return {
       type: StatementTypes.PrintStatement,
-      expression,
+      expressions,
     };
+  }
+
+  private _getExpressionList() {
+    const expressions: any[] = [];
+
+    do {
+      expressions.push(this._getExpression());
+    } while (
+      this._tokenExecutor.getLookahead()?.type === TokenTypes.COMA_TYPE &&
+      this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.COMA_TYPE)
+    );
+
+    return expressions;
+  }
+
+  private _getExpression() {
+    return Expression.getExpressionImpl(
+      ExpressionType.AdditiveExpression
+    ).getExpression();
   }
 }
