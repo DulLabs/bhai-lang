@@ -54,11 +54,11 @@ export const StatementTests = [
     input: `
       hi bhai
       {
-        a = 4;
+        naam = 4;
       }
       bye bhai
     `,
-    output: `{"type":"Program","body":[{"type":"InitStatement","body":[{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"IdentifierExpression","name":"a"},"right":{"type":"NumericLiteral","value":4}}}]}]}]}`,
+    output: `{"type":"Program","body":[{"type":"InitStatement","body":[{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"IdentifierExpression","name":"naam"},"right":{"type":"NumericLiteral","value":4}}}]}]}]}`,
   },
   {
     name: "block statement test with variable statement inside, should success",
@@ -71,6 +71,90 @@ export const StatementTests = [
     `,
     output: `{"type":"Program","body":[{"type":"InitStatement","body":[{"type":"BlockStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"a"},"init":{"type":"NumericLiteral","value":4}}]}]}]}]}`,
   },
+  // print statement test
+  {
+    name: "print statement test with string printing, should success",
+    input: `
+      hi bhai
+      bol bhai "puff...";
+      bye bhai
+    `,
+    output: `{"type":"Program","body":[{"type":"InitStatement","body":[{"type":"PrintStatement","expressions":[{"type":"StringLiteral","value":"puff..."}]}]}]}`,
+  },
+  {
+    name: "print statement test with number printing, should success",
+    input: `
+      hi bhai
+      bol bhai 478;
+      bye bhai
+    `,
+    output: `{"type":"Program","body":[{"type":"InitStatement","body":[{"type":"PrintStatement","expressions":[{"type":"NumericLiteral","value":478}]}]}]}`,
+  },
+  {
+    name: "print statement test with boolean printing, should success",
+    input: `
+      hi bhai
+      bol bhai sahi, galat;
+      bye bhai
+    `,
+    output: `{"type":"Program","body":[{"type":"InitStatement","body":[{"type":"PrintStatement","expressions":[{"type":"BooleanLiteral","value":"sahi"},{"type":"BooleanLiteral","value":"galat"}]}]}]}`,
+  },
+  {
+    name: "print statement test with identifier printing, should success",
+    input: `
+      hi bhai
+      bol bhai a, b, c;
+      bye bhai
+    `,
+    output: `{"type":"Program","body":[{"type":"InitStatement","body":[{"type":"PrintStatement","expressions":[{"type":"IdentifierExpression","name":"a"},{"type":"IdentifierExpression","name":"b"},{"type":"IdentifierExpression","name":"c"}]}]}]}`,
+  },
+  // variable statement test
+  {
+    name: "variable statement test with basic variable declaration, should success",
+    input: `
+      hi bhai
+      bhai ye hai a, b, c;
+      bye bhai
+    `,
+    output: `{"type":"Program","body":[{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"a"},"init":null},{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"b"},"init":null},{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"c"},"init":null}]}]}]}`,
+  },
+  {
+    name: "variable statement test with basic variable declaration and initialisation, should success",
+    input: `
+      hi bhai
+      bhai ye hai a = 10, b;
+      bye bhai
+    `,
+    output: `{"type":"Program","body":[{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"a"},"init":{"type":"NumericLiteral","value":10}},{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"b"},"init":null}]}]}]}`,
+  },
+  {
+    name: "variable statement test with multiple variable initialisation, should success",
+    input: `
+      hi bhai
+      bhai ye hai a = 10, b = 5;
+      bye bhai
+    `,
+    output: `{"type":"Program","body":[{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"a"},"init":{"type":"NumericLiteral","value":10}},{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"b"},"init":{"type":"NumericLiteral","value":5}}]}]}]}`,
+  },
+  {
+    name: "variable statement test with multiple variable initialisation with same value, should success",
+    input: `
+      hi bhai
+      bhai ye hai a = b = 5;
+      bye bhai
+    `,
+    output: `{"type":"Program","body":[{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"a"},"init":{"type":"AssignmentExpression","operator":"=","left":{"type":"IdentifierExpression","name":"b"},"right":{"type":"NumericLiteral","value":5}}}]}]}]}`,
+  },
+  {
+    name: "variable statement test with variable initialisation with some expression, should success",
+    input: `
+      hi bhai
+      bhai ye hai a = 7 + 90;
+      bye bhai
+    `,
+    output: `{"type":"Program","body":[{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"a"},"init":{"type":"BinaryExpression","operator":"+","left":{"type":"NumericLiteral","value":7},"right":{"type":"NumericLiteral","value":90}}}]}]}]}`,
+  },
+
   {
     name: "simple assignment expression test with only one identifer",
     input: `

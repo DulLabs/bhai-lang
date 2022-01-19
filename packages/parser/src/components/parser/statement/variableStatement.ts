@@ -25,8 +25,8 @@ export default class VariableStatement extends Statement {
     do {
       declarations.push(this._getVariableDeclaration());
     } while (
-      this._tokenExecutor.getLookahead()?.type === TokenTypes.COMA_TYPE &&
-      this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.COMA_TYPE)
+      this._tokenExecutor.getLookahead()?.type === TokenTypes.COMMA_TYPE &&
+      this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.COMMA_TYPE)
     );
 
     return declarations;
@@ -40,7 +40,7 @@ export default class VariableStatement extends Statement {
     // Optional VariableInitializer
     const init =
       this._tokenExecutor.getLookahead()?.type !== TokenTypes.SEMI_COLON_TYPE &&
-      this._tokenExecutor.getLookahead()?.type !== TokenTypes.COMA_TYPE
+      this._tokenExecutor.getLookahead()?.type !== TokenTypes.COMMA_TYPE
         ? this._getVariableInitializer()
         : null;
 
