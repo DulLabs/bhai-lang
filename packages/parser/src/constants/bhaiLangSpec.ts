@@ -19,7 +19,7 @@ export const TokenTypes = {
 
   CLOSED_PARENTHESIS_TYPE: ")",
 
-  COMA_TYPE: ",",
+  COMMA_TYPE: ",",
 
   NUMBER_TYPE: "NUMBER",
 
@@ -54,7 +54,7 @@ export const SPEC = [
   { regex: /^\}/, tokenType: TokenTypes.CLOSED_CURLY_BRACE_TYPE },
   { regex: /^\(/, tokenType: TokenTypes.OPEN_PARENTHESIS_TYPE },
   { regex: /^\)/, tokenType: TokenTypes.CLOSED_PARENTHESIS_TYPE },
-  { regex: /^,/, tokenType: TokenTypes.COMA_TYPE },
+  { regex: /^,/, tokenType: TokenTypes.COMMA_TYPE },
 
   //Keywords
   { regex: /^\bhi bhai\b/, tokenType: TokenTypes.HI_BHAI_TYPE },

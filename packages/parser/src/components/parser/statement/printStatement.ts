@@ -25,8 +25,8 @@ export default class PrintStatement extends Statement {
     do {
       expressions.push(this._getExpression());
     } while (
-      this._tokenExecutor.getLookahead()?.type === TokenTypes.COMA_TYPE &&
-      this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.COMA_TYPE)
+      this._tokenExecutor.getLookahead()?.type === TokenTypes.COMMA_TYPE &&
+      this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.COMMA_TYPE)
     );
 
     return expressions;
