@@ -17,7 +17,7 @@ export default class PrimaryExpression extends Expression {
       case TokenTypes.STRING_TYPE:
       case TokenTypes.NUMBER_TYPE:
       case TokenTypes.BOOLEAN_TYPE:
-        return Literal.getLiteralImpl(token?.type).getLiteral();
+        return Literal.getLiteralImpl(token.type).getLiteral();
       default:
         return this._getLeftHandSideExpression();
     }
