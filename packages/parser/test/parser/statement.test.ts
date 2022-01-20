@@ -1,13 +1,13 @@
 import Statement from "../../src/components/parser/statement";
-import InitStatement from "../../src/components/parser/statement/initStatement";
+import BlockStatement from "../../src/components/parser/statement/blockStatement";
 import { TokenTypes } from "../../src/constants/bhaiLangSpec";
 import BhaiLangModule from "../../src/module/bhaiLangModule";
 
 jest.mock("../../src/module/bhaiLangModule");
 
-const initStatementMock = new (<any>(
-  InitStatement
-))() as jest.Mocked<InitStatement>;
+const blockStatementMock = new (<any>(
+  BlockStatement
+))() as jest.Mocked<BlockStatement>;
 
 afterEach(() => {
   jest.clearAllMocks();
@@ -15,17 +15,17 @@ afterEach(() => {
 
 test("test getStatementImpl of statement class with should success", () => {
   const lookahead = {
-    type: TokenTypes.HI_BHAI_TYPE,
-    value: "hi bhai",
+    type: TokenTypes.OPEN_CURLY_BRACE_TYPE,
+    value: "{",
   };
 
-  BhaiLangModule.getInitStatement = jest
+  BhaiLangModule.getBlockStatement = jest
     .fn()
-    .mockReturnValue(initStatementMock);
+    .mockReturnValue(blockStatementMock);
 
   expect(Statement.getStatementImpl(lookahead)).toStrictEqual(
-    initStatementMock
+    blockStatementMock
   );
 
-  expect(BhaiLangModule.getInitStatement).toHaveBeenCalledTimes(1);
+  expect(BhaiLangModule.getBlockStatement).toHaveBeenCalledTimes(1);
 });
