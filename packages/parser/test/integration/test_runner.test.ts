@@ -1,5 +1,8 @@
 import bhaiLangModule from "../../src/module/bhaiLangModule";
-import { NegativeExpressionsTests, NegativeStatementTests } from "./negative_tests_helper";
+import {
+  NegativeExpressionsTests,
+  NegativeStatementTests,
+} from "./negative_tests_helper";
 
 import { ExpressionsTests, StatementTests } from "./positive_tests_helper";
 
@@ -23,7 +26,6 @@ NegativeExpressionsTests.forEach((testCase) => {
   _runNegativeTests(testCase);
 });
 
-
 function _runPositiveTests(testCase: posTestObjType) {
   test(testCase.name, () => {
     const parser = bhaiLangModule.getParser();
@@ -31,7 +33,6 @@ function _runPositiveTests(testCase: posTestObjType) {
     expect(JSON.stringify(ast)).toBe(testCase.output);
   });
 }
-
 
 function _runNegativeTests(testCase: negTestObjType) {
   test(testCase.name, () => {

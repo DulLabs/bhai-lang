@@ -1,3 +1,5 @@
+import { NodeType } from "../../constants/constants";
+
 import StatementList from "./statementList";
 
 export default class Program {
@@ -9,7 +11,7 @@ export default class Program {
 
   getProgram() {
     return {
-      type: "Program",
+      type: NodeType.Program,
       body: this._statementList.getInitialStatementList(),
     };
   }

@@ -1,6 +1,7 @@
 import Literal from ".";
 
 import { TokenTypes } from "../../../../../constants/bhaiLangSpec";
+import { NodeType } from "../../../../../constants/constants";
 
 export default class BooleanLiteral extends Literal {
   getLiteral() {
@@ -8,7 +9,7 @@ export default class BooleanLiteral extends Literal {
       TokenTypes.BOOLEAN_TYPE
     );
     return {
-      type: "BooleanLiteral",
+      type: NodeType.BooleanLiteral,
       value: token.value,
     };
   }

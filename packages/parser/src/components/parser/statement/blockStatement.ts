@@ -1,7 +1,7 @@
 import Statement from ".";
 
 import { TokenTypes } from "../../../constants/bhaiLangSpec";
-import { StatementTypes } from "../../../constants/constants";
+import { NodeType } from "../../../constants/constants";
 import StatementList from "../statementList";
 import TokenExecutor from "../tokenExecutor";
 
@@ -31,7 +31,7 @@ export default class BlockStatement extends Statement {
     );
 
     return {
-      type: StatementTypes.BlockStatement,
+      type: NodeType.BlockStatement,
       body,
     };
   }
