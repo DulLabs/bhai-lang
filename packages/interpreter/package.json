@@ -1,0 +1,40 @@
+{
+  "name": "bhai-lang-interpreter",
+  "version": "0.0.1",
+  "description": "Interpreter for bhai-lang",
+  "source": "src/index.ts",
+  "types": "dist/types.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/module.js",
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "build": "tsup src/* --dts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DulLabs/bhai-lang.git"
+  },
+  "keywords": [
+    "programming",
+    "language",
+    "bhai-lang",
+    "bl",
+    "javascript",
+    "typescript"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DulLabs/bhai-lang/issues"
+  },
+  "homepage": "https://github.com/DulLabs/bhai-lang#readme",
+  "devDependencies": {
+    "ts-node": "^10.4.0",
+    "ts-jest": "^27.1.2",
+    "tsup": "^5.11.11",
+    "jest": "^27.4.5",
+    "@types/jest": "^27.4.0",
+    "config": "*",
+    "tsconfig": "*",
+    "bhai-lang-parser": "*"
+  }
+}
