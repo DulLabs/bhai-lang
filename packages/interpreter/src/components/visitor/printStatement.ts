@@ -8,7 +8,7 @@ export default class PrintStatement extends Visitor {
   visitNode(node: ASTNode) {
     const value = node.expressions
       ?.map((expression: any) =>
-        InterpreterModule.getVisitor(expression.type).visitNode(expression)
+        InterpreterModule.getVisitor(expression.type)?.visitNode(expression)
       )
       .join("");
     console.log(value);
