@@ -8,8 +8,7 @@
   "module": "dist/module.js",
   "scripts": {
     "dev": "ts-node src/index.ts",
-    "watch": "parcel watch",
-    "build": "parcel build",
+    "build": "tsup src/* --dts",
     "test": "jest --coverage"
   },
   "repository": {
@@ -31,8 +30,8 @@
   "homepage": "https://github.com/DulLabs/bhai-lang#readme",
   "devDependencies": {
     "ts-node": "^10.4.0",
-    "parcel": "^2.2.0",
     "ts-jest": "^27.1.2",
+    "tsup": "^5.11.11",
     "jest": "^27.4.5",
     "@types/jest": "^27.4.0",
     "config": "*",
