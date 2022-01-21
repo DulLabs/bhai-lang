@@ -2,11 +2,13 @@ import Expression from ".";
 
 import { TokenTypes } from "../../../../constants/bhaiLangSpec";
 import { NodeType } from "../../../../constants/constants";
+import { ASTNode } from "../../types/nodeTypes";
 
 import Literal from "./literals";
 
+
 export default class PrimaryExpression extends Expression {
-  getExpression() {
+  getExpression(): ASTNode {
     const token = this._tokenExecutor.getLookahead();
 
     switch (token?.type) {

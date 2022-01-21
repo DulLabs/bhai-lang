@@ -1,4 +1,6 @@
-import BhaiLangModule from './module/bhaiLangModule';
+import BhaiLangModule from "./module/bhaiLangModule";
 
 
-export default BhaiLangModule.getParser().parse;
+export { NodeType } from "./constants/constants";
+export type { ASTNode } from "./components/parser/types/nodeTypes";
+export default BhaiLangModule.getParser();

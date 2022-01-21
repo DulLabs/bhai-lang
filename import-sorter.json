@@ -1,6 +1,6 @@
 {
     "autoFormat": "onSave",
-    "quoteMark": "single",
+    "quoteMark": "double",
     "emptyLinesAfterAllImports": 2,
     "trailingComma": "none",
     "wrappingStyle": {

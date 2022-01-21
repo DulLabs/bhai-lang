@@ -2,9 +2,11 @@ import Expression from ".";
 
 import { TokenTypes } from "../../../../constants/bhaiLangSpec";
 import { NodeType } from "../../../../constants/constants";
+import { ASTNode } from "../../types/nodeTypes";
+
 
 export default class ParanthesizedExpression extends Expression {
-  getExpression() {
+  getExpression(): ASTNode {
     this._tokenExecutor.eatTokenAndForwardLookahead(
       TokenTypes.OPEN_PARENTHESIS_TYPE
     );
