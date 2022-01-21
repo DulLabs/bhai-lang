@@ -22,8 +22,48 @@ export default class AssignmentExpression extends Visitor {
       value = InterpreterModule.getVisitor(node.right.type)?.visitNode(node.right);
     }
 
-    if (identifier) {
-      currentScope.set(identifier, value);
+    if (identifier && node.operator) {
+      const newValue = this._getNewvalue(currentScope.get(identifier),value, node.operator);
+      currentScope.assign(identifier, newValue);
+    }
+  }
+
+  private _getNewvalue(prevValue:unknown,value: unknown, operator: string) {
+    switch (operator) {
+      case "=":
+        return value;
+      
+      case "+=":
+        if ((typeof prevValue === "number" && typeof value === "number")) {
+          return prevValue + value;
+        }
+
+        if ((typeof prevValue === "string" && typeof value === "string")) {
+          return prevValue + value;
+        }
+
+        break;
+      
+      case "-=":
+        if ((typeof prevValue === "number" && typeof value === "number")) {
+          return prevValue - value;
+        }
+
+        break;
+      
+      case "*=":
+        if ((typeof prevValue === "number" && typeof value === "number")) {
+          return prevValue * value;
+        }
+
+        break;
+      
+      case "/=":
+        if ((typeof prevValue === "number" && typeof value === "number")) {
+          return prevValue / value;
+        }
+
+        break;
     }
   }
 }

@@ -7,11 +7,13 @@ import BlockStatement from "../components/visitor/blockStatement";
 import BooleanLiteral from "../components/visitor/booleanLiteral";
 import EmptyStatement from "../components/visitor/emptyStatement";
 import ExpressionStatement from "../components/visitor/expressionStatement";
+import IdentifierExpression from "../components/visitor/identifierExpression";
 import InitStatement from "../components/visitor/initStatement";
 import NumericLiteral from "../components/visitor/numericLiteral";
 import PrintStatement from "../components/visitor/printStatement";
 import Program from "../components/visitor/program";
 import StringLiteral from "../components/visitor/stringLiteral";
+import VariableStatement from "../components/visitor/variableStatement";
 
 
 export default class InterpreterModule {
@@ -21,6 +23,8 @@ export default class InterpreterModule {
     [NodeType.PrintStatement]: new PrintStatement(),
     [NodeType.EmptyStatement]: new EmptyStatement(),
     [NodeType.BlockStatement]: new BlockStatement(),
+    [NodeType.VariableStatement]: new VariableStatement(),
+    [NodeType.IdentifierExpression]: new IdentifierExpression(),
     [NodeType.AssignmentExpression]: new AssignmentExpression(),
     [NodeType.ExpressionStatement]: new ExpressionStatement(),
     [NodeType.StringLiteral]: new StringLiteral(),

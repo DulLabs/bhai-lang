@@ -16,7 +16,19 @@ export default class Scope {
     }
   }
 
-  set(identifier: string, value: unknown) {
+  assign(identifier: string, value: unknown) {
+    if (this._variables.has(identifier)) {
+      this._variables.set(identifier, value);
+      return;
+    }
+
+    if (this._parentScope !== null) {
+      this._parentScope.assign(identifier, value);
+      return;
+    }
+  }
+
+  declare(identifier: string, value: unknown) { 
     this._variables.set(identifier, value);
   }
 }
