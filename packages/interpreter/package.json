@@ -8,8 +8,7 @@
   "module": "dist/module.js",
   "scripts": {
     "dev": "ts-node src/index.ts",
-    "build": "tsup src/* --dts",
-    "test": "jest --coverage"
+    "build": "tsup src/* --dts"
   },
   "repository": {
     "type": "git",
