@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/DulLabs/bhai-lang#readme",
   "devDependencies": {
+    "string-width": "^5.1.0",
     "ts-node": "^10.4.0",
     "ts-jest": "^27.1.2",
     "tsup": "^5.11.11",
