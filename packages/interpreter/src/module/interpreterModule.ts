@@ -2,9 +2,11 @@ import { NodeType } from "bhai-lang-parser";
 
 import Scope from "../components/scope";
 import Visitor from "../components/visitor";
+import AssignmentExpression from "../components/visitor/assignmentExpression";
 import BlockStatement from "../components/visitor/blockStatement";
 import BooleanLiteral from "../components/visitor/booleanLiteral";
 import EmptyStatement from "../components/visitor/emptyStatement";
+import ExpressionStatement from "../components/visitor/expressionStatement";
 import InitStatement from "../components/visitor/initStatement";
 import NumericLiteral from "../components/visitor/numericLiteral";
 import PrintStatement from "../components/visitor/printStatement";
@@ -19,6 +21,8 @@ export default class InterpreterModule {
     [NodeType.PrintStatement]: new PrintStatement(),
     [NodeType.EmptyStatement]: new EmptyStatement(),
     [NodeType.BlockStatement]: new BlockStatement(),
+    [NodeType.AssignmentExpression]: new AssignmentExpression(),
+    [NodeType.ExpressionStatement]: new ExpressionStatement(),
     [NodeType.StringLiteral]: new StringLiteral(),
     [NodeType.NumericLiteral]: new NumericLiteral(),
     [NodeType.BooleanLiteral]: new BooleanLiteral(),
