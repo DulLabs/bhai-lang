@@ -8,7 +8,7 @@ export default class InitStatement extends Visitor {
   visitNode(node: ASTNode) {
     if (Array.isArray(node.body)) {
       node.body?.forEach((statement: any) => {
-        InterpreterModule.getVisitor(statement.type).visitNode(statement);
+        InterpreterModule.getVisitor(statement.type)?.visitNode(statement);
       });
     }
   }
