@@ -7,10 +7,10 @@ import InterpreterModule from "../../module/interpreterModule";
 export default class VariableDeclaration extends Visitor{
   visitNode(node: ASTNode) {
     if (node.id && node.init) {
-      const identifier = InterpreterModule.getVisitor(node.id.type)?.visitNode(node.id);
+      const identifier = node.id?.name;
       const value = InterpreterModule.getVisitor(node.init.type)?.visitNode(node.init);
       const currentScope = InterpreterModule.getCurrentScope();
-      if (typeof identifier === "string") {
+      if ( identifier) {
         currentScope.declare(identifier, value);
       }
     }

@@ -7,7 +7,7 @@ import InterpreterModule from "../../module/interpreterModule";
 export default class PrintStatement extends Visitor {
   visitNode(node: ASTNode) {
     const value = node.expressions
-      ?.map((expression: any) =>
+      ?.map((expression: ASTNode) =>
         InterpreterModule.getVisitor(expression.type)?.visitNode(expression)
       )
       .join("");
