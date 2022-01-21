@@ -1,5 +1,6 @@
-import { NodeType } from "bhai-lang-parser";
+import parser, { NodeType } from "bhai-lang-parser";
 
+import Interpreter from "../components/interpreter";
 import Scope from "../components/scope";
 import Visitor from "../components/visitor";
 import AssignmentExpression from "../components/visitor/assignmentExpression";
@@ -39,12 +40,18 @@ export default class InterpreterModule {
   } as Record<string, Visitor>;
 
   private static _currentScope: Scope;
+  private static _interpreter: Interpreter;
 
   static getVisitor(nodeType: string) {
     const visitor = InterpreterModule._visitorMap[nodeType];
     if (visitor) {
       return visitor;
     }
+  }
+  
+  static getInterpreter() {
+    this._interpreter = this._interpreter ?? new Interpreter(parser, this.getCurrentScope());
+    return this._interpreter;
   }
 
   static getCurrentScope() {

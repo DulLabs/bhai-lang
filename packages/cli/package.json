@@ -1,14 +1,18 @@
 {
-  "name": "bhai-lang-interpreter",
+  "name": "bhai-lang-cli",
   "version": "0.0.1",
-  "description": "Interpreter for bhai-lang",
+  "description": "CLI for bhai-lang",
   "source": "src/index.ts",
-  "types": "dist/index.d.ts",
-  "main": "dist/index.js",
-  "module": "dist/module.js",
+  "main": "bin/index.js",
+  "bin": {
+    "bhailang": "./bin/index.js"
+  },
+  "files": [
+    "bin"
+  ],
   "scripts": {
     "dev": "ts-node src/index.ts",
-    "build": "tsup src/* --dts"
+    "build": "tsup src/* --dts --outDir bin"
   },
   "repository": {
     "type": "git",
@@ -22,6 +26,16 @@
     "javascript",
     "typescript"
   ],
+  "contributors": [
+    {
+      "name": "Aniket Singh",
+      "url": "https://github.com/aniketsingh0104"
+    },
+    {
+      "name": "Rishabh Tripathi",
+      "url": "https://github.com/ristri"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/DulLabs/bhai-lang/issues"
@@ -32,9 +46,11 @@
     "ts-jest": "^27.1.2",
     "tsup": "^5.11.11",
     "jest": "^27.4.5",
+    "yargs": "^17.3.1",
+    "chalk": "^5.0.0",
     "@types/jest": "^27.4.0",
     "config": "*",
     "tsconfig": "*",
-    "bhai-lang-parser": "*"
+    "bhai-lang-interpreter": "*"
   }
 }
