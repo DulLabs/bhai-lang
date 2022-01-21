@@ -1,7 +1,7 @@
 import Statement from ".";
 
 import { TokenTypes } from "../../../constants/bhaiLangSpec";
-import { ExpressionType, StatementTypes } from "../../../constants/constants";
+import { NodeType } from "../../../constants/constants";
 
 import Expression from "./expression";
 
@@ -14,7 +14,7 @@ export default class PrintStatement extends Statement {
     this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.SEMI_COLON_TYPE);
 
     return {
-      type: StatementTypes.PrintStatement,
+      type: NodeType.PrintStatement,
       expressions,
     };
   }
@@ -34,7 +34,7 @@ export default class PrintStatement extends Statement {
 
   private _getExpression() {
     return Expression.getExpressionImpl(
-      ExpressionType.AdditiveExpression
+      NodeType.AdditiveExpression
     ).getExpression();
   }
 }

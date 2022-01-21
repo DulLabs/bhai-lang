@@ -1,7 +1,7 @@
 import Expression from ".";
 
 import { TokenTypes } from "../../../../constants/bhaiLangSpec";
-import { ExpressionType } from "../../../../constants/constants";
+import { NodeType } from "../../../../constants/constants";
 
 import Literal from "./literals";
 
@@ -12,7 +12,7 @@ export default class PrimaryExpression extends Expression {
     switch (token?.type) {
       case TokenTypes.OPEN_PARENTHESIS_TYPE:
         return Expression.getExpressionImpl(
-          ExpressionType.ParanthesizedExpression
+          NodeType.ParanthesizedExpression
         ).getExpression();
       case TokenTypes.STRING_TYPE:
       case TokenTypes.NUMBER_TYPE:
@@ -25,7 +25,7 @@ export default class PrimaryExpression extends Expression {
 
   private _getLeftHandSideExpression() {
     return Expression.getExpressionImpl(
-      ExpressionType.IdentifierExpression
+      NodeType.IdentifierExpression
     ).getExpression();
   }
 }

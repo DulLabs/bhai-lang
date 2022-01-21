@@ -1,6 +1,7 @@
 import Literal from ".";
 
 import { TokenTypes } from "../../../../../constants/bhaiLangSpec";
+import { NodeType } from "../../../../../constants/constants";
 
 export default class NumericLiteral extends Literal {
   getLiteral() {
@@ -8,7 +9,7 @@ export default class NumericLiteral extends Literal {
       TokenTypes.NUMBER_TYPE
     );
     return {
-      type: "NumericLiteral",
+      type: NodeType.NumericLiteral,
       value: Number(token.value),
     };
   }

@@ -1,6 +1,8 @@
 import Statement from ".";
+
 import { TokenTypes } from "../../../constants/bhaiLangSpec";
-import { ExpressionType, StatementTypes } from "../../../constants/constants";
+import { NodeType } from "../../../constants/constants";
+
 import Expression from "./expression";
 
 export default class VariableStatement extends Statement {
@@ -14,7 +16,7 @@ export default class VariableStatement extends Statement {
     this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.SEMI_COLON_TYPE);
 
     return {
-      type: StatementTypes.VariableStatement,
+      type: NodeType.VariableStatement,
       declarations,
     };
   }
@@ -34,7 +36,7 @@ export default class VariableStatement extends Statement {
 
   private _getVariableDeclaration() {
     const id = Expression.getExpressionImpl(
-      ExpressionType.IdentifierExpression
+      NodeType.IdentifierExpression
     ).getExpression();
 
     // Optional VariableInitializer
@@ -45,7 +47,7 @@ export default class VariableStatement extends Statement {
         : null;
 
     return {
-      type: "VariableDeclaration",
+      type: NodeType.VariableDeclaration,
       id,
       init,
     };
@@ -57,7 +59,7 @@ export default class VariableStatement extends Statement {
     );
 
     return Expression.getExpressionImpl(
-      ExpressionType.AssignmentExpression
+      NodeType.AssignmentExpression
     ).getExpression();
   }
 }
