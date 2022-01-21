@@ -10,6 +10,7 @@ import EmptyStatement from "../components/visitor/emptyStatement";
 import ExpressionStatement from "../components/visitor/expressionStatement";
 import IdentifierExpression from "../components/visitor/identifierExpression";
 import InitStatement from "../components/visitor/initStatement";
+import NullLiteral from "../components/visitor/nullLiteral";
 import NumericLiteral from "../components/visitor/numericLiteral";
 import PrintStatement from "../components/visitor/printStatement";
 import Program from "../components/visitor/program";
@@ -34,6 +35,7 @@ export default class InterpreterModule {
     [NodeType.StringLiteral]: new StringLiteral(),
     [NodeType.NumericLiteral]: new NumericLiteral(),
     [NodeType.BooleanLiteral]: new BooleanLiteral(),
+    [NodeType.NullLiteral]: new NullLiteral(),
   } as Record<string, Visitor>;
 
   private static _currentScope: Scope;

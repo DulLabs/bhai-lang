@@ -2,24 +2,38 @@ import { Parser } from "../components/parser";
 import Program from "../components/parser/program";
 import BlockStatement from "../components/parser/statement/blockStatement";
 import EmptyStatement from "../components/parser/statement/emptyStatement";
-import AdditiveExpression from "../components/parser/statement/expression/addititve_expression";
-import AssignmentExpression from "../components/parser/statement/expression/assignment_expression";
-import IdentifierExpression from "../components/parser/statement/expression/identifier_expression";
-import BooleanLiteral from "../components/parser/statement/expression/literals/boolean_literal";
-import NumericLiteral from "../components/parser/statement/expression/literals/numeric_literal";
-import StringLiteral from "../components/parser/statement/expression/literals/string_literal";
-import MultiplicativeExpression from "../components/parser/statement/expression/multiplicative_expression";
-import ParanthesizedExpression from "../components/parser/statement/expression/paranthesized_expression";
-import PrimaryExpression from "../components/parser/statement/expression/primary_expression";
-import ExpressionStatement from "../components/parser/statement/expressionStatement";
+import AdditiveExpression
+  from "../components/parser/statement/expression/addititve_expression";
+import AssignmentExpression
+  from "../components/parser/statement/expression/assignment_expression";
+import IdentifierExpression
+  from "../components/parser/statement/expression/identifier_expression";
+import BooleanLiteral
+  from "../components/parser/statement/expression/literals/boolean_literal";
+import NullLiteral
+  from "../components/parser/statement/expression/literals/null_literal";
+import NumericLiteral
+  from "../components/parser/statement/expression/literals/numeric_literal";
+import StringLiteral
+  from "../components/parser/statement/expression/literals/string_literal";
+import MultiplicativeExpression
+  from "../components/parser/statement/expression/multiplicative_expression";
+import ParanthesizedExpression
+  from "../components/parser/statement/expression/paranthesized_expression";
+import PrimaryExpression
+  from "../components/parser/statement/expression/primary_expression";
+import ExpressionStatement
+  from "../components/parser/statement/expressionStatement";
 import InitStatement from "../components/parser/statement/initStatement";
 import PrintStatement from "../components/parser/statement/printStatement";
-import VariableStatement from "../components/parser/statement/variableStatement";
+import VariableStatement
+  from "../components/parser/statement/variableStatement";
 import StatementList from "../components/parser/statementList";
 import TokenExecutor from "../components/parser/tokenExecutor";
 import TokenizerImpl from "../components/tokenizer";
 import { Tokenizer } from "../components/tokenizer/types";
 import { SPEC } from "../constants/bhaiLangSpec";
+
 
 export default class BhaiLangModule {
   private static _tokenizer?: Tokenizer;
@@ -42,6 +56,7 @@ export default class BhaiLangModule {
   private static _variableStatement?: VariableStatement;
   private static _assignmentExpression?: AssignmentExpression;
   private static _booleanLiteral?: BooleanLiteral;
+  private static _nullLiteral?: NullLiteral;
 
   static getTokenizer() {
     if (!this._tokenizer) this._tokenizer = new TokenizerImpl(SPEC);
@@ -112,7 +127,9 @@ export default class BhaiLangModule {
 
   static getVariableStatement() {
     if (!this._variableStatement)
-      this._variableStatement = new VariableStatement(this.getTokenExecutor());
+      this._variableStatement = new VariableStatement(
+        this.getTokenExecutor(),
+        this.getNullLiteral());
 
     return this._variableStatement;
   }
@@ -194,6 +211,14 @@ export default class BhaiLangModule {
     }
 
     return this._booleanLiteral;
+  }
+
+  static getNullLiteral() {
+    if (!this._nullLiteral) {
+      this._nullLiteral = new NullLiteral(this.getTokenExecutor());
+    }
+
+    return this._nullLiteral;
   }
 
   static getProgram() {
