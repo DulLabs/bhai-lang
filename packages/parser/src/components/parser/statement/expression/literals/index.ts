@@ -1,6 +1,8 @@
 import { TokenTypes } from "../../../../../constants/bhaiLangSpec";
 import BhaiLangModule from "../../../../../module/bhaiLangModule";
 import TokenExecutor from "../../../tokenExecutor";
+import { ASTNode } from "../../../types/nodeTypes";
+
 
 export default abstract class Literal {
   protected _tokenExecutor: TokenExecutor;
@@ -9,17 +11,18 @@ export default abstract class Literal {
     this._tokenExecutor = tokenExecutor;
   }
 
-  abstract getLiteral(): any;
+  abstract getLiteral(): ASTNode;
 
   static getLiteralImpl(tokenType?: string): Literal {
     switch (tokenType) {
       case TokenTypes.NUMBER_TYPE:
         return BhaiLangModule.getNumericLiteral();
-      default:
-        return BhaiLangModule.getStringLiteral();
 
       case TokenTypes.BOOLEAN_TYPE:
         return BhaiLangModule.getBooleanLiteral();
+
+      default:
+        return BhaiLangModule.getStringLiteral();
     }
   }
 }

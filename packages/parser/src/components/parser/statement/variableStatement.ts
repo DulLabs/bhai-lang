@@ -2,11 +2,13 @@ import Statement from ".";
 
 import { TokenTypes } from "../../../constants/bhaiLangSpec";
 import { NodeType } from "../../../constants/constants";
+import { ASTNode } from "../types/nodeTypes";
 
 import Expression from "./expression";
 
+
 export default class VariableStatement extends Statement {
-  getStatement() {
+  getStatement(): ASTNode {
     this._tokenExecutor.eatTokenAndForwardLookahead(
       TokenTypes.BHAI_YE_HAI_TYPE
     );
@@ -22,7 +24,7 @@ export default class VariableStatement extends Statement {
   }
 
   private _getVariableDeclarationList() {
-    const declarations: any[] = [];
+    const declarations: ASTNode[] = [];
 
     do {
       declarations.push(this._getVariableDeclaration());
@@ -34,7 +36,7 @@ export default class VariableStatement extends Statement {
     return declarations;
   }
 
-  private _getVariableDeclaration() {
+  private _getVariableDeclaration():ASTNode {
     const id = Expression.getExpressionImpl(
       NodeType.IdentifierExpression
     ).getExpression();

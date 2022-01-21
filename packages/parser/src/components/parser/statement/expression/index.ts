@@ -1,6 +1,8 @@
 import { NodeType } from "../../../../constants/constants";
 import BhaiLangModule from "../../../../module/bhaiLangModule";
 import TokenExecutor from "../../tokenExecutor";
+import { ASTNode } from "../../types/nodeTypes";
+
 
 export default abstract class Expression {
   protected _tokenExecutor: TokenExecutor;
@@ -9,7 +11,7 @@ export default abstract class Expression {
     this._tokenExecutor = tokenExecutor;
   }
 
-  abstract getExpression(): any;
+  abstract getExpression(): ASTNode;
 
   static getExpressionImpl(expressionType: keyof typeof NodeType): Expression {
     switch (expressionType) {
@@ -37,7 +39,7 @@ export default abstract class Expression {
     expressionType: keyof typeof NodeType,
     operatorToken: string
   ) {
-    let left: any =
+    let left =
       Expression.getExpressionImpl(expressionType).getExpression();
 
     while (this._tokenExecutor.getLookahead()?.type === operatorToken) {

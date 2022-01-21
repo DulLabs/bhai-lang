@@ -2,13 +2,15 @@ import Expression from ".";
 
 import { TokenTypes } from "../../../../constants/bhaiLangSpec";
 import { NodeType } from "../../../../constants/constants";
+import { ASTNode } from "../../types/nodeTypes";
+
 
 export default class AssignmentExpression extends Expression {
   private _additiveExpression = Expression.getExpressionImpl(
     NodeType.AdditiveExpression
   );
 
-  getExpression(): any {
+  getExpression(): ASTNode {
     const left = this._additiveExpression.getExpression();
 
     // case if there is no AssignmentOperator but only normal additive expression => x + y

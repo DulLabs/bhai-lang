@@ -4,6 +4,8 @@ import { TokenTypes } from "../../../constants/bhaiLangSpec";
 import { NodeType } from "../../../constants/constants";
 import StatementList from "../statementList";
 import TokenExecutor from "../tokenExecutor";
+import { ASTNode } from "../types/nodeTypes";
+
 
 export default class BlockStatement extends Statement {
   _statementList: StatementList;
@@ -13,7 +15,7 @@ export default class BlockStatement extends Statement {
     this._statementList = statementList;
   }
 
-  getStatement() {
+  getStatement(): ASTNode {
     this._tokenExecutor.eatTokenAndForwardLookahead(
       TokenTypes.OPEN_CURLY_BRACE_TYPE
     );

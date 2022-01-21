@@ -1,6 +1,8 @@
 import { NodeType } from "../../constants/constants";
 
 import StatementList from "./statementList";
+import { ASTNode } from "./types/nodeTypes";
+
 
 export default class Program {
   private _statementList: StatementList;
@@ -9,7 +11,7 @@ export default class Program {
     this._statementList = statementList;
   }
 
-  getProgram() {
+  getProgram(): ASTNode {
     return {
       type: NodeType.Program,
       body: this._statementList.getInitialStatementList(),
