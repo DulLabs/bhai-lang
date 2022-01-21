@@ -1,8 +1,7 @@
-import Literal from '.';
+import Literal from ".";
 
-import { TokenTypes } from '../../../../../constants/bhaiLangSpec';
-import { NodeType } from '../../../../../constants/constants';
-
+import { TokenTypes } from "../../../../../constants/bhaiLangSpec";
+import { NodeType } from "../../../../../constants/constants";
 
 export default class StringLiteral extends Literal {
   getLiteral() {

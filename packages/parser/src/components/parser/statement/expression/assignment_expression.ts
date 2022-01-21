@@ -1,8 +1,7 @@
-import Expression from '.';
+import Expression from ".";
 
-import { TokenTypes } from '../../../../constants/bhaiLangSpec';
-import { NodeType } from '../../../../constants/constants';
-
+import { TokenTypes } from "../../../../constants/bhaiLangSpec";
+import { NodeType } from "../../../../constants/constants";
 
 export default class AssignmentExpression extends Expression {
   private _additiveExpression = Expression.getExpressionImpl(

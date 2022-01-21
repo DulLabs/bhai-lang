@@ -1,7 +1,6 @@
-import { NodeType } from '../../constants/constants';
+import { NodeType } from "../../constants/constants";
 
-import StatementList from './statementList';
-
+import StatementList from "./statementList";
 
 export default class Program {
   private _statementList: StatementList;

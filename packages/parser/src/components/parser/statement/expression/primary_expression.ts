@@ -1,10 +1,9 @@
-import Expression from '.';
+import Expression from ".";
 
-import { TokenTypes } from '../../../../constants/bhaiLangSpec';
-import { NodeType } from '../../../../constants/constants';
+import { TokenTypes } from "../../../../constants/bhaiLangSpec";
+import { NodeType } from "../../../../constants/constants";
 
-import Literal from './literals';
-
+import Literal from "./literals";
 
 export default class PrimaryExpression extends Expression {
   getExpression() {

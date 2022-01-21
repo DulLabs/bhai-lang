@@ -1,8 +1,7 @@
-import Statement from '.';
+import Statement from ".";
 
-import { TokenTypes } from '../../../constants/bhaiLangSpec';
-import { NodeType } from '../../../constants/constants';
-
+import { TokenTypes } from "../../../constants/bhaiLangSpec";
+import { NodeType } from "../../../constants/constants";
 
 export default class EmptyStatement extends Statement {
   getStatement() {

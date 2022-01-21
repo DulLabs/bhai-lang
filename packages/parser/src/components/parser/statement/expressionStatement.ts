@@ -1,10 +1,9 @@
-import Statement from '.';
+import Statement from ".";
 
-import { TokenTypes } from '../../../constants/bhaiLangSpec';
-import { NodeType } from '../../../constants/constants';
+import { TokenTypes } from "../../../constants/bhaiLangSpec";
+import { NodeType } from "../../../constants/constants";
 
-import Expression from './expression';
-
+import Expression from "./expression";
 
 export default class ExpressionStatement extends Statement {
   getStatement() {

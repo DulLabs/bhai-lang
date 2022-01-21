@@ -1,7 +1,6 @@
-import { NodeType } from '../../../../constants/constants';
-import BhaiLangModule from '../../../../module/bhaiLangModule';
-import TokenExecutor from '../../tokenExecutor';
-
+import { NodeType } from "../../../../constants/constants";
+import BhaiLangModule from "../../../../module/bhaiLangModule";
+import TokenExecutor from "../../tokenExecutor";
 
 export default abstract class Expression {
   protected _tokenExecutor: TokenExecutor;
@@ -12,9 +11,7 @@ export default abstract class Expression {
 
   abstract getExpression(): any;
 
-  static getExpressionImpl(
-    expressionType: keyof typeof NodeType
-  ): Expression {
+  static getExpressionImpl(expressionType: keyof typeof NodeType): Expression {
     switch (expressionType) {
       case NodeType.AdditiveExpression:
         return BhaiLangModule.getAdditiveExpression();

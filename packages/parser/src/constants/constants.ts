@@ -18,4 +18,3 @@ export const NodeType = {
   VariableDeclaration: "VariableDeclaration",
   Program: "Program",
 } as const;
-
