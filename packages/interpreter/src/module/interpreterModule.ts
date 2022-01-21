@@ -34,7 +34,7 @@ export default class InterpreterModule {
   }
 
   static getCurrentScope() {
-    this._currentScope = this._currentScope || new Scope(null);
+    this._currentScope = this._currentScope ?? new Scope(null);
     return this._currentScope;
   }
 
