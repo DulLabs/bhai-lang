@@ -1,10 +1,12 @@
-import Expression from ".";
-import { TokenTypes } from "../../../../constants/bhaiLangSpec";
-import { ExpressionType } from "../../../../constants/constants";
+import Expression from '.';
+
+import { TokenTypes } from '../../../../constants/bhaiLangSpec';
+import { NodeType } from '../../../../constants/constants';
+
 
 export default class AssignmentExpression extends Expression {
   private _additiveExpression = Expression.getExpressionImpl(
-    ExpressionType.AdditiveExpression
+    NodeType.AdditiveExpression
   );
 
   getExpression(): any {
@@ -16,7 +18,7 @@ export default class AssignmentExpression extends Expression {
     }
 
     return {
-      type: ExpressionType.AssignmentExpression,
+      type: NodeType.AssignmentExpression,
       operator: this._getAssignmentOperator().value,
       left: this._checkValidAssignmentTarget(left),
       right: this.getExpression(), // right recurrsion
@@ -53,7 +55,7 @@ export default class AssignmentExpression extends Expression {
    * @param {*} node
    */
   private _checkValidAssignmentTarget(node: any) {
-    if (node.type === ExpressionType.IdentifierExpression) return node;
+    if (node.type === NodeType.IdentifierExpression) return node;
 
     throw new SyntaxError("Invalid left hand side in assignment expression");
   }

@@ -1,4 +1,4 @@
-export const ExpressionType = {
+export const NodeType = {
   AdditiveExpression: "AdditiveExpression",
   MultiplicativeExpression: "MultiplicativeExpression",
   PrimaryExpression: "PrimaryExpression",
@@ -6,13 +6,16 @@ export const ExpressionType = {
   IdentifierExpression: "IdentifierExpression",
   AssignmentExpression: "AssignmentExpression",
   BinaryExpression: "BinaryExpression",
-} as const;
-
-export const StatementTypes = {
   BlockStatement: "BlockStatement",
   EmptyStatement: "EmptyStatement",
   ExpressionStatement: "ExpressionStatement",
   InitStatement: "InitStatement",
   PrintStatement: "PrintStatement",
   VariableStatement: "VariableStatement",
-};
+  BooleanLiteral: "BooleanLiteral",
+  NumericLiteral: "NumericLiteral",
+  StringLiteral: "StringLiteral",
+  VariableDeclaration: "VariableDeclaration",
+  Program: "Program",
+} as const;
+

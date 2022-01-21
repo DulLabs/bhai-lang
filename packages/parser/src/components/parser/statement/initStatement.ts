@@ -1,9 +1,10 @@
-import Statement from ".";
+import Statement from '.';
 
-import { TokenTypes } from "../../../constants/bhaiLangSpec";
-import { StatementTypes } from "../../../constants/constants";
-import StatementList from "../statementList";
-import TokenExecutor from "../tokenExecutor";
+import { TokenTypes } from '../../../constants/bhaiLangSpec';
+import { NodeType } from '../../../constants/constants';
+import StatementList from '../statementList';
+import TokenExecutor from '../tokenExecutor';
+
 
 export default class InitStatement extends Statement {
   _statementList: StatementList;
@@ -24,7 +25,7 @@ export default class InitStatement extends Statement {
     this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.BYE_BHAI_TYPE);
 
     return {
-      type: StatementTypes.InitStatement,
+      type: NodeType.InitStatement,
       body,
     };
   }

@@ -1,6 +1,7 @@
-import { ExpressionType } from "../../../../constants/constants";
-import BhaiLangModule from "../../../../module/bhaiLangModule";
-import TokenExecutor from "../../tokenExecutor";
+import { NodeType } from '../../../../constants/constants';
+import BhaiLangModule from '../../../../module/bhaiLangModule';
+import TokenExecutor from '../../tokenExecutor';
+
 
 export default abstract class Expression {
   protected _tokenExecutor: TokenExecutor;
@@ -12,22 +13,22 @@ export default abstract class Expression {
   abstract getExpression(): any;
 
   static getExpressionImpl(
-    expressionType: keyof typeof ExpressionType
+    expressionType: keyof typeof NodeType
   ): Expression {
     switch (expressionType) {
-      case ExpressionType.AdditiveExpression:
+      case NodeType.AdditiveExpression:
         return BhaiLangModule.getAdditiveExpression();
 
-      case ExpressionType.MultiplicativeExpression:
+      case NodeType.MultiplicativeExpression:
         return BhaiLangModule.getMultiplicativeExpression();
 
-      case ExpressionType.PrimaryExpression:
+      case NodeType.PrimaryExpression:
         return BhaiLangModule.getPrimaryExpression();
 
-      case ExpressionType.ParanthesizedExpression:
+      case NodeType.ParanthesizedExpression:
         return BhaiLangModule.getParanthesizedExpression();
 
-      case ExpressionType.AssignmentExpression:
+      case NodeType.AssignmentExpression:
         return BhaiLangModule.getAssignmentExpression();
 
       default:
@@ -36,7 +37,7 @@ export default abstract class Expression {
   }
 
   protected getBinaryExpression(
-    expressionType: keyof typeof ExpressionType,
+    expressionType: keyof typeof NodeType,
     operatorToken: string
   ) {
     let left: any =
@@ -48,7 +49,7 @@ export default abstract class Expression {
       const right =
         Expression.getExpressionImpl(expressionType).getExpression();
       left = {
-        type: ExpressionType.BinaryExpression,
+        type: NodeType.BinaryExpression,
         operator: operator.value,
         left,
         right,

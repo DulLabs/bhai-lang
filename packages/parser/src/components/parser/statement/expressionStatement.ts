@@ -1,20 +1,21 @@
-import Statement from ".";
+import Statement from '.';
 
-import { TokenTypes } from "../../../constants/bhaiLangSpec";
-import { ExpressionType, StatementTypes } from "../../../constants/constants";
+import { TokenTypes } from '../../../constants/bhaiLangSpec';
+import { NodeType } from '../../../constants/constants';
 
-import Expression from "./expression";
+import Expression from './expression';
+
 
 export default class ExpressionStatement extends Statement {
   getStatement() {
     const expression = Expression.getExpressionImpl(
-      ExpressionType.AssignmentExpression
+      NodeType.AssignmentExpression
     ).getExpression();
 
     this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.SEMI_COLON_TYPE);
 
     return {
-      type: StatementTypes.ExpressionStatement,
+      type: NodeType.ExpressionStatement,
       expression,
     };
   }
