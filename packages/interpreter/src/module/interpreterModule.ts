@@ -13,6 +13,7 @@ import NumericLiteral from "../components/visitor/numericLiteral";
 import PrintStatement from "../components/visitor/printStatement";
 import Program from "../components/visitor/program";
 import StringLiteral from "../components/visitor/stringLiteral";
+import VariableDeclaration from "../components/visitor/variableDeclaration";
 import VariableStatement from "../components/visitor/variableStatement";
 
 
@@ -25,6 +26,7 @@ export default class InterpreterModule {
     [NodeType.BlockStatement]: new BlockStatement(),
     [NodeType.VariableStatement]: new VariableStatement(),
     [NodeType.IdentifierExpression]: new IdentifierExpression(),
+    [NodeType.VariableDeclaration]: new VariableDeclaration(),
     [NodeType.AssignmentExpression]: new AssignmentExpression(),
     [NodeType.ExpressionStatement]: new ExpressionStatement(),
     [NodeType.StringLiteral]: new StringLiteral(),
