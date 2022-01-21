@@ -1,6 +1,7 @@
 import Expression from ".";
+
 import { TokenTypes } from "../../../../constants/bhaiLangSpec";
-import { ExpressionType } from "../../../../constants/constants";
+import { NodeType } from "../../../../constants/constants";
 
 export default class IdentifierExpression extends Expression {
   getExpression() {
@@ -9,7 +10,7 @@ export default class IdentifierExpression extends Expression {
     ).value;
 
     return {
-      type: ExpressionType.IdentifierExpression,
+      type: NodeType.IdentifierExpression,
       name,
     };
   }

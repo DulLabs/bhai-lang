@@ -1,8 +1,7 @@
 import Expression from ".";
 
 import { TokenTypes } from "../../../../constants/bhaiLangSpec";
-
-import { ExpressionType } from "../../../../constants/constants";
+import { NodeType } from "../../../../constants/constants";
 
 export default class ParanthesizedExpression extends Expression {
   getExpression() {
@@ -11,7 +10,7 @@ export default class ParanthesizedExpression extends Expression {
     );
 
     const expression = Expression.getExpressionImpl(
-      ExpressionType.AdditiveExpression
+      NodeType.AdditiveExpression
     ).getExpression();
 
     this._tokenExecutor.eatTokenAndForwardLookahead(

@@ -64,7 +64,7 @@ export const SPEC = [
 
   // Number
   { regex: /^\d+/, tokenType: TokenTypes.NUMBER_TYPE },
-  
+
   // Boolean
   { regex: /^sahi/, tokenType: TokenTypes.BOOLEAN_TYPE },
   { regex: /^galat/, tokenType: TokenTypes.BOOLEAN_TYPE },
