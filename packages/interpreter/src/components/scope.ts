@@ -18,7 +18,7 @@ export default class Scope {
       return this._parentScope.get(identifier);
     }
 
-    throw new RuntimeException(`Variable ${identifier} to bana le pehle.`);
+    throw new RuntimeException(`Variable "${identifier}" to bana le pehle.`);
   }
 
   assign(identifier: string, value: unknown) {
@@ -33,7 +33,7 @@ export default class Scope {
     }
 
     throw new RuntimeException(
-      `Variable ${identifier} to bana le pehle fir assign karna.`
+      `Variable "${identifier}" to bana le pehle fir assign karna.`
     );
   }
 
