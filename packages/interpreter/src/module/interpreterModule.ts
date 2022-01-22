@@ -1,5 +1,6 @@
-import { NodeType } from "bhai-lang-parser";
+import parser, { NodeType } from "bhai-lang-parser";
 
+import Interpreter from "../components/interpreter";
 import Scope from "../components/scope";
 import Visitor from "../components/visitor";
 import AssignmentExpression from "../components/visitor/assignmentExpression";
@@ -18,6 +19,7 @@ import StringLiteral from "../components/visitor/stringLiteral";
 import VariableDeclaration from "../components/visitor/variableDeclaration";
 import VariableStatement from "../components/visitor/variableStatement";
 import InvalidStateException from "../exceptions/invalidStateException";
+
 
 export default class InterpreterModule {
   private static _visitorMap = {
@@ -39,6 +41,7 @@ export default class InterpreterModule {
   } as Record<string, Visitor>;
 
   private static _currentScope: Scope;
+  private static _interpreter: Interpreter;
 
   static getVisitor(nodeType: string) {
     const visitor = InterpreterModule._visitorMap[nodeType];
@@ -49,6 +52,11 @@ export default class InterpreterModule {
       );
 
     return visitor;
+  }
+
+  static getInterpreter() {
+    this._interpreter = this._interpreter ?? new Interpreter(parser, this.getCurrentScope());
+    return this._interpreter;
   }
 
   static getCurrentScope() {

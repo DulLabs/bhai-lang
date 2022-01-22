@@ -5,6 +5,7 @@ import InvalidStateException from "../../exceptions/invalidStateException";
 import { getOperationValue } from "../../helpers";
 import InterpreterModule from "../../module/interpreterModule";
 
+
 export default class BinaryExpression implements Visitor {
   visitNode(node: ASTNode) {
     if (!node.left || !node.right || !node.operator) {

@@ -6,7 +6,7 @@ import InterpreterModule from "../../module/interpreterModule";
 export default class Program implements Visitor {
   visitNode(node: ASTNode) {
     if (!Array.isArray(node.body) && node.body?.type) {
-      InterpreterModule.getVisitor(node.body?.type).visitNode(node.body);
+      InterpreterModule.getVisitor(node.body?.type)?.visitNode(node.body);
     }
   }
 }

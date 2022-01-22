@@ -3,6 +3,7 @@ import { ASTNode } from "bhai-lang-parser";
 
 import InterpreterModule from "../../module/interpreterModule";
 
+
 export default class VariableStatement implements Visitor {
   visitNode(node: ASTNode) {
     node.declarations?.forEach((declaration) => {

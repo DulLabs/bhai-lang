@@ -1,5 +1,6 @@
 import RuntimeException from "../exceptions/runtimeException";
 
+
 export default class Scope {
   _variables: Map<string, unknown> = new Map();
   _parentScope: Scope | null;

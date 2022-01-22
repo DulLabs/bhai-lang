@@ -3,6 +3,7 @@ import { ASTNode } from "bhai-lang-parser";
 
 import InterpreterModule from "../../module/interpreterModule";
 
+
 export default class PrintStatement implements Visitor {
   visitNode(node: ASTNode) {
     const value = node.expressions
