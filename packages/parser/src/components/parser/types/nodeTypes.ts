@@ -1,6 +1,6 @@
 export type ASTNode = {
   type: string;
-  body?: ASTNode | ASTNode[]
+  body?: ASTNode | ASTNode[];
   expressions?: ASTNode[];
   expression?: ASTNode;
   operator?: string;
@@ -11,4 +11,4 @@ export type ASTNode = {
   id?: ASTNode;
   init?: ASTNode | null;
   declarations?: ASTNode[];
-}
+};

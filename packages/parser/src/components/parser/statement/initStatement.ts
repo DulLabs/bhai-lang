@@ -6,7 +6,6 @@ import StatementList from "../statementList";
 import TokenExecutor from "../tokenExecutor";
 import { ASTNode } from "../types/nodeTypes";
 
-
 export default class InitStatement extends Statement {
   _statementList: StatementList;
 

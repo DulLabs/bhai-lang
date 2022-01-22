@@ -18,6 +18,7 @@ import Program from "../components/visitor/program";
 import StringLiteral from "../components/visitor/stringLiteral";
 import VariableDeclaration from "../components/visitor/variableDeclaration";
 import VariableStatement from "../components/visitor/variableStatement";
+import InvalidStateException from "../exceptions/invalidStateException";
 
 
 export default class InterpreterModule {
@@ -44,11 +45,15 @@ export default class InterpreterModule {
 
   static getVisitor(nodeType: string) {
     const visitor = InterpreterModule._visitorMap[nodeType];
-    if (visitor) {
-      return visitor;
-    }
+
+    if (!visitor)
+      throw new InvalidStateException(
+        `Couldn't find any visitor object for nodeType: ${nodeType}`
+      );
+
+    return visitor;
   }
-  
+
   static getInterpreter() {
     this._interpreter = this._interpreter ?? new Interpreter(parser, this.getCurrentScope());
     return this._interpreter;
