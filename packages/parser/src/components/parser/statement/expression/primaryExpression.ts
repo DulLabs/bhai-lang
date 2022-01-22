@@ -6,6 +6,7 @@ import { ASTNode } from "../../types/nodeTypes";
 
 import Literal from "./literals";
 
+
 export default class PrimaryExpression extends Expression {
   getExpression(): ASTNode {
     const token = this._tokenExecutor.getLookahead();

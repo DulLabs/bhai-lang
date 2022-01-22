@@ -8,6 +8,7 @@ export default class NullLiteral extends Literal {
     return {
       type: NodeType.NullLiteral,
       value: null,
+
     };
   }
 }
