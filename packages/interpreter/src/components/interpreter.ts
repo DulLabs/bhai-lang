@@ -4,6 +4,7 @@ import InterpreterModule from "../module/interpreterModule";
 
 import Scope from "./scope";
 
+
 export default class Interpreter {
   _parser: typeof parser;
   _scope: Scope;
@@ -15,6 +16,6 @@ export default class Interpreter {
 
   interpret(code: string) {
     const ast = this._parser.parse(code);
-    InterpreterModule.getVisitor(ast.type).visitNode(ast);
+    InterpreterModule.getVisitor(ast.type)?.visitNode(ast);
   }
 }

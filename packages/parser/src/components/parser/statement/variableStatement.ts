@@ -2,12 +2,21 @@ import Statement from ".";
 
 import { TokenTypes } from "../../../constants/bhaiLangSpec";
 import { NodeType } from "../../../constants/constants";
+import TokenExecutor from "../tokenExecutor";
 import { ASTNode } from "../types/nodeTypes";
 
 import Expression from "./expression";
+import NullLiteral from "./expression/literals/null_literal";
 
 
 export default class VariableStatement extends Statement {
+  _nullLiteral: NullLiteral;
+
+  constructor(tokenExecutor: TokenExecutor, nullLiteral: NullLiteral) {
+    super(tokenExecutor);
+    this._nullLiteral = nullLiteral;
+  }
+
   getStatement(): ASTNode {
     this._tokenExecutor.eatTokenAndForwardLookahead(
       TokenTypes.BHAI_YE_HAI_TYPE
@@ -46,7 +55,7 @@ export default class VariableStatement extends Statement {
       this._tokenExecutor.getLookahead()?.type !== TokenTypes.SEMI_COLON_TYPE &&
       this._tokenExecutor.getLookahead()?.type !== TokenTypes.COMMA_TYPE
         ? this._getVariableInitializer()
-        : null;
+        : this._nullLiteral.getLiteral();
 
     return {
       type: NodeType.VariableDeclaration,

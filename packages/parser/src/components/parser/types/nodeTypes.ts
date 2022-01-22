@@ -7,7 +7,7 @@ export type ASTNode = {
   name?: string;
   left?: ASTNode;
   right?: ASTNode;
-  value?: string | number;
+  value?: string | number | null;
   id?: ASTNode;
   init?: ASTNode | null;
   declarations?: ASTNode[];
