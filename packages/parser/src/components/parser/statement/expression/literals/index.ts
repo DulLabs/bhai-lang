@@ -3,7 +3,6 @@ import BhaiLangModule from "../../../../../module/bhaiLangModule";
 import TokenExecutor from "../../../tokenExecutor";
 import { ASTNode } from "../../../types/nodeTypes";
 
-
 export default abstract class Literal {
   protected _tokenExecutor: TokenExecutor;
 

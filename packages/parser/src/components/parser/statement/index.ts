@@ -4,7 +4,6 @@ import { Token } from "../../tokenizer/types";
 import TokenExecutor from "../tokenExecutor";
 import { ASTNode } from "../types/nodeTypes";
 
-
 export default abstract class Statement {
   protected _tokenExecutor: TokenExecutor;
 
@@ -14,7 +13,7 @@ export default abstract class Statement {
 
   abstract getStatement(): ASTNode;
 
-  static getStatementImpl(lookahead: Token): Statement{
+  static getStatementImpl(lookahead: Token): Statement {
     switch (lookahead.type) {
       case TokenTypes.BOL_BHAI_TYPE:
         return BhaiLangModule.getPrintStatement();
