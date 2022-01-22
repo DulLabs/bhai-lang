@@ -1,8 +1,7 @@
 import Visitor from ".";
 import { ASTNode } from "bhai-lang-parser";
 
-import InvalidStateException
-  from "../../../dist/exceptions/invalidStateException";
+import InvalidStateException from "../../exceptions/invalidStateException";
 import InterpreterModule from "../../module/interpreterModule";
 
 
