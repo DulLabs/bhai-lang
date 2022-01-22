@@ -1,6 +1,5 @@
 import { ASTNode } from "bhai-lang-parser";
 
-
-export default abstract class Visitor {
-  abstract visitNode(node: ASTNode): unknown;
+export default interface Visitor {
+  visitNode(node: ASTNode): unknown;
 }

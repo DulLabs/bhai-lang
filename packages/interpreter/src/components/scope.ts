@@ -1,3 +1,5 @@
+import RuntimeException from "../exceptions/runtimeException";
+
 export default class Scope {
   _variables: Map<string, unknown> = new Map();
   _parentScope: Scope | null;
@@ -14,6 +16,8 @@ export default class Scope {
     if (this._parentScope !== null) {
       return this._parentScope.get(identifier);
     }
+
+    throw new RuntimeException(`Variable ${identifier} to bana le pehle.`);
   }
 
   assign(identifier: string, value: unknown) {
@@ -26,9 +30,13 @@ export default class Scope {
       this._parentScope.assign(identifier, value);
       return;
     }
+
+    throw new RuntimeException(
+      `Variable ${identifier} to bana le pehle fir assign karna.`
+    );
   }
 
-  declare(identifier: string, value: unknown) { 
+  declare(identifier: string, value: unknown) {
     this._variables.set(identifier, value);
   }
 }
