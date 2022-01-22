@@ -1,5 +1,5 @@
 #! /usr/bin/env node
-import interpreter from "bhai-lang-interpreter";
+import interpreter, { RuntimeException } from "bhai-lang-interpreter";
 import chalk from "chalk";
 import fs from "fs";
 import yargs from "yargs";
@@ -21,7 +21,7 @@ const cl = console.log
 
 console.log = function (...args) {
   const newArgs = args.map(arg => {
-    return `${chalk.hex('#83aaff')('>  ' )}${arg}`
+    return `${chalk.hex('#83aaff')('>  ' )}${chalk.greenBright(arg)}`
   })
   cl.apply(console, newArgs);
 }
@@ -39,7 +39,14 @@ fs.readFile(filePath, 'utf8', (err, data) => {
     console.error(err)
     return
   }
-  interpreter.interpret(data);
+  try {
+    interpreter.interpret(data);
+  } catch (ex) {
+    if (ex instanceof RuntimeException) {
+      console.error("\n", chalk.redBright(ex.stack));
+    }
+  }
+  
 })
 
 

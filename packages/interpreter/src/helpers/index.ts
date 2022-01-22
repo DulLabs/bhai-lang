@@ -25,7 +25,7 @@ export function getOperationValue(
   operator: string
 ) {
   const exception = new RuntimeException(
-    `Ye kya kar raha hai: ${operator} ke sath ${operands.left} aur ${operands.right} nahi jamte.`
+    `Ye kya kar raha hai: "${operator}" ke sath "${typeof operands.left}" aur "${typeof operands.right}" nahi jamte.`
   );
 
   switch (operator) {
