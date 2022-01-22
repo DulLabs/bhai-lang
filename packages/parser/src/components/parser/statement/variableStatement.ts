@@ -45,7 +45,7 @@ export default class VariableStatement extends Statement {
     return declarations;
   }
 
-  private _getVariableDeclaration():ASTNode {
+  private _getVariableDeclaration(): ASTNode {
     const id = Expression.getExpressionImpl(
       NodeType.IdentifierExpression
     ).getExpression();

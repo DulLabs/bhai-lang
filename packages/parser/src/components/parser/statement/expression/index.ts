@@ -3,7 +3,6 @@ import BhaiLangModule from "../../../../module/bhaiLangModule";
 import TokenExecutor from "../../tokenExecutor";
 import { ASTNode } from "../../types/nodeTypes";
 
-
 export default abstract class Expression {
   protected _tokenExecutor: TokenExecutor;
 
@@ -39,8 +38,7 @@ export default abstract class Expression {
     expressionType: keyof typeof NodeType,
     operatorToken: string
   ) {
-    let left =
-      Expression.getExpressionImpl(expressionType).getExpression();
+    let left = Expression.getExpressionImpl(expressionType).getExpression();
 
     while (this._tokenExecutor.getLookahead()?.type === operatorToken) {
       const operator =

@@ -4,7 +4,6 @@ import InterpreterModule from "../module/interpreterModule";
 
 import Scope from "./scope";
 
-
 export default class Interpreter {
   _parser: typeof parser;
   _scope: Scope;

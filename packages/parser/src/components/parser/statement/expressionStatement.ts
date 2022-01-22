@@ -6,7 +6,6 @@ import { ASTNode } from "../types/nodeTypes";
 
 import Expression from "./expression";
 
-
 export default class ExpressionStatement extends Statement {
   getStatement(): ASTNode {
     const expression = Expression.getExpressionImpl(
