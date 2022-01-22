@@ -3,25 +3,25 @@ import Program from "../components/parser/program";
 import BlockStatement from "../components/parser/statement/blockStatement";
 import EmptyStatement from "../components/parser/statement/emptyStatement";
 import AdditiveExpression
-  from "../components/parser/statement/expression/addititve_expression";
+  from "../components/parser/statement/expression/addititveExpression";
 import AssignmentExpression
-  from "../components/parser/statement/expression/assignment_expression";
+  from "../components/parser/statement/expression/assignmentExpression";
 import IdentifierExpression
-  from "../components/parser/statement/expression/identifier_expression";
+  from "../components/parser/statement/expression/identifierExpression";
 import BooleanLiteral
-  from "../components/parser/statement/expression/literals/boolean_literal";
+  from "../components/parser/statement/expression/literals/booleanLiteral";
 import NullLiteral
-  from "../components/parser/statement/expression/literals/null_literal";
+  from "../components/parser/statement/expression/literals/nullLiteral";
 import NumericLiteral
-  from "../components/parser/statement/expression/literals/numeric_literal";
+  from "../components/parser/statement/expression/literals/numericLiteral";
 import StringLiteral
-  from "../components/parser/statement/expression/literals/string_literal";
+  from "../components/parser/statement/expression/literals/stringLiteral";
 import MultiplicativeExpression
-  from "../components/parser/statement/expression/multiplicative_expression";
+  from "../components/parser/statement/expression/multiplicativeExpression";
 import ParanthesizedExpression
-  from "../components/parser/statement/expression/paranthesized_expression";
+  from "../components/parser/statement/expression/paranthesizedExpression";
 import PrimaryExpression
-  from "../components/parser/statement/expression/primary_expression";
+  from "../components/parser/statement/expression/primaryExpression";
 import ExpressionStatement
   from "../components/parser/statement/expressionStatement";
 import InitStatement from "../components/parser/statement/initStatement";
