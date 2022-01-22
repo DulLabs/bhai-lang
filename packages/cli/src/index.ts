@@ -14,8 +14,17 @@ console.info(chalk.hex('#83aaff')(`
 ██████╦╝██║░░██║██║░░██║██║███████╗██║░░██║██║░╚███║╚██████╔╝
 ╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝╚══════╝╚═╝░░╚═╝╚═╝░░╚══╝░╚═════╝░
 
-https://github.com/DullLabs/bhai-lang
+https://github.com/DulLabs/bhai-lang
 `));
+
+const cl = console.log
+
+console.log = function (...args) {
+  const newArgs = args.map(arg => {
+    return `${chalk.hex('#83aaff')('>  ' )}${arg}`
+  })
+  cl.apply(console, newArgs);
+}
 
 const filePath = yargs(hideBin(process.argv))
   .command('<filepath>', 'Interpret the contents of the specified file and print it to stdout', () => { }, (argv) => {
@@ -30,7 +39,6 @@ fs.readFile(filePath, 'utf8', (err, data) => {
     console.error(err)
     return
   }
-  console.log(data)
   interpreter.interpret(data);
 })
 

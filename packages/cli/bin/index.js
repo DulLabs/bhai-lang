@@ -6327,8 +6327,15 @@ console.info(source_default.hex("#83aaff")(`
 \u2588\u2588\u2588\u2588\u2588\u2588\u2566\u255D\u2588\u2588\u2551\u2591\u2591\u2588\u2588\u2551\u2588\u2588\u2551\u2591\u2591\u2588\u2588\u2551\u2588\u2588\u2551\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2557\u2588\u2588\u2551\u2591\u2591\u2588\u2588\u2551\u2588\u2588\u2551\u2591\u255A\u2588\u2588\u2588\u2551\u255A\u2588\u2588\u2588\u2588\u2588\u2588\u2554\u255D
 \u255A\u2550\u2550\u2550\u2550\u2550\u255D\u2591\u255A\u2550\u255D\u2591\u2591\u255A\u2550\u255D\u255A\u2550\u255D\u2591\u2591\u255A\u2550\u255D\u255A\u2550\u255D\u255A\u2550\u2550\u2550\u2550\u2550\u2550\u255D\u255A\u2550\u255D\u2591\u2591\u255A\u2550\u255D\u255A\u2550\u255D\u2591\u2591\u255A\u2550\u2550\u255D\u2591\u255A\u2550\u2550\u2550\u2550\u2550\u255D\u2591
 
-https://github.com/DullLabs/bhai-lang
+https://github.com/DulLabs/bhai-lang
 `));
+var cl = console.log;
+console.log = function(...args) {
+  const newArgs = args.map((arg) => {
+    return `${source_default.hex("#83aaff")(">  ")}${arg}`;
+  });
+  cl.apply(console, newArgs);
+};
 var filePath = yargs_default(hideBin(process.argv)).command("<filepath>", "Interpret the contents of the specified file and print it to stdout", () => {
 }, (argv) => {
   console.info(argv);
@@ -6338,7 +6345,6 @@ import_fs5.default.readFile(filePath, "utf8", (err, data) => {
     console.error(err);
     return;
   }
-  console.log(data);
   import_bhai_lang_interpreter.default.interpret(data);
 });
 /**
