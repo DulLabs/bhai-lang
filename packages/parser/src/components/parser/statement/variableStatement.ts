@@ -6,7 +6,7 @@ import TokenExecutor from "../tokenExecutor";
 import { ASTNode } from "../types/nodeTypes";
 
 import Expression from "./expression";
-import NullLiteral from "./expression/literals/null_literal";
+import NullLiteral from "./expression/literals/nullLiteral";
 
 
 export default class VariableStatement extends Statement {
