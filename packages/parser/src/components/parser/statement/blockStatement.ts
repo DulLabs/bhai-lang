@@ -6,6 +6,7 @@ import StatementList from "../statementList";
 import TokenExecutor from "../tokenExecutor";
 import { ASTNode } from "../types/nodeTypes";
 
+
 export default class BlockStatement extends Statement {
   _statementList: StatementList;
 
@@ -30,6 +31,8 @@ export default class BlockStatement extends Statement {
     this._tokenExecutor.eatTokenAndForwardLookahead(
       TokenTypes.CLOSED_CURLY_BRACE_TYPE
     );
+
+    this._tokenExecutor.eatOptionalSemiColonToken();
 
     return {
       type: NodeType.BlockStatement,
