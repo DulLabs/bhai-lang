@@ -16,6 +16,6 @@ export default class Interpreter {
 
   interpret(code: string) {
     const ast = this._parser.parse(code);
-    InterpreterModule.getVisitor(ast.type)?.visitNode(ast);
+    InterpreterModule.getVisitor(ast.type).visitNode(ast);
   }
 }

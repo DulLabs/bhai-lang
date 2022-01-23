@@ -38,6 +38,11 @@ export default class Scope {
   }
 
   declare(identifier: string, value: unknown) {
+
+    if (this._variables.has(identifier)) {
+      throw new RuntimeException(`Variable "${identifier}" pehle se exist karta hai bhai. Check karle.`);
+    }
+
     this._variables.set(identifier, value);
   }
 }
