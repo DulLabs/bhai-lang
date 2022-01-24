@@ -11,7 +11,7 @@ export default class BlockStatement implements Visitor {
     InterpreterModule.setCurrentScope(new Scope(parentScope));
 
     if (Array.isArray(node.body)) {
-      node.body?.forEach((statement: ASTNode) => {
+      node.body.forEach((statement: ASTNode) => {
         InterpreterModule.getVisitor(statement.type).visitNode(statement);
       });
     }

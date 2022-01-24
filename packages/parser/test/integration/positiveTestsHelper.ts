@@ -9,25 +9,32 @@ export const StatementTests = [
     output: `{"type":"Program","body":{"type":"InitStatement","body":[]}}`,
   },
   {
+    name: "init statement test with semi colon, should success",
+    input: `
+      hi bhai;
+      bye bhai;
+    `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[]}}`,
+  },
+  {
+    name: "init statement test with semi colon - 2, should success",
+    input: `
+      hi bhai;
+      bye bhai
+    `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[]}}`,
+  },
+  {
     name: "empty init statement test with random charaters initially, should success",
     input: `
       some random characters
       random random random
       hi bhai
-      bye bhai
+      bye bhai;
     `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[]}}`,
   },
   // empty statement tests
-  {
-    name: "empty statement test, should success",
-    input: `
-      hi bhai
-      ;
-      bye bhai
-    `,
-    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"EmptyStatement"}]}}`,
-  },
   {
     name: "multiple empty statements test, should success",
     input: `
@@ -37,7 +44,7 @@ export const StatementTests = [
       ;;
       bye bhai
     `,
-    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"EmptyStatement"},{"type":"EmptyStatement"},{"type":"EmptyStatement"},{"type":"EmptyStatement"}]}}`,
+    output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"EmptyStatement\"},{\"type\":\"EmptyStatement\"},{\"type\":\"EmptyStatement\"}]}}`,
   },
   // block statement tests
   {
@@ -50,13 +57,22 @@ export const StatementTests = [
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"BlockStatement\",\"body\":[]}]}}`,
   },
   {
+    name: "block statement test with empty block and semi colon, should success",
+    input: `
+      hi bhai;
+      {};
+      bye bhai
+    `,
+    output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"BlockStatement\",\"body\":[]}]}}`,
+  },
+  {
     name: "block statement test with assignment expression inside, should success",
     input: `
-      hi bhai
+      hi bhai;
       {
         naam = 4;
       }
-      bye bhai
+      bye bhai;
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"BlockStatement\",\"body\":[{\"type\":\"ExpressionStatement\",\"expression\":{\"type\":\"AssignmentExpression\",\"operator\":\"=\",\"left\":{\"type\":\"IdentifierExpression\",\"name\":\"naam\"},\"right\":{\"type\":\"NumericLiteral\",\"value\":4}}}]}]}}`,
   },

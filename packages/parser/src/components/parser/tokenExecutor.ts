@@ -1,4 +1,6 @@
+import { TokenTypes } from "../../constants/bhaiLangSpec";
 import { Token, Tokenizer } from "../tokenizer/types";
+
 
 export default class TokenExecutor {
   private _tokenizer: Tokenizer;
@@ -26,6 +28,11 @@ export default class TokenExecutor {
     this.setLookahead(this._tokenizer.getNextToken());
 
     return token;
+  }
+
+  eatOptionalSemiColonToken() {
+    if (this.getLookahead()?.type == TokenTypes.SEMI_COLON_TYPE)
+      this.eatTokenAndForwardLookahead(TokenTypes.SEMI_COLON_TYPE);
   }
 
   getLookahead() {
