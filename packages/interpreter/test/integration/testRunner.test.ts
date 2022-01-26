@@ -2,10 +2,12 @@ import Interpreter from "../../src/components/interpreter";
 import Scope from "../../src/components/scope";
 import InterpreterModule from "../../src/module/interpreterModule";
 
-import { NoOutputPositiveTests } from "./positiveTestsHelper";
+import { NegativeTestCases } from "./negativeTestsProvider";
+import {
+  NoOutputPositiveTests,
+  WithOutputPositiveTests
+} from "./positiveTestsProvider";
 
-
-type noOutputPosTestObjType = typeof NoOutputPositiveTests[0];
 
 let interpreter: Interpreter;
 
@@ -13,14 +15,64 @@ beforeEach(() => {
     InterpreterModule.setCurrentScope(new Scope(null));
 
     interpreter = InterpreterModule.getInterpreter();
+
+    console.log = jest.fn();
 });
 
 NoOutputPositiveTests.forEach((testCase) => {
-    _runNoOutputPositiveTests(testCase);
-});
-
-function _runNoOutputPositiveTests(testCase: noOutputPosTestObjType) {
     test(testCase.name, () => {
         expect(() => interpreter.interpret(testCase.input)).not.toThrowError();
     });
-}
+});
+
+WithOutputPositiveTests.forEach((testCase) => {
+    test(testCase.name, () => {
+        expect(() => interpreter.interpret(testCase.input)).not.toThrowError();
+
+        expect(console.log).toHaveBeenCalledWith(testCase.output);
+    });
+});
+
+NegativeTestCases.forEach((testCase) => {
+    test(testCase.name, () => {
+        expect(() => interpreter.interpret(testCase.input)).toThrowError(testCase.exception);
+    });
+});
+
+test("test redeclaring & printing variables in different scopes", () => {
+    expect(() => interpreter.interpret(`hi bhai;
+    bhai ye hai a = 4;
+    {
+      bhai ye hai a = 90;
+      bol bhai a;
+    }
+    bol bhai a;
+    bye bhai;`)).not.toThrowError();
+    expect(console.log).toHaveBeenCalledWith("90");
+    expect(console.log).toHaveBeenCalledWith("4");
+});
+
+test("test assiging variable in parent scope", () => {
+    expect(() => interpreter.interpret(`hi bhai;
+    bhai ye hai a = 4;
+    {
+      a = 90;
+      bol bhai a;
+    }
+    bol bhai a;
+    bye bhai;`)).not.toThrowError();
+    expect(console.log).toHaveBeenCalledWith("90");
+    expect(console.log).toHaveBeenCalledWith("90");
+});
+
+test("test accessing variable in parent scope", () => {
+    expect(() => interpreter.interpret(`hi bhai;
+    bhai ye hai a = 4;
+    {
+      bol bhai a;
+    }
+    bol bhai a;
+    bye bhai;`)).not.toThrowError();
+    expect(console.log).toHaveBeenCalledWith("4");
+    expect(console.log).toHaveBeenCalledWith("4");
+});

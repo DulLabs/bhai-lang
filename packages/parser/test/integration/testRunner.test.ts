@@ -1,10 +1,11 @@
 import bhaiLangModule from "../../src/module/bhaiLangModule";
+
 import {
   NegativeExpressionsTests,
-  NegativeStatementTests,
+  NegativeStatementTests
 } from "./negativeTestsHelper";
-
 import { ExpressionsTests, StatementTests } from "./positiveTestsHelper";
+
 
 type posTestObjType = typeof StatementTests[0];
 
