@@ -9,6 +9,8 @@ export const TokenTypes = {
 
   BHAI_YE_HAI_TYPE: "bhai ye hai",
 
+  NALLA_TYPE: "NALLA",
+
   SEMI_COLON_TYPE: ";",
 
   OPEN_CURLY_BRACE_TYPE: "{",
@@ -61,6 +63,7 @@ export const SPEC = [
   { regex: /^\bbye bhai\b/, tokenType: TokenTypes.BYE_BHAI_TYPE },
   { regex: /^\bbol bhai\b/, tokenType: TokenTypes.BOL_BHAI_TYPE },
   { regex: /^\bbhai ye hai\b/, tokenType: TokenTypes.BHAI_YE_HAI_TYPE },
+  { regex: /^\bnalla\b/, tokenType: TokenTypes.NALLA_TYPE },
 
   // Number
   { regex: /^\d+/, tokenType: TokenTypes.NUMBER_TYPE },
