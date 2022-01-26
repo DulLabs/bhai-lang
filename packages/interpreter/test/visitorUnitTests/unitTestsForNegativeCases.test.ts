@@ -1,11 +1,17 @@
 import { NodeType } from "bhai-lang-parser";
 
+import { RuntimeException } from "../../src";
+import Scope from "../../src/components/scope";
 import AssignmentExpression
   from "../../src/components/visitor/assignmentExpression";
 import BinaryExpression from "../../src/components/visitor/binaryExpression";
 import IdentifierExpression
   from "../../src/components/visitor/identifierExpression";
+import PrintStatement from "../../src/components/visitor/printStatement";
 import Program from "../../src/components/visitor/program";
+import VariableDeclaration
+  from "../../src/components/visitor/variableDeclaration";
+import VariableStatement from "../../src/components/visitor/variableStatement";
 import InvalidStateException from "../../src/exceptions/invalidStateException";
 
 
@@ -18,6 +24,14 @@ const binaryExpression = new BinaryExpression();
 const identifierExpression = new IdentifierExpression();
 
 const program = new Program();
+
+const variableDeclaration = new VariableDeclaration();
+
+const variableStatement = new VariableStatement();
+
+const printStatement = new PrintStatement();
+
+const scope = new Scope(null);
 
 test("interpreter test assignmentExpression without left node should throw an exception", () => {
   const astNode = {
@@ -80,22 +94,72 @@ test("interpreter test identifierExpression without identifier should throw an e
 
 });
 
-test("interpreter test program without body should throw an exception", () => {
+test(`interpreter test "Program" without body should throw an exception`, () => {
   const astNode = {
-    type: NodeType.IdentifierExpression,
+    type: NodeType.Program,
   };
 
   expect(() => program.visitNode(astNode)).toThrow(InvalidStateException);
 
 });
 
-test("interpreter test program with an array body should throw an exception", () => {
+test(`interpreter test "Program" with an array body should throw an exception`, () => {
   const astNode = {
-    type: NodeType.IdentifierExpression,
+    type: NodeType.Program,
     body: []
   };
 
   expect(() => program.visitNode(astNode)).toThrow(InvalidStateException);
+
+});
+
+test("interpreter test VariableDeclaration without an id should throw an exception", () => {
+  const astNode = {
+    type: NodeType.VariableDeclaration,
+    init: {
+      type: NodeType.NullLiteral,
+      value: null
+    }
+  };
+
+  expect(() => variableDeclaration.visitNode(astNode)).toThrow(InvalidStateException);
+
+});
+
+test("interpreter test VariableDeclaration without an init should throw an exception", () => {
+  const astNode = {
+    type: NodeType.VariableDeclaration,
+    id : {
+      type: NodeType.IdentifierExpression,
+      name: "a"
+    }
+  };
+
+  expect(() => variableDeclaration.visitNode(astNode)).toThrow(InvalidStateException);
+
+});
+
+test("interpreter test VariableStatement without variable declarations should throw an exception", () => {
+  const astNode = {
+    type: NodeType.VariableStatement,
+  };
+
+  expect(() => variableStatement.visitNode(astNode)).toThrow(InvalidStateException);
+
+});
+
+test("interpreter test PrintStatement without expressions should throw an exception", () => {
+  const astNode = {
+    type: NodeType.PrintStatement,
+  };
+
+  expect(() => printStatement.visitNode(astNode)).toThrow(InvalidStateException);
+
+});
+
+test("interpreter test Scope assign with undeclared variable should throw an exception", () => {
+  
+  expect(() => scope.assign("undeclared_identifier", 45)).toThrow(RuntimeException);
 
 });
 

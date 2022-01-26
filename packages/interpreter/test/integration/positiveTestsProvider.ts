@@ -67,7 +67,7 @@ export const NoOutputPositiveTests = [
     name: "interpreter variable statement test with basic variable declaration and initialisation, should success",
     input: `
       hi bhai
-      bhai ye hai a = 10, b;
+      bhai ye hai a = 10, b = "crap";
       bye bhai
     `
   },
@@ -92,7 +92,7 @@ export const NoOutputPositiveTests = [
     name: "simple assignment expression test with only one identifer, should success",
     input: `
       hi bhai
-      bhai ye hai a;
+      bhai ye hai a = sahi;
       a = 4;
       bye bhai
     `,
@@ -134,4 +134,108 @@ export const NoOutputPositiveTests = [
       bye bhai
     `,
   },
+];
+
+export const WithOutputPositiveTests = [
+  {
+    name: "printStatement test with multiple expressions, should success",
+    input: `
+      hi bhai;
+      bhai ye hai a = 2, b = 60;
+      bol bhai (a * (4 + 8) + 10), b;
+      bye bhai
+    `,
+    output: "34 60"
+  },
+  {
+    name: "printStatement test with multiple expressions and re assigning value of one variable, should success",
+    input: `
+      hi bhai;
+      bhai ye hai a = 2, b = 60;
+
+      a = b + 3;
+      bol bhai a, b;
+      bye bhai
+    `,
+    output: "63 60"
+  },
+  {
+    name: "printStatement test with multiple expressions & without any variables, should success",
+    input: `
+      hi bhai;
+      bol bhai "hello", sahi, galat;
+      bye bhai
+    `,
+    output: "hello sahi galat"
+  },
+  {
+    name: "printStatement test with nalla, should success",
+    input: `
+      hi bhai;
+      bol bhai nalla;
+      bye bhai;
+    `,
+    output: "nalla"
+  },
+  {
+    name: "printStatement test with nalla as second parameter, should success",
+    input: `
+      hi bhai;
+      bol bhai 10, nalla;
+      bye bhai;
+    `,
+    output: "10 nalla"
+  },
+  {
+    name: "printStatement test with string concatenation, should success",
+    input: `
+      hi bhai;
+      bol bhai "hello" + "crap";
+      bye bhai;
+    `,
+    output: "hellocrap"
+  },
+  {
+    name: "printStatement test with multiple expresions including nalla, should success",
+    input: `
+      hi bhai;
+      bhai ye hai a = 70;
+      bol bhai 6*5, nalla, "jamtara", a;
+      bye bhai;
+    `,
+    output: "30 nalla jamtara 70"
+  },
+  {
+    name: "printStatement test with nalla variable, should success",
+    input: `
+      hi bhai;
+      bhai ye hai a;
+      bol bhai a;
+      bye bhai;
+    `,
+    output: "nalla"
+  },
+  {
+    name: `printStatement test with string "undefined", should success`,
+    input: `
+      hi bhai;
+      bol bhai "undefined";
+      bye bhai;
+    `,
+    output: "undefined"
+  },
+  // {
+  //   name: `printStatement test with scoped variables, should success`,
+  //   input: `
+  //     hi bhai;
+  //     bhai ye hai a = 4;
+  //     {
+  //       bhai ye hai a = 90;
+  //       bol bhai a;
+  //     }
+  //     bol bhai a;
+  //     bye bhai;
+  //   `,
+  //   output: "4\n90"
+  // },
 ];

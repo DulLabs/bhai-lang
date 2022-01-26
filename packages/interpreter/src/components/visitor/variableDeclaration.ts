@@ -11,7 +11,7 @@ export default class VariableDeclaration implements Visitor {
       throw new InvalidStateException(`id or init not found for ${node.type}`);
     }
 
-    const identifier = node.id?.name;
+    const identifier = node.id.name;
     const value = InterpreterModule.getVisitor(node.init.type).visitNode(
       node.init
     );
