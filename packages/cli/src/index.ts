@@ -1,5 +1,5 @@
 #! /usr/bin/env node
-import interpreter, { RuntimeException } from "bhai-lang-interpreter";
+import interpreter from "bhai-lang-interpreter";
 import chalk from "chalk";
 import fs from "fs";
 import yargs from "yargs";
@@ -42,7 +42,7 @@ fs.readFile(filePath, 'utf8', (err, data) => {
   try {
     interpreter.interpret(data);
   } catch (ex) {
-    if (ex instanceof RuntimeException) {
+    if (ex instanceof Error) {
       console.error("\n", chalk.redBright(ex.stack));
     }
   }

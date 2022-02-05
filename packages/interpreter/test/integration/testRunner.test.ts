@@ -1,5 +1,4 @@
 import Interpreter from "../../src/components/interpreter";
-import Scope from "../../src/components/scope";
 import InterpreterModule from "../../src/module/interpreterModule";
 
 import { NegativeTestCases } from "./negativeTestsProvider";
@@ -9,15 +8,9 @@ import {
 } from "./positiveTestsProvider";
 
 
-let interpreter: Interpreter;
+let interpreter: Interpreter = InterpreterModule.getInterpreter();
 
-beforeEach(() => {
-    InterpreterModule.setCurrentScope(new Scope(null));
-
-    interpreter = InterpreterModule.getInterpreter();
-
-    console.log = jest.fn();
-});
+console.log = jest.fn();
 
 NoOutputPositiveTests.forEach((testCase) => {
     test(testCase.name, () => {
@@ -52,7 +45,7 @@ test("test redeclaring & printing variables in different scopes", () => {
     expect(console.log).toHaveBeenCalledWith("4");
 });
 
-test("test assiging variable in parent scope", () => {
+test("test assigning variable in parent scope", () => {
     expect(() => interpreter.interpret(`hi bhai;
     bhai ye hai a = 4;
     {
