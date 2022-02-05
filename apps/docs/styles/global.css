@@ -1,0 +1,32 @@
+.editorLineNumber {
+	position: absolute;
+	left: 0px;
+	color: #8a8a8a;
+	text-align: right;
+	width: 40px;
+}
+
+.editor {
+	height: 10rem;
+	/* counter-reset: line; */
+	overflow-x: scroll !important;
+	overflow-y: scroll !important;
+	background-color: #000;
+	color: #fff;
+}
+
+.editor pre{
+	padding-left: 5rem !important;
+}
+
+.codeArea {
+	overflow-wrap: normal !important;
+	word-break: keep-all !important;
+	outline: none;
+	padding-top: 1rem;
+	padding-left: 5rem !important;
+	z-index: 999999999;
+	white-space: nowrap;
+	/* overflow-x: hidden !important; */
+	/* overflow-y: scroll !important; */
+}

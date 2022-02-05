@@ -11,7 +11,7 @@
     "bin"
   ],
   "scripts": {
-    "dev": "ts-node src/index.ts",
+    "dev": "node --loader ts-node/esm",
     "build": "tsup src/* --dts --outDir bin"
   },
   "repository": {
