@@ -1,7 +1,10 @@
 import { NodeType } from "../../../../constants/constants";
+import NallaPointerException
+  from "../../../../exceptions/nallaPointerException";
 import BhaiLangModule from "../../../../module/bhaiLangModule";
 import TokenExecutor from "../../tokenExecutor";
 import { ASTNode } from "../../types/nodeTypes";
+
 
 export default abstract class Expression {
   protected _tokenExecutor: TokenExecutor;
@@ -45,6 +48,11 @@ export default abstract class Expression {
         this._tokenExecutor.eatTokenAndForwardLookahead(operatorToken);
       const right =
         Expression.getExpressionImpl(expressionType).getExpression();
+      
+      this._checkForReservedKeywords(left);
+
+      this._checkForReservedKeywords(right);
+      
       left = {
         type: NodeType.BinaryExpression,
         operator: operator.value,
@@ -54,5 +62,13 @@ export default abstract class Expression {
     }
 
     return left;
+  }
+
+  private _checkForReservedKeywords(node: ASTNode) {
+    if (node.type === NodeType.NullLiteral)
+      throw new NallaPointerException("Operand nalla hai");
+    
+    if (node.type === NodeType.BooleanLiteral)
+      throw new SyntaxError(`Boolean operand: "${node.value}" allowed ni hai`);
   }
 }

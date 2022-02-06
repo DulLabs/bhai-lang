@@ -133,6 +133,16 @@ export const StatementTests = [
     `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"PrintStatement","expressions":[{"type":"NullLiteral","value":"nalla"}]}]}}`,
   },
+  {
+    name: "print statement test with variable nalla printing, should success",
+    input: `
+      hi bhai
+      bhai ye hai a = nalla;
+      bol bhai a;
+      bye bhai
+    `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"a"},"init":{"type":"NullLiteral","value":"nalla"}}]},{"type":"PrintStatement","expressions":[{"type":"IdentifierExpression","name":"a"}]}]}}`,
+  },
   // variable statement test
   {
     name: "variable statement test with basic variable declaration, should success",

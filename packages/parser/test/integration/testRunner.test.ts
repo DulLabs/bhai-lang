@@ -1,3 +1,4 @@
+import NallaPointerException from "../../src/exceptions/nallaPointerException";
 import bhaiLangModule from "../../src/module/bhaiLangModule";
 
 import {
@@ -9,7 +10,11 @@ import { ExpressionsTests, StatementTests } from "./positiveTestsHelper";
 
 type posTestObjType = typeof StatementTests[0];
 
-type negTestObjType = typeof NegativeStatementTests[0];
+type negTestObjType = {
+  name: string,
+  input: string,
+  output: SyntaxErrorConstructor | typeof NallaPointerException
+};
 
 StatementTests.forEach((testCase) => {
   _runPositiveTests(testCase);

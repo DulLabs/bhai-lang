@@ -1,3 +1,6 @@
+import NallaPointerException from "../../src/exceptions/nallaPointerException";
+
+
 export const NegativeStatementTests = [
   // init statement tests
   {
@@ -115,6 +118,15 @@ export const NegativeStatementTests = [
         bol bhai a
       `,
     output: SyntaxError,
+  },
+  {
+    name: "print statement test with expression containing nalla, should throw an exception",
+    input: `
+        hi bhai
+        bol bhai nalla + 5;
+        bye bhai;
+      `,
+    output: NallaPointerException,
   },
   // variable statement test
   {
@@ -258,6 +270,78 @@ export const NegativeExpressionsTests = [
     input: `
         hi bhai
         (a * (4 + 8 + 10);
+        bye bhai
+      `,
+    output: SyntaxError,
+  },
+  {
+    name: "complex expression test with one nalla operand, should throw an exception",
+    input: `
+        hi bhai
+        (nalla * (4 + 8 + 10));
+        bye bhai
+      `,
+    output: NallaPointerException,
+  },
+  {
+    name: "complex expression test with one nalla operand and one boolean operand, should throw an exception",
+    input: `
+        hi bhai
+        (nalla * (sahi + 8 + 10));
+        bye bhai
+      `,
+    output: SyntaxError,
+  },
+  {
+    name: "complex expression test with one nalla operand and one boolean operand - 2, should throw nalla pointer exception",
+    input: `
+        hi bhai
+        (sahi * (nalla + 8 + 10));
+        bye bhai
+      `,
+    output: NallaPointerException,
+  },
+  {
+    name: "complex expression test with one nalla operand and one boolean operand - 3, should throw nalla pointer exception",
+    input: `
+        hi bhai
+        (nalla + sahi);
+        bye bhai
+      `,
+    output: NallaPointerException,
+  },
+  {
+    name: "complex expression test with one boolean operand, should throw an exception",
+    input: `
+        hi bhai
+        (sahi * (4 + 8 + 10));
+        bye bhai
+      `,
+    output: SyntaxError,
+  },
+  {
+    name: "expression test with only boolean operand, should throw an exception",
+    input: `
+        hi bhai
+        sahi + galat;
+        bye bhai
+      `,
+    output: SyntaxError,
+  },
+  {
+    name: "multiplicative expression test with only boolean operand, should throw an exception",
+    input: `
+        hi bhai
+        sahi * galat;
+        bye bhai
+      `,
+    output: SyntaxError,
+  },
+  {
+    name: "division expression test with only boolean operand, should throw an exception",
+    input: `
+        hi bhai
+        sahi / galat;
         bye bhai
       `,
     output: SyntaxError,
