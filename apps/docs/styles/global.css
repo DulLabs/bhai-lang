@@ -1,3 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "prismjs/themes/prism-tomorrow.css";
+
+
+.editorContainer{
+	tab-size: 4ch;
+	height: 60vh;
+	overflow: auto;
+	margin: 1.67em 0;
+	color: #fff;
+	background-color: #000;
+}
+
 .editorLineNumber {
 	position: absolute;
 	left: 0px;
@@ -7,12 +22,7 @@
 }
 
 .editor {
-	height: 10rem;
-	/* counter-reset: line; */
-	overflow-x: scroll !important;
-	overflow-y: scroll !important;
-	background-color: #000;
-	color: #fff;
+	counter-reset: line;
 }
 
 .editor pre{
@@ -27,6 +37,4 @@
 	padding-left: 5rem !important;
 	z-index: 999999999;
 	white-space: nowrap;
-	/* overflow-x: hidden !important; */
-	/* overflow-y: scroll !important; */
 }
