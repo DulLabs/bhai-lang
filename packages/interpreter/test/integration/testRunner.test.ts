@@ -12,6 +12,10 @@ let interpreter: Interpreter = InterpreterModule.getInterpreter();
 
 console.log = jest.fn();
 
+beforeEach(() => {
+  jest.clearAllMocks();
+})
+
 NoOutputPositiveTests.forEach((testCase) => {
     test(testCase.name, () => {
         expect(() => interpreter.interpret(testCase.input)).not.toThrowError();
@@ -69,3 +73,16 @@ test("test accessing variable in parent scope", () => {
     expect(console.log).toHaveBeenCalledWith("4");
     expect(console.log).toHaveBeenCalledWith("4");
 });
+
+// test("jest", () => {
+//     interpreter.interpret(`
+//     hi bhai;
+//       bhai ye hai a = 4;
+//       {
+//         bhai ye hai a = 90;
+//         bol bhai a;
+//       }
+//       bol bhai a;
+//       bye bhai;
+//     `);
+// });

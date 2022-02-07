@@ -46,3 +46,10 @@ function _runNegativeTests(testCase: negTestObjType) {
     expect(() => parser.parse(testCase.input)).toThrow(testCase.output);
   });
 }
+
+// test("jest test", () => {
+//   const parser = bhaiLangModule.getParser();
+//   console.debug(JSON.stringify(parser.parse(`hi bhai
+//   bol bhai nalla + 5;
+//   bye bhai;`)));
+// })

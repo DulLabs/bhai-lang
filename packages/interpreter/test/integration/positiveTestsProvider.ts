@@ -224,18 +224,34 @@ export const WithOutputPositiveTests = [
     `,
     output: "undefined"
   },
-  // {
-  //   name: `printStatement test with scoped variables, should success`,
-  //   input: `
-  //     hi bhai;
-  //     bhai ye hai a = 4;
-  //     {
-  //       bhai ye hai a = 90;
-  //       bol bhai a;
-  //     }
-  //     bol bhai a;
-  //     bye bhai;
-  //   `,
-  //   output: "4\n90"
-  // },
+  {
+    name: `printStatement test with nalla variable, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a;
+      bol bhai a;
+      bye bhai;
+    `,
+    output: "nalla"
+  },
+  {
+    name: `printStatement test with sahi variable, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a = sahi;
+      bol bhai a;
+      bye bhai;
+    `,
+    output: "sahi"
+  },
+  {
+    name: `printStatement test with galat variable, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a = galat;
+      bol bhai a;
+      bye bhai;
+    `,
+    output: "galat"
+  },
 ];

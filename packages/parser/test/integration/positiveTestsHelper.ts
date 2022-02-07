@@ -257,4 +257,86 @@ export const ExpressionsTests = [
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"ExpressionStatement\",\"expression\":{\"type\":\"BinaryExpression\",\"operator\":\"+\",\"left\":{\"type\":\"BinaryExpression\",\"operator\":\"*\",\"left\":{\"type\":\"IdentifierExpression\",\"name\":\"a\"},\"right\":{\"type\":\"BinaryExpression\",\"operator\":\"+\",\"left\":{\"type\":\"NumericLiteral\",\"value\":4},\"right\":{\"type\":\"NumericLiteral\",\"value\":8}}},\"right\":{\"type\":\"NumericLiteral\",\"value\":10}}}]}}`,
   },
+  // nalla and boolean expression test
+  {
+    name: "complex expression test with one nalla operand, should throw an exception",
+    input: `
+        hi bhai
+        (nalla * (4 + 8 + 10));
+        bye bhai
+      `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"*","left":{"type":"NullLiteral","value":"nalla"},"right":{"type":"BinaryExpression","operator":"+","left":{"type":"BinaryExpression","operator":"+","left":{"type":"NumericLiteral","value":4},"right":{"type":"NumericLiteral","value":8}},"right":{"type":"NumericLiteral","value":10}}}}]}}`,
+  },
+  {
+    name: "complex expression test with one nalla operand and one boolean operand, should throw an exception",
+    input: `
+        hi bhai
+        (nalla * (sahi + 8 + 10));
+        bye bhai
+      `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"*","left":{"type":"NullLiteral","value":"nalla"},"right":{"type":"BinaryExpression","operator":"+","left":{"type":"BinaryExpression","operator":"+","left":{"type":"BooleanLiteral","value":"sahi"},"right":{"type":"NumericLiteral","value":8}},"right":{"type":"NumericLiteral","value":10}}}}]}}`,
+  },
+  {
+    name: "complex expression test with one nalla operand and one boolean operand - 2, should throw nalla pointer exception",
+    input: `
+        hi bhai
+        (sahi * (nalla + 8 + 10));
+        bye bhai
+      `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"*","left":{"type":"BooleanLiteral","value":"sahi"},"right":{"type":"BinaryExpression","operator":"+","left":{"type":"BinaryExpression","operator":"+","left":{"type":"NullLiteral","value":"nalla"},"right":{"type":"NumericLiteral","value":8}},"right":{"type":"NumericLiteral","value":10}}}}]}}`,
+  },
+  {
+    name: "complex expression test with one nalla operand and one boolean operand - 3, should throw nalla pointer exception",
+    input: `
+        hi bhai
+        (nalla + sahi);
+        bye bhai
+      `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"+","left":{"type":"NullLiteral","value":"nalla"},"right":{"type":"BooleanLiteral","value":"sahi"}}}]}}`,
+  },
+  {
+    name: "complex expression test with one boolean operand, should throw an exception",
+    input: `
+        hi bhai
+        (sahi * (4 + 8 + 10));
+        bye bhai
+      `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"*","left":{"type":"BooleanLiteral","value":"sahi"},"right":{"type":"BinaryExpression","operator":"+","left":{"type":"BinaryExpression","operator":"+","left":{"type":"NumericLiteral","value":4},"right":{"type":"NumericLiteral","value":8}},"right":{"type":"NumericLiteral","value":10}}}}]}}`,
+  },
+  {
+    name: "expression test with only boolean operand, should throw an exception",
+    input: `
+        hi bhai
+        sahi + galat;
+        bye bhai
+      `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"+","left":{"type":"BooleanLiteral","value":"sahi"},"right":{"type":"BooleanLiteral","value":"galat"}}}]}}`,
+  },
+  {
+    name: "multiplicative expression test with only boolean operand, should throw an exception",
+    input: `
+        hi bhai
+        sahi * galat;
+        bye bhai
+      `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"*","left":{"type":"BooleanLiteral","value":"sahi"},"right":{"type":"BooleanLiteral","value":"galat"}}}]}}`,
+  },
+  {
+    name: "division expression test with only boolean operand, should throw an exception",
+    input: `
+        hi bhai
+        sahi / galat;
+        bye bhai
+      `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"/","left":{"type":"BooleanLiteral","value":"sahi"},"right":{"type":"BooleanLiteral","value":"galat"}}}]}}`,
+  },
+  {
+    name: "print statement test with expression containing nalla, should throw an exception",
+    input: `
+        hi bhai
+        bol bhai nalla + 5;
+        bye bhai;
+      `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"PrintStatement","expressions":[{"type":"BinaryExpression","operator":"+","left":{"type":"NullLiteral","value":"nalla"},"right":{"type":"NumericLiteral","value":5}}]}]}}`,
+  },
 ];
