@@ -3,14 +3,22 @@
 @tailwind utilities;
 @import "prismjs/themes/prism-tomorrow.css";
 
+html {
+	scroll-behavior: smooth;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+}
 
 .editorContainer{
 	tab-size: 4ch;
 	height: 60vh;
 	overflow: auto;
-	margin: 1.67em 0;
 	color: #fff;
-	background-color: #000;
+	background-color: #333;
 }
 
 .editorLineNumber {
@@ -37,4 +45,29 @@
 	padding-left: 5rem !important;
 	z-index: 999999999;
 	white-space: nowrap;
+}
+
+.terminal {
+  overflow-y: scroll;
+  transition-property: max-height, padding; 
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in-out;
+  height:auto;
+  max-height: 30rem;
+	padding: 2rem;
+	opacity: 1;
+}
+
+.terminal .output{
+	opacity: 1;
+	transition: opacity 0.5s;
+	transition-delay: 0.3s;
+}
+
+.terminal-collapsed {
+  max-height:0;
+	padding:0;
+	transition-property: max-height, padding; 
+	transition-duration: 0.2s;
+	transition-timing-function: ease-out;
 }

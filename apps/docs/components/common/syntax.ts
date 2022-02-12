@@ -4,10 +4,12 @@ import Prism, { languages } from "prismjs";
 export const bhaiLangSyntax = languages.extend('clike', {
   comment: [
     {
-      pattern: /^\/\/.*/
+      pattern: /(^|[^\\:])\/\/.*/,
+      lookbehind: true,
+      greedy: true
     },
     {
-      pattern: /^\/\*[\s\S]*?\*\//,
+      pattern: /\/\*[\s\S]*?\*\/|([^\\:]|^)\/\/.*$/,
       lookbehind: true,
       greedy: true
     }
@@ -17,7 +19,7 @@ export const bhaiLangSyntax = languages.extend('clike', {
     greedy: true
   },
   keyword:
-    /\b(?:hi bhai|bye bhai|bol bhai|bhai ye hai)\b/,
+    /\b(?:hi bhai|bye bhai|bol bhai|bhai ye hai|nulla)\b/,
   boolean: /\b(?:sahi|galat)\b/,
   number: /(?:(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:e[-+]?\d+)?)i?/i,
   operator:
