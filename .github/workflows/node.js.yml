@@ -29,7 +29,7 @@ jobs:
       - run: npm run build
       - run: npm run test
       - name: Changes
-      - uses: dorny/paths-filter@v2
+        uses: dorny/paths-filter@v2
         id: filter
         with:
           filters: |
