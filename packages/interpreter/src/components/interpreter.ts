@@ -15,7 +15,12 @@ export default class Interpreter {
   }
 
   interpret(code: string) {
-    const ast = this._parser.parse(code);
-    InterpreterModule.getVisitor(ast.type).visitNode(ast);
+    try {
+      const ast = this._parser.parse(code);
+      InterpreterModule.getVisitor(ast.type).visitNode(ast);
+    } finally {
+      // reset the scope for next run
+      InterpreterModule.setCurrentScope(new Scope(null));
+    }
   }
 }

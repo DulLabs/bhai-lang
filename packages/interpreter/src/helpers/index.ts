@@ -72,3 +72,5 @@ export function getOperationValue(
       throw new InvalidStateException(`Unsupported operator: ${operator}`);
   }
 }
+
+

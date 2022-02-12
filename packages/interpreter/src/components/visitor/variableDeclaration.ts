@@ -1,5 +1,5 @@
 import Visitor from ".";
-import { ASTNode } from "bhai-lang-parser";
+import { ASTNode, NodeType } from "bhai-lang-parser";
 
 import InvalidStateException from "../../exceptions/invalidStateException";
 import InterpreterModule from "../../module/interpreterModule";
@@ -12,10 +12,19 @@ export default class VariableDeclaration implements Visitor {
     }
 
     const identifier = node.id.name;
-    const value = InterpreterModule.getVisitor(node.init.type).visitNode(
-      node.init
-    );
+
+    let value;
+
+    if (node.init.type === NodeType.NullLiteral)
+      value = null;
+    else if (node.init.type === NodeType.BooleanLiteral)
+      value = node.init.value === "sahi" ? true : false;
+    else
+      value = InterpreterModule.getVisitor(node.init.type).visitNode(
+        node.init);
+
     const currentScope = InterpreterModule.getCurrentScope();
+    
     if (identifier) {
       currentScope.declare(identifier, value);
     }
