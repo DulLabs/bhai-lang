@@ -2,38 +2,25 @@ import { Parser } from "../components/parser";
 import Program from "../components/parser/program";
 import BlockStatement from "../components/parser/statement/blockStatement";
 import EmptyStatement from "../components/parser/statement/emptyStatement";
-import AdditiveExpression
-  from "../components/parser/statement/expression/addititveExpression";
-import AssignmentExpression
-  from "../components/parser/statement/expression/assignmentExpression";
-import IdentifierExpression
-  from "../components/parser/statement/expression/identifierExpression";
-import BooleanLiteral
-  from "../components/parser/statement/expression/literals/booleanLiteral";
-import NullLiteral
-  from "../components/parser/statement/expression/literals/nullLiteral";
-import NumericLiteral
-  from "../components/parser/statement/expression/literals/numericLiteral";
-import StringLiteral
-  from "../components/parser/statement/expression/literals/stringLiteral";
-import MultiplicativeExpression
-  from "../components/parser/statement/expression/multiplicativeExpression";
-import ParanthesizedExpression
-  from "../components/parser/statement/expression/paranthesizedExpression";
-import PrimaryExpression
-  from "../components/parser/statement/expression/primaryExpression";
-import ExpressionStatement
-  from "../components/parser/statement/expressionStatement";
+import AdditiveExpression from "../components/parser/statement/expression/addititveExpression";
+import AssignmentExpression from "../components/parser/statement/expression/assignmentExpression";
+import IdentifierExpression from "../components/parser/statement/expression/identifierExpression";
+import BooleanLiteral from "../components/parser/statement/expression/literals/booleanLiteral";
+import NullLiteral from "../components/parser/statement/expression/literals/nullLiteral";
+import NumericLiteral from "../components/parser/statement/expression/literals/numericLiteral";
+import StringLiteral from "../components/parser/statement/expression/literals/stringLiteral";
+import MultiplicativeExpression from "../components/parser/statement/expression/multiplicativeExpression";
+import ParanthesizedExpression from "../components/parser/statement/expression/paranthesizedExpression";
+import PrimaryExpression from "../components/parser/statement/expression/primaryExpression";
+import ExpressionStatement from "../components/parser/statement/expressionStatement";
 import InitStatement from "../components/parser/statement/initStatement";
 import PrintStatement from "../components/parser/statement/printStatement";
-import VariableStatement
-  from "../components/parser/statement/variableStatement";
+import VariableStatement from "../components/parser/statement/variableStatement";
 import StatementList from "../components/parser/statementList";
 import TokenExecutor from "../components/parser/tokenExecutor";
 import TokenizerImpl from "../components/tokenizer";
 import { Tokenizer } from "../components/tokenizer/types";
 import { SPEC } from "../constants/bhaiLangSpec";
-
 
 export default class BhaiLangModule {
   private static _tokenizer?: Tokenizer;

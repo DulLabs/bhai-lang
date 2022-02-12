@@ -6,7 +6,6 @@ import { ASTNode } from "../../types/nodeTypes";
 
 export default class IdentifierExpression extends Expression {
   getExpression(): ASTNode {
-
     const name = this._tokenExecutor.eatTokenAndForwardLookahead(
       TokenTypes.IDENTIFIER_TYPE
     ).value;

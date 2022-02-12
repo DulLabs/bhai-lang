@@ -7,11 +7,12 @@ import RuntimeException from "../../exceptions/runtimeException";
 import { getOperationValue } from "../../helpers";
 import InterpreterModule from "../../module/interpreterModule";
 
-
 export default class AssignmentExpression implements Visitor {
   visitNode(node: ASTNode) {
     if (!node.left)
-      throw new InvalidStateException(`left node not present while executing: ${node.type}`);
+      throw new InvalidStateException(
+        `left node not present while executing: ${node.type}`
+      );
 
     let identifier = node.left.name;
     let value: unknown;
@@ -24,14 +25,17 @@ export default class AssignmentExpression implements Visitor {
     }
 
     if (identifier && node.operator) {
-
       const left = currentScope.get(identifier);
 
       if (left === null && node.operator !== "=")
-        throw new NallaPointerException(`Nalla operand ni jamta "${node.operator}" ke sath`);
+        throw new NallaPointerException(
+          `Nalla operand ni jamta "${node.operator}" ke sath`
+        );
 
       if ((left === true || left === false) && node.operator !== "=")
-        throw new RuntimeException(`Boolean operand ni jamta "${node.operator}" ke sath`);
+        throw new RuntimeException(
+          `Boolean operand ni jamta "${node.operator}" ke sath`
+        );
 
       const newValue = getOperationValue(
         { left: currentScope.get(identifier), right: value },

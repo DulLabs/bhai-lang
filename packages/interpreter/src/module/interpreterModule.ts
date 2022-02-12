@@ -20,7 +20,6 @@ import VariableDeclaration from "../components/visitor/variableDeclaration";
 import VariableStatement from "../components/visitor/variableStatement";
 import InvalidStateException from "../exceptions/invalidStateException";
 
-
 export default class InterpreterModule {
   private static _visitorMap = {
     [NodeType.Program]: new Program(),
@@ -55,7 +54,8 @@ export default class InterpreterModule {
   }
 
   static getInterpreter() {
-    this._interpreter = this._interpreter ?? new Interpreter(parser, this.getCurrentScope());
+    this._interpreter =
+      this._interpreter ?? new Interpreter(parser, this.getCurrentScope());
     return this._interpreter;
   }
 

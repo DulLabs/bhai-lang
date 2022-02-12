@@ -1,6 +1,5 @@
 import RuntimeException from "../exceptions/runtimeException";
 
-
 export default class Scope {
   _variables: Map<string, unknown> = new Map();
   _parentScope: Scope | null;
@@ -38,9 +37,10 @@ export default class Scope {
   }
 
   declare(identifier: string, value: unknown) {
-
     if (this._variables.has(identifier)) {
-      throw new RuntimeException(`Variable "${identifier}" pehle se exist karta hai bhai. Check karle.`);
+      throw new RuntimeException(
+        `Variable "${identifier}" pehle se exist karta hai bhai. Check karle.`
+      );
     }
 
     this._variables.set(identifier, value);
