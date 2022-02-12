@@ -6,7 +6,7 @@ export default function BhaiLangLogo() {
       <metadata>
       </metadata>
       <g transform="translate(0.000000,196.000000) scale(0.100000,-0.100000)"
-        fill="rgb(79 70 229)" stroke="none">
+        fill="#FF5733" stroke="none">
         <path d="M694 1951 c8 -12 -8 -13 -159 -12 -74 1 -105 -4 -175 -28 -83 -28
 -85 -30 -93 -67 -9 -46 2 -83 43 -134 l31 -39 -16 -46 c-8 -26 -20 -67 -26
 -93 -6 -26 -12 -54 -15 -62 -20 -80 -29 -106 -39 -115 -12 -9 -33 -101 -40

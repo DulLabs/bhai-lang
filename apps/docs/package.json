@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "TAILWIND_MODE=watch next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -25,7 +25,7 @@
     "next-remove-imports": "^1.0.6",
     "next-transpile-modules": "9.0.0",
     "postcss": "^8.4.6",
-    "tailwindcss": "^3.0.18",
+    "tailwindcss": "^3.0.22",
     "tsconfig": "*",
     "typescript": "^4.5.3"
   }

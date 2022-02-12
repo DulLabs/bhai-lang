@@ -3,7 +3,7 @@ import React from "react";
 import dynamic from "next/dynamic";
 import { highlight } from "prismjs";
 
-import { bhaiLangSyntax } from "./syntax";
+import { bhaiLangSyntax } from "../../common/syntax";
 
 import "prismjs/themes/prism-tomorrow.css";
 
@@ -13,7 +13,6 @@ const Editor = dynamic(() => import('react-simple-code-editor'), { ssr: false })
 const CodeEditor= (props: Props) => {
 const {handleChange, code} = props;
 
-
   const highlightWithLineNumbers = (input: string) =>
     highlight(input, bhaiLangSyntax, 'bhaiLang')
       .split('\n')
@@ -22,7 +21,7 @@ const {handleChange, code} = props;
   
 
   return (
-  <div className="mx-4 editorContainer">
+    <div className="editorContainer">
   <Editor
     value={code}
     onValueChange={code => handleChange(code)}
