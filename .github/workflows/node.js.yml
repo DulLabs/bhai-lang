@@ -21,6 +21,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Paths Changes Filter
+      uses: dorny/paths-filter@v2.10.2
+      id: changes
+      with:
+        filters: |
+          docs:
+            - 'apps/docs/**'
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
@@ -29,3 +37,13 @@ jobs:
     - run: npm ci
     - run: npm run build
     - run: npm run test
+    
+  deploy:
+    if: steps.changes.outputs.docs == 'true'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          publish_dir: ./out
