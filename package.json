@@ -20,28 +20,6 @@
     "turbo": "latest",
     "typescript": "^4.5.4"
   },
-  "turbo": {
-    "pipeline": {
-      "build": {
-        "dependsOn": [
-          "^build"
-        ],
-        "outputs": [
-          "dist/**",
-          ".next/**"
-        ]
-      },
-      "lint": {
-        "outputs": []
-      },
-      "dev": {
-        "cache": false
-      },
-      "test": {
-        "cache": false
-      }
-    }
-  },
   "keywords": [
     "bhai-lang",
     "programming language",
