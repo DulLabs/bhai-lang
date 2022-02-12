@@ -3,7 +3,6 @@ import BhaiLangModule from "../../../../module/bhaiLangModule";
 import TokenExecutor from "../../tokenExecutor";
 import { ASTNode } from "../../types/nodeTypes";
 
-
 export default abstract class Expression {
   protected _tokenExecutor: TokenExecutor;
 
@@ -46,7 +45,7 @@ export default abstract class Expression {
         this._tokenExecutor.eatTokenAndForwardLookahead(operatorToken);
       const right =
         Expression.getExpressionImpl(expressionType).getExpression();
-      
+
       left = {
         type: NodeType.BinaryExpression,
         operator: operator.value,
@@ -57,5 +56,4 @@ export default abstract class Expression {
 
     return left;
   }
-
 }

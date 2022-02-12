@@ -1,7 +1,6 @@
 import InvalidStateException from "../exceptions/invalidStateException";
 import RuntimeException from "../exceptions/runtimeException";
 
-
 export function checkNumberOperands(operands: {
   left: unknown;
   right: unknown;
@@ -72,5 +71,3 @@ export function getOperationValue(
       throw new InvalidStateException(`Unsupported operator: ${operator}`);
   }
 }
-
-

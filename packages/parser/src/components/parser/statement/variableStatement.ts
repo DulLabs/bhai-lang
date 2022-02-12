@@ -8,7 +8,6 @@ import { ASTNode } from "../types/nodeTypes";
 import Expression from "./expression";
 import NullLiteral from "./expression/literals/nullLiteral";
 
-
 export default class VariableStatement extends Statement {
   _nullLiteral: NullLiteral;
 

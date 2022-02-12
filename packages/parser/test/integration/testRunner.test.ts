@@ -3,17 +3,16 @@ import bhaiLangModule from "../../src/module/bhaiLangModule";
 
 import {
   NegativeExpressionsTests,
-  NegativeStatementTests
+  NegativeStatementTests,
 } from "./negativeTestsHelper";
 import { ExpressionsTests, StatementTests } from "./positiveTestsHelper";
-
 
 type posTestObjType = typeof StatementTests[0];
 
 type negTestObjType = {
-  name: string,
-  input: string,
-  output: SyntaxErrorConstructor | typeof NallaPointerException
+  name: string;
+  input: string;
+  output: SyntaxErrorConstructor | typeof NallaPointerException;
 };
 
 StatementTests.forEach((testCase) => {

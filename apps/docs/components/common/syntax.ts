@@ -1,29 +1,27 @@
 import Prism, { languages } from "prismjs";
 
-
-export const bhaiLangSyntax = languages.extend('clike', {
+export const bhaiLangSyntax = languages.extend("clike", {
   comment: [
     {
       pattern: /(^|[^\\:])\/\/.*/,
       lookbehind: true,
-      greedy: true
+      greedy: true,
     },
     {
       pattern: /\/\*[\s\S]*?\*\/|([^\\:]|^)\/\/.*$/,
       lookbehind: true,
-      greedy: true
-    }
+      greedy: true,
+    },
   ],
   string: {
     pattern: /(["'])((?:\\\1|(?:(?!\1)).)*)(\1)/,
-    greedy: true
+    greedy: true,
   },
-  keyword:
-    /\b(?:hi bhai|bye bhai|bol bhai|bhai ye hai|nulla)\b/,
+  keyword: /\b(?:hi bhai|bye bhai|bol bhai|bhai ye hai|nulla)\b/,
   boolean: /\b(?:sahi|galat)\b/,
   number: /(?:(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:e[-+]?\d+)?)i?/i,
   operator:
-    /[*/%^!=]=?|~|\+[=+]?|-[=-]?|\|[=|]?|&(?:=|&|\^=?)?|>(?:>=?|=)?|<(?:<=?|=|-)?|:=|\.\.\./
-})
+    /[*/%^!=]=?|~|\+[=+]?|-[=-]?|\|[=|]?|&(?:=|&|\^=?)?|>(?:>=?|=)?|<(?:<=?|=|-)?|:=|\.\.\./,
+});
 
-Prism.languages.bhaiLang = bhaiLangSyntax
+Prism.languages.bhaiLang = bhaiLangSyntax;

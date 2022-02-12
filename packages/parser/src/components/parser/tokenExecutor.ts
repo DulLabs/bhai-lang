@@ -1,7 +1,6 @@
 import { TokenTypes } from "../../constants/bhaiLangSpec";
 import { Token, Tokenizer } from "../tokenizer/types";
 
-
 export default class TokenExecutor {
   private _tokenizer: Tokenizer;
   private _lookahead: Token | null = null;
