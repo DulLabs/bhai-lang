@@ -52,7 +52,7 @@ jobs:
               - 'apps/docs/**'
 
       - name: Deploy
-        if: steps.changes.outputs.docs == 'true'
+        if: github.ref == 'refs/heads/develop'
         uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
