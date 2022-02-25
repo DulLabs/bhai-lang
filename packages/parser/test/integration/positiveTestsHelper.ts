@@ -257,6 +257,24 @@ export const ExpressionsTests = [
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"ExpressionStatement\",\"expression\":{\"type\":\"BinaryExpression\",\"operator\":\"+\",\"left\":{\"type\":\"BinaryExpression\",\"operator\":\"*\",\"left\":{\"type\":\"IdentifierExpression\",\"name\":\"a\"},\"right\":{\"type\":\"BinaryExpression\",\"operator\":\"+\",\"left\":{\"type\":\"NumericLiteral\",\"value\":4},\"right\":{\"type\":\"NumericLiteral\",\"value\":8}}},\"right\":{\"type\":\"NumericLiteral\",\"value\":10}}}]}}`,
   },
+  {
+    name: "paranthesized expression test with assignment expression, should success",
+    input: `
+    hi bhai
+    (x = 9);
+    bye bhai;
+    `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}}}]}}`,
+  },
+  {
+    name: "paranthesized expression test with assignment expression, should success",
+    input: `
+    hi bhai
+    (x >= 9);
+    bye bhai;
+    `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":">=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}}}]}}`,
+  },
   // nalla and boolean expression test
   {
     name: "complex expression test with one nalla operand, should throw an exception",
@@ -338,5 +356,90 @@ export const ExpressionsTests = [
         bye bhai;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"PrintStatement","expressions":[{"type":"BinaryExpression","operator":"+","left":{"type":"NullLiteral","value":"nalla"},"right":{"type":"NumericLiteral","value":5}}]}]}}`,
+  },
+];
+
+export const IfStatementTests = [
+  {
+    name: "if statement success test - 1: only if",
+    input: `
+    hi bhai
+    agar bhai (sahi) {
+    }
+    bye bhai;
+      `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"IfStatement","test":{"type":"BooleanLiteral","value":"sahi"},"consequent":{"type":"BlockStatement","body":[]},"alternate":{"type":"NullLiteral","value":"nalla"}}]}}`,
+  },
+  {
+    name: "if statement success test - 2: if else both",
+    input: `
+    hi bhai
+    agar bhai (sahi) {
+    } warna bhai {
+
+    }
+    bye bhai;
+      `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"IfStatement","test":{"type":"BooleanLiteral","value":"sahi"},"consequent":{"type":"BlockStatement","body":[]},"alternate":{"type":"BlockStatement","body":[]}}]}}`,
+  },
+  {
+    name: "if statement success test - 3: if only with comarison condn",
+    input: `
+    hi bhai
+    bhai ye hai x = 9;
+    agar bhai (x >= 9) {
+      x = 5;
+    } 
+    bye bhai;
+      `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"x"},"init":{"type":"NumericLiteral","value":9}}]},{"type":"IfStatement","test":{"type":"BinaryExpression","operator":">=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":5}}}]},"alternate":{"type":"NullLiteral","value":"nalla"}}]}}`,
+  },
+  {
+    name: "if statement success test - 4: if only with equality condn",
+    input: `
+    hi bhai
+    bhai ye hai x = 9;
+    agar bhai (x == 9) {
+      x = 5;
+    } 
+    bye bhai;
+      `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"x"},"init":{"type":"NumericLiteral","value":9}}]},{"type":"IfStatement","test":{"type":"BinaryExpression","operator":"==","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":5}}}]},"alternate":{"type":"NullLiteral","value":"nalla"}}]}}`,
+  },
+  {
+    name: "if statement success test - 4: if only with equality condn",
+    input: `
+    hi bhai
+    bhai ye hai x = 9;
+    agar bhai (x == 9) {
+      x = 5;
+    } 
+    bye bhai;
+      `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"x"},"init":{"type":"NumericLiteral","value":9}}]},{"type":"IfStatement","test":{"type":"BinaryExpression","operator":"==","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":5}}}]},"alternate":{"type":"NullLiteral","value":"nalla"}}]}}`,
+  },
+  {
+    name: "if statement success test - 5: if only with inequality condn",
+    input: `
+    hi bhai
+    bhai ye hai x = 9;
+    agar bhai (x != 9) {
+      x = 5;
+    } 
+    bye bhai;
+      `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"x"},"init":{"type":"NumericLiteral","value":9}}]},{"type":"IfStatement","test":{"type":"BinaryExpression","operator":"!=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":5}}}]},"alternate":{"type":"NullLiteral","value":"nalla"}}]}}`,
+  },
+  {
+    name: "if statement success test - 6: else with only expression statement",
+    input: `
+    hi bhai
+    bhai ye hai x = 9;
+    agar bhai (x != 9) {
+      x = 5;
+    } warna bhai (x >= 9);
+    bye bhai;
+      `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"x"},"init":{"type":"NumericLiteral","value":9}}]},{"type":"IfStatement","test":{"type":"BinaryExpression","operator":"!=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":5}}}]},"alternate":{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":">=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}}}}]}}`,
   },
 ];

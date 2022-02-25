@@ -3,9 +3,10 @@ import bhaiLangModule from "../../src/module/bhaiLangModule";
 
 import {
   NegativeExpressionsTests,
-  NegativeStatementTests,
+  NegativeStatementTests
 } from "./negativeTestsHelper";
 import { ExpressionsTests, StatementTests } from "./positiveTestsHelper";
+
 
 type posTestObjType = typeof StatementTests[0];
 
@@ -48,7 +49,13 @@ function _runNegativeTests(testCase: negTestObjType) {
 
 // test("jest test", () => {
 //   const parser = bhaiLangModule.getParser();
-//   console.debug(JSON.stringify(parser.parse(`hi bhai
-//   bol bhai nalla + 5;
-//   bye bhai;`)));
+//   console.debug(JSON.stringify(parser.parse(`
+//   hi bhai
+//     bhai ye hai x = 9;
+//     agar bhai (x != 9) {
+//       x = 5;
+//     } warna bhai (x >= 9);
+//     bye bhai;
+    
+//   `)));
 // })
