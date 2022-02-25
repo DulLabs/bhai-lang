@@ -4,13 +4,14 @@ import { TokenTypes } from "../../../../constants/bhaiLangSpec";
 import { NodeType } from "../../../../constants/constants";
 import { ASTNode } from "../../types/nodeTypes";
 
+
 export default class AssignmentExpression extends Expression {
-  private _additiveExpression = Expression.getExpressionImpl(
-    NodeType.AdditiveExpression
+  private _logicalORExpression = Expression.getExpressionImpl(
+    NodeType.LogicalORExpression
   );
 
   getExpression(): ASTNode {
-    const left = this._additiveExpression.getExpression();
+    const left = this._logicalORExpression.getExpression();
 
     // case if there is no AssignmentOperator but only normal additive expression => x + y
     if (!this._isAssignmentOperator(this._tokenExecutor.getLookahead()?.type)) {
