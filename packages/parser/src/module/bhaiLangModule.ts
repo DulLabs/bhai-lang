@@ -2,25 +2,47 @@ import { Parser } from "../components/parser";
 import Program from "../components/parser/program";
 import BlockStatement from "../components/parser/statement/blockStatement";
 import EmptyStatement from "../components/parser/statement/emptyStatement";
-import AdditiveExpression from "../components/parser/statement/expression/addititveExpression";
-import AssignmentExpression from "../components/parser/statement/expression/assignmentExpression";
-import IdentifierExpression from "../components/parser/statement/expression/identifierExpression";
-import BooleanLiteral from "../components/parser/statement/expression/literals/booleanLiteral";
-import NullLiteral from "../components/parser/statement/expression/literals/nullLiteral";
-import NumericLiteral from "../components/parser/statement/expression/literals/numericLiteral";
-import StringLiteral from "../components/parser/statement/expression/literals/stringLiteral";
-import MultiplicativeExpression from "../components/parser/statement/expression/multiplicativeExpression";
-import ParanthesizedExpression from "../components/parser/statement/expression/paranthesizedExpression";
-import PrimaryExpression from "../components/parser/statement/expression/primaryExpression";
-import ExpressionStatement from "../components/parser/statement/expressionStatement";
+import AdditiveExpression
+  from "../components/parser/statement/expression/addititveExpression";
+import AssignmentExpression
+  from "../components/parser/statement/expression/assignmentExpression";
+import EqualityExpression
+  from "../components/parser/statement/expression/equalityExpression";
+import IdentifierExpression
+  from "../components/parser/statement/expression/identifierExpression";
+import BooleanLiteral
+  from "../components/parser/statement/expression/literals/booleanLiteral";
+import NullLiteral
+  from "../components/parser/statement/expression/literals/nullLiteral";
+import NumericLiteral
+  from "../components/parser/statement/expression/literals/numericLiteral";
+import StringLiteral
+  from "../components/parser/statement/expression/literals/stringLiteral";
+import LogicalANDExpression
+  from "../components/parser/statement/expression/logicalANDExpression";
+import LogicalORExpression
+  from "../components/parser/statement/expression/logicalORExpression";
+import MultiplicativeExpression
+  from "../components/parser/statement/expression/multiplicativeExpression";
+import ParanthesizedExpression
+  from "../components/parser/statement/expression/paranthesizedExpression";
+import PrimaryExpression
+  from "../components/parser/statement/expression/primaryExpression";
+import RelationalExpression
+  from "../components/parser/statement/expression/relationalExpression";
+import ExpressionStatement
+  from "../components/parser/statement/expressionStatement";
+import IfStatement from "../components/parser/statement/ifStatement";
 import InitStatement from "../components/parser/statement/initStatement";
 import PrintStatement from "../components/parser/statement/printStatement";
-import VariableStatement from "../components/parser/statement/variableStatement";
+import VariableStatement
+  from "../components/parser/statement/variableStatement";
 import StatementList from "../components/parser/statementList";
 import TokenExecutor from "../components/parser/tokenExecutor";
 import TokenizerImpl from "../components/tokenizer";
 import { Tokenizer } from "../components/tokenizer/types";
 import { SPEC } from "../constants/bhaiLangSpec";
+
 
 export default class BhaiLangModule {
   private static _tokenizer?: Tokenizer;
@@ -41,9 +63,14 @@ export default class BhaiLangModule {
   private static _stringLiteral?: StringLiteral;
   private static _idetifierExpression?: IdentifierExpression;
   private static _variableStatement?: VariableStatement;
+  private static _ifStatement?: IfStatement;
   private static _assignmentExpression?: AssignmentExpression;
   private static _booleanLiteral?: BooleanLiteral;
   private static _nullLiteral?: NullLiteral;
+  private static _equalityExpression?: EqualityExpression;
+  private static _logicalANDExpression?: LogicalANDExpression;
+  private static _logicalORExpression?: LogicalORExpression;
+  private static _relationalExpression?: RelationalExpression;
 
   static getTokenizer() {
     if (!this._tokenizer) this._tokenizer = new TokenizerImpl(SPEC);
@@ -81,6 +108,14 @@ export default class BhaiLangModule {
     }
 
     return this._printStatement;
+  }
+
+  static getIfStatement() {
+    if (!this._ifStatement) {
+      this._ifStatement = new IfStatement(this.getTokenExecutor(), this.getNullLiteral());
+    }
+
+    return this._ifStatement;
   }
 
   static getExpressionStatement() {
@@ -167,6 +202,42 @@ export default class BhaiLangModule {
       );
 
     return this._idetifierExpression;
+  }
+
+  static getEqualityExpression() {
+    if (!this._equalityExpression)
+      this._equalityExpression = new EqualityExpression(
+        this.getTokenExecutor()
+      );
+
+    return this._equalityExpression;
+  }
+
+  static getLogicalANDExpression() {
+    if (!this._logicalANDExpression)
+      this._logicalANDExpression = new LogicalANDExpression(
+        this.getTokenExecutor()
+      );
+
+    return this._logicalANDExpression;
+  }
+
+  static getLogicalORExpression() {
+    if (!this._logicalORExpression)
+      this._logicalORExpression = new LogicalORExpression(
+        this.getTokenExecutor()
+      );
+
+    return this._logicalORExpression;
+  }
+
+  static getRelationalExpression() {
+    if (!this._relationalExpression)
+      this._relationalExpression = new RelationalExpression(
+        this.getTokenExecutor()
+      );
+
+    return this._relationalExpression;
   }
 
   static getAssignmentExpression() {

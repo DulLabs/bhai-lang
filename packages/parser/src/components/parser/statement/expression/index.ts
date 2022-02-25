@@ -3,6 +3,7 @@ import BhaiLangModule from "../../../../module/bhaiLangModule";
 import TokenExecutor from "../../tokenExecutor";
 import { ASTNode } from "../../types/nodeTypes";
 
+
 export default abstract class Expression {
   protected _tokenExecutor: TokenExecutor;
 
@@ -29,25 +30,52 @@ export default abstract class Expression {
       case NodeType.AssignmentExpression:
         return BhaiLangModule.getAssignmentExpression();
 
+      case NodeType.EqualityExpression:
+        return BhaiLangModule.getEqualityExpression();
+
+      case NodeType.LogicalANDExpression:
+        return BhaiLangModule.getLogicalANDExpression();
+
+      case NodeType.LogicalORExpression:
+        return BhaiLangModule.getLogicalORExpression();
+
+      case NodeType.RelationalExpression:
+        return BhaiLangModule.getRelationalExpression();
+
       default:
         return BhaiLangModule.getIndentifierExpression();
     }
   }
 
   protected getBinaryExpression(
-    expressionType: keyof typeof NodeType,
+    downstreamExpressionType: keyof typeof NodeType,
     operatorToken: string
   ) {
-    let left = Expression.getExpressionImpl(expressionType).getExpression();
+    return this._getExpression(downstreamExpressionType, operatorToken, NodeType.BinaryExpression);
+  }
+
+  protected getLogicalExpression(
+    downstreamExpressionType: keyof typeof NodeType,
+    operatorToken: string
+    ) {
+    return this._getExpression(downstreamExpressionType, operatorToken, NodeType.LogicalExpression);
+  }
+
+  private _getExpression(
+    downstreamExpressionType: keyof typeof NodeType,
+    operatorToken: string,
+    expressionType: keyof typeof NodeType
+    ) {
+    let left = Expression.getExpressionImpl(downstreamExpressionType).getExpression();
 
     while (this._tokenExecutor.getLookahead()?.type === operatorToken) {
       const operator =
         this._tokenExecutor.eatTokenAndForwardLookahead(operatorToken);
       const right =
-        Expression.getExpressionImpl(expressionType).getExpression();
+        Expression.getExpressionImpl(downstreamExpressionType).getExpression();
 
       left = {
-        type: NodeType.BinaryExpression,
+        type: expressionType,
         operator: operator.value,
         left,
         right,
@@ -56,4 +84,5 @@ export default abstract class Expression {
 
     return left;
   }
+
 }

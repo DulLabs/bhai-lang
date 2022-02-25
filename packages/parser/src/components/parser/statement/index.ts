@@ -4,6 +4,7 @@ import { Token } from "../../tokenizer/types";
 import TokenExecutor from "../tokenExecutor";
 import { ASTNode } from "../types/nodeTypes";
 
+
 export default abstract class Statement {
   protected _tokenExecutor: TokenExecutor;
 
@@ -26,6 +27,9 @@ export default abstract class Statement {
 
       case TokenTypes.BHAI_YE_HAI_TYPE:
         return BhaiLangModule.getVariableStatement();
+
+      case TokenTypes.AGAR_BHAI:
+        return BhaiLangModule.getIfStatement();
 
       default:
         return BhaiLangModule.getExpressionStatement();

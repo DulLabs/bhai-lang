@@ -263,3 +263,36 @@ export const NegativeExpressionsTests = [
     output: SyntaxError,
   },
 ];
+
+export const IfStatementNagativeTests = [
+  {
+    name: "If statement test - nothing after if condition , should throw an exception",
+    input: `
+        hi bhai
+        agar bhai (sahi)
+      `,
+    output: SyntaxError,
+  },
+  {
+    name: "If statement test - no if condition before else , should throw an exception",
+    input: `
+        hi bhai
+        warna bhai {
+
+        }
+        bye bhai;
+      `,
+    output: SyntaxError,
+  },
+  {
+    name: "If statement test - if without a condition , should throw an exception",
+    input: `
+        hi bhai
+       agar bhai {
+
+       }
+        bye bhai;
+      `,
+    output: SyntaxError,
+  },
+];

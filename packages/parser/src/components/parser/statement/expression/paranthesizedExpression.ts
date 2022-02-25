@@ -4,6 +4,7 @@ import { TokenTypes } from "../../../../constants/bhaiLangSpec";
 import { NodeType } from "../../../../constants/constants";
 import { ASTNode } from "../../types/nodeTypes";
 
+
 export default class ParanthesizedExpression extends Expression {
   getExpression(): ASTNode {
     this._tokenExecutor.eatTokenAndForwardLookahead(
@@ -11,7 +12,7 @@ export default class ParanthesizedExpression extends Expression {
     );
 
     const expression = Expression.getExpressionImpl(
-      NodeType.AdditiveExpression
+      NodeType.AssignmentExpression
     ).getExpression();
 
     this._tokenExecutor.eatTokenAndForwardLookahead(

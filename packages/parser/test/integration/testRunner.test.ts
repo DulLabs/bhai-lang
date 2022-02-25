@@ -2,10 +2,16 @@ import NallaPointerException from "../../src/exceptions/nallaPointerException";
 import bhaiLangModule from "../../src/module/bhaiLangModule";
 
 import {
+  IfStatementNagativeTests,
   NegativeExpressionsTests,
-  NegativeStatementTests,
+  NegativeStatementTests
 } from "./negativeTestsHelper";
-import { ExpressionsTests, StatementTests } from "./positiveTestsHelper";
+import {
+  ExpressionsTests,
+  IfStatementTests,
+  StatementTests
+} from "./positiveTestsHelper";
+
 
 type posTestObjType = typeof StatementTests[0];
 
@@ -21,6 +27,14 @@ StatementTests.forEach((testCase) => {
 
 ExpressionsTests.forEach((testCase) => {
   _runPositiveTests(testCase);
+});
+
+IfStatementTests.forEach((testCase) => {
+  _runPositiveTests(testCase);
+});
+
+IfStatementNagativeTests.forEach((testCase) => {
+  _runNegativeTests(testCase);
 });
 
 NegativeStatementTests.forEach((testCase) => {
@@ -48,7 +62,12 @@ function _runNegativeTests(testCase: negTestObjType) {
 
 // test("jest test", () => {
 //   const parser = bhaiLangModule.getParser();
-//   console.debug(JSON.stringify(parser.parse(`hi bhai
-//   bol bhai nalla + 5;
-//   bye bhai;`)));
+//   console.debug(JSON.stringify(parser.parse(`
+//   hi bhai
+//     bhai ye hai x = 9;
+//     agar bhai (x != 9)
+//       x = 5;
+//     warna bhai (x >= 9);
+//     bye bhai;
+//   `)));
 // })
