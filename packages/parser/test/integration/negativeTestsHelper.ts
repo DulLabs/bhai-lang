@@ -168,6 +168,16 @@ export const NegativeStatementTests = [
       `,
     output: SyntaxError,
   },
+
+  // while statement negative tests
+  {
+    name: "variable statement test with no other token, should throw an exception",
+    input: `
+    hi bhai
+    jab tak bhai (x > 9)
+      `,
+    output: SyntaxError,
+  },
 ];
 
 export const NegativeExpressionsTests = [

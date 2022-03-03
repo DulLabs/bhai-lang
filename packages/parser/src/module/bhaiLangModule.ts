@@ -1,6 +1,7 @@
 import { Parser } from "../components/parser";
 import Program from "../components/parser/program";
 import BlockStatement from "../components/parser/statement/blockStatement";
+import BreakStatement from "../components/parser/statement/breakStatement";
 import EmptyStatement from "../components/parser/statement/emptyStatement";
 import AdditiveExpression
   from "../components/parser/statement/expression/addititveExpression";
@@ -37,6 +38,7 @@ import InitStatement from "../components/parser/statement/initStatement";
 import PrintStatement from "../components/parser/statement/printStatement";
 import VariableStatement
   from "../components/parser/statement/variableStatement";
+import WhileStatement from "../components/parser/statement/whileStatement";
 import StatementList from "../components/parser/statementList";
 import TokenExecutor from "../components/parser/tokenExecutor";
 import TokenizerImpl from "../components/tokenizer";
@@ -71,6 +73,8 @@ export default class BhaiLangModule {
   private static _logicalANDExpression?: LogicalANDExpression;
   private static _logicalORExpression?: LogicalORExpression;
   private static _relationalExpression?: RelationalExpression;
+  private static _breakStatement?: BreakStatement;
+  private static _whileStatement?: WhileStatement;
 
   static getTokenizer() {
     if (!this._tokenizer) this._tokenizer = new TokenizerImpl(SPEC);
@@ -116,6 +120,22 @@ export default class BhaiLangModule {
     }
 
     return this._ifStatement;
+  }
+
+  static getBreakStatement() {
+    if (!this._breakStatement) {
+      this._breakStatement = new BreakStatement(this.getTokenExecutor());
+    }
+
+    return this._breakStatement;
+  }
+
+  static getWhileStatement() {
+    if (!this._whileStatement) {
+      this._whileStatement = new WhileStatement(this.getTokenExecutor());
+    }
+
+    return this._whileStatement;
   }
 
   static getExpressionStatement() {

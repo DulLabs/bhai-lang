@@ -9,7 +9,8 @@ import {
 import {
   ExpressionsTests,
   IfStatementTests,
-  StatementTests
+  StatementTests,
+  WhileStatementTests
 } from "./positiveTestsHelper";
 
 
@@ -30,6 +31,10 @@ ExpressionsTests.forEach((testCase) => {
 });
 
 IfStatementTests.forEach((testCase) => {
+  _runPositiveTests(testCase);
+});
+
+WhileStatementTests.forEach((testCase) => {
   _runPositiveTests(testCase);
 });
 
@@ -64,10 +69,6 @@ function _runNegativeTests(testCase: negTestObjType) {
 //   const parser = bhaiLangModule.getParser();
 //   console.debug(JSON.stringify(parser.parse(`
 //   hi bhai
-//     bhai ye hai x = 9;
-//     agar bhai (x != 9)
-//       x = 5;
-//     warna bhai (x >= 9);
-//     bye bhai;
+//   jab tak bhai (x > 9)
 //   `)));
 // })
