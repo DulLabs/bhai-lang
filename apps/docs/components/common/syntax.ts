@@ -1,5 +1,6 @@
 import Prism, { languages } from "prismjs";
 
+
 export const bhaiLangSyntax = languages.extend("clike", {
   comment: [
     {
@@ -17,7 +18,7 @@ export const bhaiLangSyntax = languages.extend("clike", {
     pattern: /(["'])((?:\\\1|(?:(?!\1)).)*)(\1)/,
     greedy: true,
   },
-  keyword: /\b(?:hi bhai|bye bhai|bol bhai|bhai ye hai|nulla)\b/,
+  keyword: /\b(?:hi bhai|bye bhai|bol bhai|bhai ye hai|nalla|agar bhai|warna bhai)\b/,
   boolean: /\b(?:sahi|galat)\b/,
   number: /(?:(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:e[-+]?\d+)?)i?/i,
   operator:

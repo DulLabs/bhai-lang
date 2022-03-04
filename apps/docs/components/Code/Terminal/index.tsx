@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+
 
 const Terminal = (props: Props) => {
   const { output, isSuccess } = props;
+  const terminalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => { 
+    if (output.length) {
+     terminalRef.current?.scrollIntoView(false); 
+    }
+  }, [output]);
+
   return (
     <div
+    ref={terminalRef}
       className={`${
         isSuccess !== null ? "terminal" : "terminal-collapsed"
       } bg-black text-white my-6`}

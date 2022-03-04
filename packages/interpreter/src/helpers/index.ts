@@ -1,6 +1,7 @@
 import InvalidStateException from "../exceptions/invalidStateException";
 import RuntimeException from "../exceptions/runtimeException";
 
+
 export function checkNumberOperands(operands: {
   left: unknown;
   right: unknown;
@@ -63,6 +64,56 @@ export function getOperationValue(
     case "/":
       if (checkNumberOperands(operands)) {
         return operands.left / operands.right;
+      }
+
+      throw exception;
+
+    case "==":
+      if (checkNumberOperands(operands)) {
+        return operands.left === operands.right;
+      }
+
+      if (checkStringOperands(operands)) {
+        return operands.left === operands.right;
+      }
+
+      throw exception;
+    
+    case "!=":
+      if (checkNumberOperands(operands)) {
+        return operands.left !== operands.right;
+      }
+
+      if (checkStringOperands(operands)) {
+        return operands.left !== operands.right;
+      }
+
+      throw exception;
+    
+    case ">":
+      if (checkNumberOperands(operands)) {
+        return operands.left > operands.right;
+      }
+
+      throw exception;
+    
+    case "<":
+      if (checkNumberOperands(operands)) {
+        return operands.left < operands.right;
+      }
+
+      throw exception;
+    
+    case ">=":
+      if (checkNumberOperands(operands)) {
+        return operands.left >= operands.right;
+      }
+
+      throw exception;
+
+    case "<=":
+      if (checkNumberOperands(operands)) {
+        return operands.left <= operands.right;
       }
 
       throw exception;

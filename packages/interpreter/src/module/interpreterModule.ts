@@ -10,6 +10,7 @@ import BooleanLiteral from "../components/visitor/booleanLiteral";
 import EmptyStatement from "../components/visitor/emptyStatement";
 import ExpressionStatement from "../components/visitor/expressionStatement";
 import IdentifierExpression from "../components/visitor/identifierExpression";
+import IfStatement from "../components/visitor/ifStatement";
 import InitStatement from "../components/visitor/initStatement";
 import NullLiteral from "../components/visitor/nullLiteral";
 import NumericLiteral from "../components/visitor/numericLiteral";
@@ -19,6 +20,7 @@ import StringLiteral from "../components/visitor/stringLiteral";
 import VariableDeclaration from "../components/visitor/variableDeclaration";
 import VariableStatement from "../components/visitor/variableStatement";
 import InvalidStateException from "../exceptions/invalidStateException";
+
 
 export default class InterpreterModule {
   private static _visitorMap = {
@@ -37,6 +39,7 @@ export default class InterpreterModule {
     [NodeType.NumericLiteral]: new NumericLiteral(),
     [NodeType.BooleanLiteral]: new BooleanLiteral(),
     [NodeType.NullLiteral]: new NullLiteral(),
+    [NodeType.IfStatement]: new IfStatement()
   } as Record<string, Visitor>;
 
   private static _currentScope: Scope;
