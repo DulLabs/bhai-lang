@@ -13,6 +13,10 @@ export const TokenTypes = {
 
   WARNA_BHAI: "warna bhai",
 
+  JAB_TAK_BHAI: "jab tak bhai",
+
+  BAS_KAR_BHAI: "bas kar bhai",
+
   NALLA_TYPE: "NALLA",
 
   SEMI_COLON_TYPE: ";",
@@ -78,6 +82,8 @@ export const SPEC = [
   { regex: /^\bagar bhai\b/, tokenType: TokenTypes.AGAR_BHAI },
   { regex: /^\bwarna bhai\b/, tokenType: TokenTypes.WARNA_BHAI },
   { regex: /^\bnalla\b/, tokenType: TokenTypes.NALLA_TYPE },
+  { regex: /^\bjab tak bhai\b/, tokenType: TokenTypes.JAB_TAK_BHAI },
+  { regex: /^\bbas kar bhai\b/, tokenType: TokenTypes.BAS_KAR_BHAI },
 
   // Number
   { regex: /^\d+/, tokenType: TokenTypes.NUMBER_TYPE },

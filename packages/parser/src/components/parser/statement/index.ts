@@ -31,6 +31,12 @@ export default abstract class Statement {
       case TokenTypes.AGAR_BHAI:
         return BhaiLangModule.getIfStatement();
 
+      case TokenTypes.JAB_TAK_BHAI:
+        return BhaiLangModule.getWhileStatement();
+
+      case TokenTypes.BAS_KAR_BHAI:
+        return BhaiLangModule.getBreakStatement();
+
       default:
         return BhaiLangModule.getExpressionStatement();
     }
