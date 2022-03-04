@@ -19,6 +19,7 @@ import Program from "../components/visitor/program";
 import StringLiteral from "../components/visitor/stringLiteral";
 import VariableDeclaration from "../components/visitor/variableDeclaration";
 import VariableStatement from "../components/visitor/variableStatement";
+import WhileStatement from "../components/visitor/whileStatement";
 import InvalidStateException from "../exceptions/invalidStateException";
 
 
@@ -39,7 +40,8 @@ export default class InterpreterModule {
     [NodeType.NumericLiteral]: new NumericLiteral(),
     [NodeType.BooleanLiteral]: new BooleanLiteral(),
     [NodeType.NullLiteral]: new NullLiteral(),
-    [NodeType.IfStatement]: new IfStatement()
+    [NodeType.IfStatement]: new IfStatement(),
+    [NodeType.WhileStatement]: new WhileStatement(),
   } as Record<string, Visitor>;
 
   private static _currentScope: Scope;
