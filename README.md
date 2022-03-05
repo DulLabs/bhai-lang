@@ -51,7 +51,7 @@ hi bhai
   bhai ye hai b = 10 + (15*20);
   bhai ye hai c = "two";
   bhai ye hai d = 'ok';
-  bhai ye hai e = nulla;
+  bhai ye hai e = nalla;
   bhai ye hai f = sahi;
   bhai ye hai g = galat;
 bye bhai
