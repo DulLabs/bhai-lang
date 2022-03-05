@@ -2,12 +2,29 @@ import React, { useState } from "react";
 
 import interpreter from "bhai-lang-interpreter";
 
+import { sendEvents } from "../../helpers";
+
 import CodeEditor from "./CodeEditor";
 import Terminal from "./Terminal";
 
+
 const initialCode = `
 hi bhai
-bol bhai "Hello World";
+ bol bhai "Hello World";
+ 
+  bhai ye hai a = 3;
+  bhai ye hai b = 0;
+
+  jab tak bhai (b < 5) {
+    bol bhai b;
+
+    agar bhai (b == a){
+      bol bhai "b is equal to a";
+    }
+
+    b += 1;
+  }
+
 bye bhai
 `;
 
@@ -42,12 +59,15 @@ const Code = (props: Props) => {
       }
     }
 
+    sendEvents("CodeExecuted", {success: isExecusionSuccess});
+
     setIsSuccess(isExecusionSuccess);
     setOutput(outputList);
     console.log = orignalConsoleLog;
   };
 
   const clearCode = () => {
+    sendEvents("CodeCleared");
     setCode("");
     setIsSuccess(null);
     setOutput([]);

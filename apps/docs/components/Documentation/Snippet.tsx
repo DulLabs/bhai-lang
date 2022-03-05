@@ -4,6 +4,7 @@ import { highlight } from "prismjs";
 
 import { bhaiLangSyntax } from "../common/syntax";
 
+
 const Snippet = (props: Props) => {
   const { code } = props;
 
@@ -14,7 +15,7 @@ const Snippet = (props: Props) => {
         __html: highlight(code, bhaiLangSyntax, "bhaiLang").replaceAll(
           "\n",
           "<br/>"
-        ),
+        ).replaceAll('  ', '&emsp;'),
       }}
     ></div>
   );

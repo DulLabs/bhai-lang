@@ -15,11 +15,11 @@ const features = [
     ),
     code: `This will be ignored
 
-    hi bhai
-    // Write code here
-    bye bhai
+hi bhai
+  // Write code here
+bye bhai
 
-    This too
+This too
     `,
   },
   {
@@ -37,7 +37,7 @@ const features = [
     a = a + 1;
     b = 21;
     c *= 2;
-    bye bhai
+bye bhai
     `,
   },
   {
@@ -55,10 +55,10 @@ const features = [
     bhai ye hai b = 10 + (15*20);
     bhai ye hai c = "two";
     bhai ye hai d = 'ok';
-    bhai ye hai e = nulla;
+    bhai ye hai e = nalla;
     bhai ye hai f = sahi;
     bhai ye hai g = galat;
-    bye bhai
+bye bhai
     `,
   },
   {
@@ -73,13 +73,48 @@ const features = [
     bol bhai "Hello World";
     bhai ye hai a = 10;
     {
-      bhai ye hai b = 20;
-      bol bhai a + b;
+       bhai ye hai b = 20;
+       bol bhai a + b;
     }
-    bol bhai 5, 'ok', nulla , sahi , galat;
-    bye bhai
+    bol bhai 5, 'ok', nalla , sahi , galat;
+bye bhai
     `,
   },
+  {
+    name: "Conditionals",
+    description: (
+      <>
+        Bhailang supports simple if else construct , <code className="language-cpp">agar bhai</code> block will execute if condition is <code className="language-cpp">sahi</code> and <code className="language-cpp">warna bhai</code> block will execute if condition is <code className="language-cpp">galat</code>.
+      </>
+    ),
+    code: `hi bhai
+    bhai ye hai a = 10;
+    agar bhai (a < 25) {
+      bol bhai "a is less than 25";
+    } warna bhai {
+      bol bhai "a is greater than or equal to 25";
+    }
+bye bhai
+    `
+  },
+  {
+    name: "Loops",
+    description: (
+      <>
+        Statements inside <code className="language-cpp">jab tak bhai</code> blocks are executed as long as a specified condition evaluates to <code className="language-cpp">sahi</code>. If the condition becomes <code className="language-cpp">galat</code>, statement within the loop stops executing and control passes to the statement following the loop. 
+      </>
+    ),
+    code: `hi bhai
+    bhai ye hai a = 0;
+    jab tak bhai (a < 10) {
+      bol bhai a;
+      a += 1;
+    }
+    bol bhai "done";
+bye bhai
+    `
+  }
+
 ];
 
 export default function Documentation() {
