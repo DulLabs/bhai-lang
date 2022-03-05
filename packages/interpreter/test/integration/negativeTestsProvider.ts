@@ -1,6 +1,7 @@
 import { RuntimeException } from "../../src";
 import NallaPointerException from "../../src/exceptions/nallaPointerException";
 
+
 export const NegativeTestCases = [
   {
     name: "interpreter assigning variable before declaration test, should throw an exception",
@@ -436,5 +437,40 @@ export const NegativeTestCases = [
         bye bhai;
       `,
     output: NallaPointerException,
+  },
+  // while loop negative tests
+  {
+    name: "infinite while loop, should throw an exception",
+    input: `
+        hi bhai
+        jab tak bhai (sahi) {
+
+        }
+        bye bhai;
+      `,
+    output: RuntimeException,
+  },
+  {
+    name: "infinite condition while loop, should throw an exception",
+    input: `
+        hi bhai
+        bhai ye hai a = 0;
+        jab tak bhai (a < 2) {
+          bol bhai "bhai";
+        }
+        bye bhai;
+      `,
+    output: RuntimeException,
+  },
+  {
+    name: "invalid use of break, should throw an exception",
+    input: `
+        hi bhai
+        bhai ye hai a = 0;
+        if (sahi)
+          bas kar bhai;
+        bye bhai;
+      `,
+    output: RuntimeException,
   },
 ];

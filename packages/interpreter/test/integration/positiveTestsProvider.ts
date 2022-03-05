@@ -254,4 +254,61 @@ export const WithOutputPositiveTests = [
     `,
     output: "galat",
   },
+  // while statement / loop tests
+  {
+    name: `whileStatement test with 1 time loop, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a = 0;
+      jab tak bhai (a < 1) {
+        bol bhai "bhai";
+        a += 1;
+      }
+      bye bhai;
+    `,
+    output: "bhai",
+  },
+  {
+    name: `whileStatement test with single break statement, should success`,
+    input: `
+      hi bhai;
+      jab tak bhai (sahi) 
+        bas kar bhai;
+      bol bhai "end";
+      bye bhai;
+    `,
+    output: "end",
+  },
+  {
+    name: `whileStatement test with nested loops, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a = 0;
+      jab tak bhai (a < 2) {
+        jab tak bhai (sahi)
+          bas kar bhai;
+        bol bhai "hello";
+        agar bhai (sahi)
+          bas kar bhai;
+      }
+      bye bhai;
+    `,
+    output: "hello",
+  },
+  {
+    name: `whileStatement with multiple breaks, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a = 0;
+      jab tak bhai (a < 2) {
+        bol bhai "hello";
+        agar bhai (sahi)
+          bas kar bhai;
+        bas kar bhai;
+        bas kar bhai;
+      }
+      bye bhai;
+    `,
+    output: "hello",
+  },
 ];
