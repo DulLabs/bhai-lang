@@ -42,7 +42,7 @@ bye bhai
 ```
 
 <h3 align="center">Types</h3>
-<p align="center">Numbers and strings are like other languages. Null values can be denoted using <i>nalla, sahi and galat</i> are the boolean values.</p>
+<p align="center">Numbers and strings are like other languages. Null values can be denoted using <i>nalla. sahi and galat</i> are the boolean values.</p>
 
 ```
 
