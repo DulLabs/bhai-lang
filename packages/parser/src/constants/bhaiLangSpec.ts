@@ -86,7 +86,7 @@ export const SPEC = [
   { regex: /^\bbas kar bhai\b/, tokenType: TokenTypes.BAS_KAR_BHAI },
 
   // Number
-  { regex: /^\d+/, tokenType: TokenTypes.NUMBER_TYPE },
+  { regex: /^-?\d+/, tokenType: TokenTypes.NUMBER_TYPE },
 
   // Boolean
   { regex: /^sahi/, tokenType: TokenTypes.BOOLEAN_TYPE },
