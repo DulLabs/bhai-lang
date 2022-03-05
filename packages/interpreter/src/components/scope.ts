@@ -1,11 +1,30 @@
 import RuntimeException from "../exceptions/runtimeException";
 
+
 export default class Scope {
   _variables: Map<string, unknown> = new Map();
+  _isLoop= false;
+  _isBreakStatement= false;
   _parentScope: Scope | null;
 
   constructor(parentScope: Scope | null) {
     this._parentScope = parentScope;
+  }
+
+  isLoop() {
+    return this._isLoop;
+  }
+
+  setLoop(isLoop: boolean) {
+    this._isLoop = isLoop;
+  }
+
+  setBreakStatement(isBreakStatement: boolean) {
+    this._isBreakStatement = isBreakStatement;
+  }
+
+  isBreakStatement() {
+    return this._isBreakStatement;
   }
 
   get(identifier: string): unknown {
