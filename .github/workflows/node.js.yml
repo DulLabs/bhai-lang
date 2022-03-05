@@ -42,6 +42,8 @@ jobs:
           cache: "npm"
       - run: npm ci
       - run: npm run build
+        env:
+          NEXT_PUBLIC_ANALYTICS_ID: ${{ secrets.ANALYTICS_ID }}
       - run: npm run test
       - name: Changes
         uses: dorny/paths-filter@v2
