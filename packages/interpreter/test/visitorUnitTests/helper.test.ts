@@ -3,8 +3,9 @@ import InvalidStateException from "../../src/exceptions/invalidStateException";
 import {
   checkNumberOperands,
   checkStringOperands,
-  getOperationValue,
+  getOperationValue
 } from "../../src/helpers";
+
 
 const testCaseProvider = [
   // checkNumberOperands tests
@@ -215,6 +216,191 @@ const getOperationValuePosTestCasesProvider = [
     output: 5,
     function: getOperationValue,
   },
+  {
+    name: `test getOperationValue "==" operator with number oprands, should success`,
+    input1: {
+      left: 3,
+      right: 3,
+    },
+    input2: "==",
+    output: true,
+    function: getOperationValue,
+  },
+  {
+    name: `test getOperationValue "==" operator with number oprands unequal, should success`,
+    input1: {
+      left: 5,
+      right: 3,
+    },
+    input2: "==",
+    output: false,
+    function: getOperationValue,
+  },
+  {
+    name: `test getOperationValue "==" operator with string oprands, should success`,
+    input1: {
+      left: "hell",
+      right: "hell",
+    },
+    input2: "==",
+    output: true,
+    function: getOperationValue,
+  },
+  {
+    name: `test getOperationValue "==" operator with string oprands unequal, should success`,
+    input1: {
+      left: "crap",
+      right: "hell",
+    },
+    input2: "==",
+    output: false,
+    function: getOperationValue,
+  },
+  // !=
+  {
+    name: `test getOperationValue "!=" operator with number oprands, should success`,
+    input1: {
+      left: 3,
+      right: 3,
+    },
+    input2: "!=",
+    output: false,
+    function: getOperationValue,
+  },
+  {
+    name: `test getOperationValue "!=" operator with number oprands unequal, should success`,
+    input1: {
+      left: 5,
+      right: 3,
+    },
+    input2: "!=",
+    output: true,
+    function: getOperationValue,
+  },
+  {
+    name: `test getOperationValue "!=" operator with string oprands, should success`,
+    input1: {
+      left: "hell",
+      right: "hell",
+    },
+    input2: "!=",
+    output: false,
+    function: getOperationValue,
+  },
+  {
+    name: `test getOperationValue "!=" operator with string oprands unequal, should success`,
+    input1: {
+      left: "crap",
+      right: "hell",
+    },
+    input2: "!=",
+    output: true,
+    function: getOperationValue,
+  },
+  // >
+  {
+    name: `test getOperationValue ">" operator with number oprands, should success`,
+    input1: {
+      left: 3,
+      right: 3,
+    },
+    input2: ">",
+    output: false,
+    function: getOperationValue,
+  },
+  {
+    name: `test getOperationValue ">" operator with number oprands left greater, should success`,
+    input1: {
+      left: 5,
+      right: 3,
+    },
+    input2: ">",
+    output: true,
+    function: getOperationValue,
+  },
+  // <
+  {
+    name: `test getOperationValue "<" operator with number oprands, should success`,
+    input1: {
+      left: 3,
+      right: 3,
+    },
+    input2: "<",
+    output: false,
+    function: getOperationValue,
+  },
+  {
+    name: `test getOperationValue "<" operator with number oprands left smaller, should success`,
+    input1: {
+      left: 1,
+      right: 3,
+    },
+    input2: "<",
+    output: true,
+    function: getOperationValue,
+  },
+  // >=
+  {
+    name: `test getOperationValue ">=" operator with number oprands equal, should success`,
+    input1: {
+      left: 3,
+      right: 3,
+    },
+    input2: ">=",
+    output: true,
+    function: getOperationValue,
+  },
+  {
+    name: `test getOperationValue ">=" operator with number oprands left greater, should success`,
+    input1: {
+      left: 5,
+      right: 3,
+    },
+    input2: ">=",
+    output: true,
+    function: getOperationValue,
+  },
+  {
+    name: `test getOperationValue ">=" operator with number oprands left smaller, should success`,
+    input1: {
+      left: 1,
+      right: 3,
+    },
+    input2: ">=",
+    output: false,
+    function: getOperationValue,
+  },
+  // <=
+  {
+    name: `test getOperationValue "<=" operator with number oprands equal, should success`,
+    input1: {
+      left: 3,
+      right: 3,
+    },
+    input2: "<=",
+    output: true,
+    function: getOperationValue,
+  },
+  {
+    name: `test getOperationValue "<=" operator with number oprands left greater, should success`,
+    input1: {
+      left: 5,
+      right: 3,
+    },
+    input2: "<=",
+    output: false,
+    function: getOperationValue,
+  },
+  {
+    name: `test getOperationValue "<=" operator with number oprands left smaller, should success`,
+    input1: {
+      left: 1,
+      right: 3,
+    },
+    input2: "<=",
+    output: true,
+    function: getOperationValue,
+  }
 ];
 
 const getOperationValueNegTestCasesProvider = [
@@ -316,6 +502,106 @@ const getOperationValueNegTestCasesProvider = [
     },
     input2: "#",
     exception: InvalidStateException,
+    function: getOperationValue,
+  },
+  {
+    name: `test getOperationValue "==" operator with one string & one number, should throw an exception`,
+    input1: {
+      left: 15,
+      right: "hell",
+    },
+    input2: "==",
+    exception: RuntimeException,
+    function: getOperationValue,
+  },
+  {
+    name: `test getOperationValue "!=" operator with one string & one number, should throw an exception`,
+    input1: {
+      left: 15,
+      right: "hell",
+    },
+    input2: "!=",
+    exception: RuntimeException,
+    function: getOperationValue,
+  },
+  {
+    name: `test getOperationValue ">" operator with one string & one number, should throw an exception`,
+    input1: {
+      left: 15,
+      right: "hell",
+    },
+    input2: ">",
+    exception: RuntimeException,
+    function: getOperationValue,
+  },
+  {
+    name: `test getOperationValue ">" operator with both string , should throw an exception`,
+    input1: {
+      left: "cap",
+      right: "hell",
+    },
+    input2: ">",
+    exception: RuntimeException,
+    function: getOperationValue,
+  },
+  {
+    name: `test getOperationValue "<" operator with one string & one number, should throw an exception`,
+    input1: {
+      left: 15,
+      right: "hell",
+    },
+    input2: "<",
+    exception: RuntimeException,
+    function: getOperationValue,
+  },
+  {
+    name: `test getOperationValue "<" operator with both string , should throw an exception`,
+    input1: {
+      left: "cap",
+      right: "hell",
+    },
+    input2: "<",
+    exception: RuntimeException,
+    function: getOperationValue,
+  },
+  {
+    name: `test getOperationValue ">=" operator with one string & one number, should throw an exception`,
+    input1: {
+      left: 15,
+      right: "hell",
+    },
+    input2: ">=",
+    exception: RuntimeException,
+    function: getOperationValue,
+  },
+  {
+    name: `test getOperationValue ">=" operator with both string , should throw an exception`,
+    input1: {
+      left: "cap",
+      right: "hell",
+    },
+    input2: ">=",
+    exception: RuntimeException,
+    function: getOperationValue,
+  },
+  {
+    name: `test getOperationValue "<=" operator with one string & one number, should throw an exception`,
+    input1: {
+      left: 15,
+      right: "hell",
+    },
+    input2: "<=",
+    exception: RuntimeException,
+    function: getOperationValue,
+  },
+  {
+    name: `test getOperationValue "<=" operator with both string , should throw an exception`,
+    input1: {
+      left: "cap",
+      right: "hell",
+    },
+    input2: "<=",
+    exception: RuntimeException,
     function: getOperationValue,
   },
 ];

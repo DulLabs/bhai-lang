@@ -134,6 +134,19 @@ export const NoOutputPositiveTests = [
       bye bhai
     `,
   },
+  // if statement test
+  {
+    name: "paranthesized expression test with multiple parenthesis, should success",
+    input: `
+    hi bhai
+    bhai ye hai x = 9;
+    agar bhai (x != 9) {
+      x = 5;
+      bol bhai x;
+    } warna bhai (x >= 9);
+    bye bhai;
+    `,
+  },
 ];
 
 export const WithOutputPositiveTests = [
@@ -254,4 +267,99 @@ export const WithOutputPositiveTests = [
     `,
     output: "galat",
   },
+  // while statement / loop tests
+  {
+    name: `whileStatement test with 1 time loop, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a = 0;
+      jab tak bhai (a < 1) {
+        bol bhai "bhai";
+        a += 1;
+      }
+      bye bhai;
+    `,
+    output: "bhai",
+  },
+  {
+    name: `whileStatement test with single break statement, should success`,
+    input: `
+      hi bhai;
+      jab tak bhai (sahi) 
+        bas kar bhai;
+      bol bhai "end";
+      bye bhai;
+    `,
+    output: "end",
+  },
+  {
+    name: `whileStatement test with nested loops, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a = 0;
+      jab tak bhai (a < 2) {
+        jab tak bhai (sahi)
+          bas kar bhai;
+        bol bhai "hello";
+        agar bhai (sahi)
+          bas kar bhai;
+      }
+      bye bhai;
+    `,
+    output: "hello",
+  },
+  {
+    name: `whileStatement with multiple breaks, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a = 0;
+      jab tak bhai (a < 2) {
+        bol bhai "hello";
+        agar bhai (sahi)
+          bas kar bhai;
+        bas kar bhai;
+        bas kar bhai;
+      }
+      bye bhai;
+    `,
+    output: "hello",
+  },
+  // if statement tests
+  {
+    name: `if statement success test - 1: only if, should success`,
+    input: `
+    hi bhai
+    agar bhai (sahi) {
+      bol bhai "bhai";
+    }
+    bye bhai;
+    `,
+    output: "bhai",
+  },
+  {
+    name: `if statement success test - 2: if else both, should success`,
+    input: `
+    hi bhai
+    agar bhai (sahi) {
+      bol bhai "sahi";
+    } warna bhai {
+      bol bhai "galat";
+    }
+    bye bhai;
+    `,
+    output: "sahi",
+  },
+  {
+    name: `if statement success test - 3: if only with comarison condn, should success`,
+    input: `
+    hi bhai
+    bhai ye hai x = 9;
+    agar bhai (x >= 9) {
+      x = 5;
+      bol bhai x;
+    } 
+    bye bhai;
+    `,
+    output: "5",
+  }
 ];

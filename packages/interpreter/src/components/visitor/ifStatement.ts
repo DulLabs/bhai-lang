@@ -15,16 +15,20 @@ export default class IfStatement implements Visitor {
         const consequent = node.consequent;
         if (consequent) {
           InterpreterModule.setCurrentScope(new Scope(parentScope));
+          InterpreterModule.getCurrentScope().setLoop(parentScope.isLoop());
            InterpreterModule.getVisitor(consequent.type).visitNode(consequent);
         }
       } else {
         const alternate = node.alternate;
         if (alternate) {
           InterpreterModule.setCurrentScope(new Scope(parentScope));
+          InterpreterModule.getCurrentScope().setLoop(parentScope.isLoop());
           InterpreterModule.getVisitor(alternate.type).visitNode(alternate);
         }
       }
     } 
+
+    parentScope.setBreakStatement(InterpreterModule.getCurrentScope().isBreakStatement());
 
     InterpreterModule.setCurrentScope(parentScope);
   }
