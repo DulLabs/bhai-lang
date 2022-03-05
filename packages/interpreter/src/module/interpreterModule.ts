@@ -7,6 +7,7 @@ import AssignmentExpression from "../components/visitor/assignmentExpression";
 import BinaryExpression from "../components/visitor/binaryExpression";
 import BlockStatement from "../components/visitor/blockStatement";
 import BooleanLiteral from "../components/visitor/booleanLiteral";
+import BreakStatement from "../components/visitor/breakStatement";
 import EmptyStatement from "../components/visitor/emptyStatement";
 import ExpressionStatement from "../components/visitor/expressionStatement";
 import IdentifierExpression from "../components/visitor/identifierExpression";
@@ -19,6 +20,7 @@ import Program from "../components/visitor/program";
 import StringLiteral from "../components/visitor/stringLiteral";
 import VariableDeclaration from "../components/visitor/variableDeclaration";
 import VariableStatement from "../components/visitor/variableStatement";
+import WhileStatement from "../components/visitor/whileStatement";
 import InvalidStateException from "../exceptions/invalidStateException";
 
 
@@ -39,7 +41,9 @@ export default class InterpreterModule {
     [NodeType.NumericLiteral]: new NumericLiteral(),
     [NodeType.BooleanLiteral]: new BooleanLiteral(),
     [NodeType.NullLiteral]: new NullLiteral(),
-    [NodeType.IfStatement]: new IfStatement()
+    [NodeType.IfStatement]: new IfStatement(),
+    [NodeType.WhileStatement]: new WhileStatement(),
+    [NodeType.BreakStatement]: new BreakStatement(),
   } as Record<string, Visitor>;
 
   private static _currentScope: Scope;
