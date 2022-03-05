@@ -9,7 +9,7 @@ export default class BreakStatement implements Visitor {
     if (InterpreterModule.getCurrentScope().isLoop()) {
       InterpreterModule.getCurrentScope().setBreakStatement(true);
     } else {
-      throw new RuntimeException("Kya bas kar bhai?? Loop kahan hai?");
+      throw new RuntimeException(`Kya "bas kar bhai"?? Loop kahan hai?`);
     }
   }
 }

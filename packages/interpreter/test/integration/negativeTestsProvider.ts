@@ -467,7 +467,7 @@ export const NegativeTestCases = [
     input: `
         hi bhai
         bhai ye hai a = 0;
-        if (sahi)
+        agar bhai (sahi)
           bas kar bhai;
         bye bhai;
       `,
