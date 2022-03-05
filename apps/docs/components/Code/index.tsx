@@ -12,10 +12,10 @@ const initialCode = `
 hi bhai
  bol bhai "Hello World";
  
-  bhai ye hai a = 5;
+  bhai ye hai a = 3;
   bhai ye hai b = 0;
 
-  jab tak bhai (b < 10) {
+  jab tak bhai (b < 5) {
     bol bhai b;
 
     agar bhai (b == a){

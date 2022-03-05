@@ -7,7 +7,7 @@ const Terminal = (props: Props) => {
 
   useEffect(() => { 
     if (output.length) {
-     terminalRef.current?.scrollIntoView(false); 
+      setTimeout(() => terminalRef.current?.scrollIntoView(false), 100);
     }
   }, [output]);
 
