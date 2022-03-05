@@ -1,17 +1,10 @@
 import Head from "next/head";
-import posthog from "posthog-js";
 
 import Code from "../components/Code";
 import Documentation from "../components/Documentation";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import { isLocalhost } from "../helpers";
 
-
-const ANALYTICS_ID = process.env.NEXT_PUBLIC_ANALYTICS_ID;
-if (!isLocalhost && ANALYTICS_ID) {
-  posthog.init(ANALYTICS_ID, { api_host: 'https://app.posthog.com' });
-}
 
 export default function Docs() {
   return (
