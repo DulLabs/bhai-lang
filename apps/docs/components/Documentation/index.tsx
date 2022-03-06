@@ -45,7 +45,7 @@ bye bhai
     description: (
       <>
         Numbers and strings are like other languages. Null values can be denoted
-        using <code className="language-cpp">nulla</code>.{" "}
+        using <code className="language-cpp">nalla</code>.{" "}
         <code className="language-cpp">sahi</code> and{" "}
         <code className="language-cpp">galat</code> are the boolean values.
       </>
