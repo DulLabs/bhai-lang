@@ -100,11 +100,11 @@ export const SPEC = [
 
   // Assignment operators: =, *=, /=, +=, -=
   { regex: /^=/, tokenType: TokenTypes.SIMPLE_ASSIGN_TYPE },
-  { regex: /^[\*\/\+\-]=/, tokenType: TokenTypes.COMPLEX_ASSIGN_TYPE },
+  { regex: /^[\*\%\/\+\-]=/, tokenType: TokenTypes.COMPLEX_ASSIGN_TYPE },
 
   // operator
   { regex: /^[+\-]/, tokenType: TokenTypes.ADDITIVE_OPERATOR_TYPE },
-  { regex: /^[*\/]/, tokenType: TokenTypes.MULTIPLICATIVE_OPERATOR_TYPE },
+  { regex: /^[*\/\%]/, tokenType: TokenTypes.MULTIPLICATIVE_OPERATOR_TYPE },
   {regex: /^[><]=?/, tokenType: TokenTypes.RELATIONAL_OPERATOR},
 
   // logical operators: &&, ||
