@@ -272,6 +272,34 @@ export const NegativeExpressionsTests = [
       `,
     output: SyntaxError,
   },
+  // logical expression test
+  {
+    name: "logical expression test with right operand missing, should throw an exception",
+    input: `
+    hi bhai
+    bhai ye hai a = b && ;
+    bye bhai;
+      `,
+    output: SyntaxError,
+  },
+  {
+    name: "logical expression test with left operand missing, should throw an exception",
+    input: `
+    hi bhai
+    bhai ye hai a = && b;
+    bye bhai;
+      `,
+    output: SyntaxError,
+  },
+  {
+    name: "logical expression test with both operand missing, should throw an exception",
+    input: `
+    hi bhai
+    agar bhai (&&);
+    bye bhai;
+      `,
+    output: SyntaxError,
+  },
 ];
 
 export const IfStatementNagativeTests = [
