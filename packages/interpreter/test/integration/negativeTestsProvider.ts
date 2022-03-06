@@ -473,4 +473,33 @@ export const NegativeTestCases = [
       `,
     output: RuntimeException,
   },
+  // logical expression negative tests
+  {
+    name: "use of nalla with &&, should throw an exception",
+    input: `
+        hi bhai
+        bol bhai nalla && 90;
+        bye bhai;
+      `,
+    output: NallaPointerException,
+  },
+  {
+    name: "use of nalla variable with &&, should throw an exception",
+    input: `
+        hi bhai
+        bhai ye hai a;
+        bol bhai a && 90;
+        bye bhai;
+      `,
+    output: NallaPointerException,
+  },
+  {
+    name: `printStatement test with boolean sahi galat and logical, should success`,
+    input: `
+      hi bhai;
+      bol bhai sahi != 10;
+      bye bhai;
+    `,
+    output: RuntimeException,
+  },
 ];

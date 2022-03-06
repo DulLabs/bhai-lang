@@ -7,6 +7,7 @@ import RuntimeException from "../../exceptions/runtimeException";
 import { getOperationValue } from "../../helpers";
 import InterpreterModule from "../../module/interpreterModule";
 
+
 export default class AssignmentExpression implements Visitor {
   visitNode(node: ASTNode) {
     if (!node.left)
@@ -42,6 +43,8 @@ export default class AssignmentExpression implements Visitor {
         node.operator
       );
       currentScope.assign(identifier, newValue);
+
+      return currentScope.get(identifier);
     }
   }
 }

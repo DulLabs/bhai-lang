@@ -118,6 +118,12 @@ export function getOperationValue(
 
       throw exception;
 
+    case "&&":
+      return operands.left && operands.right;
+
+    case "||":
+      return operands.left || operands.right;
+
     default:
       throw new InvalidStateException(`Unsupported operator: ${operator}`);
   }
