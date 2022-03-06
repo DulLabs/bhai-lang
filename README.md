@@ -13,6 +13,41 @@
 </p>
 <br>
 
+<h2 align="center">Installation</h2>
+
+```
+npm i -g bhailang
+```
+
+<h2 align="center">Usage</h2>
+
+<h4 align="left">Create new file</h4>
+
+```
+touch test.bhai
+```
+
+<h4 align="left">Edit file with a text editor or use <a href="https://bhailang.js.org/#playground">Bhai Lang PlayGround</a></h4>
+
+```
+hi bhai
+  bol bhai "Hello bhai";
+bye bhai
+
+```
+
+<h4 align="left">Run</h4>
+
+```
+bhailang test.bhai
+```
+
+<h4 align="left">Output</h4>
+
+```
+hello bhai
+```
+
 <h2 align="center">Documentation</h2>
 
 <h3 align="center">General</h3>
