@@ -4,6 +4,8 @@
 <a href="https://lgtm.com/projects/g/DulLabs/bhai-lang/context:javascript"><img alt="Language grade: JavaScript" src="https://img.shields.io/lgtm/grade/javascript/g/DulLabs/bhai-lang.svg?logo=lgtm&logoWidth=18"/></a>
 <a href="https://github.com/DulLabs/bhai-lang/actions/workflows/node.js.yml/badge.svg"><img alt="Build" src="https://github.com/DulLabs/bhai-lang/actions/workflows/node.js.yml/badge.svg"/></a>
 <a href="https://bhailang.js.org/"><img alt="Build" src="https://img.shields.io/badge/website-bhailang.js.org-orange"/></a>
+<a href="https://www.npmjs.com/package/bhailang"><img alt="Build" src="https://img.shields.io/badge/npm-bhailang-orange"/></a>
+  
 </p>
 <p align="center">
   This is official repository for bhai-lang.<br><br>
@@ -71,6 +73,36 @@ hi bhai
     bol bhai a + b;
   }
   bol bhai 5, 'ok', nulla , sahi , galat;
+bye bhai
+```
+
+<h3 align="center">Conditionals</h3>
+<p align="center">Bhailang supports simple if else construct , <i>agar bhai</i> block will execute if condition is <i>sahi</i> and <i>warna bhai</i> block will execute if condition is <i>galat</i>.</p>
+
+```
+
+hi bhai
+  bhai ye hai a = 10;
+  agar bhai (a < 25) {
+   bol bhai "a is less than 25";
+  } warna bhai {
+   bol bhai "a is greater than or equal to 25";
+  }
+bye bhai
+```
+
+<h3 align="center">Loops</h3>
+<p align="center">Statements inside <i>jab tak bhai</i> blocks are executed as long as a specified condition evaluates to sahi. If the condition becomes <i>galat</i>, statement within the loop stops executing and control passes to the statement following the loop.</p>
+
+```
+
+hi bhai
+  bhai ye hai a = 0;
+  jab tak bhai (a < 10) {
+   bol bhai a;
+   a += 1;
+  }
+  bol bhai "done";
 bye bhai
 ```
 
