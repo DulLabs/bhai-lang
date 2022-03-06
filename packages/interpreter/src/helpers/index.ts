@@ -67,6 +67,14 @@ export function getOperationValue(
       }
 
       throw exception;
+    
+    case "%=":
+    case "%":
+      if (checkNumberOperands(operands)) {
+        return operands.left % operands.right;
+      }
+
+      throw exception;
 
     case "==":
       if (checkNumberOperands(operands)) {

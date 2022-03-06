@@ -15,9 +15,9 @@ export default class PrintStatement implements Visitor {
     const value = node.expressions
       .map((expression: ASTNode) => {
         let currentNodeOutput = InterpreterModule.getVisitor(expression.type).visitNode(expression);
-        if (currentNodeOutput == true)
+        if (currentNodeOutput === true)
           currentNodeOutput = "sahi";
-        else if (currentNodeOutput == false)
+        else if (currentNodeOutput === false)
           currentNodeOutput = "galat";
         return currentNodeOutput;
       }

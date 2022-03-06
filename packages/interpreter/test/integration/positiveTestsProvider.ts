@@ -480,4 +480,32 @@ export const WithOutputPositiveTests = [
       `,
     output: `galat`,
   },
+  // modulus operator test
+  {
+    name: `modulus operator "%" test, should success`,
+    input: `
+        hi bhai
+        bol bhai 90 % 9;
+        bye bhai;
+      `,
+    output: `0`,
+  },
+  {
+    name: `modulus operator "%" test - 2, should success`,
+    input: `
+        hi bhai
+        bol bhai 27 % 5;
+        bye bhai;
+      `,
+    output: `2`,
+  },
+  {
+    name: `modulus operator "%" test - 2, should success`,
+    input: `
+        hi bhai
+        bol bhai 5 % 20;
+        bye bhai;
+      `,
+    output: `5`,
+  },
 ];
