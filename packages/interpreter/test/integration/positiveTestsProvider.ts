@@ -151,6 +151,17 @@ export const NoOutputPositiveTests = [
 
 export const WithOutputPositiveTests = [
   {
+    name: "variable assignment test with multiple variables, should success",
+    input: `
+      hi bhai;
+      bhai ye hai a , b;
+      a = b = 60;
+      bol bhai a, b;
+      bye bhai
+    `,
+    output: "60 60",
+  },
+  {
     name: "printStatement test with multiple expressions, should success",
     input: `
       hi bhai;
@@ -267,6 +278,99 @@ export const WithOutputPositiveTests = [
     `,
     output: "galat",
   },
+  {
+    name: `printStatement test with assignment expression, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a;
+      bol bhai a = 90;
+      bye bhai;
+    `,
+    output: "90",
+  },
+  {
+    name: `printStatement test with logical AND, should success`,
+    input: `
+      hi bhai;
+      bol bhai 9 && 10;
+      bye bhai;
+    `,
+    output: "10",
+  },
+  {
+    name: `printStatement test with logical OR, should success`,
+    input: `
+      hi bhai;
+      bol bhai 9 || 10;
+      bye bhai;
+    `,
+    output: "9",
+  },
+  {
+    name: `printStatement test with logical - 1, should success`,
+    input: `
+      hi bhai;
+      bol bhai galat && sahi;
+      bye bhai;
+    `,
+    output: "galat",
+  },
+  {
+    name: `printStatement test with logical - 2, should success`,
+    input: `
+    hi bhai;
+    bhai ye hai a = sahi;
+    bol bhai a && galat;
+    bye bhai;
+    `,
+    output: "galat",
+  },
+  {
+    name: `printStatement test with logical - 3, should success`,
+    input: `
+    hi bhai;
+    bhai ye hai a = sahi;
+    bol bhai a && sahi;
+    bye bhai;
+    `,
+    output: "sahi",
+  },
+  {
+    name: `printStatement test with equality, should success`,
+    input: `
+      hi bhai;
+      bol bhai 9 == 10;
+      bye bhai;
+    `,
+    output: "galat",
+  },
+  {
+    name: `printStatement test with inequality, should success`,
+    input: `
+      hi bhai;
+      bol bhai 9 != 10;
+      bye bhai;
+    `,
+    output: "sahi",
+  },
+  {
+    name: `printStatement test with logical OR, should success`,
+    input: `
+      hi bhai;
+      bol bhai 9 || 10;
+      bye bhai;
+    `,
+    output: "9",
+  },
+  {
+    name: `printStatement test with logical OR - 2, should success`,
+    input: `
+      hi bhai;
+      bol bhai galat || sahi;
+      bye bhai;
+    `,
+    output: "sahi",
+  },
   // while statement / loop tests
   {
     name: `whileStatement test with 1 time loop, should success`,
@@ -361,5 +465,47 @@ export const WithOutputPositiveTests = [
     bye bhai;
     `,
     output: "5",
-  }
+  },
+  // logical expression test
+  {
+    name: `logical "&&" test with sahi galat, should success`,
+    input: `
+        hi bhai
+        agar bhai (sahi && galat) {
+          bol bhai "sahi";
+        } warna bhai {
+          bol bhai "galat";
+        }
+        bye bhai;
+      `,
+    output: `galat`,
+  },
+  // modulus operator test
+  {
+    name: `modulus operator "%" test, should success`,
+    input: `
+        hi bhai
+        bol bhai 90 % 9;
+        bye bhai;
+      `,
+    output: `0`,
+  },
+  {
+    name: `modulus operator "%" test - 2, should success`,
+    input: `
+        hi bhai
+        bol bhai 27 % 5;
+        bye bhai;
+      `,
+    output: `2`,
+  },
+  {
+    name: `modulus operator "%" test - 2, should success`,
+    input: `
+        hi bhai
+        bol bhai 5 % 20;
+        bye bhai;
+      `,
+    output: `5`,
+  },
 ];

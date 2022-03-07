@@ -37,6 +37,7 @@ export default class InterpreterModule {
     [NodeType.AssignmentExpression]: new AssignmentExpression(),
     [NodeType.ExpressionStatement]: new ExpressionStatement(),
     [NodeType.BinaryExpression]: new BinaryExpression(),
+    [NodeType.LogicalExpression]: new BinaryExpression(),
     [NodeType.StringLiteral]: new StringLiteral(),
     [NodeType.NumericLiteral]: new NumericLiteral(),
     [NodeType.BooleanLiteral]: new BooleanLiteral(),

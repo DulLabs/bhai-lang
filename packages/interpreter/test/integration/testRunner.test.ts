@@ -139,10 +139,8 @@ test("whileStatement test with nested loops - 3, should success", () => {
 
 // test("jest", () => {
 //     interpreter.interpret(`
-//     hi bhai
-//         bhai ye hai a = 0;
-//         agar bhai (sahi)
-//           bas kar bhai;
-//         bye bhai;
+//     hi bhai;
+//       bol bhai sahi || galat;
+//       bye bhai;
 //     `);
 // });

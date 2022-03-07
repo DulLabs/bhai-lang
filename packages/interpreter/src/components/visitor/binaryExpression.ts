@@ -7,6 +7,7 @@ import RuntimeException from "../../exceptions/runtimeException";
 import { getOperationValue } from "../../helpers";
 import InterpreterModule from "../../module/interpreterModule";
 
+
 export default class BinaryExpression implements Visitor {
   visitNode(node: ASTNode) {
     if (!node.left || !node.right || !node.operator) {
@@ -15,18 +16,34 @@ export default class BinaryExpression implements Visitor {
       );
     }
 
-    this._checkNallaAndBoolean(node);
+    let left, right;
 
-    const left = InterpreterModule.getVisitor(node.left.type).visitNode(
-      node.left
-    );
-    const right = InterpreterModule.getVisitor(node.right.type).visitNode(
-      node.right
-    );
+    // handling logical & binary both at the same place as both operate on two operands
+    if (node.type == NodeType.BinaryExpression) {
+      this._checkNalla(node);
+      this._checkBoolean(node);
+      left = InterpreterModule.getVisitor(node.left.type).visitNode(
+        node.left
+      );
+      right = InterpreterModule.getVisitor(node.right.type).visitNode(
+        node.right
+      );
+    } else if (node.type == NodeType.LogicalExpression) {
+      this._checkNalla(node);
+
+      left = node.left.type == NodeType.BooleanLiteral ? (node.left.value == "sahi" ? true : false) : InterpreterModule.getVisitor(node.left.type).visitNode(
+        node.left
+      );
+
+      right = node.right.type == NodeType.BooleanLiteral ? (node.right.value == "sahi" ? true : false) : InterpreterModule.getVisitor(node.right.type).visitNode(
+        node.right
+      );
+
+    }
     return getOperationValue({ left, right }, node.operator);
   }
 
-  private _checkNallaAndBoolean(node: ASTNode) {
+  private _checkNalla(node: ASTNode) {
     if (!node.left || !node.right || !node.operator) {
       throw new InvalidStateException(
         `Left , right or operator not found for: ${node.type}`
@@ -36,15 +53,35 @@ export default class BinaryExpression implements Visitor {
     const nallaException = new NallaPointerException(
       `Nalla operand ni jamta "${node.operator}" ke sath`
     );
-    const runtimeException = new RuntimeException(
-      `Boolean operand ni jamta "${node.operator}" ke sath`
-    );
 
     if (
       node.left.type === NodeType.NullLiteral ||
       node.right.type === NodeType.NullLiteral
     )
       throw nallaException;
+
+    if (node.left.type === NodeType.IdentifierExpression && node.left.name) {
+      const value = InterpreterModule.getCurrentScope().get(node.left.name);
+      if (value === null) throw nallaException;
+    }
+
+    if (node.right.type === NodeType.IdentifierExpression && node.right.name) {
+      const value = InterpreterModule.getCurrentScope().get(node.right.name);
+      if (value === null) throw nallaException;
+    }
+  }
+
+  private _checkBoolean(node: ASTNode) {
+
+    if (!node.left || !node.right || !node.operator) {
+      throw new InvalidStateException(
+        `Left , right or operator not found for: ${node.type}`
+      );
+    }
+
+    const runtimeException = new RuntimeException(
+      `Boolean operand ni jamta "${node.operator}" ke sath`
+    );
 
     if (
       node.left.type === NodeType.BooleanLiteral ||
@@ -54,14 +91,12 @@ export default class BinaryExpression implements Visitor {
 
     if (node.left.type === NodeType.IdentifierExpression && node.left.name) {
       const value = InterpreterModule.getCurrentScope().get(node.left.name);
-      if (value === null) throw nallaException;
-      else if (value === true || value === false) throw runtimeException;
+      if (value === true || value === false) throw runtimeException;
     }
 
     if (node.right.type === NodeType.IdentifierExpression && node.right.name) {
       const value = InterpreterModule.getCurrentScope().get(node.right.name);
-      if (value === null) throw nallaException;
-      else if (value === true || value === false) throw runtimeException;
+      if (value === true || value === false) throw runtimeException;
     }
   }
 }

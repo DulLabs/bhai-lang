@@ -143,6 +143,42 @@ export const StatementTests = [
     `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"a"},"init":{"type":"NullLiteral","value":"nalla"}}]},{"type":"PrintStatement","expressions":[{"type":"IdentifierExpression","name":"a"}]}]}}`,
   },
+  {
+    name: "print statement test with logical AND, should success",
+    input: `
+      hi bhai
+      bol bhai a && b;
+      bye bhai
+    `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"PrintStatement","expressions":[{"type":"LogicalExpression","operator":"&&","left":{"type":"IdentifierExpression","name":"a"},"right":{"type":"IdentifierExpression","name":"b"}}]}]}}`,
+  },
+  {
+    name: "print statement test with assignment, should success",
+    input: `
+      hi bhai
+      bol bhai a = 9;
+      bye bhai
+    `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"PrintStatement","expressions":[{"type":"AssignmentExpression","operator":"=","left":{"type":"IdentifierExpression","name":"a"},"right":{"type":"NumericLiteral","value":9}}]}]}}`,
+  },
+  {
+    name: "print statement test with logical OR, should success",
+    input: `
+      hi bhai
+      bol bhai 9 || 90;
+      bye bhai
+    `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"PrintStatement","expressions":[{"type":"LogicalExpression","operator":"||","left":{"type":"NumericLiteral","value":9},"right":{"type":"NumericLiteral","value":90}}]}]}}`,
+  },
+  {
+    name: "print statement test with equality operator, should success",
+    input: `
+      hi bhai
+      bol bhai 9 == 90;
+      bye bhai
+    `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"PrintStatement","expressions":[{"type":"BinaryExpression","operator":"==","left":{"type":"NumericLiteral","value":9},"right":{"type":"NumericLiteral","value":90}}]}]}}`,
+  },
   // variable statement test
   {
     name: "variable statement test with basic variable declaration, should success",
@@ -277,7 +313,7 @@ export const ExpressionsTests = [
   },
   // nalla and boolean expression test
   {
-    name: "complex expression test with one nalla operand, should throw an exception",
+    name: "complex expression test with one nalla operand, should success",
     input: `
         hi bhai
         (nalla * (4 + 8 + 10));
@@ -286,7 +322,7 @@ export const ExpressionsTests = [
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"*","left":{"type":"NullLiteral","value":"nalla"},"right":{"type":"BinaryExpression","operator":"+","left":{"type":"BinaryExpression","operator":"+","left":{"type":"NumericLiteral","value":4},"right":{"type":"NumericLiteral","value":8}},"right":{"type":"NumericLiteral","value":10}}}}]}}`,
   },
   {
-    name: "complex expression test with one nalla operand and one boolean operand, should throw an exception",
+    name: "complex expression test with one nalla operand and one boolean operand, should success",
     input: `
         hi bhai
         (nalla * (sahi + 8 + 10));
@@ -295,7 +331,7 @@ export const ExpressionsTests = [
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"*","left":{"type":"NullLiteral","value":"nalla"},"right":{"type":"BinaryExpression","operator":"+","left":{"type":"BinaryExpression","operator":"+","left":{"type":"BooleanLiteral","value":"sahi"},"right":{"type":"NumericLiteral","value":8}},"right":{"type":"NumericLiteral","value":10}}}}]}}`,
   },
   {
-    name: "complex expression test with one nalla operand and one boolean operand - 2, should throw nalla pointer exception",
+    name: "complex expression test with one nalla operand and one boolean operand - 2, should success",
     input: `
         hi bhai
         (sahi * (nalla + 8 + 10));
@@ -304,7 +340,7 @@ export const ExpressionsTests = [
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"*","left":{"type":"BooleanLiteral","value":"sahi"},"right":{"type":"BinaryExpression","operator":"+","left":{"type":"BinaryExpression","operator":"+","left":{"type":"NullLiteral","value":"nalla"},"right":{"type":"NumericLiteral","value":8}},"right":{"type":"NumericLiteral","value":10}}}}]}}`,
   },
   {
-    name: "complex expression test with one nalla operand and one boolean operand - 3, should throw nalla pointer exception",
+    name: "complex expression test with one nalla operand and one boolean operand - 3, should success",
     input: `
         hi bhai
         (nalla + sahi);
@@ -313,7 +349,7 @@ export const ExpressionsTests = [
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"+","left":{"type":"NullLiteral","value":"nalla"},"right":{"type":"BooleanLiteral","value":"sahi"}}}]}}`,
   },
   {
-    name: "complex expression test with one boolean operand, should throw an exception",
+    name: "complex expression test with one boolean operand, should success",
     input: `
         hi bhai
         (sahi * (4 + 8 + 10));
@@ -322,7 +358,7 @@ export const ExpressionsTests = [
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"*","left":{"type":"BooleanLiteral","value":"sahi"},"right":{"type":"BinaryExpression","operator":"+","left":{"type":"BinaryExpression","operator":"+","left":{"type":"NumericLiteral","value":4},"right":{"type":"NumericLiteral","value":8}},"right":{"type":"NumericLiteral","value":10}}}}]}}`,
   },
   {
-    name: "expression test with only boolean operand, should throw an exception",
+    name: "expression test with only boolean operand, should success",
     input: `
         hi bhai
         sahi + galat;
@@ -331,7 +367,7 @@ export const ExpressionsTests = [
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"+","left":{"type":"BooleanLiteral","value":"sahi"},"right":{"type":"BooleanLiteral","value":"galat"}}}]}}`,
   },
   {
-    name: "multiplicative expression test with only boolean operand, should throw an exception",
+    name: "multiplicative expression test with only boolean operand, should success",
     input: `
         hi bhai
         sahi * galat;
@@ -340,7 +376,7 @@ export const ExpressionsTests = [
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"*","left":{"type":"BooleanLiteral","value":"sahi"},"right":{"type":"BooleanLiteral","value":"galat"}}}]}}`,
   },
   {
-    name: "division expression test with only boolean operand, should throw an exception",
+    name: "division expression test with only boolean operand, should success",
     input: `
         hi bhai
         sahi / galat;
@@ -349,13 +385,69 @@ export const ExpressionsTests = [
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"/","left":{"type":"BooleanLiteral","value":"sahi"},"right":{"type":"BooleanLiteral","value":"galat"}}}]}}`,
   },
   {
-    name: "print statement test with expression containing nalla, should throw an exception",
+    name: "print statement test with expression containing nalla, should success",
     input: `
         hi bhai
         bol bhai nalla + 5;
         bye bhai;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"PrintStatement","expressions":[{"type":"BinaryExpression","operator":"+","left":{"type":"NullLiteral","value":"nalla"},"right":{"type":"NumericLiteral","value":5}}]}]}}`,
+  },
+  // logical expression test
+  {
+    name: `logical "&&" test with sahi galat, should success`,
+    input: `
+        hi bhai
+        agar bhai (sahi && galat);
+        bye bhai;
+      `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"IfStatement","test":{"type":"LogicalExpression","operator":"&&","left":{"type":"BooleanLiteral","value":"sahi"},"right":{"type":"BooleanLiteral","value":"galat"}},"consequent":{"type":"EmptyStatement"},"alternate":{"type":"NullLiteral","value":"nalla"}}]}}`,
+  },
+  {
+    name: `logical "&&" test with expression, should success`,
+    input: `
+        hi bhai
+        agar bhai (a + b && d);
+        bye bhai;
+      `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"IfStatement","test":{"type":"LogicalExpression","operator":"&&","left":{"type":"BinaryExpression","operator":"+","left":{"type":"IdentifierExpression","name":"a"},"right":{"type":"IdentifierExpression","name":"b"}},"right":{"type":"IdentifierExpression","name":"d"}},"consequent":{"type":"EmptyStatement"},"alternate":{"type":"NullLiteral","value":"nalla"}}]}}`,
+  },
+  {
+    name: `logical "&&" test in variable declaration, should success`,
+    input: `
+        hi bhai
+        bhai ye hai a = b && d;
+        bye bhai;
+      `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"a"},"init":{"type":"LogicalExpression","operator":"&&","left":{"type":"IdentifierExpression","name":"b"},"right":{"type":"IdentifierExpression","name":"d"}}}]}]}}`,
+  },
+  // logical OR
+  {
+    name: `logical "||" test with sahi galat, should success`,
+    input: `
+        hi bhai
+        agar bhai (sahi || galat);
+        bye bhai;
+      `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"IfStatement","test":{"type":"LogicalExpression","operator":"||","left":{"type":"BooleanLiteral","value":"sahi"},"right":{"type":"BooleanLiteral","value":"galat"}},"consequent":{"type":"EmptyStatement"},"alternate":{"type":"NullLiteral","value":"nalla"}}]}}`,
+  },
+  {
+    name: `logical "||" test with expression, should success`,
+    input: `
+        hi bhai
+        agar bhai (a + b || d);
+        bye bhai;
+      `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"IfStatement","test":{"type":"LogicalExpression","operator":"||","left":{"type":"BinaryExpression","operator":"+","left":{"type":"IdentifierExpression","name":"a"},"right":{"type":"IdentifierExpression","name":"b"}},"right":{"type":"IdentifierExpression","name":"d"}},"consequent":{"type":"EmptyStatement"},"alternate":{"type":"NullLiteral","value":"nalla"}}]}}`,
+  },
+  {
+    name: `logical "||" test in variable declaration, should success`,
+    input: `
+        hi bhai
+        bhai ye hai a = b || d;
+        bye bhai;
+      `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"a"},"init":{"type":"LogicalExpression","operator":"||","left":{"type":"IdentifierExpression","name":"b"},"right":{"type":"IdentifierExpression","name":"d"}}}]}]}}`,
   },
 ];
 

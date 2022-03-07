@@ -67,6 +67,14 @@ export function getOperationValue(
       }
 
       throw exception;
+    
+    case "%=":
+    case "%":
+      if (checkNumberOperands(operands)) {
+        return operands.left % operands.right;
+      }
+
+      throw exception;
 
     case "==":
       if (checkNumberOperands(operands)) {
@@ -117,6 +125,12 @@ export function getOperationValue(
       }
 
       throw exception;
+
+    case "&&":
+      return operands.left && operands.right;
+
+    case "||":
+      return operands.left || operands.right;
 
     default:
       throw new InvalidStateException(`Unsupported operator: ${operator}`);

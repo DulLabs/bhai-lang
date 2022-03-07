@@ -6,6 +6,7 @@ import { ASTNode } from "../types/nodeTypes";
 
 import Expression from "./expression";
 
+
 export default class PrintStatement extends Statement {
   getStatement(): ASTNode {
     this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.BOL_BHAI_TYPE);
@@ -35,7 +36,7 @@ export default class PrintStatement extends Statement {
 
   private _getExpression() {
     return Expression.getExpressionImpl(
-      NodeType.AdditiveExpression
+      NodeType.AssignmentExpression
     ).getExpression();
   }
 }
