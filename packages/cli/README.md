@@ -20,13 +20,11 @@ npm i -g bhailang
 
 <h2 align="center">Usage</h2>
 
-<h4 align="left">Create new file</h4>
+<h4 align="left">Create a new file</h4><br/>
 
-```
-touch test.bhai
-```
 
-<h4 align="left">Edit file with a text editor or use <a href="https://bhailang.js.org/#playground">Bhai Lang PlayGround</a></h4>
+<h4 align="left">Edit the file with a text editor.
+You can also try out your code on <a href="https://bhailang.js.org/#playground">Bhai Lang PlayGround</a></h4>
 
 ```
 hi bhai
