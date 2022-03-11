@@ -21,7 +21,7 @@ npm i -g bhailang
 
 <h2 align="center">Usage</h2>
 
-<h4 align="left">Create a new file</h4>
+<h4 align="left">Create a new file (<i>test.bhai</i>)</h4>
 
 
 <h4 align="left">Edit the file with a text editor.
