@@ -8,7 +8,6 @@
   
 </p>
 <p align="center">
-  This is official npm repository for bhai-lang.<br><br>
   <b>Bhai lang is a toy programming language written in Typescript.</b>
 </p>
 <br>
