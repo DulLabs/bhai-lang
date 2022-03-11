@@ -35,6 +35,7 @@ html {
 
 .editor pre{
 	padding-left: 5rem !important;
+	height: 100%
 }
 
 .codeArea {
