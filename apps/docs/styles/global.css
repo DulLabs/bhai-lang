@@ -13,6 +13,10 @@ html {
 	}
 }
 
+.header{
+	min-height: 70vh;
+}
+
 .editorContainer{
 	tab-size: 4ch;
 	height: 60vh;
