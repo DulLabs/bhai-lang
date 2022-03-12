@@ -105,7 +105,7 @@ hi bhai
     bhai ye hai b = 20;
     bol bhai a + b;
   }
-  bol bhai 5, 'ok', nulla , sahi , galat;
+  bol bhai 5, 'ok', nalla , sahi , galat;
 bye bhai
 ```
 
