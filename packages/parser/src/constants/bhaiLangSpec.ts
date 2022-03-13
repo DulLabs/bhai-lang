@@ -62,7 +62,7 @@ export const SPEC = [
   // Whitespcaes
   { regex: /^\s+/, tokenType: TokenTypes.NULL_TYPE },
 
-  // singke line Comments
+  // single line Comments
   { regex: /^\/\/.*/, tokenType: TokenTypes.NULL_TYPE },
 
   // multi line comments
