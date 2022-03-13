@@ -53,7 +53,7 @@ const Code = (props: Props) => {
     } catch (e) {
       if (e instanceof Error) {
         isExecusionSuccess = false;
-        outputList.push({ value: e.message, isError: true });
+        outputList.push({ value: e.name + ": " + e.message, isError: true });
       } else {
         console.error(e);
       }
