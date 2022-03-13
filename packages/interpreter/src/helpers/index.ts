@@ -132,7 +132,6 @@ export function getOperationValue(
     case "||":
       return operands.left || operands.right;
     
-    # floor division
     case '//':
       if (checkNumberOperands(operands)) {
         return Math.floor(operands.left,operands.right);
