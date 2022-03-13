@@ -102,17 +102,21 @@ bye bhai
     description: (
       <>
         Statements inside <code className="language-cpp">jab tak bhai</code> blocks are executed as long as a specified condition evaluates to <code className="language-cpp">sahi</code>. If the condition becomes <code className="language-cpp">galat</code>, statement within the loop stops executing and control passes to the statement following the loop. 
-        Use <code className="language-cpp">bas kar bhai</code> to break the loop.
+        Use <code className="language-cpp">bas kar bhai</code> to break the loop and <code className="language-cpp">kat lo bhai</code> to continue within loop.
       </>
     ),
     code: `hi bhai
     bhai ye hai a = 0;
     jab tak bhai (a < 10) {
-      bol bhai a;
       a += 1;
+      agar bhai (a == 5) {
+        bol bhai "andar se bol bhai ", a;
+        kat lo bhai;
+      }
       agar bhai (a == 6) {
         bas kar bhai;
       }
+      bol bhai a;
     }
     bol bhai "done";
 bye bhai
