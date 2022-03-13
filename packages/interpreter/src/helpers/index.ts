@@ -131,7 +131,14 @@ export function getOperationValue(
 
     case "||":
       return operands.left || operands.right;
-
+    
+    # floor division
+    case '//':
+      if (checkNumberOperands(operands)) {
+        return Math.floor(operands.left,operands.right);
+      }
+      throw exception;
+     
     default:
       throw new InvalidStateException(`Unsupported operator: ${operator}`);
   }
