@@ -37,7 +37,7 @@ export default abstract class Statement {
       case TokenTypes.BAS_KAR_BHAI:
         return BhaiLangModule.getBreakStatement();
       
-      case TokenTypes.KAT_LO_BHAI:
+      case TokenTypes.AGLA_DEKH_BHAI:
         return BhaiLangModule.getContinueStatement();
 
       default:

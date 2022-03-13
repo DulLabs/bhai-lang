@@ -519,7 +519,7 @@ export const NegativeTestCases = [
         hi bhai
         bhai ye hai a = 0;
         jab tak bhai (a < 2) {
-          kat lo bhai;
+          agla dekh bhai;
           a = 5;
         }
         bye bhai;
@@ -532,7 +532,7 @@ export const NegativeTestCases = [
         hi bhai
         bhai ye hai a = 0;
         agar bhai (sahi)
-          kat lo bhai
+          agla dekh bhai
         bye bhai;
       `,
     output: RuntimeException,
