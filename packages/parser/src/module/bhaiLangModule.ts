@@ -2,6 +2,8 @@ import { Parser } from "../components/parser";
 import Program from "../components/parser/program";
 import BlockStatement from "../components/parser/statement/blockStatement";
 import BreakStatement from "../components/parser/statement/breakStatement";
+import ContinueStatement
+  from "../components/parser/statement/continueStatement";
 import EmptyStatement from "../components/parser/statement/emptyStatement";
 import AdditiveExpression
   from "../components/parser/statement/expression/addititveExpression";
@@ -74,6 +76,7 @@ export default class BhaiLangModule {
   private static _logicalORExpression?: LogicalORExpression;
   private static _relationalExpression?: RelationalExpression;
   private static _breakStatement?: BreakStatement;
+  private static _continueStatement?: ContinueStatement;
   private static _whileStatement?: WhileStatement;
 
   static getTokenizer() {
@@ -128,6 +131,14 @@ export default class BhaiLangModule {
     }
 
     return this._breakStatement;
+  }
+
+  static getContinueStatement() {
+    if(!this._continueStatement){
+      this._continueStatement = new ContinueStatement(this.getTokenExecutor());
+    }
+
+    return this._continueStatement;
   }
 
   static getWhileStatement() {

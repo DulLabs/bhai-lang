@@ -19,6 +19,7 @@ export const NodeType = {
   IfStatement: "IfStatement",
   WhileStatement: "WhileStatement",
   BreakStatement: "BreakStatement",
+  ContinueStatement: "ContinueStatement",
   VariableStatement: "VariableStatement",
   BooleanLiteral: "BooleanLiteral",
   NumericLiteral: "NumericLiteral",

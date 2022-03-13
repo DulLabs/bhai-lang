@@ -508,4 +508,66 @@ export const WithOutputPositiveTests = [
       `,
     output: `5`,
   },
+  {
+    name: `whileStatement test with single continue statement, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a = 5;
+      bhai ye hai step = 0;
+      jab tak bhai (a > 0) {
+        step += 1;
+        agar bhai (a % 2 != 0){
+          a -= 2;
+          kat lo bhai;
+        }
+        a -= 1;
+      }
+      bol bhai step;
+      bye bhai;
+    `,
+    output: "3",
+  },
+  {
+    name: `whileStatement test with multiple continue statement, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a = 5;
+      bhai ye hai step = 0;
+      jab tak bhai (a > 0) {
+        step += 1;
+        agar bhai (a % 2 == 0){
+          a -= 2;
+          kat lo bhai;
+        }
+        a -= 1;
+        kat lo bhai;
+        bol bhai "oye oye oye.. yha tk nhi aana tha bhai";
+      }
+      bol bhai step;
+      bye bhai;
+    `,
+    output: "3",
+  },
+  {
+    // step:  1 => 2
+    // a: 10 => 7 => 6 => 3 => 2 => -1
+    name: `whileStatement test with single continue statement without block, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a = 10;
+      bhai ye hai step = 0;
+      jab tak bhai (a > 0) {
+        agar bhai (a % 2 == 0){
+          a -= 3;
+          kat lo bhai;
+        }
+        a -= 1;
+        agar bhai (step == 1) kat lo bhai
+        step += 1;
+      }
+      bol bhai step;
+      bye bhai;
+    `,
+    output: "1",
+  },
 ];

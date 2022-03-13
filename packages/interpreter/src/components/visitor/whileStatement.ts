@@ -29,6 +29,12 @@ export default class WhileStatement implements Visitor {
           throw new RuntimeException("Bohot jyada hi chale jaa rha hai loop");
         }
 
+
+        if(InterpreterModule.getCurrentScope().isContinueStatement()){
+          InterpreterModule.getCurrentScope().setContinueStatement(false);
+          continue;
+        }
+
         const body = node.body;
         if (body && !Array.isArray(body)) {
           InterpreterModule.getVisitor(body.type).visitNode(body);

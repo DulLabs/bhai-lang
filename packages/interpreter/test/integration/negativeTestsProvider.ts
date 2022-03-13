@@ -512,4 +512,29 @@ export const NegativeTestCases = [
     `,
     output: RuntimeException,
   },
+  // continue in loop test
+  {
+    name: "infinite condition while loop with continue, should throw an exception",
+    input: `
+        hi bhai
+        bhai ye hai a = 0;
+        jab tak bhai (a < 2) {
+          kat lo bhai;
+          a = 5;
+        }
+        bye bhai;
+      `,
+    output: RuntimeException,
+  },
+  {
+    name: "invalid use of continue, should throw an exception",
+    input: `
+        hi bhai
+        bhai ye hai a = 0;
+        agar bhai (sahi)
+          kat lo bhai
+        bye bhai;
+      `,
+    output: RuntimeException,
+  },
 ];
