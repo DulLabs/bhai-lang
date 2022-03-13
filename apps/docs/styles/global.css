@@ -76,3 +76,7 @@ html {
 	transition-duration: 0.2s;
 	transition-timing-function: ease-out;
 }
+
+.token {
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
