@@ -8,6 +8,7 @@ import BinaryExpression from "../components/visitor/binaryExpression";
 import BlockStatement from "../components/visitor/blockStatement";
 import BooleanLiteral from "../components/visitor/booleanLiteral";
 import BreakStatement from "../components/visitor/breakStatement";
+import ContinueStatement from "../components/visitor/continueStatement";
 import EmptyStatement from "../components/visitor/emptyStatement";
 import ExpressionStatement from "../components/visitor/expressionStatement";
 import IdentifierExpression from "../components/visitor/identifierExpression";
@@ -45,6 +46,7 @@ export default class InterpreterModule {
     [NodeType.IfStatement]: new IfStatement(),
     [NodeType.WhileStatement]: new WhileStatement(),
     [NodeType.BreakStatement]: new BreakStatement(),
+    [NodeType.ContinueStatement]: new ContinueStatement(),
   } as Record<string, Visitor>;
 
   private static _currentScope: Scope;

@@ -29,6 +29,7 @@ export default class IfStatement implements Visitor {
     } 
 
     parentScope.setBreakStatement(InterpreterModule.getCurrentScope().isBreakStatement());
+    parentScope.setContinueStatement(InterpreterModule.getCurrentScope().isContinueStatement());
 
     InterpreterModule.setCurrentScope(parentScope);
   }

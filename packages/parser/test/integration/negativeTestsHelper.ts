@@ -334,3 +334,15 @@ export const IfStatementNagativeTests = [
     output: SyntaxError,
   },
 ];
+
+export const ContinueStatementNegativeTests = [
+  {
+    name: "Continue statement test - continue outside a loop, should throw an exception",
+    input: `
+        hi bhai
+          kat lo bhai
+        bye bhai
+      `,
+    output: SyntaxError,
+  },
+]

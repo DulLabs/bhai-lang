@@ -3,8 +3,9 @@ import RuntimeException from "../exceptions/runtimeException";
 
 export default class Scope {
   _variables: Map<string, unknown> = new Map();
-  _isLoop= false;
-  _isBreakStatement= false;
+  _isLoop = false;
+  _isBreakStatement = false;
+  _isContinueStatement = false;
   _parentScope: Scope | null;
 
   constructor(parentScope: Scope | null) {
@@ -23,8 +24,16 @@ export default class Scope {
     this._isBreakStatement = isBreakStatement;
   }
 
+  setContinueStatement(isContinueStatement: boolean) {
+    this._isContinueStatement = isContinueStatement;
+  }
+
   isBreakStatement() {
     return this._isBreakStatement;
+  }
+
+  isContinueStatement() {
+    return this._isContinueStatement;
   }
 
   get(identifier: string): unknown {

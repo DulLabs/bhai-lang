@@ -18,6 +18,10 @@ export default class BlockStatement implements Visitor {
           parentScope.setBreakStatement(true);
           return false;
         }
+        if (InterpreterModule.getCurrentScope().isContinueStatement()) {
+          parentScope.setContinueStatement(true);
+          return false;
+        }
         InterpreterModule.getVisitor(statement.type).visitNode(statement);
         return true;
       });
