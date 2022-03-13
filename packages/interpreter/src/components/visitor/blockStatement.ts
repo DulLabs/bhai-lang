@@ -15,13 +15,14 @@ export default class BlockStatement implements Visitor {
     if (Array.isArray(node.body)) {
       node.body.every((statement: ASTNode) => {
         if (InterpreterModule.getCurrentScope().isBreakStatement()) {
-          parentScope.setBreakStatement(true);
           return false;
         }
         InterpreterModule.getVisitor(statement.type).visitNode(statement);
         return true;
       });
     }
+
+    parentScope.setBreakStatement(InterpreterModule.getCurrentScope().isBreakStatement());
 
     InterpreterModule.setCurrentScope(parentScope);
   }

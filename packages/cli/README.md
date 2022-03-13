@@ -50,7 +50,7 @@ hello bhai
 <h2 align="center">Documentation</h2>
 
 <h3 align="center">General</h3>
-<p align="center">hi bhai is the entrypoint for the program and all program must end with bye bhai. Anything outside of it will be ignored.</p>
+<p align="center"><code>hi bhai</code> is the entrypoint for the program and all program must end with <code>bye bhai</code>. Anything outside of it will be ignored.</p>
 
 ```
 
@@ -64,7 +64,7 @@ This too
 ```
 
 <h3 align="center">Variables</h3>
-<p align="center">Variables can be declared using bhai ye hai.</p>
+<p align="center">Variables can be declared using <code>bhai ye hai</code>.</p>
 
 ```
 
@@ -79,7 +79,7 @@ bye bhai
 ```
 
 <h3 align="center">Types</h3>
-<p align="center">Numbers and strings are like other languages. Null values can be denoted using <i>nalla. sahi and galat</i> are the boolean values.</p>
+<p align="center">Numbers and strings are like other languages. Null values can be denoted using <code>nalla. sahi and galat</code> are the boolean values.</p>
 
 ```
 
@@ -95,7 +95,7 @@ bye bhai
 ```
 
 <h3 align="center">Built-ins</h3>
-<p align="center">Use <i>bol bhai</i> to print anything to console.</p>
+<p align="center">Use <code>bol bhai</code> to print anything to console.</p>
 
 ```
 
@@ -106,12 +106,12 @@ hi bhai
     bhai ye hai b = 20;
     bol bhai a + b;
   }
-  bol bhai 5, 'ok', nulla , sahi , galat;
+  bol bhai 5, 'ok', nalla , sahi , galat;
 bye bhai
 ```
 
 <h3 align="center">Conditionals</h3>
-<p align="center">Bhailang supports simple if else construct , <i>agar bhai</i> block will execute if condition is <i>sahi</i> and <i>warna bhai</i> block will execute if condition is <i>galat</i>.</p>
+<p align="center">Bhailang supports simple if else construct , <code>agar bhai</code> block will execute if condition is <code>sahi</code> and <code>warna bhai</code> block will execute if condition is <code>galat</code>.</p>
 
 ```
 
@@ -126,24 +126,23 @@ bye bhai
 ```
 
 <h3 align="center">Loops</h3>
-<p align="center">Statements inside <i>jab tak bhai</i> blocks are executed as long as a specified condition evaluates to sahi. If the condition becomes <i>galat</i>, statement within the loop stops executing and control passes to the statement following the loop.</p>
+<p align="center">Statements inside <code>jab tak bhai</code> blocks are executed as long as a specified condition evaluates to sahi. If the condition becomes <code>galat</code>, statement within the loop stops executing and control passes to the statement following the loop. Use <code>bas kar bhai</code> to break the loop.</p>
+
 
 ```
 
 hi bhai
-  bhai ye hai a = 0;
-  jab tak bhai (a < 10) {
-   bol bhai a;
-   a += 1;
-  }
-  bol bhai "done";
+    bhai ye hai a = 0;
+    jab tak bhai (a < 10) {
+      bol bhai a;
+      a += 1;
+      agar bhai (a == 6) {
+        bas kar bhai;
+      }
+    }
+    bol bhai "done";
 bye bhai
 ```
-
-<!-- ![badge](https://github.com/DulLabs/bhai-lang/actions/workflows/node.js.yml/badge.svg) -->
-
-
-
 
 
 

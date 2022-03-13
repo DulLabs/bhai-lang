@@ -137,10 +137,91 @@ test("whileStatement test with nested loops - 3, should success", () => {
   expect(console.log).toHaveBeenCalledWith("bhai");
 });
 
+
+test("whileStatement test with nested loops - 4, should success", () => {
+  expect(() =>
+    interpreter.interpret(`
+    hi bhai
+    bhai ye hai a = 0;
+    jab tak bhai (a < 10) {
+      bol bhai a;
+      a += 1;
+      agar bhai (a == 6) {
+        bas kar bhai;
+      }
+    }
+    bol bhai "done";
+    bye bhai
+    `)
+  ).not.toThrowError();
+  expect(console.log).toHaveBeenCalledWith("0");
+  expect(console.log).toHaveBeenCalledWith("1");
+  expect(console.log).toHaveBeenCalledWith("2");
+  expect(console.log).toHaveBeenCalledWith("3");
+  expect(console.log).toHaveBeenCalledWith("4");
+  expect(console.log).toHaveBeenCalledWith("5");
+});
+
+test("whileStatement test with nested loops - 5, should success", () => {
+  expect(() =>
+    interpreter.interpret(`
+    hi bhai
+    bhai ye hai a = 0;
+    jab tak bhai (a < 10) {
+      bol bhai a;
+      a += 1;
+      agar bhai (a == 6)
+        bas kar bhai;
+    }
+    bol bhai "done";
+    bye bhai
+    `)
+  ).not.toThrowError();
+  expect(console.log).toHaveBeenCalledWith("0");
+  expect(console.log).toHaveBeenCalledWith("1");
+  expect(console.log).toHaveBeenCalledWith("2");
+  expect(console.log).toHaveBeenCalledWith("3");
+  expect(console.log).toHaveBeenCalledWith("4");
+  expect(console.log).toHaveBeenCalledWith("5");
+});
+
+test("whileStatement test with nested loops - 6, should success", () => {
+  expect(() =>
+    interpreter.interpret(`
+    hi bhai
+    bhai ye hai a = 0;
+    jab tak bhai (a < 10) {
+      bol bhai a;
+      a += 1;
+      agar bhai (a == 3) {
+        bas kar bhai;
+      }
+      bol bhai "2 baar hi chapunga";
+    }
+    bol bhai "done";
+    bye bhai
+    `)
+  ).not.toThrowError();
+  expect(console.log).toHaveBeenCalledWith("0");
+  expect(console.log).toHaveBeenCalledWith("1");
+  expect(console.log).toHaveBeenCalledWith("2");
+  expect(console.log).toHaveBeenCalledWith("2 baar hi chapunga");
+  expect(console.log).toHaveBeenCalledWith("2 baar hi chapunga");
+});
+
 // test("jest", () => {
 //     interpreter.interpret(`
-//     hi bhai;
-//       bol bhai sahi || galat;
-//       bye bhai;
+//     hi bhai
+//     bhai ye hai a = 0;
+//     jab tak bhai (a < 10) {
+//       bol bhai a;
+//       a += 1;
+//       agar bhai (a == 3) {
+//         bas kar bhai;
+//       }
+//       bol bhai "2 baar hi chapunga";
+//     }
+//     bol bhai "done";
+//     bye bhai
 //     `);
 // });
