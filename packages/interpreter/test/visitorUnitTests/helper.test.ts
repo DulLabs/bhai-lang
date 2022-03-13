@@ -604,6 +604,56 @@ const getOperationValueNegTestCasesProvider = [
     exception: RuntimeException,
     function: getOperationValue,
   },
+  {
+    name: `test getOperationValue "**" operator with number oprands, should success`,
+    input1: {
+      left: 2,
+      right: 3,
+    },
+    input2: "**",
+    output: 8,
+    function: getOperationValue,
+  },
+  {
+    name: `test getOperationValue "**" operator with one string , should throw an exception`,
+    input1: {
+      left: "a",
+      right: "3",
+    },
+    input2: "**",
+    exception: RuntimeException,
+    function: getOperationValue,
+  },
+  {
+    name: `test getOperationValue "**" operator with both string , should throw an exception`,
+    input1: {
+      left: "a",
+      right: "b",
+    },
+    input2: "**",
+    exception: RuntimeException,
+    function: getOperationValue,
+  },
+  {
+    name: `test getOperationValue "??" operator with null oprands, should success`,
+    input1: {
+      left: null,
+      right: 3,
+    },
+    input2: "??",
+    output: 3,
+    function: getOperationValue,
+  },
+  {
+    name: `test getOperationValue "??" operator with non-null oprands, should success`,
+    input1: {
+      left: 0,
+      right: 3,
+    },
+    input2: "??",
+    output: 0,
+    function: getOperationValue,
+  },
 ];
 
 testCaseProvider.forEach((testCase) => {
