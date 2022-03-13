@@ -132,6 +132,12 @@ export function getOperationValue(
     case "||":
       return operands.left || operands.right;
 
+    case '**':
+      if (checkNumberOperands(operands)) {
+        return Math.pow(operands.left,operands.right);
+      }
+      throw exception;
+
     default:
       throw new InvalidStateException(`Unsupported operator: ${operator}`);
   }
