@@ -10,6 +10,7 @@
 <p align="center">
   This is official repository for bhai-lang.<br><br>
   <b>Bhai lang is a toy programming language written in Typescript.</b>
+  Here you can have coding in simply <b>Bhai Type</b> language!!! where playground has also been added to run and test your code in one go.
 </p>
 <br>
 
