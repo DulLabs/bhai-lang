@@ -7,7 +7,7 @@ import { ASTNode } from "../types/nodeTypes";
 
 export default class ContinueStatement extends Statement {
     getStatement(): ASTNode {
-        this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.AGLA_DEKH_BHAI);
+        this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.AUR_BATA_BHAI);
 
         return {
             type: NodeType.ContinueStatement

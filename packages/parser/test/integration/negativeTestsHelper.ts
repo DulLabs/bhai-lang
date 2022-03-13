@@ -340,7 +340,7 @@ export const ContinueStatementNegativeTests = [
     name: "Continue statement test - continue outside a loop, should throw an exception",
     input: `
         hi bhai
-          agla dekh bhai
+          aur bata bhai
         bye bhai
       `,
     output: SyntaxError,

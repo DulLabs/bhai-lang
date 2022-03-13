@@ -518,7 +518,7 @@ export const WithOutputPositiveTests = [
         step += 1;
         agar bhai (a % 2 != 0){
           a -= 2;
-          agla dekh bhai;
+          aur bata bhai;
         }
         a -= 1;
       }
@@ -537,10 +537,10 @@ export const WithOutputPositiveTests = [
         step += 1;
         agar bhai (a % 2 == 0){
           a -= 2;
-          agla dekh bhai;
+          aur bata bhai;
         }
         a -= 1;
-        agla dekh bhai;
+        aur bata bhai;
         bol bhai "oye oye oye.. yha tk nhi aana tha bhai";
       }
       bol bhai step;
@@ -559,10 +559,10 @@ export const WithOutputPositiveTests = [
       jab tak bhai (a > 0) {
         agar bhai (a % 2 == 0){
           a -= 3;
-          agla dekh bhai;
+          aur bata bhai;
         }
         a -= 1;
-        agar bhai (step == 1) agla dekh bhai
+        agar bhai (step == 1) aur bata bhai
         step += 1;
       }
       bol bhai step;

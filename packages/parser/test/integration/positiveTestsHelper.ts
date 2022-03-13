@@ -611,7 +611,7 @@ export const WhileStatementTests = [
     input: `
     hi bhai
     jab tak bhai (x > 9) {
-      agla dekh bhai;
+      aur bata bhai;
     }
     bhai ye hai a = 90;
     bye bhai;
