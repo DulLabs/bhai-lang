@@ -125,21 +125,25 @@ bye bhai
 ```
 
 <h3 align="center">Loops</h3>
-<p align="center">Statements inside <code>jab tak bhai</code> blocks are executed as long as a specified condition evaluates to sahi. If the condition becomes <code>galat</code>, statement within the loop stops executing and control passes to the statement following the loop. Use <code>bas kar bhai</code> to break the loop.</p>
+<p align="center">Statements inside <code>jab tak bhai</code> blocks are executed as long as a specified condition evaluates to sahi. If the condition becomes <code>galat</code>, statement within the loop stops executing and control passes to the statement following the loop. Use <code>bas kar bhai</code> to break the loop and <code className="language-cpp">agla dekh bhai</code> to continue within loop.</p>
 
 
 ```
 
 hi bhai
-    bhai ye hai a = 0;
-    jab tak bhai (a < 10) {
-      bol bhai a;
-      a += 1;
-      agar bhai (a == 6) {
-        bas kar bhai;
-      }
-    }
-    bol bhai "done";
+  bhai ye hai a = 0;
+  jab tak bhai (a < 10) {
+   a += 1;
+   agar bhai (a == 5) {
+    bol bhai "andar se bol bhai ", a;
+    agla dekh bhai;
+   }
+   agar bhai (a == 6) {
+    bas kar bhai;
+   }
+   bol bhai a;
+  }
+  bol bhai "done";
 bye bhai
 ```
 
