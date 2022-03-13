@@ -62,6 +62,10 @@ export function getOperationValue(
 
     case "/=":
     case "/":
+      if (operands.right === 0) {
+        throw new RuntimeException(`Bhai Bhai Bhai Bhai Bhai ye kya kar diya...`)
+      }
+      
       if (checkNumberOperands(operands)) {
         return operands.left / operands.right;
       }
