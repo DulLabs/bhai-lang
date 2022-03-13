@@ -46,6 +46,5 @@ body:
       label: Code of Conduct
       description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/DulLabs/bhai-lang/blob/develop/README.md)
       options:
-        - label: I follow [Contributing Guidelines](https://github.com/DulLabs/bhai-lang/blob/develop/README.md) & [Code of conduct](https://github.com/DulLabs/bhai-lang/blob/develop/README.md) of bhai-lang
-.
+        - label: I follow [Contributing Guidelines](https://github.com/DulLabs/bhai-lang/blob/develop/README.md) & [Code of conduct](https://github.com/DulLabs/bhai-lang/blob/develop/README.md) of bhai-lang.
           required: true
