@@ -7,17 +7,17 @@ const features = [
     name: "General",
     description: (
       <>
-        <code className="language-cpp">hi bhai</code> is the entrypoint for the
+        <code className="language-cpp">hello dost</code> is the entrypoint for the
         program and all program must end with{" "}
-        <code className="language-cpp">bye bhai</code>. Anything outside of it
+        <code className="language-cpp">bye dost</code>. Anything outside of it
         will be ignored.
       </>
     ),
     code: `This will be ignored
 
-hi bhai
+hello dost
   // Write code here
-bye bhai
+bye dost
 
 This too
     `,
@@ -27,17 +27,17 @@ This too
     description: (
       <>
         Variables can be declared using{" "}
-        <code className="language-cpp">bhai ye hai</code>.
+        <code className="language-cpp">dost ye hai</code>.
       </>
     ),
-    code: `hi bhai
-    bhai ye hai a = 10;
-    bhai ye hai b = "two";
-    bhai ye hai c = 15;
+    code: `hello dost
+    dost ye hai a = 10;
+    dost ye hai b = "two";
+    dost ye hai c = 15;
     a = a + 1;
     b = 21;
     c *= 2;
-bye bhai
+bye dost
     `,
   },
   {
@@ -50,76 +50,76 @@ bye bhai
         <code className="language-cpp">galat</code> are the boolean values.
       </>
     ),
-    code: `hi bhai
-    bhai ye hai a = 10;
-    bhai ye hai b = 10 + (15*20);
-    bhai ye hai c = "two";
-    bhai ye hai d = 'ok';
-    bhai ye hai e = nalla;
-    bhai ye hai f = sahi;
-    bhai ye hai g = galat;
-bye bhai
+    code: `hello dost
+    dost ye hai a = 10;
+    dost ye hai b = 10 + (15*20);
+    dost ye hai c = "two";
+    dost ye hai d = 'ok';
+    dost ye hai e = nalla;
+    dost ye hai f = sahi;
+    dost ye hai g = galat;
+bye dost
     `,
   },
   {
     name: "Built-ins",
     description: (
       <>
-        Use <code className="language-cpp">bol bhai</code> to print anything to
+        Use <code className="language-cpp">bolo dost</code> to print anything to
         console.
       </>
     ),
-    code: `hi bhai
-    bol bhai "Hello World";
-    bhai ye hai a = 10;
+    code: `hello dost
+    bolo dost "Hello World";
+    dost ye hai a = 10;
     {
-       bhai ye hai b = 20;
-       bol bhai a + b;
+       dost ye hai b = 20;
+       bolo dost a + b;
     }
-    bol bhai 5, 'ok', nalla , sahi , galat;
-bye bhai
+    bolo dost 5, 'ok', nalla , sahi , galat;
+bye dost
     `,
   },
   {
     name: "Conditionals",
     description: (
       <>
-        Bhailang supports simple if else construct , <code className="language-cpp">agar bhai</code> block will execute if condition is <code className="language-cpp">sahi</code> and <code className="language-cpp">warna bhai</code> block will execute if condition is <code className="language-cpp">galat</code>.
+        Bhailang supports simple if else construct , <code className="language-cpp">agar dost</code> block will execute if condition is <code className="language-cpp">sahi</code> and <code className="language-cpp">warna dost</code> block will execute if condition is <code className="language-cpp">galat</code>.
       </>
     ),
-    code: `hi bhai
-    bhai ye hai a = 10;
-    agar bhai (a < 25) {
-      bol bhai "a is less than 25";
-    } warna bhai {
-      bol bhai "a is greater than or equal to 25";
+    code: `hello dost
+    dost ye hai a = 10;
+    agar dost (a < 25) {
+      bolo dost "a is less than 25";
+    } warna dost {
+      bolo dost "a is greater than or equal to 25";
     }
-bye bhai
+bye dost
     `
   },
   {
     name: "Loops",
     description: (
       <>
-        Statements inside <code className="language-cpp">jab tak bhai</code> blocks are executed as long as a specified condition evaluates to <code className="language-cpp">sahi</code>. If the condition becomes <code className="language-cpp">galat</code>, statement within the loop stops executing and control passes to the statement following the loop. 
-        Use <code className="language-cpp">bas kar bhai</code> to break the loop and <code className="language-cpp">agla dekh bhai</code> to continue within loop.
+        Statements inside <code className="language-cpp">jab tak dost</code> blocks are executed as long as a specified condition evaluates to <code className="language-cpp">sahi</code>. If the condition becomes <code className="language-cpp">galat</code>, statement within the loop stops executing and control passes to the statement following the loop. 
+        Use <code className="language-cpp">bas karo dost</code> to break the loop and <code className="language-cpp">agla dekho dost</code> to continue within loop.
       </>
     ),
-    code: `hi bhai
-    bhai ye hai a = 0;
-    jab tak bhai (a < 10) {
+    code: `hello dost
+    dost ye hai a = 0;
+    jab tak dost (a < 10) {
       a += 1;
-      agar bhai (a == 5) {
-        bol bhai "andar se bol bhai ", a;
-        agla dekh bhai;
+      agar dost (a == 5) {
+        bolo dost "andar se bolo dost ", a;
+        agla dekho dost;
       }
-      agar bhai (a == 6) {
-        bas kar bhai;
+      agar dost (a == 6) {
+        bas karo dost;
       }
-      bol bhai a;
+      bolo dost a;
     }
-    bol bhai "done";
-bye bhai
+    bolo dost "done";
+bye dost
     `
   }
 

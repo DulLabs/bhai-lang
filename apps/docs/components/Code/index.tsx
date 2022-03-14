@@ -9,23 +9,23 @@ import Terminal from "./Terminal";
 
 
 const initialCode = `
-hi bhai
- bol bhai "Hello World";
+hello dost
+ bolo dost "Hello World";
  
-  bhai ye hai a = 3;
-  bhai ye hai b = 0;
+  dost ye hai a = 3;
+  dost ye hai b = 0;
 
-  jab tak bhai (b < 5) {
-    bol bhai b;
+  jab tak dost (b < 5) {
+    bolo dost b;
 
-    agar bhai (b == a){
-      bol bhai "b is equal to a";
+    agar dost (b == a){
+      bolo dost "b is equal to a";
     }
 
     b += 1;
   }
 
-bye bhai
+bye dost
 `;
 
 const Code = (props: Props) => {
@@ -51,6 +51,8 @@ const Code = (props: Props) => {
     try {
       interpreter.interpret(code);
     } catch (e) {
+      console.log("🚀 ~ file: index.tsx ~ line 54 ~ executeCode ~ e", e)
+      alert(';ssdf')
       if (e instanceof Error) {
         isExecusionSuccess = false;
         outputList.push({ value: e.message, isError: true });

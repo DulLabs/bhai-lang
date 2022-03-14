@@ -1,23 +1,23 @@
 export const TokenTypes = {
   NULL_TYPE: null,
 
-  HI_BHAI_TYPE: "hi bhai",
+  HI_BHAI_TYPE: "hello dost",
 
-  BYE_BHAI_TYPE: "bye bhai",
+  BYE_BHAI_TYPE: "bye dost",
 
-  BOL_BHAI_TYPE: "bol bhai",
+  BOL_BHAI_TYPE: "bolo dost",
 
-  BHAI_YE_HAI_TYPE: "bhai ye hai",
+  BHAI_YE_HAI_TYPE: "dost ye hai",
 
-  AGAR_BHAI: "agar bhai",
+  AGAR_BHAI: "agar dost",
 
-  WARNA_BHAI: "warna bhai",
+  WARNA_BHAI: "warna dost",
 
-  JAB_TAK_BHAI: "jab tak bhai",
+  JAB_TAK_BHAI: "jab tak dost",
 
-  BAS_KAR_BHAI: "bas kar bhai",
+  BAS_KAR_BHAI: "bas karo dost",
 
-  AGLA_DEKH_BHAI: "agla dekh bhai",
+  AGLA_DEKH_BHAI: "agla dekho dost",
 
   NALLA_TYPE: "NALLA",
 
@@ -77,16 +77,16 @@ export const SPEC = [
   { regex: /^,/, tokenType: TokenTypes.COMMA_TYPE },
 
   //Keywords
-  { regex: /^\bhi bhai\b/, tokenType: TokenTypes.HI_BHAI_TYPE },
-  { regex: /^\bbye bhai\b/, tokenType: TokenTypes.BYE_BHAI_TYPE },
-  { regex: /^\bbol bhai\b/, tokenType: TokenTypes.BOL_BHAI_TYPE },
-  { regex: /^\bbhai ye hai\b/, tokenType: TokenTypes.BHAI_YE_HAI_TYPE },
-  { regex: /^\bagar bhai\b/, tokenType: TokenTypes.AGAR_BHAI },
-  { regex: /^\bwarna bhai\b/, tokenType: TokenTypes.WARNA_BHAI },
+  { regex: /^\bhello dost\b/, tokenType: TokenTypes.HI_BHAI_TYPE },
+  { regex: /^\bbye dost\b/, tokenType: TokenTypes.BYE_BHAI_TYPE },
+  { regex: /^\bbolo dost\b/, tokenType: TokenTypes.BOL_BHAI_TYPE },
+  { regex: /^\bdost ye hai\b/, tokenType: TokenTypes.BHAI_YE_HAI_TYPE },
+  { regex: /^\bagar dost\b/, tokenType: TokenTypes.AGAR_BHAI },
+  { regex: /^\bwarna dost\b/, tokenType: TokenTypes.WARNA_BHAI },
   { regex: /^\bnalla\b/, tokenType: TokenTypes.NALLA_TYPE },
-  { regex: /^\bjab tak bhai\b/, tokenType: TokenTypes.JAB_TAK_BHAI },
-  { regex: /^\bbas kar bhai\b/, tokenType: TokenTypes.BAS_KAR_BHAI },
-  { regex: /^\bagla dekh bhai\b/, tokenType: TokenTypes.AGLA_DEKH_BHAI },
+  { regex: /^\bjab tak dost\b/, tokenType: TokenTypes.JAB_TAK_BHAI },
+  { regex: /^\bbas karo dost\b/, tokenType: TokenTypes.BAS_KAR_BHAI },
+  { regex: /^\bagla dekho dost\b/, tokenType: TokenTypes.AGLA_DEKH_BHAI },
 
   // Number
   { regex: /^-?\d+/, tokenType: TokenTypes.NUMBER_TYPE },

@@ -13,7 +13,7 @@ afterEach(() => {
 test("test eatTokenAndForwardLookahead success", () => {
   const lookahead = {
     type: TokenTypes.HI_BHAI_TYPE,
-    value: "hi bhai",
+    value: "hello dost",
   };
 
   tokenizerMock.getNextToken.mockReturnValueOnce(null);
@@ -26,7 +26,7 @@ test("test eatTokenAndForwardLookahead success", () => {
     tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.HI_BHAI_TYPE)
   ).toStrictEqual({
     type: TokenTypes.HI_BHAI_TYPE,
-    value: "hi bhai",
+    value: "hello dost",
   });
 
   expect(tokenizerMock.getNextToken).toHaveBeenCalledTimes(1);
@@ -49,7 +49,7 @@ test("test eatTokenAndForwardLookahead with null lookahead should throw exceptio
 test("test eatTokenAndForwardLookahead with token not matching the expected token type lookahead should throw exception", () => {
   const lookahead = {
     type: TokenTypes.BYE_BHAI_TYPE,
-    value: "bye bhai",
+    value: "bye dost",
   };
 
   tokenizerMock.getNextToken.mockReturnValueOnce(null);
@@ -68,7 +68,7 @@ test("test eatTokenAndForwardLookahead with token not matching the expected toke
 test("test getLookahead success", () => {
   const lookahead = {
     type: TokenTypes.BYE_BHAI_TYPE,
-    value: "bye bhai",
+    value: "bye dost",
   };
 
   const tokenExecutor = new TokenExecutor(tokenizerMock);

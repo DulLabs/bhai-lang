@@ -18,7 +18,7 @@ export const bhaiLangSyntax = languages.extend("clike", {
     pattern: /(["'])((?:\\\1|(?:(?!\1)).)*)(\1)/,
     greedy: true,
   },
-  keyword: /\b(?:hi bhai|bye bhai|bol bhai|bhai ye hai|nalla|agar bhai|warna bhai|jab tak bhai|bas kar bhai|agla dekh bhai)\b/,
+  keyword: /\b(?:hello dost|bye dost|bolo dost|dost ye hai|nalla|agar dost|warna dost|jab tak dost|bas karo dost|agla dekho dost)\b/,
   boolean: /\b(?:sahi|galat)\b/,
   number: /(?:(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:e[-+]?\d+)?)i?/i,
   operator:

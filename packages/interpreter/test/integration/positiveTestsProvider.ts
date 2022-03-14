@@ -3,8 +3,8 @@ export const NoOutputPositiveTests = [
   {
     name: "interpreter empty init statement test, should success",
     input: `
-      hi bhai
-      bye bhai
+      hello dost
+      bye dost
     `,
   },
   {
@@ -12,139 +12,139 @@ export const NoOutputPositiveTests = [
     input: `
       some random characters
       random random random
-      hi bhai
-      bye bhai
+      hello dost
+      bye dost
     `,
   },
   // empty statement tests
   {
     name: "interpreter empty statement test, should success",
     input: `
-      hi bhai
+      hello dost
       ;
-      bye bhai
+      bye dost
     `,
   },
   {
     name: "interpreter multiple empty statements test, should success",
     input: `
-      hi bhai
+      hello dost
       ;
       ;
       ;;
-      bye bhai
+      bye dost
     `,
   },
   // block statement tests
   {
     name: "interpreter block statement test with empty block, should success",
     input: `
-      hi bhai
+      hello dost
       {};
-      bye bhai
+      bye dost
     `,
   },
   {
     name: "interpreter block statement test with variable statement inside, should success",
     input: `
-      hi bhai
+      hello dost
       {
-        bhai ye hai a = 4;
+        dost ye hai a = 4;
       }
-      bye bhai
+      bye dost
     `,
   },
   // variable statement test
   {
     name: "interpreter variable statement test with basic variable declaration, should success",
     input: `
-      hi bhai
-      bhai ye hai a, b, c;
-      bye bhai
+      hello dost
+      dost ye hai a, b, c;
+      bye dost
     `,
   },
   {
     name: "interpreter variable statement test with basic variable declaration and initialisation, should success",
     input: `
-      hi bhai
-      bhai ye hai a = 10, b = "crap";
-      bye bhai
+      hello dost
+      dost ye hai a = 10, b = "crap";
+      bye dost
     `,
   },
   {
     name: "interpreter variable statement test with multiple variable initialisation, should success",
     input: `
-      hi bhai
-      bhai ye hai a = 10, b = 5;
-      bye bhai
+      hello dost
+      dost ye hai a = 10, b = 5;
+      bye dost
     `,
   },
   {
     name: "interpreter variable statement test with variable initialisation with some expression, should success",
     input: `
-      hi bhai
-      bhai ye hai a = 7 + 90;
-      bye bhai
+      hello dost
+      dost ye hai a = 7 + 90;
+      bye dost
     `,
   },
   // assignment expression tests
   {
     name: "simple assignment expression test with only one identifer, should success",
     input: `
-      hi bhai
-      bhai ye hai a = sahi;
+      hello dost
+      dost ye hai a = sahi;
       a = 4;
-      bye bhai
+      bye dost
     `,
   },
   {
     name: "complex assignment expression test with only one identifer, should success",
     input: `
-      hi bhai
-      bhai ye hai a = 2;
+      hello dost
+      dost ye hai a = 2;
       a *= 4;
-      bye bhai
+      bye dost
     `,
   },
   // paranthesized expression tests
   {
     name: "paranthesized expression test with one parenthesis and simple expression, should success",
     input: `
-      hi bhai
-      bhai ye hai a = 2;
+      hello dost
+      dost ye hai a = 2;
       (a + 4);
-      bye bhai
+      bye dost
     `,
   },
   {
     name: "paranthesized expression test with one parenthesis and complex expression, should success",
     input: `
-      hi bhai
-      bhai ye hai a = 2;
+      hello dost
+      dost ye hai a = 2;
       (a + 4) * 10 + (5 - 4);
-      bye bhai
+      bye dost
     `,
   },
   {
     name: "paranthesized expression test with multiple parenthesis, should success",
     input: `
-      hi bhai
-      bhai ye hai a = 2;
+      hello dost
+      dost ye hai a = 2;
       (a * (4 + 8) + 10);
-      bye bhai
+      bye dost
     `,
   },
   // if statement test
   {
     name: "paranthesized expression test with multiple parenthesis, should success",
     input: `
-    hi bhai
-    bhai ye hai x = 9;
-    agar bhai (x != 9) {
+    hello dost
+    dost ye hai x = 9;
+    agar dost (x != 9) {
       x = 5;
-      bol bhai x;
-    } warna bhai (x >= 9);
-    bye bhai;
+      bolo dost x;
+    } warna dost (x >= 9);
+    bye dost;
     `,
   },
 ];
@@ -153,221 +153,221 @@ export const WithOutputPositiveTests = [
   {
     name: "variable assignment test with multiple variables, should success",
     input: `
-      hi bhai;
-      bhai ye hai a , b;
+      hello dost;
+      dost ye hai a , b;
       a = b = 60;
-      bol bhai a, b;
-      bye bhai
+      bolo dost a, b;
+      bye dost
     `,
     output: "60 60",
   },
   {
     name: "printStatement test with multiple expressions, should success",
     input: `
-      hi bhai;
-      bhai ye hai a = 2, b = 60;
-      bol bhai (a * (4 + 8) + 10), b;
-      bye bhai
+      hello dost;
+      dost ye hai a = 2, b = 60;
+      bolo dost (a * (4 + 8) + 10), b;
+      bye dost
     `,
     output: "34 60",
   },
   {
     name: "printStatement test with multiple expressions and re assigning value of one variable, should success",
     input: `
-      hi bhai;
-      bhai ye hai a = 2, b = 60;
+      hello dost;
+      dost ye hai a = 2, b = 60;
 
       a = b + 3;
-      bol bhai a, b;
-      bye bhai
+      bolo dost a, b;
+      bye dost
     `,
     output: "63 60",
   },
   {
     name: "printStatement test with multiple expressions & without any variables, should success",
     input: `
-      hi bhai;
-      bol bhai "hello", sahi, galat;
-      bye bhai
+      hello dost;
+      bolo dost "hello", sahi, galat;
+      bye dost
     `,
     output: "hello sahi galat",
   },
   {
     name: "printStatement test with nalla, should success",
     input: `
-      hi bhai;
-      bol bhai nalla;
-      bye bhai;
+      hello dost;
+      bolo dost nalla;
+      bye dost;
     `,
     output: "nalla",
   },
   {
     name: "printStatement test with nalla as second parameter, should success",
     input: `
-      hi bhai;
-      bol bhai 10, nalla;
-      bye bhai;
+      hello dost;
+      bolo dost 10, nalla;
+      bye dost;
     `,
     output: "10 nalla",
   },
   {
     name: "printStatement test with string concatenation, should success",
     input: `
-      hi bhai;
-      bol bhai "hello" + "crap";
-      bye bhai;
+      hello dost;
+      bolo dost "hello" + "crap";
+      bye dost;
     `,
     output: "hellocrap",
   },
   {
     name: "printStatement test with multiple expresions including nalla, should success",
     input: `
-      hi bhai;
-      bhai ye hai a = 70;
-      bol bhai 6*5, nalla, "jamtara", a;
-      bye bhai;
+      hello dost;
+      dost ye hai a = 70;
+      bolo dost 6*5, nalla, "jamtara", a;
+      bye dost;
     `,
     output: "30 nalla jamtara 70",
   },
   {
     name: "printStatement test with nalla variable, should success",
     input: `
-      hi bhai;
-      bhai ye hai a;
-      bol bhai a;
-      bye bhai;
+      hello dost;
+      dost ye hai a;
+      bolo dost a;
+      bye dost;
     `,
     output: "nalla",
   },
   {
     name: `printStatement test with string "undefined", should success`,
     input: `
-      hi bhai;
-      bol bhai "undefined";
-      bye bhai;
+      hello dost;
+      bolo dost "undefined";
+      bye dost;
     `,
     output: "undefined",
   },
   {
     name: `printStatement test with nalla variable, should success`,
     input: `
-      hi bhai;
-      bhai ye hai a;
-      bol bhai a;
-      bye bhai;
+      hello dost;
+      dost ye hai a;
+      bolo dost a;
+      bye dost;
     `,
     output: "nalla",
   },
   {
     name: `printStatement test with sahi variable, should success`,
     input: `
-      hi bhai;
-      bhai ye hai a = sahi;
-      bol bhai a;
-      bye bhai;
+      hello dost;
+      dost ye hai a = sahi;
+      bolo dost a;
+      bye dost;
     `,
     output: "sahi",
   },
   {
     name: `printStatement test with galat variable, should success`,
     input: `
-      hi bhai;
-      bhai ye hai a = galat;
-      bol bhai a;
-      bye bhai;
+      hello dost;
+      dost ye hai a = galat;
+      bolo dost a;
+      bye dost;
     `,
     output: "galat",
   },
   {
     name: `printStatement test with assignment expression, should success`,
     input: `
-      hi bhai;
-      bhai ye hai a;
-      bol bhai a = 90;
-      bye bhai;
+      hello dost;
+      dost ye hai a;
+      bolo dost a = 90;
+      bye dost;
     `,
     output: "90",
   },
   {
     name: `printStatement test with logical AND, should success`,
     input: `
-      hi bhai;
-      bol bhai 9 && 10;
-      bye bhai;
+      hello dost;
+      bolo dost 9 && 10;
+      bye dost;
     `,
     output: "10",
   },
   {
     name: `printStatement test with logical OR, should success`,
     input: `
-      hi bhai;
-      bol bhai 9 || 10;
-      bye bhai;
+      hello dost;
+      bolo dost 9 || 10;
+      bye dost;
     `,
     output: "9",
   },
   {
     name: `printStatement test with logical - 1, should success`,
     input: `
-      hi bhai;
-      bol bhai galat && sahi;
-      bye bhai;
+      hello dost;
+      bolo dost galat && sahi;
+      bye dost;
     `,
     output: "galat",
   },
   {
     name: `printStatement test with logical - 2, should success`,
     input: `
-    hi bhai;
-    bhai ye hai a = sahi;
-    bol bhai a && galat;
-    bye bhai;
+    hello dost;
+    dost ye hai a = sahi;
+    bolo dost a && galat;
+    bye dost;
     `,
     output: "galat",
   },
   {
     name: `printStatement test with logical - 3, should success`,
     input: `
-    hi bhai;
-    bhai ye hai a = sahi;
-    bol bhai a && sahi;
-    bye bhai;
+    hello dost;
+    dost ye hai a = sahi;
+    bolo dost a && sahi;
+    bye dost;
     `,
     output: "sahi",
   },
   {
     name: `printStatement test with equality, should success`,
     input: `
-      hi bhai;
-      bol bhai 9 == 10;
-      bye bhai;
+      hello dost;
+      bolo dost 9 == 10;
+      bye dost;
     `,
     output: "galat",
   },
   {
     name: `printStatement test with inequality, should success`,
     input: `
-      hi bhai;
-      bol bhai 9 != 10;
-      bye bhai;
+      hello dost;
+      bolo dost 9 != 10;
+      bye dost;
     `,
     output: "sahi",
   },
   {
     name: `printStatement test with logical OR, should success`,
     input: `
-      hi bhai;
-      bol bhai 9 || 10;
-      bye bhai;
+      hello dost;
+      bolo dost 9 || 10;
+      bye dost;
     `,
     output: "9",
   },
   {
     name: `printStatement test with logical OR - 2, should success`,
     input: `
-      hi bhai;
-      bol bhai galat || sahi;
-      bye bhai;
+      hello dost;
+      bolo dost galat || sahi;
+      bye dost;
     `,
     output: "sahi",
   },
@@ -375,56 +375,56 @@ export const WithOutputPositiveTests = [
   {
     name: `whileStatement test with 1 time loop, should success`,
     input: `
-      hi bhai;
-      bhai ye hai a = 0;
-      jab tak bhai (a < 1) {
-        bol bhai "bhai";
+      hello dost;
+      dost ye hai a = 0;
+      jab tak dost (a < 1) {
+        bolo dost "bhai";
         a += 1;
       }
-      bye bhai;
+      bye dost;
     `,
     output: "bhai",
   },
   {
     name: `whileStatement test with single break statement, should success`,
     input: `
-      hi bhai;
-      jab tak bhai (sahi) 
-        bas kar bhai;
-      bol bhai "end";
-      bye bhai;
+      hello dost;
+      jab tak dost (sahi) 
+        bas karo dost;
+      bolo dost "end";
+      bye dost;
     `,
     output: "end",
   },
   {
     name: `whileStatement test with nested loops, should success`,
     input: `
-      hi bhai;
-      bhai ye hai a = 0;
-      jab tak bhai (a < 2) {
-        jab tak bhai (sahi)
-          bas kar bhai;
-        bol bhai "hello";
-        agar bhai (sahi)
-          bas kar bhai;
+      hello dost;
+      dost ye hai a = 0;
+      jab tak dost (a < 2) {
+        jab tak dost (sahi)
+          bas karo dost;
+        bolo dost "hello";
+        agar dost (sahi)
+          bas karo dost;
       }
-      bye bhai;
+      bye dost;
     `,
     output: "hello",
   },
   {
     name: `whileStatement with multiple breaks, should success`,
     input: `
-      hi bhai;
-      bhai ye hai a = 0;
-      jab tak bhai (a < 2) {
-        bol bhai "hello";
-        agar bhai (sahi)
-          bas kar bhai;
-        bas kar bhai;
-        bas kar bhai;
+      hello dost;
+      dost ye hai a = 0;
+      jab tak dost (a < 2) {
+        bolo dost "hello";
+        agar dost (sahi)
+          bas karo dost;
+        bas karo dost;
+        bas karo dost;
       }
-      bye bhai;
+      bye dost;
     `,
     output: "hello",
   },
@@ -432,37 +432,37 @@ export const WithOutputPositiveTests = [
   {
     name: `if statement success test - 1: only if, should success`,
     input: `
-    hi bhai
-    agar bhai (sahi) {
-      bol bhai "bhai";
+    hello dost
+    agar dost (sahi) {
+      bolo dost "bhai";
     }
-    bye bhai;
+    bye dost;
     `,
     output: "bhai",
   },
   {
     name: `if statement success test - 2: if else both, should success`,
     input: `
-    hi bhai
-    agar bhai (sahi) {
-      bol bhai "sahi";
-    } warna bhai {
-      bol bhai "galat";
+    hello dost
+    agar dost (sahi) {
+      bolo dost "sahi";
+    } warna dost {
+      bolo dost "galat";
     }
-    bye bhai;
+    bye dost;
     `,
     output: "sahi",
   },
   {
     name: `if statement success test - 3: if only with comarison condn, should success`,
     input: `
-    hi bhai
-    bhai ye hai x = 9;
-    agar bhai (x >= 9) {
+    hello dost
+    dost ye hai x = 9;
+    agar dost (x >= 9) {
       x = 5;
-      bol bhai x;
+      bolo dost x;
     } 
-    bye bhai;
+    bye dost;
     `,
     output: "5",
   },
@@ -470,13 +470,13 @@ export const WithOutputPositiveTests = [
   {
     name: `logical "&&" test with sahi galat, should success`,
     input: `
-        hi bhai
-        agar bhai (sahi && galat) {
-          bol bhai "sahi";
-        } warna bhai {
-          bol bhai "galat";
+        hello dost
+        agar dost (sahi && galat) {
+          bolo dost "sahi";
+        } warna dost {
+          bolo dost "galat";
         }
-        bye bhai;
+        bye dost;
       `,
     output: `galat`,
   },
@@ -484,67 +484,67 @@ export const WithOutputPositiveTests = [
   {
     name: `modulus operator "%" test, should success`,
     input: `
-        hi bhai
-        bol bhai 90 % 9;
-        bye bhai;
+        hello dost
+        bolo dost 90 % 9;
+        bye dost;
       `,
     output: `0`,
   },
   {
     name: `modulus operator "%" test - 2, should success`,
     input: `
-        hi bhai
-        bol bhai 27 % 5;
-        bye bhai;
+        hello dost
+        bolo dost 27 % 5;
+        bye dost;
       `,
     output: `2`,
   },
   {
     name: `modulus operator "%" test - 2, should success`,
     input: `
-        hi bhai
-        bol bhai 5 % 20;
-        bye bhai;
+        hello dost
+        bolo dost 5 % 20;
+        bye dost;
       `,
     output: `5`,
   },
   {
     name: `whileStatement test with single continue statement, should success`,
     input: `
-      hi bhai;
-      bhai ye hai a = 5;
-      bhai ye hai step = 0;
-      jab tak bhai (a > 0) {
+      hello dost;
+      dost ye hai a = 5;
+      dost ye hai step = 0;
+      jab tak dost (a > 0) {
         step += 1;
-        agar bhai (a % 2 != 0){
+        agar dost (a % 2 != 0){
           a -= 2;
-          agla dekh bhai;
+          agla dekho dost;
         }
         a -= 1;
       }
-      bol bhai step;
-      bye bhai;
+      bolo dost step;
+      bye dost;
     `,
     output: "3",
   },
   {
     name: `whileStatement test with multiple continue statement, should success`,
     input: `
-      hi bhai;
-      bhai ye hai a = 5;
-      bhai ye hai step = 0;
-      jab tak bhai (a > 0) {
+      hello dost;
+      dost ye hai a = 5;
+      dost ye hai step = 0;
+      jab tak dost (a > 0) {
         step += 1;
-        agar bhai (a % 2 == 0){
+        agar dost (a % 2 == 0){
           a -= 2;
-          agla dekh bhai;
+          agla dekho dost;
         }
         a -= 1;
-        agla dekh bhai;
-        bol bhai "oye oye oye.. yha tk nhi aana tha bhai";
+        agla dekho dost;
+        bolo dost "oye oye oye.. yha tk nhi aana tha bhai";
       }
-      bol bhai step;
-      bye bhai;
+      bolo dost step;
+      bye dost;
     `,
     output: "3",
   },
@@ -553,20 +553,20 @@ export const WithOutputPositiveTests = [
     // a: 10 => 7 => 6 => 3 => 2 => -1
     name: `whileStatement test with single continue statement without block, should success`,
     input: `
-      hi bhai;
-      bhai ye hai a = 10;
-      bhai ye hai step = 0;
-      jab tak bhai (a > 0) {
-        agar bhai (a % 2 == 0){
+      hello dost;
+      dost ye hai a = 10;
+      dost ye hai step = 0;
+      jab tak dost (a > 0) {
+        agar dost (a % 2 == 0){
           a -= 3;
-          agla dekh bhai;
+          agla dekho dost;
         }
         a -= 1;
-        agar bhai (step == 1) agla dekh bhai
+        agar dost (step == 1) agla dekho dost
         step += 1;
       }
-      bol bhai step;
-      bye bhai;
+      bolo dost step;
+      bye dost;
     `,
     output: "1",
   },

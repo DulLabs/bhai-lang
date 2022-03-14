@@ -31,7 +31,7 @@ export default class IfStatement extends Statement {
     this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.CLOSED_PARENTHESIS_TYPE);
 
     if (this._tokenExecutor.getLookahead() == null) {
-      throw new SyntaxError(`Unexpected end of "agar bhai" statement`);
+      throw new SyntaxError(`Unexpected end of "agar dost" statement`);
     }
 
     const consequent = Statement.getStatementImpl(this._tokenExecutor.getLookahead()!).getStatement();

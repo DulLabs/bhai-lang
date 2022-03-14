@@ -3,24 +3,24 @@ export const StatementTests = [
   {
     name: "empty init statement test, should success",
     input: `
-      hi bhai
-      bye bhai
+      hello dost
+      bye dost
     `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[]}}`,
   },
   {
     name: "init statement test with semi colon, should success",
     input: `
-      hi bhai;
-      bye bhai;
+      hello dost;
+      bye dost;
     `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[]}}`,
   },
   {
     name: "init statement test with semi colon - 2, should success",
     input: `
-      hi bhai;
-      bye bhai
+      hello dost;
+      bye dost
     `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[]}}`,
   },
@@ -29,8 +29,8 @@ export const StatementTests = [
     input: `
       some random characters
       random random random
-      hi bhai
-      bye bhai;
+      hello dost
+      bye dost;
     `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[]}}`,
   },
@@ -38,11 +38,11 @@ export const StatementTests = [
   {
     name: "multiple empty statements test, should success",
     input: `
-      hi bhai
+      hello dost
       ;
       ;
       ;;
-      bye bhai
+      bye dost
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"EmptyStatement\"},{\"type\":\"EmptyStatement\"},{\"type\":\"EmptyStatement\"}]}}`,
   },
@@ -50,40 +50,40 @@ export const StatementTests = [
   {
     name: "block statement test with empty block, should success",
     input: `
-      hi bhai
+      hello dost
       {}
-      bye bhai
+      bye dost
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"BlockStatement\",\"body\":[]}]}}`,
   },
   {
     name: "block statement test with empty block and semi colon, should success",
     input: `
-      hi bhai;
+      hello dost;
       {};
-      bye bhai
+      bye dost
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"BlockStatement\",\"body\":[]}]}}`,
   },
   {
     name: "block statement test with assignment expression inside, should success",
     input: `
-      hi bhai;
+      hello dost;
       {
         naam = 4;
       }
-      bye bhai;
+      bye dost;
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"BlockStatement\",\"body\":[{\"type\":\"ExpressionStatement\",\"expression\":{\"type\":\"AssignmentExpression\",\"operator\":\"=\",\"left\":{\"type\":\"IdentifierExpression\",\"name\":\"naam\"},\"right\":{\"type\":\"NumericLiteral\",\"value\":4}}}]}]}}`,
   },
   {
     name: "block statement test with variable statement inside, should success",
     input: `
-      hi bhai
+      hello dost
       {
-        bhai ye hai a = 4;
+        dost ye hai a = 4;
       }
-      bye bhai
+      bye dost
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"BlockStatement\",\"body\":[{\"type\":\"VariableStatement\",\"declarations\":[{\"type\":\"VariableDeclaration\",\"id\":{\"type\":\"IdentifierExpression\",\"name\":\"a\"},\"init\":{\"type\":\"NumericLiteral\",\"value\":4}}]}]}]}}`,
   },
@@ -91,91 +91,91 @@ export const StatementTests = [
   {
     name: "print statement test with string printing, should success",
     input: `
-      hi bhai
-      bol bhai "puff...";
-      bye bhai
+      hello dost
+      bolo dost "puff...";
+      bye dost
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"PrintStatement\",\"expressions\":[{\"type\":\"StringLiteral\",\"value\":\"puff...\"}]}]}}`,
   },
   {
     name: "print statement test with number printing, should success",
     input: `
-      hi bhai
-      bol bhai 478;
-      bye bhai
+      hello dost
+      bolo dost 478;
+      bye dost
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"PrintStatement\",\"expressions\":[{\"type\":\"NumericLiteral\",\"value\":478}]}]}}`,
   },
   {
     name: "print statement test with boolean printing, should success",
     input: `
-      hi bhai
-      bol bhai sahi, galat;
-      bye bhai
+      hello dost
+      bolo dost sahi, galat;
+      bye dost
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"PrintStatement\",\"expressions\":[{\"type\":\"BooleanLiteral\",\"value\":\"sahi\"},{\"type\":\"BooleanLiteral\",\"value\":\"galat\"}]}]}}`,
   },
   {
     name: "print statement test with identifier printing, should success",
     input: `
-      hi bhai
-      bol bhai a, b, c;
-      bye bhai
+      hello dost
+      bolo dost a, b, c;
+      bye dost
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"PrintStatement\",\"expressions\":[{\"type\":\"IdentifierExpression\",\"name\":\"a\"},{\"type\":\"IdentifierExpression\",\"name\":\"b\"},{\"type\":\"IdentifierExpression\",\"name\":\"c\"}]}]}}`,
   },
   {
     name: "print statement test with nalla printing, should success",
     input: `
-      hi bhai
-      bol bhai nalla;
-      bye bhai
+      hello dost
+      bolo dost nalla;
+      bye dost
     `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"PrintStatement","expressions":[{"type":"NullLiteral","value":"nalla"}]}]}}`,
   },
   {
     name: "print statement test with variable nalla printing, should success",
     input: `
-      hi bhai
-      bhai ye hai a = nalla;
-      bol bhai a;
-      bye bhai
+      hello dost
+      dost ye hai a = nalla;
+      bolo dost a;
+      bye dost
     `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"a"},"init":{"type":"NullLiteral","value":"nalla"}}]},{"type":"PrintStatement","expressions":[{"type":"IdentifierExpression","name":"a"}]}]}}`,
   },
   {
     name: "print statement test with logical AND, should success",
     input: `
-      hi bhai
-      bol bhai a && b;
-      bye bhai
+      hello dost
+      bolo dost a && b;
+      bye dost
     `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"PrintStatement","expressions":[{"type":"LogicalExpression","operator":"&&","left":{"type":"IdentifierExpression","name":"a"},"right":{"type":"IdentifierExpression","name":"b"}}]}]}}`,
   },
   {
     name: "print statement test with assignment, should success",
     input: `
-      hi bhai
-      bol bhai a = 9;
-      bye bhai
+      hello dost
+      bolo dost a = 9;
+      bye dost
     `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"PrintStatement","expressions":[{"type":"AssignmentExpression","operator":"=","left":{"type":"IdentifierExpression","name":"a"},"right":{"type":"NumericLiteral","value":9}}]}]}}`,
   },
   {
     name: "print statement test with logical OR, should success",
     input: `
-      hi bhai
-      bol bhai 9 || 90;
-      bye bhai
+      hello dost
+      bolo dost 9 || 90;
+      bye dost
     `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"PrintStatement","expressions":[{"type":"LogicalExpression","operator":"||","left":{"type":"NumericLiteral","value":9},"right":{"type":"NumericLiteral","value":90}}]}]}}`,
   },
   {
     name: "print statement test with equality operator, should success",
     input: `
-      hi bhai
-      bol bhai 9 == 90;
-      bye bhai
+      hello dost
+      bolo dost 9 == 90;
+      bye dost
     `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"PrintStatement","expressions":[{"type":"BinaryExpression","operator":"==","left":{"type":"NumericLiteral","value":9},"right":{"type":"NumericLiteral","value":90}}]}]}}`,
   },
@@ -183,63 +183,63 @@ export const StatementTests = [
   {
     name: "variable statement test with basic variable declaration, should success",
     input: `
-      hi bhai
-      bhai ye hai a, b, c;
-      bye bhai
+      hello dost
+      dost ye hai a, b, c;
+      bye dost
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"VariableStatement\",\"declarations\":[{\"type\":\"VariableDeclaration\",\"id\":{\"type\":\"IdentifierExpression\",\"name\":\"a\"},\"init\":{\"type\":\"NullLiteral\",\"value\":\"nalla\"}},{\"type\":\"VariableDeclaration\",\"id\":{\"type\":\"IdentifierExpression\",\"name\":\"b\"},\"init\":{\"type\":\"NullLiteral\",\"value\":\"nalla\"}},{\"type\":\"VariableDeclaration\",\"id\":{\"type\":\"IdentifierExpression\",\"name\":\"c\"},\"init\":{\"type\":\"NullLiteral\",\"value\":\"nalla\"}}]}]}}`,
   },
   {
     name: "variable statement test with basic variable declaration and initialisation, should success",
     input: `
-      hi bhai
-      bhai ye hai a = 10, b;
-      bye bhai
+      hello dost
+      dost ye hai a = 10, b;
+      bye dost
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"VariableStatement\",\"declarations\":[{\"type\":\"VariableDeclaration\",\"id\":{\"type\":\"IdentifierExpression\",\"name\":\"a\"},\"init\":{\"type\":\"NumericLiteral\",\"value\":10}},{\"type\":\"VariableDeclaration\",\"id\":{\"type\":\"IdentifierExpression\",\"name\":\"b\"},\"init\":{\"type\":\"NullLiteral\",\"value\":\"nalla\"}}]}]}}`,
   },
   {
     name: "variable statement test with multiple variable initialisation, should success",
     input: `
-      hi bhai
-      bhai ye hai a = 10, b = 5;
-      bye bhai
+      hello dost
+      dost ye hai a = 10, b = 5;
+      bye dost
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"VariableStatement\",\"declarations\":[{\"type\":\"VariableDeclaration\",\"id\":{\"type\":\"IdentifierExpression\",\"name\":\"a\"},\"init\":{\"type\":\"NumericLiteral\",\"value\":10}},{\"type\":\"VariableDeclaration\",\"id\":{\"type\":\"IdentifierExpression\",\"name\":\"b\"},\"init\":{\"type\":\"NumericLiteral\",\"value\":5}}]}]}}`,
   },
   {
     name: "variable statement test with multiple variable initialisation with same value, should success",
     input: `
-      hi bhai
-      bhai ye hai a = b = 5;
-      bye bhai
+      hello dost
+      dost ye hai a = b = 5;
+      bye dost
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"VariableStatement\",\"declarations\":[{\"type\":\"VariableDeclaration\",\"id\":{\"type\":\"IdentifierExpression\",\"name\":\"a\"},\"init\":{\"type\":\"AssignmentExpression\",\"operator\":\"=\",\"left\":{\"type\":\"IdentifierExpression\",\"name\":\"b\"},\"right\":{\"type\":\"NumericLiteral\",\"value\":5}}}]}]}}`,
   },
   {
     name: "variable statement test with variable initialisation with some expression, should success",
     input: `
-      hi bhai
-      bhai ye hai a = 7 + 90;
-      bye bhai
+      hello dost
+      dost ye hai a = 7 + 90;
+      bye dost
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"VariableStatement\",\"declarations\":[{\"type\":\"VariableDeclaration\",\"id\":{\"type\":\"IdentifierExpression\",\"name\":\"a\"},\"init\":{\"type\":\"BinaryExpression\",\"operator\":\"+\",\"left\":{\"type\":\"NumericLiteral\",\"value\":7},\"right\":{\"type\":\"NumericLiteral\",\"value\":90}}}]}]}}`,
   },
   {
     name: "variable statement test with variable initialisation with nalla literal, should success",
     input: `
-      hi bhai
-      bhai ye hai a = nalla;
-      bye bhai
+      hello dost
+      dost ye hai a = nalla;
+      bye dost
     `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"a"},"init":{"type":"NullLiteral","value":"nalla"}}]}]}}`,
   },
   {
     name: "variable statement test with variable initialisation with nalla literal, should success",
     input: `
-      hi bhai
-      bhai ye hai a = nalla;
-      bye bhai
+      hello dost
+      dost ye hai a = nalla;
+      bye dost
     `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"a"},"init":{"type":"NullLiteral","value":"nalla"}}]}]}}`,
   },
@@ -250,18 +250,18 @@ export const ExpressionsTests = [
   {
     name: "simple assignment expression test with only one identifer, should success",
     input: `
-      hi bhai
+      hello dost
       a = 4;
-      bye bhai
+      bye dost
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"ExpressionStatement\",\"expression\":{\"type\":\"AssignmentExpression\",\"operator\":\"=\",\"left\":{\"type\":\"IdentifierExpression\",\"name\":\"a\"},\"right\":{\"type\":\"NumericLiteral\",\"value\":4}}}]}}`,
   },
   {
     name: "complex assignment expression test with only one identifer, should success",
     input: `
-      hi bhai
+      hello dost
       a *= 4;
-      bye bhai
+      bye dost
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"ExpressionStatement\",\"expression\":{\"type\":\"AssignmentExpression\",\"operator\":\"*=\",\"left\":{\"type\":\"IdentifierExpression\",\"name\":\"a\"},\"right\":{\"type\":\"NumericLiteral\",\"value\":4}}}]}}`,
   },
@@ -269,45 +269,45 @@ export const ExpressionsTests = [
   {
     name: "paranthesized expression test with one parenthesis and simple expression, should success",
     input: `
-      hi bhai
+      hello dost
       (a + 4);
-      bye bhai
+      bye dost
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"ExpressionStatement\",\"expression\":{\"type\":\"BinaryExpression\",\"operator\":\"+\",\"left\":{\"type\":\"IdentifierExpression\",\"name\":\"a\"},\"right\":{\"type\":\"NumericLiteral\",\"value\":4}}}]}}`,
   },
   {
     name: "paranthesized expression test with one parenthesis and complex expression, should success",
     input: `
-      hi bhai
+      hello dost
       (a + 4) * 10 + (5 - 4);
-      bye bhai
+      bye dost
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"ExpressionStatement\",\"expression\":{\"type\":\"BinaryExpression\",\"operator\":\"+\",\"left\":{\"type\":\"BinaryExpression\",\"operator\":\"*\",\"left\":{\"type\":\"BinaryExpression\",\"operator\":\"+\",\"left\":{\"type\":\"IdentifierExpression\",\"name\":\"a\"},\"right\":{\"type\":\"NumericLiteral\",\"value\":4}},\"right\":{\"type\":\"NumericLiteral\",\"value\":10}},\"right\":{\"type\":\"BinaryExpression\",\"operator\":\"-\",\"left\":{\"type\":\"NumericLiteral\",\"value\":5},\"right\":{\"type\":\"NumericLiteral\",\"value\":4}}}}]}}`,
   },
   {
     name: "paranthesized expression test with multiple parenthesis, should success",
     input: `
-      hi bhai
+      hello dost
       (a * (4 + 8) + 10);
-      bye bhai
+      bye dost
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"ExpressionStatement\",\"expression\":{\"type\":\"BinaryExpression\",\"operator\":\"+\",\"left\":{\"type\":\"BinaryExpression\",\"operator\":\"*\",\"left\":{\"type\":\"IdentifierExpression\",\"name\":\"a\"},\"right\":{\"type\":\"BinaryExpression\",\"operator\":\"+\",\"left\":{\"type\":\"NumericLiteral\",\"value\":4},\"right\":{\"type\":\"NumericLiteral\",\"value\":8}}},\"right\":{\"type\":\"NumericLiteral\",\"value\":10}}}]}}`,
   },
   {
     name: "paranthesized expression test with assignment expression, should success",
     input: `
-    hi bhai
+    hello dost
     (x = 9);
-    bye bhai;
+    bye dost;
     `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}}}]}}`,
   },
   {
     name: "paranthesized expression test with assignment expression, should success",
     input: `
-    hi bhai
+    hello dost
     (x >= 9);
-    bye bhai;
+    bye dost;
     `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":">=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}}}]}}`,
   },
@@ -315,81 +315,81 @@ export const ExpressionsTests = [
   {
     name: "complex expression test with one nalla operand, should success",
     input: `
-        hi bhai
+        hello dost
         (nalla * (4 + 8 + 10));
-        bye bhai
+        bye dost
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"*","left":{"type":"NullLiteral","value":"nalla"},"right":{"type":"BinaryExpression","operator":"+","left":{"type":"BinaryExpression","operator":"+","left":{"type":"NumericLiteral","value":4},"right":{"type":"NumericLiteral","value":8}},"right":{"type":"NumericLiteral","value":10}}}}]}}`,
   },
   {
     name: "complex expression test with one nalla operand and one boolean operand, should success",
     input: `
-        hi bhai
+        hello dost
         (nalla * (sahi + 8 + 10));
-        bye bhai
+        bye dost
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"*","left":{"type":"NullLiteral","value":"nalla"},"right":{"type":"BinaryExpression","operator":"+","left":{"type":"BinaryExpression","operator":"+","left":{"type":"BooleanLiteral","value":"sahi"},"right":{"type":"NumericLiteral","value":8}},"right":{"type":"NumericLiteral","value":10}}}}]}}`,
   },
   {
     name: "complex expression test with one nalla operand and one boolean operand - 2, should success",
     input: `
-        hi bhai
+        hello dost
         (sahi * (nalla + 8 + 10));
-        bye bhai
+        bye dost
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"*","left":{"type":"BooleanLiteral","value":"sahi"},"right":{"type":"BinaryExpression","operator":"+","left":{"type":"BinaryExpression","operator":"+","left":{"type":"NullLiteral","value":"nalla"},"right":{"type":"NumericLiteral","value":8}},"right":{"type":"NumericLiteral","value":10}}}}]}}`,
   },
   {
     name: "complex expression test with one nalla operand and one boolean operand - 3, should success",
     input: `
-        hi bhai
+        hello dost
         (nalla + sahi);
-        bye bhai
+        bye dost
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"+","left":{"type":"NullLiteral","value":"nalla"},"right":{"type":"BooleanLiteral","value":"sahi"}}}]}}`,
   },
   {
     name: "complex expression test with one boolean operand, should success",
     input: `
-        hi bhai
+        hello dost
         (sahi * (4 + 8 + 10));
-        bye bhai
+        bye dost
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"*","left":{"type":"BooleanLiteral","value":"sahi"},"right":{"type":"BinaryExpression","operator":"+","left":{"type":"BinaryExpression","operator":"+","left":{"type":"NumericLiteral","value":4},"right":{"type":"NumericLiteral","value":8}},"right":{"type":"NumericLiteral","value":10}}}}]}}`,
   },
   {
     name: "expression test with only boolean operand, should success",
     input: `
-        hi bhai
+        hello dost
         sahi + galat;
-        bye bhai
+        bye dost
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"+","left":{"type":"BooleanLiteral","value":"sahi"},"right":{"type":"BooleanLiteral","value":"galat"}}}]}}`,
   },
   {
     name: "multiplicative expression test with only boolean operand, should success",
     input: `
-        hi bhai
+        hello dost
         sahi * galat;
-        bye bhai
+        bye dost
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"*","left":{"type":"BooleanLiteral","value":"sahi"},"right":{"type":"BooleanLiteral","value":"galat"}}}]}}`,
   },
   {
     name: "division expression test with only boolean operand, should success",
     input: `
-        hi bhai
+        hello dost
         sahi / galat;
-        bye bhai
+        bye dost
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"/","left":{"type":"BooleanLiteral","value":"sahi"},"right":{"type":"BooleanLiteral","value":"galat"}}}]}}`,
   },
   {
     name: "print statement test with expression containing nalla, should success",
     input: `
-        hi bhai
-        bol bhai nalla + 5;
-        bye bhai;
+        hello dost
+        bolo dost nalla + 5;
+        bye dost;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"PrintStatement","expressions":[{"type":"BinaryExpression","operator":"+","left":{"type":"NullLiteral","value":"nalla"},"right":{"type":"NumericLiteral","value":5}}]}]}}`,
   },
@@ -397,27 +397,27 @@ export const ExpressionsTests = [
   {
     name: `logical "&&" test with sahi galat, should success`,
     input: `
-        hi bhai
-        agar bhai (sahi && galat);
-        bye bhai;
+        hello dost
+        agar dost (sahi && galat);
+        bye dost;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"IfStatement","test":{"type":"LogicalExpression","operator":"&&","left":{"type":"BooleanLiteral","value":"sahi"},"right":{"type":"BooleanLiteral","value":"galat"}},"consequent":{"type":"EmptyStatement"},"alternate":{"type":"NullLiteral","value":"nalla"}}]}}`,
   },
   {
     name: `logical "&&" test with expression, should success`,
     input: `
-        hi bhai
-        agar bhai (a + b && d);
-        bye bhai;
+        hello dost
+        agar dost (a + b && d);
+        bye dost;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"IfStatement","test":{"type":"LogicalExpression","operator":"&&","left":{"type":"BinaryExpression","operator":"+","left":{"type":"IdentifierExpression","name":"a"},"right":{"type":"IdentifierExpression","name":"b"}},"right":{"type":"IdentifierExpression","name":"d"}},"consequent":{"type":"EmptyStatement"},"alternate":{"type":"NullLiteral","value":"nalla"}}]}}`,
   },
   {
     name: `logical "&&" test in variable declaration, should success`,
     input: `
-        hi bhai
-        bhai ye hai a = b && d;
-        bye bhai;
+        hello dost
+        dost ye hai a = b && d;
+        bye dost;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"a"},"init":{"type":"LogicalExpression","operator":"&&","left":{"type":"IdentifierExpression","name":"b"},"right":{"type":"IdentifierExpression","name":"d"}}}]}]}}`,
   },
@@ -425,27 +425,27 @@ export const ExpressionsTests = [
   {
     name: `logical "||" test with sahi galat, should success`,
     input: `
-        hi bhai
-        agar bhai (sahi || galat);
-        bye bhai;
+        hello dost
+        agar dost (sahi || galat);
+        bye dost;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"IfStatement","test":{"type":"LogicalExpression","operator":"||","left":{"type":"BooleanLiteral","value":"sahi"},"right":{"type":"BooleanLiteral","value":"galat"}},"consequent":{"type":"EmptyStatement"},"alternate":{"type":"NullLiteral","value":"nalla"}}]}}`,
   },
   {
     name: `logical "||" test with expression, should success`,
     input: `
-        hi bhai
-        agar bhai (a + b || d);
-        bye bhai;
+        hello dost
+        agar dost (a + b || d);
+        bye dost;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"IfStatement","test":{"type":"LogicalExpression","operator":"||","left":{"type":"BinaryExpression","operator":"+","left":{"type":"IdentifierExpression","name":"a"},"right":{"type":"IdentifierExpression","name":"b"}},"right":{"type":"IdentifierExpression","name":"d"}},"consequent":{"type":"EmptyStatement"},"alternate":{"type":"NullLiteral","value":"nalla"}}]}}`,
   },
   {
     name: `logical "||" test in variable declaration, should success`,
     input: `
-        hi bhai
-        bhai ye hai a = b || d;
-        bye bhai;
+        hello dost
+        dost ye hai a = b || d;
+        bye dost;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"a"},"init":{"type":"LogicalExpression","operator":"||","left":{"type":"IdentifierExpression","name":"b"},"right":{"type":"IdentifierExpression","name":"d"}}}]}]}}`,
   },
@@ -455,94 +455,94 @@ export const IfStatementTests = [
   {
     name: "if statement success test - 1: only if",
     input: `
-    hi bhai
-    agar bhai (sahi) {
+    hello dost
+    agar dost (sahi) {
     }
-    bye bhai;
+    bye dost;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"IfStatement","test":{"type":"BooleanLiteral","value":"sahi"},"consequent":{"type":"BlockStatement","body":[]},"alternate":{"type":"NullLiteral","value":"nalla"}}]}}`,
   },
   {
     name: "if statement success test - 2: if else both",
     input: `
-    hi bhai
-    agar bhai (sahi) {
-    } warna bhai {
+    hello dost
+    agar dost (sahi) {
+    } warna dost {
 
     }
-    bye bhai;
+    bye dost;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"IfStatement","test":{"type":"BooleanLiteral","value":"sahi"},"consequent":{"type":"BlockStatement","body":[]},"alternate":{"type":"BlockStatement","body":[]}}]}}`,
   },
   {
     name: "if statement success test - 3: if only with comarison condn",
     input: `
-    hi bhai
-    bhai ye hai x = 9;
-    agar bhai (x >= 9) {
+    hello dost
+    dost ye hai x = 9;
+    agar dost (x >= 9) {
       x = 5;
     } 
-    bye bhai;
+    bye dost;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"x"},"init":{"type":"NumericLiteral","value":9}}]},{"type":"IfStatement","test":{"type":"BinaryExpression","operator":">=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":5}}}]},"alternate":{"type":"NullLiteral","value":"nalla"}}]}}`,
   },
   {
     name: "if statement success test - 4: if only with equality condn",
     input: `
-    hi bhai
-    bhai ye hai x = 9;
-    agar bhai (x == 9) {
+    hello dost
+    dost ye hai x = 9;
+    agar dost (x == 9) {
       x = 5;
     } 
-    bye bhai;
+    bye dost;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"x"},"init":{"type":"NumericLiteral","value":9}}]},{"type":"IfStatement","test":{"type":"BinaryExpression","operator":"==","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":5}}}]},"alternate":{"type":"NullLiteral","value":"nalla"}}]}}`,
   },
   {
     name: "if statement success test - 4: if only with equality condn",
     input: `
-    hi bhai
-    bhai ye hai x = 9;
-    agar bhai (x == 9) {
+    hello dost
+    dost ye hai x = 9;
+    agar dost (x == 9) {
       x = 5;
     } 
-    bye bhai;
+    bye dost;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"x"},"init":{"type":"NumericLiteral","value":9}}]},{"type":"IfStatement","test":{"type":"BinaryExpression","operator":"==","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":5}}}]},"alternate":{"type":"NullLiteral","value":"nalla"}}]}}`,
   },
   {
     name: "if statement success test - 5: if only with inequality condn",
     input: `
-    hi bhai
-    bhai ye hai x = 9;
-    agar bhai (x != 9) {
+    hello dost
+    dost ye hai x = 9;
+    agar dost (x != 9) {
       x = 5;
     } 
-    bye bhai;
+    bye dost;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"x"},"init":{"type":"NumericLiteral","value":9}}]},{"type":"IfStatement","test":{"type":"BinaryExpression","operator":"!=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":5}}}]},"alternate":{"type":"NullLiteral","value":"nalla"}}]}}`,
   },
   {
     name: "if statement success test - 6: else with only expression statement",
     input: `
-    hi bhai
-    bhai ye hai x = 9;
-    agar bhai (x != 9) {
+    hello dost
+    dost ye hai x = 9;
+    agar dost (x != 9) {
       x = 5;
-    } warna bhai (x >= 9);
-    bye bhai;
+    } warna dost (x >= 9);
+    bye dost;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"x"},"init":{"type":"NumericLiteral","value":9}}]},{"type":"IfStatement","test":{"type":"BinaryExpression","operator":"!=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":5}}}]},"alternate":{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":">=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}}}}]}}`,
   },
   {
     name: "if statement success test - 7: with block",
     input: `
-    hi bhai
-    bhai ye hai x = 9;
-    agar bhai (x != 9)
+    hello dost
+    dost ye hai x = 9;
+    agar dost (x != 9)
       x = 5;
-    warna bhai (x >= 9);
-    bye bhai;
+    warna dost (x >= 9);
+    bye dost;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"x"},"init":{"type":"NumericLiteral","value":9}}]},{"type":"IfStatement","test":{"type":"BinaryExpression","operator":"!=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}},"consequent":{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":5}}},"alternate":{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":">=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}}}}]}}`,
   },
@@ -555,66 +555,66 @@ export const WhileStatementTests = [
   {
     name: "while statement success test: only if",
     input: `
-    hi bhai
-    jab tak bhai (sahi) {
+    hello dost
+    jab tak dost (sahi) {
     }
-    bye bhai;
+    bye dost;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"WhileStatement","test":{"type":"BooleanLiteral","value":"sahi"},"body":{"type":"BlockStatement","body":[]}}]}}`,
   },
   {
     name: "while statement success test: with some body",
     input: `
-    hi bhai
-    jab tak bhai (x > 9) {
-      bol bhai "hello";
+    hello dost
+    jab tak dost (x > 9) {
+      bolo dost "hello";
     }
-    bye bhai;
+    bye dost;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"WhileStatement","test":{"type":"BinaryExpression","operator":">","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}},"body":{"type":"BlockStatement","body":[{"type":"PrintStatement","expressions":[{"type":"StringLiteral","value":"hello"}]}]}}]}}`,
   },
   {
     name: "while statement success test: with single statement",
     input: `
-    hi bhai
-    jab tak bhai (x > 9)
-      bol bhai "hello";
-    bye bhai;
+    hello dost
+    jab tak dost (x > 9)
+      bolo dost "hello";
+    bye dost;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"WhileStatement","test":{"type":"BinaryExpression","operator":">","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}},"body":{"type":"PrintStatement","expressions":[{"type":"StringLiteral","value":"hello"}]}}]}}`,
   },
   {
     name: "while statement success test: with single statement as body and statement outside of body",
     input: `
-    hi bhai
-    jab tak bhai (x > 9)
-      bol bhai "hello";
-    bhai ye hai a = 90;
-    bye bhai;
+    hello dost
+    jab tak dost (x > 9)
+      bolo dost "hello";
+    dost ye hai a = 90;
+    bye dost;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"WhileStatement","test":{"type":"BinaryExpression","operator":">","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}},"body":{"type":"PrintStatement","expressions":[{"type":"StringLiteral","value":"hello"}]}},{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"a"},"init":{"type":"NumericLiteral","value":90}}]}]}}`,
   },
   {
     name: "while statement success test: with break statement",
     input: `
-    hi bhai
-    jab tak bhai (x > 9) {
-      bas kar bhai;
+    hello dost
+    jab tak dost (x > 9) {
+      bas karo dost;
     }
-    bhai ye hai a = 90;
-    bye bhai;
+    dost ye hai a = 90;
+    bye dost;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"WhileStatement","test":{"type":"BinaryExpression","operator":">","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}},"body":{"type":"BlockStatement","body":[{"type":"BreakStatement"},{"type":"EmptyStatement"}]}},{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"a"},"init":{"type":"NumericLiteral","value":90}}]}]}}`,
   },
   {
     name: "while statement success test: with continue statement",
     input: `
-    hi bhai
-    jab tak bhai (x > 9) {
-      agla dekh bhai;
+    hello dost
+    jab tak dost (x > 9) {
+      agla dekho dost;
     }
-    bhai ye hai a = 90;
-    bye bhai;
+    dost ye hai a = 90;
+    bye dost;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"WhileStatement","test":{"type":"BinaryExpression","operator":">","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}},"body":{"type":"BlockStatement","body":[{"type":"ContinueStatement"},{"type":"EmptyStatement"}]}},{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"a"},"init":{"type":"NumericLiteral","value":90}}]}]}}`,
   }
