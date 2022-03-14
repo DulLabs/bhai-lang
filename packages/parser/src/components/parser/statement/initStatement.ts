@@ -20,11 +20,11 @@ export default class InitStatement extends Statement {
     this._tokenExecutor.eatOptionalSemiColonToken();
 
     const body =
-      this._tokenExecutor.getLookahead()?.type !== TokenTypes.BYE_BHAI_TYPE
-        ? this._statementList.getStatementList(TokenTypes.BYE_BHAI_TYPE)
+      this._tokenExecutor.getLookahead()?.type !== TokenTypes.CHAL_BHAI_TYPE
+        ? this._statementList.getStatementList(TokenTypes.CHAL_BHAI_TYPE)
         : [];
 
-    this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.BYE_BHAI_TYPE);
+    this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.CHAL_BHAI_TYPE);
 
     this._tokenExecutor.eatOptionalSemiColonToken();
 

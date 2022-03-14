@@ -70,6 +70,6 @@ function _runNegativeTests(testCase: negTestObjType) {
 //   console.debug(JSON.stringify(parser.parse(`
 //   hi bhai
 //       bol bhai 9 == 90;
-//       bye bhai
+//       chal bhai
 //   `)));
 // })

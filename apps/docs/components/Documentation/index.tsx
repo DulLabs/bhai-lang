@@ -9,7 +9,7 @@ const features = [
       <>
         <code className="language-cpp">hi bhai</code> is the entrypoint for the
         program and all program must end with{" "}
-        <code className="language-cpp">bye bhai</code>. Anything outside of it
+        <code className="language-cpp">chal bhai</code>. Anything outside of it
         will be ignored.
       </>
     ),
@@ -17,7 +17,7 @@ const features = [
 
 hi bhai
   // Write code here
-bye bhai
+chal bhai
 
 This too
     `,
@@ -37,7 +37,7 @@ This too
     a = a + 1;
     b = 21;
     c *= 2;
-bye bhai
+chal bhai
     `,
   },
   {
@@ -58,7 +58,7 @@ bye bhai
     bhai ye hai e = nalla;
     bhai ye hai f = sahi;
     bhai ye hai g = galat;
-bye bhai
+chal bhai
     `,
   },
   {
@@ -77,7 +77,7 @@ bye bhai
        bol bhai a + b;
     }
     bol bhai 5, 'ok', nalla , sahi , galat;
-bye bhai
+chal bhai
     `,
   },
   {
@@ -94,7 +94,7 @@ bye bhai
     } warna bhai {
       bol bhai "a is greater than or equal to 25";
     }
-bye bhai
+chal bhai
     `
   },
   {
@@ -119,7 +119,7 @@ bye bhai
       bol bhai a;
     }
     bol bhai "done";
-bye bhai
+chal bhai
     `
   }
 

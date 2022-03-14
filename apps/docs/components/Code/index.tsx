@@ -25,7 +25,7 @@ hi bhai
     b += 1;
   }
 
-bye bhai
+chal bhai
 `;
 
 const Code = (props: Props) => {

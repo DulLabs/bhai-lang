@@ -13,12 +13,12 @@ test("test Tokenizer.getNextToken with HI_BHAI_TYPE should success", () => {
   });
 });
 
-test("test Tokenizer.getNextToken with BYE_BHAI_TYPE should success", () => {
-  tokenizer.initTokenizer(`bye bhai`);
+test("test Tokenizer.getNextToken with CHAL_BHAI_TYPE should success", () => {
+  tokenizer.initTokenizer(`chal bhai`);
 
   expect(tokenizer.getNextToken()).toStrictEqual({
-    type: TokenTypes.BYE_BHAI_TYPE,
-    value: "bye bhai",
+    type: TokenTypes.CHAL_BHAI_TYPE,
+    value: "chal bhai",
   });
 });
 

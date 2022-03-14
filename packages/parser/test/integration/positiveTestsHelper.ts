@@ -4,7 +4,7 @@ export const StatementTests = [
     name: "empty init statement test, should success",
     input: `
       hi bhai
-      bye bhai
+      chal bhai
     `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[]}}`,
   },
@@ -12,7 +12,7 @@ export const StatementTests = [
     name: "init statement test with semi colon, should success",
     input: `
       hi bhai;
-      bye bhai;
+      chal bhai;
     `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[]}}`,
   },
@@ -20,7 +20,7 @@ export const StatementTests = [
     name: "init statement test with semi colon - 2, should success",
     input: `
       hi bhai;
-      bye bhai
+      chal bhai
     `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[]}}`,
   },
@@ -30,7 +30,7 @@ export const StatementTests = [
       some random characters
       random random random
       hi bhai
-      bye bhai;
+      chal bhai;
     `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[]}}`,
   },
@@ -42,7 +42,7 @@ export const StatementTests = [
       ;
       ;
       ;;
-      bye bhai
+      chal bhai
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"EmptyStatement\"},{\"type\":\"EmptyStatement\"},{\"type\":\"EmptyStatement\"}]}}`,
   },
@@ -52,7 +52,7 @@ export const StatementTests = [
     input: `
       hi bhai
       {}
-      bye bhai
+      chal bhai
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"BlockStatement\",\"body\":[]}]}}`,
   },
@@ -61,7 +61,7 @@ export const StatementTests = [
     input: `
       hi bhai;
       {};
-      bye bhai
+      chal bhai
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"BlockStatement\",\"body\":[]}]}}`,
   },
@@ -72,7 +72,7 @@ export const StatementTests = [
       {
         naam = 4;
       }
-      bye bhai;
+      chal bhai;
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"BlockStatement\",\"body\":[{\"type\":\"ExpressionStatement\",\"expression\":{\"type\":\"AssignmentExpression\",\"operator\":\"=\",\"left\":{\"type\":\"IdentifierExpression\",\"name\":\"naam\"},\"right\":{\"type\":\"NumericLiteral\",\"value\":4}}}]}]}}`,
   },
@@ -83,7 +83,7 @@ export const StatementTests = [
       {
         bhai ye hai a = 4;
       }
-      bye bhai
+      chal bhai
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"BlockStatement\",\"body\":[{\"type\":\"VariableStatement\",\"declarations\":[{\"type\":\"VariableDeclaration\",\"id\":{\"type\":\"IdentifierExpression\",\"name\":\"a\"},\"init\":{\"type\":\"NumericLiteral\",\"value\":4}}]}]}]}}`,
   },
@@ -93,7 +93,7 @@ export const StatementTests = [
     input: `
       hi bhai
       bol bhai "puff...";
-      bye bhai
+      chal bhai
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"PrintStatement\",\"expressions\":[{\"type\":\"StringLiteral\",\"value\":\"puff...\"}]}]}}`,
   },
@@ -102,7 +102,7 @@ export const StatementTests = [
     input: `
       hi bhai
       bol bhai 478;
-      bye bhai
+      chal bhai
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"PrintStatement\",\"expressions\":[{\"type\":\"NumericLiteral\",\"value\":478}]}]}}`,
   },
@@ -111,7 +111,7 @@ export const StatementTests = [
     input: `
       hi bhai
       bol bhai sahi, galat;
-      bye bhai
+      chal bhai
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"PrintStatement\",\"expressions\":[{\"type\":\"BooleanLiteral\",\"value\":\"sahi\"},{\"type\":\"BooleanLiteral\",\"value\":\"galat\"}]}]}}`,
   },
@@ -120,7 +120,7 @@ export const StatementTests = [
     input: `
       hi bhai
       bol bhai a, b, c;
-      bye bhai
+      chal bhai
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"PrintStatement\",\"expressions\":[{\"type\":\"IdentifierExpression\",\"name\":\"a\"},{\"type\":\"IdentifierExpression\",\"name\":\"b\"},{\"type\":\"IdentifierExpression\",\"name\":\"c\"}]}]}}`,
   },
@@ -129,7 +129,7 @@ export const StatementTests = [
     input: `
       hi bhai
       bol bhai nalla;
-      bye bhai
+      chal bhai
     `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"PrintStatement","expressions":[{"type":"NullLiteral","value":"nalla"}]}]}}`,
   },
@@ -139,7 +139,7 @@ export const StatementTests = [
       hi bhai
       bhai ye hai a = nalla;
       bol bhai a;
-      bye bhai
+      chal bhai
     `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"a"},"init":{"type":"NullLiteral","value":"nalla"}}]},{"type":"PrintStatement","expressions":[{"type":"IdentifierExpression","name":"a"}]}]}}`,
   },
@@ -148,7 +148,7 @@ export const StatementTests = [
     input: `
       hi bhai
       bol bhai a && b;
-      bye bhai
+      chal bhai
     `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"PrintStatement","expressions":[{"type":"LogicalExpression","operator":"&&","left":{"type":"IdentifierExpression","name":"a"},"right":{"type":"IdentifierExpression","name":"b"}}]}]}}`,
   },
@@ -157,7 +157,7 @@ export const StatementTests = [
     input: `
       hi bhai
       bol bhai a = 9;
-      bye bhai
+      chal bhai
     `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"PrintStatement","expressions":[{"type":"AssignmentExpression","operator":"=","left":{"type":"IdentifierExpression","name":"a"},"right":{"type":"NumericLiteral","value":9}}]}]}}`,
   },
@@ -166,7 +166,7 @@ export const StatementTests = [
     input: `
       hi bhai
       bol bhai 9 || 90;
-      bye bhai
+      chal bhai
     `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"PrintStatement","expressions":[{"type":"LogicalExpression","operator":"||","left":{"type":"NumericLiteral","value":9},"right":{"type":"NumericLiteral","value":90}}]}]}}`,
   },
@@ -175,7 +175,7 @@ export const StatementTests = [
     input: `
       hi bhai
       bol bhai 9 == 90;
-      bye bhai
+      chal bhai
     `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"PrintStatement","expressions":[{"type":"BinaryExpression","operator":"==","left":{"type":"NumericLiteral","value":9},"right":{"type":"NumericLiteral","value":90}}]}]}}`,
   },
@@ -185,7 +185,7 @@ export const StatementTests = [
     input: `
       hi bhai
       bhai ye hai a, b, c;
-      bye bhai
+      chal bhai
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"VariableStatement\",\"declarations\":[{\"type\":\"VariableDeclaration\",\"id\":{\"type\":\"IdentifierExpression\",\"name\":\"a\"},\"init\":{\"type\":\"NullLiteral\",\"value\":\"nalla\"}},{\"type\":\"VariableDeclaration\",\"id\":{\"type\":\"IdentifierExpression\",\"name\":\"b\"},\"init\":{\"type\":\"NullLiteral\",\"value\":\"nalla\"}},{\"type\":\"VariableDeclaration\",\"id\":{\"type\":\"IdentifierExpression\",\"name\":\"c\"},\"init\":{\"type\":\"NullLiteral\",\"value\":\"nalla\"}}]}]}}`,
   },
@@ -194,7 +194,7 @@ export const StatementTests = [
     input: `
       hi bhai
       bhai ye hai a = 10, b;
-      bye bhai
+      chal bhai
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"VariableStatement\",\"declarations\":[{\"type\":\"VariableDeclaration\",\"id\":{\"type\":\"IdentifierExpression\",\"name\":\"a\"},\"init\":{\"type\":\"NumericLiteral\",\"value\":10}},{\"type\":\"VariableDeclaration\",\"id\":{\"type\":\"IdentifierExpression\",\"name\":\"b\"},\"init\":{\"type\":\"NullLiteral\",\"value\":\"nalla\"}}]}]}}`,
   },
@@ -203,7 +203,7 @@ export const StatementTests = [
     input: `
       hi bhai
       bhai ye hai a = 10, b = 5;
-      bye bhai
+      chal bhai
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"VariableStatement\",\"declarations\":[{\"type\":\"VariableDeclaration\",\"id\":{\"type\":\"IdentifierExpression\",\"name\":\"a\"},\"init\":{\"type\":\"NumericLiteral\",\"value\":10}},{\"type\":\"VariableDeclaration\",\"id\":{\"type\":\"IdentifierExpression\",\"name\":\"b\"},\"init\":{\"type\":\"NumericLiteral\",\"value\":5}}]}]}}`,
   },
@@ -212,7 +212,7 @@ export const StatementTests = [
     input: `
       hi bhai
       bhai ye hai a = b = 5;
-      bye bhai
+      chal bhai
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"VariableStatement\",\"declarations\":[{\"type\":\"VariableDeclaration\",\"id\":{\"type\":\"IdentifierExpression\",\"name\":\"a\"},\"init\":{\"type\":\"AssignmentExpression\",\"operator\":\"=\",\"left\":{\"type\":\"IdentifierExpression\",\"name\":\"b\"},\"right\":{\"type\":\"NumericLiteral\",\"value\":5}}}]}]}}`,
   },
@@ -221,7 +221,7 @@ export const StatementTests = [
     input: `
       hi bhai
       bhai ye hai a = 7 + 90;
-      bye bhai
+      chal bhai
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"VariableStatement\",\"declarations\":[{\"type\":\"VariableDeclaration\",\"id\":{\"type\":\"IdentifierExpression\",\"name\":\"a\"},\"init\":{\"type\":\"BinaryExpression\",\"operator\":\"+\",\"left\":{\"type\":\"NumericLiteral\",\"value\":7},\"right\":{\"type\":\"NumericLiteral\",\"value\":90}}}]}]}}`,
   },
@@ -230,7 +230,7 @@ export const StatementTests = [
     input: `
       hi bhai
       bhai ye hai a = nalla;
-      bye bhai
+      chal bhai
     `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"a"},"init":{"type":"NullLiteral","value":"nalla"}}]}]}}`,
   },
@@ -239,7 +239,7 @@ export const StatementTests = [
     input: `
       hi bhai
       bhai ye hai a = nalla;
-      bye bhai
+      chal bhai
     `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"a"},"init":{"type":"NullLiteral","value":"nalla"}}]}]}}`,
   },
@@ -252,7 +252,7 @@ export const ExpressionsTests = [
     input: `
       hi bhai
       a = 4;
-      bye bhai
+      chal bhai
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"ExpressionStatement\",\"expression\":{\"type\":\"AssignmentExpression\",\"operator\":\"=\",\"left\":{\"type\":\"IdentifierExpression\",\"name\":\"a\"},\"right\":{\"type\":\"NumericLiteral\",\"value\":4}}}]}}`,
   },
@@ -261,7 +261,7 @@ export const ExpressionsTests = [
     input: `
       hi bhai
       a *= 4;
-      bye bhai
+      chal bhai
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"ExpressionStatement\",\"expression\":{\"type\":\"AssignmentExpression\",\"operator\":\"*=\",\"left\":{\"type\":\"IdentifierExpression\",\"name\":\"a\"},\"right\":{\"type\":\"NumericLiteral\",\"value\":4}}}]}}`,
   },
@@ -271,7 +271,7 @@ export const ExpressionsTests = [
     input: `
       hi bhai
       (a + 4);
-      bye bhai
+      chal bhai
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"ExpressionStatement\",\"expression\":{\"type\":\"BinaryExpression\",\"operator\":\"+\",\"left\":{\"type\":\"IdentifierExpression\",\"name\":\"a\"},\"right\":{\"type\":\"NumericLiteral\",\"value\":4}}}]}}`,
   },
@@ -280,7 +280,7 @@ export const ExpressionsTests = [
     input: `
       hi bhai
       (a + 4) * 10 + (5 - 4);
-      bye bhai
+      chal bhai
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"ExpressionStatement\",\"expression\":{\"type\":\"BinaryExpression\",\"operator\":\"+\",\"left\":{\"type\":\"BinaryExpression\",\"operator\":\"*\",\"left\":{\"type\":\"BinaryExpression\",\"operator\":\"+\",\"left\":{\"type\":\"IdentifierExpression\",\"name\":\"a\"},\"right\":{\"type\":\"NumericLiteral\",\"value\":4}},\"right\":{\"type\":\"NumericLiteral\",\"value\":10}},\"right\":{\"type\":\"BinaryExpression\",\"operator\":\"-\",\"left\":{\"type\":\"NumericLiteral\",\"value\":5},\"right\":{\"type\":\"NumericLiteral\",\"value\":4}}}}]}}`,
   },
@@ -289,7 +289,7 @@ export const ExpressionsTests = [
     input: `
       hi bhai
       (a * (4 + 8) + 10);
-      bye bhai
+      chal bhai
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"ExpressionStatement\",\"expression\":{\"type\":\"BinaryExpression\",\"operator\":\"+\",\"left\":{\"type\":\"BinaryExpression\",\"operator\":\"*\",\"left\":{\"type\":\"IdentifierExpression\",\"name\":\"a\"},\"right\":{\"type\":\"BinaryExpression\",\"operator\":\"+\",\"left\":{\"type\":\"NumericLiteral\",\"value\":4},\"right\":{\"type\":\"NumericLiteral\",\"value\":8}}},\"right\":{\"type\":\"NumericLiteral\",\"value\":10}}}]}}`,
   },
@@ -298,7 +298,7 @@ export const ExpressionsTests = [
     input: `
     hi bhai
     (x = 9);
-    bye bhai;
+    chal bhai;
     `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}}}]}}`,
   },
@@ -307,7 +307,7 @@ export const ExpressionsTests = [
     input: `
     hi bhai
     (x >= 9);
-    bye bhai;
+    chal bhai;
     `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":">=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}}}]}}`,
   },
@@ -317,7 +317,7 @@ export const ExpressionsTests = [
     input: `
         hi bhai
         (nalla * (4 + 8 + 10));
-        bye bhai
+        chal bhai
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"*","left":{"type":"NullLiteral","value":"nalla"},"right":{"type":"BinaryExpression","operator":"+","left":{"type":"BinaryExpression","operator":"+","left":{"type":"NumericLiteral","value":4},"right":{"type":"NumericLiteral","value":8}},"right":{"type":"NumericLiteral","value":10}}}}]}}`,
   },
@@ -326,7 +326,7 @@ export const ExpressionsTests = [
     input: `
         hi bhai
         (nalla * (sahi + 8 + 10));
-        bye bhai
+        chal bhai
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"*","left":{"type":"NullLiteral","value":"nalla"},"right":{"type":"BinaryExpression","operator":"+","left":{"type":"BinaryExpression","operator":"+","left":{"type":"BooleanLiteral","value":"sahi"},"right":{"type":"NumericLiteral","value":8}},"right":{"type":"NumericLiteral","value":10}}}}]}}`,
   },
@@ -335,7 +335,7 @@ export const ExpressionsTests = [
     input: `
         hi bhai
         (sahi * (nalla + 8 + 10));
-        bye bhai
+        chal bhai
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"*","left":{"type":"BooleanLiteral","value":"sahi"},"right":{"type":"BinaryExpression","operator":"+","left":{"type":"BinaryExpression","operator":"+","left":{"type":"NullLiteral","value":"nalla"},"right":{"type":"NumericLiteral","value":8}},"right":{"type":"NumericLiteral","value":10}}}}]}}`,
   },
@@ -344,7 +344,7 @@ export const ExpressionsTests = [
     input: `
         hi bhai
         (nalla + sahi);
-        bye bhai
+        chal bhai
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"+","left":{"type":"NullLiteral","value":"nalla"},"right":{"type":"BooleanLiteral","value":"sahi"}}}]}}`,
   },
@@ -353,7 +353,7 @@ export const ExpressionsTests = [
     input: `
         hi bhai
         (sahi * (4 + 8 + 10));
-        bye bhai
+        chal bhai
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"*","left":{"type":"BooleanLiteral","value":"sahi"},"right":{"type":"BinaryExpression","operator":"+","left":{"type":"BinaryExpression","operator":"+","left":{"type":"NumericLiteral","value":4},"right":{"type":"NumericLiteral","value":8}},"right":{"type":"NumericLiteral","value":10}}}}]}}`,
   },
@@ -362,7 +362,7 @@ export const ExpressionsTests = [
     input: `
         hi bhai
         sahi + galat;
-        bye bhai
+        chal bhai
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"+","left":{"type":"BooleanLiteral","value":"sahi"},"right":{"type":"BooleanLiteral","value":"galat"}}}]}}`,
   },
@@ -371,7 +371,7 @@ export const ExpressionsTests = [
     input: `
         hi bhai
         sahi * galat;
-        bye bhai
+        chal bhai
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"*","left":{"type":"BooleanLiteral","value":"sahi"},"right":{"type":"BooleanLiteral","value":"galat"}}}]}}`,
   },
@@ -380,7 +380,7 @@ export const ExpressionsTests = [
     input: `
         hi bhai
         sahi / galat;
-        bye bhai
+        chal bhai
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":"/","left":{"type":"BooleanLiteral","value":"sahi"},"right":{"type":"BooleanLiteral","value":"galat"}}}]}}`,
   },
@@ -389,7 +389,7 @@ export const ExpressionsTests = [
     input: `
         hi bhai
         bol bhai nalla + 5;
-        bye bhai;
+        chal bhai;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"PrintStatement","expressions":[{"type":"BinaryExpression","operator":"+","left":{"type":"NullLiteral","value":"nalla"},"right":{"type":"NumericLiteral","value":5}}]}]}}`,
   },
@@ -399,7 +399,7 @@ export const ExpressionsTests = [
     input: `
         hi bhai
         agar bhai (sahi && galat);
-        bye bhai;
+        chal bhai;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"IfStatement","test":{"type":"LogicalExpression","operator":"&&","left":{"type":"BooleanLiteral","value":"sahi"},"right":{"type":"BooleanLiteral","value":"galat"}},"consequent":{"type":"EmptyStatement"},"alternate":{"type":"NullLiteral","value":"nalla"}}]}}`,
   },
@@ -408,7 +408,7 @@ export const ExpressionsTests = [
     input: `
         hi bhai
         agar bhai (a + b && d);
-        bye bhai;
+        chal bhai;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"IfStatement","test":{"type":"LogicalExpression","operator":"&&","left":{"type":"BinaryExpression","operator":"+","left":{"type":"IdentifierExpression","name":"a"},"right":{"type":"IdentifierExpression","name":"b"}},"right":{"type":"IdentifierExpression","name":"d"}},"consequent":{"type":"EmptyStatement"},"alternate":{"type":"NullLiteral","value":"nalla"}}]}}`,
   },
@@ -417,7 +417,7 @@ export const ExpressionsTests = [
     input: `
         hi bhai
         bhai ye hai a = b && d;
-        bye bhai;
+        chal bhai;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"a"},"init":{"type":"LogicalExpression","operator":"&&","left":{"type":"IdentifierExpression","name":"b"},"right":{"type":"IdentifierExpression","name":"d"}}}]}]}}`,
   },
@@ -427,7 +427,7 @@ export const ExpressionsTests = [
     input: `
         hi bhai
         agar bhai (sahi || galat);
-        bye bhai;
+        chal bhai;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"IfStatement","test":{"type":"LogicalExpression","operator":"||","left":{"type":"BooleanLiteral","value":"sahi"},"right":{"type":"BooleanLiteral","value":"galat"}},"consequent":{"type":"EmptyStatement"},"alternate":{"type":"NullLiteral","value":"nalla"}}]}}`,
   },
@@ -436,7 +436,7 @@ export const ExpressionsTests = [
     input: `
         hi bhai
         agar bhai (a + b || d);
-        bye bhai;
+        chal bhai;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"IfStatement","test":{"type":"LogicalExpression","operator":"||","left":{"type":"BinaryExpression","operator":"+","left":{"type":"IdentifierExpression","name":"a"},"right":{"type":"IdentifierExpression","name":"b"}},"right":{"type":"IdentifierExpression","name":"d"}},"consequent":{"type":"EmptyStatement"},"alternate":{"type":"NullLiteral","value":"nalla"}}]}}`,
   },
@@ -445,7 +445,7 @@ export const ExpressionsTests = [
     input: `
         hi bhai
         bhai ye hai a = b || d;
-        bye bhai;
+        chal bhai;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"a"},"init":{"type":"LogicalExpression","operator":"||","left":{"type":"IdentifierExpression","name":"b"},"right":{"type":"IdentifierExpression","name":"d"}}}]}]}}`,
   },
@@ -458,7 +458,7 @@ export const IfStatementTests = [
     hi bhai
     agar bhai (sahi) {
     }
-    bye bhai;
+    chal bhai;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"IfStatement","test":{"type":"BooleanLiteral","value":"sahi"},"consequent":{"type":"BlockStatement","body":[]},"alternate":{"type":"NullLiteral","value":"nalla"}}]}}`,
   },
@@ -470,7 +470,7 @@ export const IfStatementTests = [
     } warna bhai {
 
     }
-    bye bhai;
+    chal bhai;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"IfStatement","test":{"type":"BooleanLiteral","value":"sahi"},"consequent":{"type":"BlockStatement","body":[]},"alternate":{"type":"BlockStatement","body":[]}}]}}`,
   },
@@ -482,7 +482,7 @@ export const IfStatementTests = [
     agar bhai (x >= 9) {
       x = 5;
     } 
-    bye bhai;
+    chal bhai;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"x"},"init":{"type":"NumericLiteral","value":9}}]},{"type":"IfStatement","test":{"type":"BinaryExpression","operator":">=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":5}}}]},"alternate":{"type":"NullLiteral","value":"nalla"}}]}}`,
   },
@@ -494,7 +494,7 @@ export const IfStatementTests = [
     agar bhai (x == 9) {
       x = 5;
     } 
-    bye bhai;
+    chal bhai;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"x"},"init":{"type":"NumericLiteral","value":9}}]},{"type":"IfStatement","test":{"type":"BinaryExpression","operator":"==","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":5}}}]},"alternate":{"type":"NullLiteral","value":"nalla"}}]}}`,
   },
@@ -506,7 +506,7 @@ export const IfStatementTests = [
     agar bhai (x == 9) {
       x = 5;
     } 
-    bye bhai;
+    chal bhai;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"x"},"init":{"type":"NumericLiteral","value":9}}]},{"type":"IfStatement","test":{"type":"BinaryExpression","operator":"==","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":5}}}]},"alternate":{"type":"NullLiteral","value":"nalla"}}]}}`,
   },
@@ -518,7 +518,7 @@ export const IfStatementTests = [
     agar bhai (x != 9) {
       x = 5;
     } 
-    bye bhai;
+    chal bhai;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"x"},"init":{"type":"NumericLiteral","value":9}}]},{"type":"IfStatement","test":{"type":"BinaryExpression","operator":"!=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":5}}}]},"alternate":{"type":"NullLiteral","value":"nalla"}}]}}`,
   },
@@ -530,7 +530,7 @@ export const IfStatementTests = [
     agar bhai (x != 9) {
       x = 5;
     } warna bhai (x >= 9);
-    bye bhai;
+    chal bhai;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"x"},"init":{"type":"NumericLiteral","value":9}}]},{"type":"IfStatement","test":{"type":"BinaryExpression","operator":"!=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":5}}}]},"alternate":{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":">=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}}}}]}}`,
   },
@@ -542,7 +542,7 @@ export const IfStatementTests = [
     agar bhai (x != 9)
       x = 5;
     warna bhai (x >= 9);
-    bye bhai;
+    chal bhai;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"x"},"init":{"type":"NumericLiteral","value":9}}]},{"type":"IfStatement","test":{"type":"BinaryExpression","operator":"!=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}},"consequent":{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":5}}},"alternate":{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","operator":">=","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}}}}]}}`,
   },
@@ -558,7 +558,7 @@ export const WhileStatementTests = [
     hi bhai
     jab tak bhai (sahi) {
     }
-    bye bhai;
+    chal bhai;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"WhileStatement","test":{"type":"BooleanLiteral","value":"sahi"},"body":{"type":"BlockStatement","body":[]}}]}}`,
   },
@@ -569,7 +569,7 @@ export const WhileStatementTests = [
     jab tak bhai (x > 9) {
       bol bhai "hello";
     }
-    bye bhai;
+    chal bhai;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"WhileStatement","test":{"type":"BinaryExpression","operator":">","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}},"body":{"type":"BlockStatement","body":[{"type":"PrintStatement","expressions":[{"type":"StringLiteral","value":"hello"}]}]}}]}}`,
   },
@@ -579,7 +579,7 @@ export const WhileStatementTests = [
     hi bhai
     jab tak bhai (x > 9)
       bol bhai "hello";
-    bye bhai;
+    chal bhai;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"WhileStatement","test":{"type":"BinaryExpression","operator":">","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}},"body":{"type":"PrintStatement","expressions":[{"type":"StringLiteral","value":"hello"}]}}]}}`,
   },
@@ -590,7 +590,7 @@ export const WhileStatementTests = [
     jab tak bhai (x > 9)
       bol bhai "hello";
     bhai ye hai a = 90;
-    bye bhai;
+    chal bhai;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"WhileStatement","test":{"type":"BinaryExpression","operator":">","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}},"body":{"type":"PrintStatement","expressions":[{"type":"StringLiteral","value":"hello"}]}},{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"a"},"init":{"type":"NumericLiteral","value":90}}]}]}}`,
   },
@@ -602,7 +602,7 @@ export const WhileStatementTests = [
       bas kar bhai;
     }
     bhai ye hai a = 90;
-    bye bhai;
+    chal bhai;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"WhileStatement","test":{"type":"BinaryExpression","operator":">","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}},"body":{"type":"BlockStatement","body":[{"type":"BreakStatement"},{"type":"EmptyStatement"}]}},{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"a"},"init":{"type":"NumericLiteral","value":90}}]}]}}`,
   },
@@ -614,7 +614,7 @@ export const WhileStatementTests = [
       agla dekh bhai;
     }
     bhai ye hai a = 90;
-    bye bhai;
+    chal bhai;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"WhileStatement","test":{"type":"BinaryExpression","operator":">","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}},"body":{"type":"BlockStatement","body":[{"type":"ContinueStatement"},{"type":"EmptyStatement"}]}},{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"a"},"init":{"type":"NumericLiteral","value":90}}]}]}}`,
   }

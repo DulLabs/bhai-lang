@@ -48,8 +48,8 @@ test("test eatTokenAndForwardLookahead with null lookahead should throw exceptio
 
 test("test eatTokenAndForwardLookahead with token not matching the expected token type lookahead should throw exception", () => {
   const lookahead = {
-    type: TokenTypes.BYE_BHAI_TYPE,
-    value: "bye bhai",
+    type: TokenTypes.CHAL_BHAI_TYPE,
+    value: "chal bhai",
   };
 
   tokenizerMock.getNextToken.mockReturnValueOnce(null);
@@ -67,8 +67,8 @@ test("test eatTokenAndForwardLookahead with token not matching the expected toke
 
 test("test getLookahead success", () => {
   const lookahead = {
-    type: TokenTypes.BYE_BHAI_TYPE,
-    value: "bye bhai",
+    type: TokenTypes.CHAL_BHAI_TYPE,
+    value: "chal bhai",
   };
 
   const tokenExecutor = new TokenExecutor(tokenizerMock);
