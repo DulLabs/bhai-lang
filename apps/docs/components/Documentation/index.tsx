@@ -124,6 +124,20 @@ bye bhai
   }
 
 ];
+   name: "Functions",
+    description: (
+      <>
+        Statements inside <code className="language-cpp">Aaj tera bhai gaadi chalaega </code> defining a function. The function name is followed by parameter in ().
+      </>
+    ),
+    code: `hi bhai
+    Aaj gaadi tera bhai chalaega function():
+    bol bhai "Sahi Jaa Raha Hai Bhai"
+bye bhai
+    `
+  }
+
+];
 
 export default function Documentation() {
   return (
