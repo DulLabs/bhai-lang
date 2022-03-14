@@ -7,6 +7,7 @@ import { bhaiLangSyntax } from "../../common/syntax";
 
 import "prismjs/themes/prism-tomorrow.css";
 
+
 const Editor = dynamic(() => import("react-simple-code-editor"), {
   ssr: false,
 });
@@ -43,3 +44,7 @@ type Props = {
   code: string;
 };
 export default React.memo(CodeEditor);
+
+
+
+
