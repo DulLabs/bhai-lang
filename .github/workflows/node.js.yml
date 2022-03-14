@@ -9,6 +9,10 @@ on:
   pull_request:
     branches: [develop, main]
 
+env:
+  package_dir: 'packages'
+  package_name: 'cli'
+
 jobs:
   build:
     runs-on: ubuntu-latest
