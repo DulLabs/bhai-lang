@@ -131,7 +131,7 @@ bye bhai
       </>
     ),
     code: `hi bhai
-    Aaj tera bhai gaadi chalaega function():
+    Aaj gaadi tera bhai chalaega function():
     bol bhai "Sahi Jaa Raha Hai Bhai"
 bye bhai
     `
