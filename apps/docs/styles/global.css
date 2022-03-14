@@ -77,6 +77,6 @@ html {
 	transition-timing-function: ease-out;
 }
 
-.token {
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+.documentation-code {
+  font-family: monospace;
 }
