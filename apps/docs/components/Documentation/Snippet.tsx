@@ -10,7 +10,7 @@ const Snippet = (props: Props) => {
 
   return (
     <div
-      className="bg-editorBackground py-2 px-2 my-6 text-sm text-white"
+      className="bg-editorBackground py-2 px-2 my-6 text-sm text-white documentation-code"
       dangerouslySetInnerHTML={{
         __html: highlight(code, bhaiLangSyntax, "bhaiLang").replaceAll(
           "\n",
