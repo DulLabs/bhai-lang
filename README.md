@@ -29,7 +29,7 @@ You can also try out your code on <a href="https://bhailang.js.org/#playground">
 
 ```
 hi bhai
-  bol bhai "Hello bhai";
+  bol bhai "Kya haal bhai";
 bye bhai
 
 ```
@@ -43,7 +43,7 @@ bhailang test.bhai
 <h4 align="left">Output</h4>
 
 ```
-hello bhai
+Kya haal bhai
 ```
 
 <h2 align="center">Documentation</h2>
