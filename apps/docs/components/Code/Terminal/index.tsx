@@ -11,6 +11,7 @@ const Terminal = (props: Props) => {
     }
   }, [output]);
 
+  
   return (
     <div
     ref={terminalRef}
