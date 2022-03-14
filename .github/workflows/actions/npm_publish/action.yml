@@ -1,0 +1,25 @@
+name: 'Publish to NPM'
+description: 'Publish to NPM'
+inputs:
+  github_token:
+    description: 'GitHub token'
+    required: true
+  npm_token:
+    description: 'NPM token'
+    required: true
+  path:
+    description: 'Path to the package'
+    required: true
+runs:
+  using: "composite"
+  steps: 
+  - run: npm publish --access public --ignore-scripts
+    working-directory: ${{ inputs.path }}
+    shell: bash
+    env:
+      NODE_AUTH_TOKEN: ${{ inputs.npm_token }}
+  - run: npm run pushTags
+    working-directory: ${{ inputs.path }}
+    shell: bash
+    env:
+      GITHUB_TOKEN: ${{ inputs.github_token }}

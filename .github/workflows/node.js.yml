@@ -45,6 +45,22 @@ jobs:
         env:
           NEXT_PUBLIC_ANALYTICS_ID: ${{ secrets.ANALYTICS_ID }}
       - run: npm run test
+      - name: Check package version
+        id: cpv
+        uses: PostHog/check-package-version@v2
+        with:
+          path: '${{env.package_dir}}/${{env.package_name}}'
+      - name: Echo output
+        run: |
+          echo "Committed version: ${{ steps.cpv.outputs.committed-version }}"
+          echo "Published version: ${{ steps.cpv.outputs.published-version }}"
+          echo "Is new version: ${{ steps.cpv.outputs.is-new-version }}"
+      - if: steps.cpv.outputs.is-new-version == 'true'
+        uses: ./.github/workflows/actions/npm_publish
+        with:
+          github_token: ${{secrets.GITHUB_TOKEN}} 
+          npm_token: ${{secrets.NPM_TOKEN}}
+          path: './${{env.package_dir}}/${{env.package_name}}'
       - name: Deploy
         if: (github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/main') 
         uses: peaceiris/actions-gh-pages@v3
