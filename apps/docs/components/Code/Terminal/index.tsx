@@ -19,7 +19,7 @@ const Terminal = (props: Props) => {
     >
       {isSuccess !== null && !isSuccess ? (
         <div className="text-red-700 output opacity-0">
-          ❌ Bhai kia kar rha hai tu !!!
+          ❌ Bhai kya kar raha hai tu?
         </div>
       ) : (
         <div className="text-green-700 output opacity-0">Shandaar bhai 🎉</div>
