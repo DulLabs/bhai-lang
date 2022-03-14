@@ -6,6 +6,7 @@ export function checkNumberOperands(operands: {
   left: unknown;
   right: unknown;
 }): operands is { left: number; right: number } {
+
   return (
     typeof operands.left === "number" && typeof operands.right === "number"
   );
@@ -42,6 +43,9 @@ export function getOperationValue(
         return operands.left + operands.right;
       }
 
+      if((typeof operands.left === "string" && typeof operands.right === "number") || (typeof operands.left === "number" && typeof operands.right === "string")){
+        return operands.left.toString() + operands.right.toString()
+      }
       throw exception;
 
     case "-=":
