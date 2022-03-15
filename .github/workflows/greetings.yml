@@ -1,0 +1,31 @@
+name: Greetings
+
+on:
+  issues:
+    types: [opened]
+  pull_request_target:
+    types: [closed]
+  pull_request:
+    types: [opened]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Greet New Contributors for Creating New PR/Issues.
+        uses: actions/first-interaction@v1.1.0
+        if: github.event.action =='opened' && (github.event_name == 'pull_request' || github.event_name == 'issues')
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-message: "@${{ github.actor }} <h1>It's great having you contribute to this project</h1> Thanks for opening this<strong>Issue 🙌</strong>, Welcome to bhai-lang 💖 </strong>
+</strong> We will review everything and get back to you ! <strong>दयानन्द 🙌</strong>"
+          pr-message: "@${{ github.actor }} <h1>It's great having you contribute to this project</h1> Thank you for opening a <strong>Pull Request 🙌 </strong>, Welcome to <strong>bhai-lang 💖</strong> We will review everything and get back to you ! <strong>दयानन्द 🙌</strong>"
+          
+
+      - name: Congratulate on every PR merge
+        if: github.event_name == 'pull_request_target' && github.event.action == 'closed' && github.event.pull_request.merged == true
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: ${{tojson(github.event.number)}}
+          body: |
+            @${{ github.event.pull_request.user.login }} Hurray, your PR got merged 🥳. Thanks a bunch. Feel free to take another Issue.💖
