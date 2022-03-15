@@ -37,7 +37,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           gtag('config', '${ANALYTICS_ID}');
         `}
       </Script>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
   </>
   )
 }
