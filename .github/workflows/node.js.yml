@@ -50,14 +50,14 @@ jobs:
       - run: npm exec eslint -- .
         name: Perform lint checking
 
-      - run: npm run test
-        name: Unit testing
-        
       - run: npm run build
         name: Building application
         env:
           NEXT_PUBLIC_ANALYTICS_ID: ${{ secrets.ANALYTICS_ID }}
-      
+
+      - run: npm run test
+        name: Unit testing
+        
       - name: Deploy
         if: (github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/main') 
         uses: peaceiris/actions-gh-pages@v3
