@@ -44,6 +44,7 @@ jobs:
       - run: npm run build
         env:
           NEXT_PUBLIC_ANALYTICS_ID: ${{ secrets.ANALYTICS_ID }}
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
       - run: npm run test
       - name: Deploy
         if: (github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/main') 
