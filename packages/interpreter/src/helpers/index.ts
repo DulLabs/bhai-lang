@@ -150,6 +150,6 @@ export function getOperationValue(
       return operands.left || operands.right;
 
     default:
-      throw new InvalidStateException(`Unsupported operator: ${operator}`);
+      throw new InvalidStateException(`ye operator se nahi jamta: ${operator}`);
   }
 }
