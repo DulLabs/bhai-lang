@@ -20,6 +20,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        name: Checkout repository
+
       - name: Turbo Cache
         id: turbo-cache
         uses: actions/cache@v2
@@ -35,16 +37,27 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+      
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
+      
       - run: npm ci
+        name: Install npm packages
+
+      - run: npm exec eslint -- .
+        name: Perform lint checking
+
+      - run: npm run test
+        name: Unit testing
+        
       - run: npm run build
+        name: Building application
         env:
           NEXT_PUBLIC_ANALYTICS_ID: ${{ secrets.ANALYTICS_ID }}
-      - run: npm run test
+      
       - name: Deploy
         if: (github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/main') 
         uses: peaceiris/actions-gh-pages@v3
