@@ -74,7 +74,7 @@ jobs:
         name: Unit testing
         
       - name: Deploy
-        if: (github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/main') 
+        if: (github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/main') && matrix.os.id == "ubuntu-20.04" 
         uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
