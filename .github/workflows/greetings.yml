@@ -17,9 +17,9 @@ jobs:
         if: github.event.action =='opened' && (github.event_name == 'pull_request' || github.event_name == 'issues')
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          issue-message: "@${{ github.actor }} <h1>It's great having you contribute to this project</h1> Thanks for opening this<strong>Issue 🙌</strong>, Welcome to bhai-lang 💖 </strong>
+          issue-message: "@${{ github.actor }} <h1>It's great having you contribute to this project</h1> Thanks for opening this <strong> Issue 🙌</strong>, Welcome to bhai-lang 💖 </strong>
 </strong> We will review everything and get back to you ! <strong>दयानन्द 🙌</strong>"
-          pr-message: "@${{ github.actor }} <h1>It's great having you contribute to this project</h1> Thank you for opening a <strong>Pull Request 🙌 </strong>, Welcome to <strong>bhai-lang 💖</strong> We will review everything and get back to you ! <strong>दयानन्द 🙌</strong>"
+          pr-message: "@${{ github.actor }} <h1>It's great having you contribute to this project</h1> Thank you for opening a <strong> Pull Request 🙌 </strong>, Welcome to <strong> bhai-lang 💖</strong> We will review everything and get back to you ! <strong> दयानन्द 🙌</strong>"
           
 
       - name: Congratulate on every PR merge
