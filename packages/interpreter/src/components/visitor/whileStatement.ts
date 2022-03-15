@@ -25,7 +25,7 @@ export default class WhileStatement implements Visitor {
           break;
         }
 
-        if (executions > 500) {
+        if (executions > 5000) {
           throw new RuntimeException("Bohot jyada hi chale jaa rha hai loop");
         }
 

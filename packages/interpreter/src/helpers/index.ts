@@ -20,6 +20,15 @@ export function checkStringOperands(operands: {
   );
 }
 
+export function checkNumberAndStringOperands(operands: {
+  left: unknown;
+  right: unknown;
+}): operands is { left: string; right: string } {
+  return (
+    (typeof operands.left === "string" && typeof operands.right === "number") || (typeof operands.right === "string" && typeof operands.left === "number")
+  );
+} 
+
 export function getOperationValue(
   operands: { left: unknown; right: unknown },
   operator: string
@@ -40,6 +49,10 @@ export function getOperationValue(
 
       if (checkStringOperands(operands)) {
         return operands.left + operands.right;
+      }
+
+      if (checkNumberAndStringOperands(operands)) {
+        return operands.left.toString() + operands.right.toString();
       }
 
       throw exception;
@@ -63,7 +76,7 @@ export function getOperationValue(
     case "/=":
     case "/":
       if (operands.right === 0) {
-        throw new RuntimeException(`Bhai Bhai Bhai ye kya kar diya...zero se divide ni karte`);
+        throw new RuntimeException(`Kya kar rha hai tu??...zero se divide ni karte`);
       }
       
       if (checkNumberOperands(operands)) {
