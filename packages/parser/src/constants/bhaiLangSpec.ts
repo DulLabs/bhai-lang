@@ -1,9 +1,9 @@
 export const TokenTypes = {
   NULL_TYPE: null,
 
-  HI_BHAI_TYPE: "hi bhai",
+  HI_BHAI_TYPE: "oye bhai",
 
-  BYE_BHAI_TYPE: "bye bhai",
+  BYE_BHAI_TYPE: "chal bhai",
 
   BOL_BHAI_TYPE: "bol bhai",
 
