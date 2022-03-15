@@ -1,6 +1,7 @@
 import { TokenTypes } from "../../constants/bhaiLangSpec";
 import { Token, Tokenizer } from "../tokenizer/types";
 
+
 export default class TokenExecutor {
   private _tokenizer: Tokenizer;
   private _lookahead: Token | null = null;
@@ -20,7 +21,7 @@ export default class TokenExecutor {
 
     if (token.type !== tokenType) {
       throw new SyntaxError(
-        `Unexpected token: "${token.value}", expected : "${tokenType}"`
+        `kya kar hai tu??...Unexpected token: "${token.value}", expected : "${tokenType}"`
       );
     }
 
