@@ -31,7 +31,6 @@ You can also try out your code on <a href="https://bhailang.js.org/#playground">
 hi bhai
   bol bhai "Hello bhai";
 bye bhai
-
 ```
 
 <h4 align="left">Run</h4>
@@ -52,7 +51,6 @@ hello bhai
 <p align="center"><code>hi bhai</code> is the entrypoint for the program and all program must end with <code>bye bhai</code>. Anything outside of it will be ignored.</p>
 
 ```
-
 This will be ignored
 
 hi bhai
@@ -66,7 +64,6 @@ This too
 <p align="center">Variables can be declared using <code>bhai ye hai</code>.</p>
 
 ```
-
 hi bhai
   bhai ye hai a = 10;
   bhai ye hai b = "two";
@@ -81,7 +78,6 @@ bye bhai
 <p align="center">Numbers and strings are like other languages. Null values can be denoted using <code>nalla</code>. <code>sahi</code> and <code>galat</code> are the boolean values.</p>
 
 ```
-
 hi bhai
   bhai ye hai a = 10;
   bhai ye hai b = 10 + (15*20);
@@ -97,7 +93,6 @@ bye bhai
 <p align="center">Use <code>bol bhai</code> to print anything to console.</p>
 
 ```
-
 hi bhai
   bol bhai "Hello World";
   bhai ye hai a = 10;
@@ -113,7 +108,6 @@ bye bhai
 <p align="center">Bhailang supports simple if else construct , <code>agar bhai</code> block will execute if condition is <code>sahi</code> and <code>warna bhai</code> block will execute if condition is <code>galat</code>.</p>
 
 ```
-
 hi bhai
   bhai ye hai a = 10;
   agar bhai (a < 25) {
@@ -129,7 +123,6 @@ bye bhai
 
 
 ```
-
 hi bhai
   bhai ye hai a = 0;
   jab tak bhai (a < 10) {
@@ -146,14 +139,3 @@ hi bhai
   bol bhai "done";
 bye bhai
 ```
-
-
-
-
-
-
-
-
-
-
-
