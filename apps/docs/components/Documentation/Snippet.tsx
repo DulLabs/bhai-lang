@@ -22,6 +22,7 @@ const Snippet = (props: Props) => {
       <CopyToClipboard text={code} />
     </div>
   );
+  
 };
 type Props = { code: string };
 export default React.memo(Snippet);
