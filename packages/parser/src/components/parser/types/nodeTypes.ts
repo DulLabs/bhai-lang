@@ -11,7 +11,9 @@ export type ASTNode = {
   id?: ASTNode;
   init?: ASTNode | null;
   declarations?: ASTNode[];
+  declaration?: ASTNode;
   test?: ASTNode;
   consequent?: ASTNode;
+  alternate?: ASTNode;
   args?: ASTNode[];
 };

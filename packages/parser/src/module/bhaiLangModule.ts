@@ -37,6 +37,7 @@ import RelationalExpression
   from "../components/parser/statement/expression/relationalExpression";
 import ExpressionStatement
   from "../components/parser/statement/expressionStatement";
+import FunctionStatement from "../components/parser/statement/functionStatement";
 import IfStatement from "../components/parser/statement/ifStatement";
 import InitStatement from "../components/parser/statement/initStatement";
 import PrintStatement from "../components/parser/statement/printStatement";
@@ -81,6 +82,7 @@ export default class BhaiLangModule {
   private static _breakStatement?: BreakStatement;
   private static _continueStatement?: ContinueStatement;
   private static _whileStatement?: WhileStatement;
+  private static _functionStatement: FunctionStatement;
 
   static getTokenizer() {
     if (!this._tokenizer) this._tokenizer = new TokenizerImpl(SPEC);
@@ -190,6 +192,16 @@ export default class BhaiLangModule {
 
     return this._variableStatement;
   }
+  static getFunctionStatement() {
+    if (!this._functionStatement)
+      this._functionStatement = new FunctionStatement(
+        this.getTokenExecutor(),
+        this.getNullLiteral()
+      );
+
+    return this._functionStatement;
+  }
+  
 
   static getAdditiveExpression() {
     if (!this._additiveExpression) {

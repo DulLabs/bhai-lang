@@ -39,6 +39,8 @@ export default abstract class Statement {
       
       case TokenTypes.AGLA_DEKH_BHAI:
         return BhaiLangModule.getContinueStatement();
+      case TokenTypes.FUNDA_TYPE:
+        return BhaiLangModule.getFunctionStatement();
 
       default:
         return BhaiLangModule.getExpressionStatement();

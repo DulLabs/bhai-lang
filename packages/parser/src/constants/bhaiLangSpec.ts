@@ -19,7 +19,7 @@ export const TokenTypes = {
 
   AGLA_DEKH_BHAI: "agla dekh bhai",
 
-  FUNDA: "funda", //functional programming
+  FUNDA_TYPE: "bhai ye apna funda", //functional programming
 
   NALLA_TYPE: "NALLA",
 
@@ -93,7 +93,7 @@ export const SPEC = [
   { regex: /^\bagla dekh bhai\b/, tokenType: TokenTypes.AGLA_DEKH_BHAI },
 
   //functional programming
-  { regex: /^\bfunda\b/, tokenType: TokenTypes.FUNDA },
+  { regex: /^\bapna funda\b/, tokenType: TokenTypes.FUNDA_TYPE },
   { regex: /\w+(?=\(.*\))/, tokenType: TokenTypes.CALLABLE_TYPE },
 
   // Number
