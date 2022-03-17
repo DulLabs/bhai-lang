@@ -24,7 +24,7 @@ npm i -g bhailang
 <h4 align="left">Create a new file (<code>test.bhai</code>)</h4>
 
 
-<h4 align="left">Edit the file with  text editor.
+<h4 align="left">Edit the file with a text editor.
 You can also try out your code on <a href="https://bhailang.js.org/#playground">Bhai Lang PlayGround</a></h4>
 
 ```
