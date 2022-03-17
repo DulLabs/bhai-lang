@@ -15,14 +15,13 @@
 
 <h2 align="center">Installation</h2>
 
-```
-npm i -g bhailang
+```bash
+$ npm i -g bhailang
 ```
 
 <h2 align="center">Usage</h2>
 
 <h4 align="left">Create a new file (<code>test.bhai</code>)</h4>
-
 
 <h4 align="left">Edit the file with a text editor.
 You can also try out your code on <a href="https://bhailang.js.org/#playground">Bhai Lang PlayGround</a></h4>
@@ -31,19 +30,18 @@ You can also try out your code on <a href="https://bhailang.js.org/#playground">
 hi bhai
   bol bhai "Hello bhai";
 bye bhai
-
 ```
 
-<h4 align="left">Run</h4>
+<h4 align="left">Run the code</h4>
 
-```
-bhailang test.bhai
+```bash
+$ bhailang test.bhai
 ```
 
 <h4 align="left">Output</h4>
 
-```
-hello bhai
+```bash
+> hello bhai
 ```
 
 <h2 align="center">Documentation</h2>
@@ -51,8 +49,7 @@ hello bhai
 <h3 align="center">General</h3>
 <p align="center"><code>hi bhai</code> is the entrypoint for the program and all program must end with <code>bye bhai</code>. Anything outside of it will be ignored.</p>
 
-```
-
+```js
 This will be ignored
 
 hi bhai
@@ -66,7 +63,6 @@ This too
 <p align="center">Variables can be declared using <code>bhai ye hai</code>.</p>
 
 ```
-
 hi bhai
   bhai ye hai a = 10;
   bhai ye hai b = "two";
@@ -81,7 +77,6 @@ bye bhai
 <p align="center">Numbers and strings are like other languages. Null values can be denoted using <code>nalla</code>. <code>sahi</code> and <code>galat</code> are the boolean values.</p>
 
 ```
-
 hi bhai
   bhai ye hai a = 10;
   bhai ye hai b = 10 + (15*20);
@@ -97,7 +92,6 @@ bye bhai
 <p align="center">Use <code>bol bhai</code> to print anything to console.</p>
 
 ```
-
 hi bhai
   bol bhai "Hello World";
   bhai ye hai a = 10;
@@ -113,7 +107,6 @@ bye bhai
 <p align="center">Bhailang supports simple if else construct , <code>agar bhai</code> block will execute if condition is <code>sahi</code> and <code>warna bhai</code> block will execute if condition is <code>galat</code>.</p>
 
 ```
-
 hi bhai
   bhai ye hai a = 10;
   agar bhai (a < 25) {
@@ -127,9 +120,7 @@ bye bhai
 <h3 align="center">Loops</h3>
 <p align="center">Statements inside <code>jab tak bhai</code> blocks are executed as long as a specified condition evaluates to sahi. If the condition becomes <code>galat</code>, statement within the loop stops executing and control passes to the statement following the loop. Use <code>bas kar bhai</code> to break the loop and <code className="language-cpp">agla dekh bhai</code> to continue within loop.</p>
 
-
 ```
-
 hi bhai
   bhai ye hai a = 0;
   jab tak bhai (a < 10) {
@@ -146,14 +137,3 @@ hi bhai
   bol bhai "done";
 bye bhai
 ```
-
-
-
-
-
-
-
-
-
-
-
