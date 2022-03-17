@@ -49,7 +49,7 @@ hello bhai
 <h2 align="center">Documentation</h2>
 
 <h3 align="center">General</h3>
-<p align="center"><code>hi bhai</code> is the entrypoint for the program and all programs must end with <code>bye bhai</code>. Anything outside of it will be ignored.</p>
+<p align="center"><code>hi bhai</code> is the entrypoint for the program and all, the program must end with <code>bye bhai</code>. Anything outside of it will be ignored.</p>
 
 ```
 
