@@ -13,10 +13,10 @@
 </p>
 <br>
 
-<h2 align="center">Installation</h2>
+<h2 align="center">Installation, make sure you have `node` and `npm` installed.</h2>
 
 ```bash
-$ npm i -g bhailang
+npm i -g bhailang
 ```
 
 <h2 align="center">Usage</h2>
@@ -35,13 +35,13 @@ bye bhai
 <h4 align="left">Run the code</h4>
 
 ```bash
-$ bhailang test.bhai
+bhailang test.bhai
 ```
 
 <h4 align="left">Output</h4>
 
 ```bash
-> hello bhai
+hello bhai
 ```
 
 <h2 align="center">Documentation</h2>
