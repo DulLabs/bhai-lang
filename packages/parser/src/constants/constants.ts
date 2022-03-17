@@ -11,6 +11,7 @@ export const NodeType = {
   LogicalORExpression: "LogicalORExpression",
   RelationalExpression: "RelationalExpression",
   EqualityExpression: "EqualityExpression",
+  CallableExpression: "CallableExpression",
   BlockStatement: "BlockStatement",
   EmptyStatement: "EmptyStatement",
   ExpressionStatement: "ExpressionStatement",
@@ -26,5 +27,6 @@ export const NodeType = {
   StringLiteral: "StringLiteral",
   NullLiteral: "NullLiteral",
   VariableDeclaration: "VariableDeclaration",
+  FunctionDeclaration: "FunctionDeclaration",
   Program: "Program",
 } as const;

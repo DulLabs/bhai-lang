@@ -9,6 +9,8 @@ import AdditiveExpression
   from "../components/parser/statement/expression/addititveExpression";
 import AssignmentExpression
   from "../components/parser/statement/expression/assignmentExpression";
+import CallableExpression 
+  from "../components/parser/statement/expression/callableExpression";
 import EqualityExpression
   from "../components/parser/statement/expression/equalityExpression";
 import IdentifierExpression
@@ -69,6 +71,7 @@ export default class BhaiLangModule {
   private static _variableStatement?: VariableStatement;
   private static _ifStatement?: IfStatement;
   private static _assignmentExpression?: AssignmentExpression;
+  private static _callableExpression?: CallableExpression;
   private static _booleanLiteral?: BooleanLiteral;
   private static _nullLiteral?: NullLiteral;
   private static _equalityExpression?: EqualityExpression;
@@ -278,6 +281,15 @@ export default class BhaiLangModule {
       );
 
     return this._assignmentExpression;
+  }
+
+  static getCallableExpression() {
+    if (!this._callableExpression)
+      this._callableExpression = new CallableExpression(
+        this.getTokenExecutor()
+      );
+
+    return this._callableExpression;
   }
 
   static getNumericLiteral() {

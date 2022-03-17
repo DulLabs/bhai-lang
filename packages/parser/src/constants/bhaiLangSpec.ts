@@ -19,6 +19,8 @@ export const TokenTypes = {
 
   AGLA_DEKH_BHAI: "agla dekh bhai",
 
+  FUNDA: "funda", //functional programming
+
   NALLA_TYPE: "NALLA",
 
   SEMI_COLON_TYPE: ";",
@@ -36,6 +38,8 @@ export const TokenTypes = {
   NUMBER_TYPE: "NUMBER",
 
   IDENTIFIER_TYPE: "IDENTIFIER",
+
+  CALLABLE_TYPE: "CALLABLE",
 
   SIMPLE_ASSIGN_TYPE: "SIMPLE_ASSIGN",
 
@@ -87,6 +91,10 @@ export const SPEC = [
   { regex: /^\bjab tak bhai\b/, tokenType: TokenTypes.JAB_TAK_BHAI },
   { regex: /^\bbas kar bhai\b/, tokenType: TokenTypes.BAS_KAR_BHAI },
   { regex: /^\bagla dekh bhai\b/, tokenType: TokenTypes.AGLA_DEKH_BHAI },
+
+  //functional programming
+  { regex: /^\bfunda\b/, tokenType: TokenTypes.FUNDA },
+  { regex: /\w+(?=\(.*\))/, tokenType: TokenTypes.CALLABLE_TYPE },
 
   // Number
   { regex: /^-?\d+/, tokenType: TokenTypes.NUMBER_TYPE },
