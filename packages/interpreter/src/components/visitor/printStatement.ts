@@ -16,8 +16,6 @@ export default class PrintStatement implements Visitor {
     const value = node.expressions
       .map((expression: ASTNode) => {
           let currentNodeOutput = sanatizeData(InterpreterModule.getVisitor(expression.type).visitNode(expression));
-          if(currentNodeOutput===undefined)
-            return "nalla"
           return currentNodeOutput?.getStringValue();
         }
       ).join(" ");
