@@ -96,11 +96,10 @@ export function getOperationValue(
       throw exception;
 
     case "==":
-      return new BooleanObject(operands.left.getValue() === operands.right.getValue());
-    
+      return new BooleanObject(operands.left.getValue() === operands.right.getValue());    
     case "!=":
       return new BooleanObject(operands.left.getValue() !== operands.right.getValue());
-    
+   
     case ">":
       if (checkNumberOperands(operands)) {
         return new BooleanObject(operands.left.getValue() > operands.right.getValue());
