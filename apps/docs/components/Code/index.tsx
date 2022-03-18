@@ -15,8 +15,12 @@ hi bhai
   bhai ye hai a = 3;
   bhai ye hai b = 0;
 
+  apna funda square(x){
+    rakh le bhai x*x;
+  }
+
   jab tak bhai (b < 5) {
-    bol bhai b;
+    bol bhai square(b);
 
     agar bhai (b == a){
       bol bhai "b is equal to a";
