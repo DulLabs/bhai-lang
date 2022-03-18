@@ -1,6 +1,6 @@
 {
   "name": "bhailang",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "CLI for bhai-lang",
   "source": "src/index.ts",
   "main": "bin/index.js",
