@@ -17,7 +17,7 @@ export default class ReturnStatement extends Statement {
             ).getExpression();
 
         return {
-            type: NodeType.RetrunStatement,
+            type: NodeType.ReturnStatement,
             expression: value,
         };
     }

@@ -21,6 +21,7 @@ import NullLiteral from "../components/visitor/nullLiteral";
 import NumericLiteral from "../components/visitor/numericLiteral";
 import PrintStatement from "../components/visitor/printStatement";
 import Program from "../components/visitor/program";
+import ReturnStatement from "../components/visitor/returnStatement";
 import StringLiteral from "../components/visitor/stringLiteral";
 import VariableDeclaration from "../components/visitor/variableDeclaration";
 import VariableStatement from "../components/visitor/variableStatement";
@@ -53,6 +54,7 @@ export default class InterpreterModule {
     [NodeType.FunctionStatement]: new FunctionStatement(),
     [NodeType.FunctionDeclaration]: new FunctionDeclaration(),
     [NodeType.CallableExpression]: new CallableExpression(),
+    [NodeType.ReturnStatement]: new ReturnStatement(),
 
   } as Record<string, Visitor>;
 

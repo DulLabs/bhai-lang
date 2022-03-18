@@ -6,6 +6,7 @@ import NallaPointerException from "../../exceptions/nallaPointerException";
 import RuntimeException from "../../exceptions/runtimeException";
 import { getOperationValue } from "../../helpers";
 import InterpreterModule from "../../module/interpreterModule";
+import { BooleanObject, DataObject, NullObject, sanatizeData } from "../dataClass";
 
 
 export default class BinaryExpression implements Visitor {
@@ -16,28 +17,32 @@ export default class BinaryExpression implements Visitor {
       );
     }
 
-    let left, right;
+    let left:DataObject=new NullObject(), right:DataObject=new NullObject();
 
     // handling logical & binary both at the same place as both operate on two operands
     if (node.type == NodeType.BinaryExpression) {
       this._checkNalla(node);
       this._checkBoolean(node);
-      left = InterpreterModule.getVisitor(node.left.type).visitNode(
+      left = sanatizeData(InterpreterModule.getVisitor(node.left.type).visitNode(
         node.left
-      );
-      right = InterpreterModule.getVisitor(node.right.type).visitNode(
+      ));
+      right = sanatizeData(InterpreterModule.getVisitor(node.right.type).visitNode(
         node.right
-      );
+      ));
     } else if (node.type == NodeType.LogicalExpression) {
       this._checkNalla(node);
 
-      left = node.left.type == NodeType.BooleanLiteral ? (node.left.value == "sahi" ? true : false) : InterpreterModule.getVisitor(node.left.type).visitNode(
+      left = node.left.type == NodeType.BooleanLiteral ? 
+      new BooleanObject(node.left.value == "sahi" ? true : false) 
+      : sanatizeData(InterpreterModule.getVisitor(node.left.type).visitNode(
         node.left
-      );
+      ));
 
-      right = node.right.type == NodeType.BooleanLiteral ? (node.right.value == "sahi" ? true : false) : InterpreterModule.getVisitor(node.right.type).visitNode(
+      right = node.right.type == NodeType.BooleanLiteral ? 
+      new BooleanObject(node.right.value == "sahi" ? true : false) 
+      : sanatizeData(InterpreterModule.getVisitor(node.right.type).visitNode(
         node.right
-      );
+      ));
 
     }
     return getOperationValue({ left, right }, node.operator);
@@ -91,12 +96,12 @@ export default class BinaryExpression implements Visitor {
 
     if (node.left.type === NodeType.IdentifierExpression && node.left.name) {
       const value = InterpreterModule.getCurrentScope().get(node.left.name);
-      if (value === true || value === false) throw runtimeException;
+      if (value.getValue() === true || value.getValue() === false) throw runtimeException;
     }
 
     if (node.right.type === NodeType.IdentifierExpression && node.right.name) {
       const value = InterpreterModule.getCurrentScope().get(node.right.name);
-      if (value === true || value === false) throw runtimeException;
+      if (value.getValue() === true || value.getValue() === false) throw runtimeException;
     }
   }
 }

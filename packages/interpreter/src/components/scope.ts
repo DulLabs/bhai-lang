@@ -1,8 +1,9 @@
 import RuntimeException from "../exceptions/runtimeException";
+import { DataObject, NullObject, sanatizeData } from "./dataClass";
 
 
 export default class Scope {
-  _variables: Map<string, unknown> = new Map();
+  _variables: Map<string, DataObject> = new Map();
   _isLoop = false;
   _isFunction=false;
   _isBreakStatement = false;
@@ -30,6 +31,7 @@ export default class Scope {
     return this._isReturnStatement;
   }
   getReturnValue(){
+    if(!this._returnVal) this._returnVal=new NullObject();
     return this._returnVal;
   }
 
@@ -57,9 +59,10 @@ export default class Scope {
     return this._isContinueStatement;
   }
 
-  get(identifier: string): unknown {
+  get(identifier: string): DataObject {
     if (this._variables.has(identifier)) {
-      return this._variables.get(identifier);
+      let value = sanatizeData(this._variables.get(identifier));
+      if(value) return value;
     }
 
     if (this._parentScope !== null) {
@@ -69,7 +72,7 @@ export default class Scope {
     throw new RuntimeException(`Variable "${identifier}" bana to le pehle.`);
   }
 
-  assign(identifier: string, value: unknown) {
+  assign(identifier: string, value: DataObject) {
     if (this._variables.has(identifier)) {
       this._variables.set(identifier, value);
       return;
@@ -85,7 +88,7 @@ export default class Scope {
     );
   }
 
-  declare(identifier: string, value: unknown) {
+  declare(identifier: string, value: DataObject) {
     if (this._variables.has(identifier)) {
       throw new RuntimeException(
         `Variable "${identifier}" pehle se exist karta hai bhai. Check karle.`

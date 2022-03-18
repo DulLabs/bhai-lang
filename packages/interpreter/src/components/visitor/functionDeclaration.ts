@@ -4,6 +4,7 @@ import { ASTNode } from "bhai-lang-parser";
 import InvalidStateException from "../../exceptions/invalidStateException";
 import InterpreterModule from "../../module/interpreterModule";
 import Scope from "../scope";
+import { CallableObject } from "../dataClass";
 
 export default class FunctionDeclaration implements Visitor {
   visitNode(node: ASTNode) {
@@ -37,7 +38,7 @@ export default class FunctionDeclaration implements Visitor {
     const currentScope = InterpreterModule.getCurrentScope();
 
     if (identifier) {
-      currentScope.declare(identifier, value);
+      currentScope.declare(identifier, new CallableObject(value));
     }
   }
 }

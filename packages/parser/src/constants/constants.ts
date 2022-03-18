@@ -29,6 +29,6 @@ export const NodeType = {
   VariableDeclaration: "VariableDeclaration",
   FunctionStatement: "FunctionStatement",
   FunctionDeclaration: "FunctionDeclaration",
-  RetrunStatement: "RetrunStatement",
+  ReturnStatement: "ReturnStatement",
   Program: "Program",
 } as const;

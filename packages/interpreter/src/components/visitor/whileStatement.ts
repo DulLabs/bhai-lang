@@ -19,7 +19,9 @@ export default class WhileStatement implements Visitor {
       InterpreterModule.getCurrentScope().setLoop(true);
 
 
-      for (let testResult = getConditionValue(), executions = 0; testResult === true || testResult === "sahi"; testResult = getConditionValue(), executions++) {
+      for (let testResult = getConditionValue(), executions = 0; 
+            testResult?.getValue() === true||testResult?.getValue()!==null; 
+            testResult = getConditionValue(), executions++) {
 
         if (InterpreterModule.getCurrentScope().isBreakStatement()) {
           break;

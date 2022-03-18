@@ -3,6 +3,7 @@ import { ASTNode, NodeType } from "bhai-lang-parser";
 
 import InvalidStateException from "../../exceptions/invalidStateException";
 import InterpreterModule from "../../module/interpreterModule";
+import { BooleanObject, NullObject, sanatizeData } from "../dataClass";
 
 export default class VariableDeclaration implements Visitor {
   visitNode(node: ASTNode) {
@@ -14,11 +15,11 @@ export default class VariableDeclaration implements Visitor {
 
     let value;
 
-    if (node.init.type === NodeType.NullLiteral) value = null;
+    if (node.init.type === NodeType.NullLiteral) value = new NullObject();
     else if (node.init.type === NodeType.BooleanLiteral)
-      value = node.init.value === "sahi" ? true : false;
+      value = new BooleanObject(node.init.value === "sahi" ? true : false);
     else
-      value = InterpreterModule.getVisitor(node.init.type).visitNode(node.init);
+      value = sanatizeData(InterpreterModule.getVisitor(node.init.type).visitNode(node.init));
 
     const currentScope = InterpreterModule.getCurrentScope();
 
