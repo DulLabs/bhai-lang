@@ -101,7 +101,7 @@ bye bhai
     name: "Function",
     description: (
       <>
-        Define function using <code className="language-cpp">apna funda</code> then the funcrtion name and parameters within "(" ")", blocks are executed and the return value can be provided using<code className="language-cpp">rakh le bhai</code>. 
+        Define function using <code className="language-cpp">apna funda</code> then the funcrtion name and parameters within "(" ")", blocks are executed and the return value can be provided using <code className="language-cpp">rakh le bhai</code>. 
       </>
     ),
     code: `hi bhai
