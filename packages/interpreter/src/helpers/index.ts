@@ -95,11 +95,11 @@ export function getOperationValue(
 
     case "==":
       
-      return operands.left === operands.right
+      return operands.left === operands.right;
     
     case "!=":
 
-      return operands.left !== operands.right
+      return operands.left !== operands.right;
     
     case ">":
       if (checkNumberOperands(operands)) {
