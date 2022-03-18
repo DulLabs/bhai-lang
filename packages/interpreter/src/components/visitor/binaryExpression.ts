@@ -20,14 +20,12 @@ export default class BinaryExpression implements Visitor {
 
     // handling logical & binary both at the same place as both operate on two operands
     if (node.type == NodeType.BinaryExpression) {
-      this._checkNalla(node);
-      this._checkBoolean(node);
-      left = InterpreterModule.getVisitor(node.left.type).visitNode(
-        node.left
-      );
-      right = InterpreterModule.getVisitor(node.right.type).visitNode(
-        node.right
-      );
+      if (node.operator !== "==" && node.operator !== "!=") {
+        this._checkNalla(node);
+        this._checkBoolean(node);
+      } 
+      left = this._getNodeValue(node.left);
+      right = this._getNodeValue(node.right);
     } else if (node.type == NodeType.LogicalExpression) {
       this._checkNalla(node);
 
@@ -99,4 +97,22 @@ export default class BinaryExpression implements Visitor {
       if (value === true || value === false) throw runtimeException;
     }
   }
+
+  private _getNodeValue(node: ASTNode) {
+
+    if (node.type === NodeType.NullLiteral)
+      return null;
+
+    if (node.type === NodeType.BooleanLiteral) {
+      return node.value === "sahi" ? true : false;
+    }
+
+    if (node.type === NodeType.IdentifierExpression && node.name)
+      return InterpreterModule.getCurrentScope().get(node.name);
+
+    return InterpreterModule.getVisitor(node.type).visitNode(
+      node
+    );
+  }
+
 }

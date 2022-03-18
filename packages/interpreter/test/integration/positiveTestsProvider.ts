@@ -162,6 +162,326 @@ export const WithOutputPositiveTests = [
     output: "60 60",
   },
   {
+    name: `binaryExpression print test with nalla and "==", should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a;
+      agar bhai (a == nalla) {
+        bol bhai a;
+      }
+      bye bhai
+    `,
+    output: "nalla",
+  },
+  {
+    name: `binaryExpression print test with nalla without any operator, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a;
+      agar bhai (a) {
+        bol bhai a;
+      } warna bhai {
+        bol bhai "not nalla";
+      }
+      bye bhai
+    `,
+    output: "not nalla",
+  },
+  {
+    name: `binaryExpression print test - comparing nalla with nalla "==", should success`,
+    input: `
+      hi bhai;
+      agar bhai (nalla == nalla) {
+        bol bhai "hai nalla";
+      }
+      bye bhai
+    `,
+    output: "hai nalla",
+  },
+  {
+    name: `binaryExpression print test with comparing nalla with var "a", should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a;
+      agar bhai (nalla == a) {
+        bol bhai "hai nalla";
+      }
+      bye bhai
+    `,
+    output: "hai nalla",
+  },
+  {
+    name: `binaryExpression print test with comparing nalla with var "a" explicit initialization, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a = nalla;
+      agar bhai (nalla == a) {
+        bol bhai "hai nalla";
+      }
+      bye bhai
+    `,
+    output: "hai nalla",
+  },
+  {
+    name: `binaryExpression print test with comparing nalla with string nalla, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a = nalla;
+      agar bhai ("nalla" == a) {
+        bol bhai "hai nalla";
+      } warna bhai {
+        bol bhai "not nalla";
+      }
+      bye bhai
+    `,
+    output: "not nalla",
+  },
+  {
+    name: `binaryExpression print test with comparing nalla with string nalla, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a = "nalla";
+      agar bhai (nalla == a) {
+        bol bhai "hai nalla";
+      } warna bhai {
+        bol bhai "not nalla";
+      }
+      bye bhai
+    `,
+    output: "not nalla",
+  },
+  {
+    name: `binaryExpression print test with comparing nalla with string null, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a = "null";
+      agar bhai (nalla == a) {
+        bol bhai "hai nalla";
+      } warna bhai {
+        bol bhai "not nalla";
+      }
+      bye bhai
+    `,
+    output: "not nalla",
+  },
+  {
+    name: `binaryExpression print test with nalla var "a" & "b" - 0, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a;
+      bhai ye hai b;
+      agar bhai (a == b) {
+        bol bhai "hai nalla";
+      } warna bhai {
+        bol bhai "nahi nalla";
+      }
+      bye bhai
+    `,
+    output: "hai nalla",
+  },
+  {
+    name: `binaryExpression print test with nalla var "a" & "b" - 1, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a;
+      bhai ye hai b = nalla;
+      agar bhai (a == b) {
+        bol bhai "hai nalla";
+      } warna bhai {
+        bol bhai "nahi nalla";
+      }
+      bye bhai
+    `,
+    output: "hai nalla",
+  },
+  {
+    name: `binaryExpression print test with nalla var "a" & "b" -2, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a;
+      bhai ye hai b = "nalla";
+      agar bhai (a == b) {
+        bol bhai "hai nalla";
+      } warna bhai {
+        bol bhai "nahi nalla";
+      }
+      bye bhai
+    `,
+    output: "nahi nalla",
+  },
+  // Boolean test
+  {
+    name: `binaryExpression print test with boolean expression - sahi, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a = sahi;
+      agar bhai (sahi == a) {
+        bol bhai "hai sahi";
+      } warna bhai {
+        bol bhai "nahi sahi";
+      }
+      bye bhai
+    `,
+    output: "hai sahi",
+  },
+  {
+    name: `binaryExpression print test with boolean expression - galat, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a = galat;
+      agar bhai (galat == a) {
+        bol bhai "hai galat";
+      } warna bhai {
+        bol bhai "nahi galat";
+      }
+      bye bhai
+    `,
+    output: "hai galat",
+  },
+  {
+    name: `binaryExpression print test with boolean expression - sahi with string sahi, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a = "sahi";
+      agar bhai (sahi == a) {
+        bol bhai "hai sahi";
+      } warna bhai {
+        bol bhai "nahi sahi";
+      }
+      bye bhai
+    `,
+    output: "nahi sahi",
+  },
+  {
+    name: `binaryExpression print test with boolean expression - sahi expression, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a = 7;
+      agar bhai (sahi == (a > 5)) {
+        bol bhai "hai sahi";
+      } warna bhai {
+        bol bhai "nahi sahi";
+      }
+      bye bhai
+    `,
+    output: "hai sahi",
+  },
+  {
+    name: `binaryExpression print test with boolean expression - sahi expression & string "sahi", should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a = 7;
+      agar bhai ("sahi" == (a > 5)) {
+        bol bhai "hai sahi";
+      } warna bhai {
+        bol bhai "nahi sahi";
+      }
+      bye bhai
+    `,
+    output: "nahi sahi",
+  },
+  {
+    name: `binaryExpression print test with boolean expression - sahi expression & two expressions, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a = sahi;
+      agar bhai ("sahi" == (a == sahi)) {
+        bol bhai "hai sahi";
+      } warna bhai {
+        bol bhai "nahi sahi";
+      }
+      bye bhai
+    `,
+    output: "nahi sahi",
+  },
+  {
+    name: `binaryExpression print test with boolean expression - sahi expression -3, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a = sahi;
+      agar bhai ((a == sahi) == (a == sahi)) {
+        bol bhai "hai sahi";
+      } warna bhai {
+        bol bhai "nahi sahi";
+      }
+      bye bhai
+    `,
+    output: "hai sahi",
+  },
+  {
+    name: `binaryExpression print test with boolean expression - sahi expression - 4, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a;
+      agar bhai ((a == nalla) == (a == sahi)) {
+        bol bhai "hai sahi";
+      } warna bhai {
+        bol bhai "nahi sahi";
+      }
+      bye bhai
+    `,
+    output: "nahi sahi",
+  },
+  {
+    name: `binaryExpression print test with boolean expression - sahi expression - 5, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a;
+      agar bhai ((a == nalla) == (a == sahi)) {
+        bol bhai "hai sahi";
+      } warna bhai {
+        bol bhai "nahi sahi";
+      }
+      bye bhai
+    `,
+    output: "nahi sahi",
+  },
+  {
+    name: `binaryExpression print test with boolean expression - sahi expression - 5, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a;
+      bhai ye hai b = galat;
+      agar bhai (a == b) {
+        bol bhai "hai sahi";
+      } warna bhai {
+        bol bhai "nahi sahi";
+      }
+      bye bhai
+    `,
+    output: "nahi sahi",
+  },
+  {
+    name: `binaryExpression print test with boolean expression - galat variables comparison, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a = galat;
+      bhai ye hai b = galat;
+      agar bhai (a == b) {
+        bol bhai "hai galat";
+      } warna bhai {
+        bol bhai "nahi galat";
+      }
+      bye bhai
+    `,
+    output: "hai galat",
+  },
+  {
+    name: `binaryExpression print test with boolean expression - galat variables comparison with string galat, should success`,
+    input: `
+      hi bhai;
+      bhai ye hai a = "galat";
+      bhai ye hai b = galat;
+      agar bhai (a == b) {
+        bol bhai "hai galat";
+      } warna bhai {
+        bol bhai "nahi galat";
+      }
+      bye bhai
+    `,
+    output: "nahi galat",
+  },
+  {
     name: "printStatement test with multiple expressions, should success",
     input: `
       hi bhai;
@@ -370,6 +690,24 @@ export const WithOutputPositiveTests = [
       bye bhai;
     `,
     output: "sahi",
+  },
+  {
+    name: `printStatement test with boolean sahi galat and logical, should success`,
+    input: `
+      hi bhai;
+      bol bhai sahi != 10;
+      bye bhai;
+    `,
+    output: "sahi",
+  },
+  {
+    name: `printStatement test with boolean sahi and string "sahi", should success`,
+    input: `
+      hi bhai;
+      bol bhai "sahi" == sahi;
+      bye bhai;
+    `,
+    output: "galat",
   },
   // while statement / loop tests
   {
