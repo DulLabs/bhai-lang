@@ -1,17 +1,15 @@
 hi bhai
-
-bol bhai "Fibonacci likhenge";
-bhai ye hai start = 0;
-bhai ye hai next = 1;
-bol bhai start;
-bol bhai next;
-bhai ye hai n = 0;
-jab tak bhai (n < 10) {
-  bhai ye hai nextKaNext = start + next;
-  bol bhai nextKaNext;
-  start = next;
-  next = nextKaNext;
-  n += 1;
+  bol bhai "Fibonacci likhenge";
+  bhai ye hai start = 0;
+  bhai ye hai next = 1;
+  bol bhai start;
+  bol bhai next;
+  bhai ye hai n = 0;
+  jab tak bhai (n < 10) {
+    bhai ye hai nextKaNext = start + next;
+    bol bhai nextKaNext;
+    start = next;
+    next = nextKaNext;
+    n += 1;
   }
-
 bye bhai
