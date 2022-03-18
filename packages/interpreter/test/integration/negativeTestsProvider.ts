@@ -493,15 +493,6 @@ export const NegativeTestCases = [
       `,
     output: NallaPointerException,
   },
-  {
-    name: `printStatement test with boolean sahi galat and logical, should throw an exception`,
-    input: `
-      hi bhai;
-      bol bhai sahi != 10;
-      bye bhai;
-    `,
-    output: RuntimeException,
-  },
   // modulus operator test
   {
     name: `modulus operator test with invalid operand, should throw an exception`,
