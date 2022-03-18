@@ -11,11 +11,8 @@ export default class WhileStatement implements Visitor {
   visitNode(node: ASTNode) {
     const test = node.test;
     if (test) {
-      const getConditionValue = ()=> {
-        // console.log("while statement ",test);
-        
-        return sanatizeData(InterpreterModule.getVisitor(test.type).visitNode(test));
-      }
+      const getConditionValue = ()=> sanatizeData(InterpreterModule.getVisitor(test.type).visitNode(test));
+      
 
       const parentScope = InterpreterModule.getCurrentScope();
 
