@@ -1,4 +1,6 @@
-export default function TickIcon(props: any) {
+import { SVGProps } from "react";
+
+export default function TickIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor" {...props}>
       <path

@@ -1,4 +1,6 @@
-export default function CopyIcon(props: any) {
+import { SVGProps } from "react";
+
+export default function CopyIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

@@ -22,7 +22,7 @@ export default function CopyToClipboard(props: Props) {
   function copyToClipboard(e: React.MouseEvent) {
     e.stopPropagation();
     if (text)  {
-      navigator.clipboard.writeText(text).then(() => {
+      navigator.clipboard?.writeText(text).then(() => {
         setCopySuccess(true);
       }).catch(error => {
         console.log(error);
