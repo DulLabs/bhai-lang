@@ -41,6 +41,8 @@ export default abstract class Statement {
         return BhaiLangModule.getContinueStatement();
       case TokenTypes.FUNDA_TYPE:
         return BhaiLangModule.getFunctionStatement();
+      case TokenTypes.RAKH_LE_BHAI:
+        return BhaiLangModule.getReturnStatement();
 
       default:
         return BhaiLangModule.getExpressionStatement();

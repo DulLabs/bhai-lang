@@ -6,8 +6,6 @@ import { ASTNode } from "../../types/nodeTypes";
 
 export default class CallableExpression extends Expression {
 	getExpression(): ASTNode {
-		console.log("CallableExpression.getExpression()");
-		
 		const name = this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.CALLABLE_TYPE).value;
 		this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.OPEN_PARENTHESIS_TYPE);
 

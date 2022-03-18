@@ -41,6 +41,7 @@ import FunctionStatement from "../components/parser/statement/functionStatement"
 import IfStatement from "../components/parser/statement/ifStatement";
 import InitStatement from "../components/parser/statement/initStatement";
 import PrintStatement from "../components/parser/statement/printStatement";
+import ReturnStatement from "../components/parser/statement/returnStatement";
 import VariableStatement
   from "../components/parser/statement/variableStatement";
 import WhileStatement from "../components/parser/statement/whileStatement";
@@ -83,6 +84,7 @@ export default class BhaiLangModule {
   private static _continueStatement?: ContinueStatement;
   private static _whileStatement?: WhileStatement;
   private static _functionStatement: FunctionStatement;
+  static _returnStatement: ReturnStatement;
 
   static getTokenizer() {
     if (!this._tokenizer) this._tokenizer = new TokenizerImpl(SPEC);
@@ -200,6 +202,14 @@ export default class BhaiLangModule {
       );
 
     return this._functionStatement;
+  }
+  static getReturnStatement() {
+    if (!this._returnStatement)
+      this._returnStatement = new ReturnStatement(
+        this.getTokenExecutor()
+      );
+
+    return this._returnStatement;
   }
   
 

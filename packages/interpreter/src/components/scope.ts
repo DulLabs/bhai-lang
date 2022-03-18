@@ -4,12 +4,33 @@ import RuntimeException from "../exceptions/runtimeException";
 export default class Scope {
   _variables: Map<string, unknown> = new Map();
   _isLoop = false;
+  _isFunction=false;
   _isBreakStatement = false;
   _isContinueStatement = false;
   _parentScope: Scope | null;
+  _isReturnStatement=false;
+  _returnVal:any=null;
 
   constructor(parentScope: Scope | null) {
     this._parentScope = parentScope;
+  }
+
+  isFunction(){
+    return this._isFunction;
+  }
+
+  setFunction(isFunction:boolean){
+    this._isFunction=isFunction;
+  }
+  setReturnStatement(isReturnStatement: boolean,returnValue:any) {
+    this._isReturnStatement=isReturnStatement;
+    this._returnVal=returnValue;
+  }
+  isReturnStatement() {
+    return this._isReturnStatement;
+  }
+  getReturnValue(){
+    return this._returnVal;
   }
 
   isLoop() {
