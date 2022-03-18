@@ -316,6 +316,16 @@ const getOperationValuePosTestCasesProvider = [
     output: false,
     function: getOperationValue,
   },
+  {
+    name: `test getOperationValue "==" operator with one string & one number, should success`,
+    input1: {
+      left: 15,
+      right: "hell",
+    },
+    input2: "==",
+    output: false,
+    function: getOperationValue,
+  },
   // !=
   {
     name: `test getOperationValue "!=" operator with number oprands, should success`,
@@ -351,6 +361,16 @@ const getOperationValuePosTestCasesProvider = [
     name: `test getOperationValue "!=" operator with string oprands unequal, should success`,
     input1: {
       left: "crap",
+      right: "hell",
+    },
+    input2: "!=",
+    output: true,
+    function: getOperationValue,
+  },
+  {
+    name: `test getOperationValue "!=" operator with one string & one number, should success`,
+    input1: {
+      left: 15,
       right: "hell",
     },
     input2: "!=",
@@ -602,26 +622,6 @@ const getOperationValueNegTestCasesProvider = [
     },
     input2: "#",
     exception: InvalidStateException,
-    function: getOperationValue,
-  },
-  {
-    name: `test getOperationValue "==" operator with one string & one number, should throw an exception`,
-    input1: {
-      left: 15,
-      right: "hell",
-    },
-    input2: "==",
-    exception: RuntimeException,
-    function: getOperationValue,
-  },
-  {
-    name: `test getOperationValue "!=" operator with one string & one number, should throw an exception`,
-    input1: {
-      left: 15,
-      right: "hell",
-    },
-    input2: "!=",
-    exception: RuntimeException,
     function: getOperationValue,
   },
   {

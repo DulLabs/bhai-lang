@@ -449,6 +449,24 @@ export const ExpressionsTests = [
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"a"},"init":{"type":"LogicalExpression","operator":"||","left":{"type":"IdentifierExpression","name":"b"},"right":{"type":"IdentifierExpression","name":"d"}}}]}]}}`,
   },
+  {
+    name: `identifier name starting with "sahi", should success`,
+    input: `
+      hi bhai
+      bhai ye hai sahiValue = sahi;
+      bye bhai
+    `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"sahiValue"},"init":{"type":"BooleanLiteral","value":"sahi"}}]}]}}`,
+  },
+  {
+    name: `identifier name starting with "galat", should success`,
+    input: `
+      hi bhai
+      bhai ye hai galatValue = 10;
+      bye bhai
+    `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"galatValue"},"init":{"type":"NumericLiteral","value":10}}]}]}}`,
+  },
 ];
 
 export const IfStatementTests = [
@@ -548,9 +566,6 @@ export const IfStatementTests = [
   },
 ];
 
-
-
-
 export const WhileStatementTests = [
   {
     name: "while statement success test: only if",
@@ -617,5 +632,5 @@ export const WhileStatementTests = [
     bye bhai;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"WhileStatement","test":{"type":"BinaryExpression","operator":">","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}},"body":{"type":"BlockStatement","body":[{"type":"ContinueStatement"},{"type":"EmptyStatement"}]}},{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"a"},"init":{"type":"NumericLiteral","value":90}}]}]}}`,
-  }
-]
+  },
+];

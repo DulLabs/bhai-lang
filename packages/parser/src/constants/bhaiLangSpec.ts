@@ -103,8 +103,8 @@ export const SPEC = [
   { regex: /^-?\d+/, tokenType: TokenTypes.NUMBER_TYPE },
 
   // Boolean
-  { regex: /^sahi/, tokenType: TokenTypes.BOOLEAN_TYPE },
-  { regex: /^galat/, tokenType: TokenTypes.BOOLEAN_TYPE },
+  { regex: /^\bsahi\b/, tokenType: TokenTypes.BOOLEAN_TYPE },
+  { regex: /^\bgalat\b/, tokenType: TokenTypes.BOOLEAN_TYPE },
 
   // Identifier
   { regex: /^\w+/, tokenType: TokenTypes.IDENTIFIER_TYPE },

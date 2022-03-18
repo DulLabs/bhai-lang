@@ -96,26 +96,10 @@ export function getOperationValue(
       throw exception;
 
     case "==":
-      if (checkNumberOperands(operands)) {
-        return new BooleanObject(operands.left.getValue() === operands.right.getValue());
-      }
-
-      if (checkStringOperands(operands)) {
-        return new BooleanObject(operands.left.getValue() === operands.right.getValue());
-      }
-
-      throw exception;
+      return BooleanObject(operands.left.getValue() === operands.right.getValue());
     
     case "!=":
-      if (checkNumberOperands(operands)) {
-        return new BooleanObject(operands.left.getValue() !== operands.right.getValue());
-      }
-
-      if (checkStringOperands(operands)) {
-        return new BooleanObject(operands.left.getValue() !== operands.right.getValue());
-      }
-
-      throw exception;
+      return BooleanObject(operands.left.getValue() !== operands.right.getValue());
     
     case ">":
       if (checkNumberOperands(operands)) {

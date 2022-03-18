@@ -21,14 +21,12 @@ export default class BinaryExpression implements Visitor {
 
     // handling logical & binary both at the same place as both operate on two operands
     if (node.type == NodeType.BinaryExpression) {
-      this._checkNalla(node);
-      this._checkBoolean(node);
-      left = sanatizeData(InterpreterModule.getVisitor(node.left.type).visitNode(
-        node.left
-      ));
-      right = sanatizeData(InterpreterModule.getVisitor(node.right.type).visitNode(
-        node.right
-      ));
+      if (node.operator !== "==" && node.operator !== "!=") {
+        this._checkNalla(node);
+        this._checkBoolean(node);
+      } 
+      left = this._getNodeValue(node.left);
+      right = this._getNodeValue(node.right);
     } else if (node.type == NodeType.LogicalExpression) {
       this._checkNalla(node);
 
@@ -67,12 +65,12 @@ export default class BinaryExpression implements Visitor {
 
     if (node.left.type === NodeType.IdentifierExpression && node.left.name) {
       const value = InterpreterModule.getCurrentScope().get(node.left.name);
-      if (value === null) throw nallaException;
+      if (value === null||value.getValue()==null) throw nallaException;
     }
 
     if (node.right.type === NodeType.IdentifierExpression && node.right.name) {
       const value = InterpreterModule.getCurrentScope().get(node.right.name);
-      if (value === null) throw nallaException;
+      if (value === null||value.getValue()==null) throw nallaException;
     }
   }
 
@@ -104,4 +102,22 @@ export default class BinaryExpression implements Visitor {
       if (value.getValue() === true || value.getValue() === false) throw runtimeException;
     }
   }
+
+  private _getNodeValue(node: ASTNode) {
+
+    if (node.type === NodeType.NullLiteral)
+      return new NullObject();
+
+    if (node.type === NodeType.BooleanLiteral) {
+      return new BooleanObject(node.value === "sahi" ? true : false);
+    }
+
+    if (node.type === NodeType.IdentifierExpression && node.name)
+      return InterpreterModule.getCurrentScope().get(node.name);
+
+    return sanatizeData(InterpreterModule.getVisitor(node.type).visitNode(
+      node
+    ));
+  }
+
 }
