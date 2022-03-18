@@ -62,7 +62,7 @@ export default class Scope {
   get(identifier: string): DataObject {
     if (this._variables.has(identifier)) {
       let value = sanatizeData(this._variables.get(identifier));
-      if(value) return value;
+      return value;
     }
 
     if (this._parentScope !== null) {
