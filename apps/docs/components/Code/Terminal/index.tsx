@@ -1,26 +1,26 @@
 import React, { useEffect, useRef } from "react";
 
-
 const Terminal = (props: Props) => {
   const { output, isSuccess } = props;
   const terminalRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => { 
+  useEffect(() => {
     if (output.length) {
       setTimeout(() => terminalRef.current?.scrollIntoView(false), 100);
     }
   }, [output]);
 
-  
   return (
     <div
-    ref={terminalRef}
+      ref={terminalRef}
       className={`${
         isSuccess !== null ? "terminal" : "terminal-collapsed"
       } bg-black text-white my-6`}
     >
       {isSuccess !== null && !isSuccess ? (
-        <div className="text-red-700 output opacity-0">❌ Arre Bhai Bhai Bhai !!!</div>
+        <div className="text-red-700 output opacity-0">
+          ❌ Arre Bhai Bhai Bhai, Hag Diya !!!
+        </div>
       ) : (
         <div className="text-green-700 output opacity-0">Shandaar bhai 🎉</div>
       )}
