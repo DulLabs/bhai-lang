@@ -19,7 +19,7 @@ export default function CopyToClipboard(props: Props) {
     }
   }, [copySuccess]);
 
-  function copyToClipboard(e: any) {
+  function copyToClipboard(e: MouseEvent) {
     e.stopPropagation();
     if (text)  {
       navigator.clipboard.writeText(text).then(() => {
