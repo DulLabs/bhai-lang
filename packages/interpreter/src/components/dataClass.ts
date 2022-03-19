@@ -63,7 +63,7 @@ export class CallableObject extends DataObject{
     }
 }
 
-export function sanatizeData(data:any):DataObject{
+export function sanatizeData(data:unknown):DataObject{
     if((data==null)||(data==undefined)){
         return new NullObject();
     }
