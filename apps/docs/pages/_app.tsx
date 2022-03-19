@@ -2,7 +2,9 @@ import { useEffect } from "react";
 
 import { AppProps } from "next/app";
 import { useRouter } from "next/router";
-import posthog from "posthog-js";
+import Script from "next/script";
+
+import { pageView } from "../helpers";
 
 import "../styles/global.css";
 
@@ -14,21 +16,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     if (!ANALYTICS_ID) return;
-
-      // Init PostHog
-    posthog.init(ANALYTICS_ID, {
-      api_host: 'https://app.posthog.com',
-      loaded: (posthog) => {
-        if (process.env.NODE_ENV === 'development') posthog.opt_out_capturing()
-      },
-    });
-
-    if (process.env.NODE_ENV === 'development') {
-      posthog.opt_out_capturing();
-    }
-
-      // Track page views
-      const handleRouteChange = () => posthog.capture('$pageview');
+    const handleRouteChange = (url: string) => pageView(url); 
       router.events.on('routeChangeComplete', handleRouteChange);
 
       return () => {
@@ -37,5 +25,19 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return <Component {...pageProps} />;
+  return(
+    <>
+      <Script src={`https://www.googletagmanager.com/gtag/js?id=${ANALYTICS_ID}`} strategy='afterInteractive'/>
+      <Script id="google-analytics" strategy='afterInteractive'>
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', '${ANALYTICS_ID}');
+        `}
+      </Script>
+      <Component {...pageProps} />
+  </>
+  )
 }

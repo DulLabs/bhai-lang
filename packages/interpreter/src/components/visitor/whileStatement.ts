@@ -11,7 +11,6 @@ export default class WhileStatement implements Visitor {
     const test = node.test;
     if (test) {
       const getConditionValue = ()=> InterpreterModule.getVisitor(test.type).visitNode(test);
-      const start = new Date();
 
       const parentScope = InterpreterModule.getCurrentScope();
 
@@ -19,13 +18,14 @@ export default class WhileStatement implements Visitor {
       
       InterpreterModule.getCurrentScope().setLoop(true);
 
-      for (let testResult = getConditionValue(); testResult === true || testResult === "sahi"; testResult = getConditionValue()) {
+
+      for (let testResult = getConditionValue(), executions = 0; testResult === true || testResult === "sahi"; testResult = getConditionValue(), executions++) {
 
         if (InterpreterModule.getCurrentScope().isBreakStatement()) {
           break;
         }
 
-        if (Date.now() - start.getTime() > 1000) {
+        if (executions > 5000) {
           throw new RuntimeException("Bohot jyada hi chale jaa rha hai loop");
         }
 

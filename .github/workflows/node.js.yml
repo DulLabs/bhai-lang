@@ -44,17 +44,10 @@ jobs:
       - run: npm run build
         env:
           NEXT_PUBLIC_ANALYTICS_ID: ${{ secrets.ANALYTICS_ID }}
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
       - run: npm run test
-      - name: Changes
-        uses: dorny/paths-filter@v2
-        id: filter
-        with:
-          filters: |
-            docs:
-              - 'apps/docs/**'
-
       - name: Deploy
-        if: steps.filter.outputs.docs == 'true' && (github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/main') 
+        if: (github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/main') 
         uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
