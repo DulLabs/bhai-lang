@@ -29,6 +29,10 @@ export const TokenTypes = {
 
   HAI_BHAI: "hai bhai", //implements ends statement
 
+  ISKA: "iska", //This Operator
+
+  CONSTRUCTOR_TYPE: "janam", //constructor
+
   DOT_OPERATOR: ".",
 
   NALLA_TYPE: "NALLA",
@@ -111,6 +115,7 @@ export const SPEC = [
   { regex: /^\bsamajh le bhai\b/, tokenType: TokenTypes.SAMAJH_LE_BHAI },
   { regex: /^\bjo ki ek (bhai|)\b/, tokenType: TokenTypes.JO_KI_EK_BHAI },
   { regex: /^\bhai (bhai|)\b/, tokenType: TokenTypes.HAI_BHAI },
+  { regex: /^\biska\b/, tokenType: TokenTypes.ISKA },
   // scope resolution accessing members
   { regex: /^\.(?=\w+)/, tokenType: TokenTypes.DOT_OPERATOR },
 

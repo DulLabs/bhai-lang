@@ -29,7 +29,9 @@ export function checkNumberAndStringOperands(operands: {
     (operands.left.getType() === DataTypes.String && operands.right.getType() === DataTypes.Numeric) ||
     (operands.right.getType() === DataTypes.String && operands.left.getType() === DataTypes.Numeric)
   );
-} 
+}
+
+
 
 export function getOperationValue(
   operands: { left: DataObject; right: DataObject },
@@ -136,6 +138,8 @@ export function getOperationValue(
 
     case "||":
       return new BooleanObject((operands.left.getValue() || operands.right.getValue())==true);
+
+    case ".":
 
     default:
       throw new InvalidStateException(`Unsupported operator: ${operator}`);

@@ -63,7 +63,10 @@ export class NullObject extends DataObject{
 }
 
 export class CallableObject extends DataObject{
-    constructor(value: {args:(string|undefined)[],code:(args:{identifier:string,value:DataObject}[])=>any}) {
+    constructor(value: {
+        args:(string|undefined)[],
+        code:(args:{identifier:string,value:DataObject}[])=>any
+    }) {
         super(value,DataTypes.Callable);
     }
 }
@@ -86,7 +89,7 @@ export class ClassObject extends DataObject{
 export class ClassInstanceObject extends DataObject{
     constructor(value:{
         className:string
-        dataMembers:Scope
+        members:Scope
     }) {
         super(value,DataTypes.ClassInsance);
     }

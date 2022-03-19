@@ -30,15 +30,13 @@ export default class FunctionDeclaration implements Visitor {
           InterpreterModule.setCurrentScope(newScope)
           InterpreterModule.getVisitor(body.type).visitNode(body);
           let result=newScope.getReturnValue()
-          InterpreterModule.setCurrentScope(new Scope(oldScope))
+          InterpreterModule.setCurrentScope(oldScope)
           return result
         }
       }
       const currentScope = InterpreterModule.getCurrentScope();
 
-      if (identifier) {
-        currentScope.declare(identifier, new CallableObject(value));
-      }
+      return new CallableObject(value);
     }
     else{
       throw new InvalidStateException(`body not found for ${node.type}`);
