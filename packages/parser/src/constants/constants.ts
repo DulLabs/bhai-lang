@@ -27,3 +27,6 @@ export const NodeType = {
   VariableDeclaration: "VariableDeclaration",
   Program: "Program",
 } as const;
+
+export type NodeTypeKey = keyof typeof NodeType;
+export type NodeTypeValue = typeof NodeType[NodeTypeKey];

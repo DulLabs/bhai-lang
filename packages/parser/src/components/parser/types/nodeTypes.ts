@@ -1,5 +1,5 @@
 export type ASTNode = {
-  type: string;
+  type: NodeTypeValue;
   body?: ASTNode | ASTNode[];
   expressions?: ASTNode[];
   expression?: ASTNode;
