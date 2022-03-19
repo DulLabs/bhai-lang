@@ -20,7 +20,7 @@ export default class WhileStatement extends Statement {
         this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.CLOSED_PARENTHESIS_TYPE);
 
         if (this._tokenExecutor.getLookahead() == null) {
-            throw new SyntaxError(`Unexpected end of "jab tak bhai" statement`);
+            throw new SyntaxError(`Bilkul bakwas hai yeh, Aap band kar do isey: "jab tak bhai"`);
         }
 
         const body = Statement.getStatementImpl(this._tokenExecutor.getLookahead()!).getStatement();
