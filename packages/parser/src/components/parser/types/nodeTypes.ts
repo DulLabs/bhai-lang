@@ -1,3 +1,5 @@
+import { NodeTypeValue } from "../../../constants/constants";
+
 export type ASTNode = {
   type: NodeTypeValue;
   body?: ASTNode | ASTNode[];
