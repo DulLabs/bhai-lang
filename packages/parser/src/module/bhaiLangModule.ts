@@ -12,6 +12,7 @@ import AssignmentExpression
   from "../components/parser/statement/expression/assignmentExpression";
 import CallableExpression 
   from "../components/parser/statement/expression/callableExpression";
+import DotExpression from "../components/parser/statement/expression/dotExpression";
 import EqualityExpression
   from "../components/parser/statement/expression/equalityExpression";
 import IdentifierExpression
@@ -87,6 +88,7 @@ export default class BhaiLangModule {
   private static _functionStatement: FunctionStatement;
   private static _returnStatement: ReturnStatement;
   private static _classStatement: ClassStatement;
+  private static _dotExpression: DotExpression;
 
   static getTokenizer() {
     if (!this._tokenizer) this._tokenizer = new TokenizerImpl(SPEC);
@@ -242,6 +244,15 @@ export default class BhaiLangModule {
     }
 
     return this._multiplicativeExpression;
+  }
+  static getDotExpression() {
+    if (!this._dotExpression) {
+      this._dotExpression = new DotExpression(
+        this.getTokenExecutor()
+      );
+    }
+
+    return this._dotExpression;
   }
 
   static getPrimaryExpression() {

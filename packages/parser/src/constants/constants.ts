@@ -12,6 +12,7 @@ export const NodeType = {
   RelationalExpression: "RelationalExpression",
   EqualityExpression: "EqualityExpression",
   CallableExpression: "CallableExpression",
+  DotExpression: "DotExpression",
   BlockStatement: "BlockStatement",
   EmptyStatement: "EmptyStatement",
   ExpressionStatement: "ExpressionStatement",

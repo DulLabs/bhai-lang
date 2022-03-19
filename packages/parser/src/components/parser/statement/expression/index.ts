@@ -44,6 +44,8 @@ export default abstract class Expression {
       
       case NodeType.CallableExpression:
         return BhaiLangModule.getCallableExpression();
+      case NodeType.DotExpression:
+        return BhaiLangModule.getDotExpression();
         
 
       default:
