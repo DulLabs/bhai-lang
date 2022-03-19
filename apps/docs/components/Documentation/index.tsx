@@ -84,12 +84,14 @@ bye bhai
     name: "Conditionals",
     description: (
       <>
-        Bhailang supports simple if else construct , <code className="language-cpp">agar bhai</code> block will execute if condition is <code className="language-cpp">sahi</code> and <code className="language-cpp">warna bhai</code> block will execute if condition is <code className="language-cpp">galat</code>.
+        Bhailang supports if-else-if ladder construct , <code className="language-cpp">agar bhai</code> block will execute if condition is <code className="language-cpp">sahi</code>, otherwise one of the subsequently added <code className="language-cpp">nahi to bhai</code> blocks will execute if their respective condition is <code className="language-cpp">sahi</code>, and the <code className="language-cpp">warna bhai</code> block will eventually execute if all of the above conditions are <code className="language-cpp">galat</code>.
       </>
     ),
     code: `hi bhai
     bhai ye hai a = 10;
-    agar bhai (a < 25) {
+    agar bhai (a < 20) {
+      bol bhai "a is less than 20";
+    } nahi to bhai ( a < 25 ) {
       bol bhai "a is less than 25";
     } warna bhai {
       bol bhai "a is greater than or equal to 25";

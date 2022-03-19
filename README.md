@@ -110,17 +110,19 @@ bye bhai
 ```
 
 <h3 align="center">Conditionals</h3>
-<p align="center">Bhailang supports simple if else construct , <code>agar bhai</code> block will execute if condition is <code>sahi</code> and <code>warna bhai</code> block will execute if condition is <code>galat</code>.</p>
+<p align="center">Bhailang supports if-else-if ladder construct , <code>agar bhai</code> block will execute if condition is <code>sahi</code>, otherwise one of the subsequently added <code>nahi to bhai</code> blocks will execute if their respective condition is <code>sahi</code>, and the <code>warna bhai</code> block will eventually execute if all of the above conditions are <code>galat</code>
 
 ```
 
 hi bhai
   bhai ye hai a = 10;
-  agar bhai (a < 25) {
-   bol bhai "a is less than 25";
-  } warna bhai {
-   bol bhai "a is greater than or equal to 25";
-  }
+  agar bhai (a < 20) {
+    bol bhai "a is less than 20";
+  } nahi to bhai ( a < 25 ) {
+    bol bhai "a is less than 25";
+  } warna bhai {
+    bol bhai "a is greater than or equal to 25";
+  }
 bye bhai
 ```
 
