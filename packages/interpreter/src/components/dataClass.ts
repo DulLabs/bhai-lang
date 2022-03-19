@@ -1,9 +1,14 @@
+import { ASTNode } from "bhai-lang-parser";
+import Scope from "./scope";
+
 export enum DataTypes{
     Null='null',
     Boolean='boolean',
     Numeric='numeric',
     String='string',
     Callable='callable',
+    Class='classDefinition',
+    ClassInsance='classInstance',
 }
 export class DataObject {
   protected _value: any;
@@ -58,12 +63,36 @@ export class NullObject extends DataObject{
 }
 
 export class CallableObject extends DataObject{
-    constructor(value: any) {
+    constructor(value: {args:(string|undefined)[],code:(args:{identifier:string,value:DataObject}[])=>any}) {
         super(value,DataTypes.Callable);
     }
 }
 
-export function sanatizeData(data:any):DataObject{
+export class ClassObject extends DataObject{
+    constructor(value: {
+        name:string,
+        methods:ASTNode[],
+        dataMembers:string[]
+        }) {
+        super(value,DataTypes.Class);
+        this.name=value.name;
+        this.methods=value.methods;
+        this.dataMembers=value.dataMembers;
+    }
+    name:string;
+    methods:ASTNode[];
+    dataMembers:string[];
+}
+export class ClassInstanceObject extends DataObject{
+    constructor(value:{
+        className:string
+        dataMembers:Scope
+    }) {
+        super(value,DataTypes.ClassInsance);
+    }
+}
+
+export function sanatizeData(data:any|unknown):DataObject{
     if((data==null)||(data==undefined)){
         return new NullObject();
     }

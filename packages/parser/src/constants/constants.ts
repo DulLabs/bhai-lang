@@ -30,5 +30,7 @@ export const NodeType = {
   FunctionStatement: "FunctionStatement",
   FunctionDeclaration: "FunctionDeclaration",
   ReturnStatement: "ReturnStatement",
+  ClassStatement: "ClassStatement", 
+  ClassDeclaration: "ClassDeclaration",
   Program: "Program",
 } as const;

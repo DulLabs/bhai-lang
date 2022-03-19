@@ -23,6 +23,14 @@ export const TokenTypes = {
 
   RAKH_LE_BHAI:"rakh le bhai",// return statement
 
+  SAMAJH_LE_BHAI:"samajh le bhai",// class statement
+
+  JO_KI_EK_BHAI:"jo ki ek bhai",// implements statement
+
+  HAI_BHAI: "hai bhai", //implements ends statement
+
+  SCOPE_RESOLUTION_OPERATOR: ".",
+
   NALLA_TYPE: "NALLA",
 
   SEMI_COLON_TYPE: ";",
@@ -99,12 +107,21 @@ export const SPEC = [
   { regex: /^\brakh le bhai\b/, tokenType: TokenTypes.RAKH_LE_BHAI },
   { regex: /^\w+(?=\(.*\))/, tokenType: TokenTypes.CALLABLE_TYPE },
 
+  // object oriented programming
+  { regex: /^\bsamajh le bhai\b/, tokenType: TokenTypes.SAMAJH_LE_BHAI },
+  { regex: /^\bjo ki ek (bhai|)\b/, tokenType: TokenTypes.JO_KI_EK_BHAI },
+  { regex: /^\bhai (bhai|)\b/, tokenType: TokenTypes.HAI_BHAI },
+  // accessing members
+  { regex: /^\.(?=\w+)/, tokenType: TokenTypes.SCOPE_RESOLUTION_OPERATOR },
+
   // Number
   { regex: /^-?\d+/, tokenType: TokenTypes.NUMBER_TYPE },
 
   // Boolean
   { regex: /^\bsahi\b/, tokenType: TokenTypes.BOOLEAN_TYPE },
   { regex: /^\bgalat\b/, tokenType: TokenTypes.BOOLEAN_TYPE },
+
+  
 
   // Identifier
   { regex: /^\w+/, tokenType: TokenTypes.IDENTIFIER_TYPE },

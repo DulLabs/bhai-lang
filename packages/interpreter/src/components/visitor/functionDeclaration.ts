@@ -19,7 +19,7 @@ export default class FunctionDeclaration implements Visitor {
     if (body && !Array.isArray(body)) {
       let scope=InterpreterModule.getCurrentScope()
       value={
-        args:node.id.args?.map(arg=>arg.name),
+        args:node.id.args?.map(arg=>arg.name)||[],
         code:(args:{identifier:string,value:DataObject}[]):any=>{
           let oldScope=InterpreterModule.getCurrentScope()
           let newScope=new Scope(scope)
@@ -34,11 +34,14 @@ export default class FunctionDeclaration implements Visitor {
           return result
         }
       }
-    }
-    const currentScope = InterpreterModule.getCurrentScope();
+      const currentScope = InterpreterModule.getCurrentScope();
 
-    if (identifier) {
-      currentScope.declare(identifier, new CallableObject(value));
+      if (identifier) {
+        currentScope.declare(identifier, new CallableObject(value));
+      }
+    }
+    else{
+      throw new InvalidStateException(`body not found for ${node.type}`);
     }
   }
 }

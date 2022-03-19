@@ -38,7 +38,7 @@ export default class FunctionStatement extends Statement {
     ).getExpression();
     let lookahead=this._tokenExecutor.getLookahead()
     if (lookahead == null) {
-      throw new SyntaxError(`Unexpected end of "jab tak bhai" statement`);
+      throw new SyntaxError(`Unexpected end of "apna funda" statement`);
     }
     if(lookahead.type!==TokenTypes.OPEN_CURLY_BRACE_TYPE){
       throw new SyntaxError(`Unexpected token after funda signature ${id.name}, got "${lookahead.value}" : expected "{"`);

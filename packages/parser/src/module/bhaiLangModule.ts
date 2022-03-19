@@ -2,6 +2,7 @@ import { Parser } from "../components/parser";
 import Program from "../components/parser/program";
 import BlockStatement from "../components/parser/statement/blockStatement";
 import BreakStatement from "../components/parser/statement/breakStatement";
+import ClassStatement from "../components/parser/statement/classStatement";
 import ContinueStatement
   from "../components/parser/statement/continueStatement";
 import EmptyStatement from "../components/parser/statement/emptyStatement";
@@ -84,7 +85,8 @@ export default class BhaiLangModule {
   private static _continueStatement?: ContinueStatement;
   private static _whileStatement?: WhileStatement;
   private static _functionStatement: FunctionStatement;
-  static _returnStatement: ReturnStatement;
+  private static _returnStatement: ReturnStatement;
+  private static _classStatement: ClassStatement;
 
   static getTokenizer() {
     if (!this._tokenizer) this._tokenizer = new TokenizerImpl(SPEC);
@@ -210,6 +212,15 @@ export default class BhaiLangModule {
       );
 
     return this._returnStatement;
+  }
+
+  static getClassStatement() {
+    if (!this._classStatement)
+      this._classStatement = new ClassStatement(
+        this.getTokenExecutor()
+      );
+
+    return this._classStatement;
   }
   
 

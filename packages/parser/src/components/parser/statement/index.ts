@@ -43,6 +43,8 @@ export default abstract class Statement {
         return BhaiLangModule.getFunctionStatement();
       case TokenTypes.RAKH_LE_BHAI:
         return BhaiLangModule.getReturnStatement();
+      case TokenTypes.SAMAJH_LE_BHAI:
+        return BhaiLangModule.getClassStatement();
 
       default:
         return BhaiLangModule.getExpressionStatement();
