@@ -11,9 +11,6 @@ export default class FunctionDeclaration implements Visitor {
     if (!node.id || !node.body||!node) {
       throw new InvalidStateException(`id or body not found for ${node.type}`);
     }
-
-    const identifier = node.id.name;
-
     let value;
     const body = node.body;
     if (body && !Array.isArray(body)) {
@@ -34,8 +31,6 @@ export default class FunctionDeclaration implements Visitor {
           return result
         }
       }
-      const currentScope = InterpreterModule.getCurrentScope();
-
       return new CallableObject(value);
     }
     else{

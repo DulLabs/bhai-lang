@@ -6,7 +6,7 @@ import NallaPointerException from "../../exceptions/nallaPointerException";
 import RuntimeException from "../../exceptions/runtimeException";
 import { getOperationValue } from "../../helpers";
 import InterpreterModule from "../../module/interpreterModule";
-import { BooleanObject, DataObject, NullObject, sanatizeData } from "../dataClass";
+import { CallableObject, ClassInstanceObject, DataObject, DataTypes, NullObject, sanatizeData } from "../dataClass";
 
 
 export default class BinaryExpression implements Visitor {
@@ -21,28 +21,21 @@ export default class BinaryExpression implements Visitor {
 
     // handling logical & binary both at the same place as both operate on two operands
     if (node.type == NodeType.BinaryExpression) {
-      if (node.operator !== "==" && node.operator !== "!=") {
+      if (node.operator !== "==" && node.operator !== "!="&&node.operator !==".") {
         this._checkNalla(node);
         this._checkBoolean(node);
       } 
-      left = this._getNodeValue(node.left);
-      right = this._getNodeValue(node.right);
+      else if (node.operator === ".") {
+        return this.performDotOperation(node);
+        
+      }
     } else if (node.type == NodeType.LogicalExpression) {
       this._checkNalla(node);
-
-      left = node.left.type == NodeType.BooleanLiteral ? 
-      new BooleanObject(node.left.value == "sahi" ? true : false) 
-      : sanatizeData(InterpreterModule.getVisitor(node.left.type).visitNode(
-        node.left
-      ));
-
-      right = node.right.type == NodeType.BooleanLiteral ? 
-      new BooleanObject(node.right.value == "sahi" ? true : false) 
-      : sanatizeData(InterpreterModule.getVisitor(node.right.type).visitNode(
-        node.right
-      ));
-
     }
+    
+    left = sanatizeData(InterpreterModule.getVisitor(node.left.type).visitNode(node.left));
+    right = sanatizeData(InterpreterModule.getVisitor(node.right.type).visitNode(node.right));
+
     return getOperationValue({ left, right }, node.operator);
   }
 
@@ -103,21 +96,54 @@ export default class BinaryExpression implements Visitor {
     }
   }
 
-  private _getNodeValue(node: ASTNode) {
-
-    if (node.type === NodeType.NullLiteral)
-      return new NullObject();
-
-    if (node.type === NodeType.BooleanLiteral) {
-      return new BooleanObject(node.value === "sahi" ? true : false);
+  private performDotOperation(node: ASTNode):DataObject {
+    if (!node.left || !node.right || !node.operator) {
+      throw new InvalidStateException(
+        `Left , right or operator not found for: ${node.type}`
+      );
     }
 
-    if (node.type === NodeType.IdentifierExpression && node.name)
-      return InterpreterModule.getCurrentScope().get(node.name);
+    const left = sanatizeData(InterpreterModule.getVisitor(node.left.type).visitNode(node.left));
 
-    return sanatizeData(InterpreterModule.getVisitor(node.type).visitNode(
-      node
-    ));
+    if (left instanceof NullObject) {
+      throw new NallaPointerException(
+        `Nalla operand ni jamta "${node.operator}" ke sath`
+      );
+    }
+    if(!(left instanceof ClassInstanceObject)){
+      console.log(left.getType());
+      
+      throw new RuntimeException(
+        `Kya kar rha hai tu??..${left.toString()} operand ni jamta "${node.operator}" ke sath`
+      );
+    }
+    if(node.right.type===NodeType.IdentifierExpression&&node?.right?.name)
+      return left.getMember(node.right.name);
+    
+    if(node.right.type===NodeType.CallableExpression&&node?.right?.name){
+      const member = left.getMember(node.right.name);
+      if(member.getType()!==DataTypes.Callable)
+        throw new RuntimeException(
+          `Kya kar rha hai tu??..${left.toString()} ka ${node.right.name} karke koi funda hai hi nahi`
+        );
+      const args:{identifier:string,value:DataObject}[]=[];
+      const providedArgs=node.right.args;
+      if(member.getValue().args){
+        for (let i = 0; i < (member as CallableObject).getValue().args.length; i++) {
+          const identifier = (member as CallableObject).getValue().args[i];
+          if(!identifier) throw new RuntimeException(
+            `Kya kar rha hai tu??..${left.toString()} ka ${node.right.name} karke koi funde ke argument me garbar hai`
+          );
+          if(providedArgs&&providedArgs[i]){
+            args.push({identifier,value:sanatizeData(InterpreterModule.getVisitor(providedArgs[i].type).visitNode(providedArgs[i]))});
+          }
+        }
+        return (member as CallableObject).getValue().code(args);
+      }
+    }
+    throw new RuntimeException(
+      `Kya kar rha hai tu??..${left.toString()} operand ni jamta "${node.operator}" ke sath`
+    );
   }
 
 }

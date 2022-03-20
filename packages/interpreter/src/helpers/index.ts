@@ -38,7 +38,7 @@ export function getOperationValue(
   operator: string
 ) {
   const exception = new RuntimeException(
-    `Ye kya kar raha hai: "${operator}" ke sath "${typeof operands.left.getStringValue()}" aur "${typeof operands.right.getStringValue()}" nahi jamte.`
+    `Ye kya kar raha hai: "${operator}" ke sath "${typeof operands.left.toString()}" aur "${typeof operands.right.toString()}" nahi jamte.`
   );
 
   switch (operator) {
@@ -56,7 +56,7 @@ export function getOperationValue(
       }
 
       if (checkNumberAndStringOperands(operands)) {
-        return new StringObject(operands.left.getStringValue() + operands.right.getStringValue());
+        return new StringObject(operands.left.toString() + operands.right.toString());
       }
 
       throw exception;

@@ -9,6 +9,8 @@ import BlockStatement from "../components/visitor/blockStatement";
 import BooleanLiteral from "../components/visitor/booleanLiteral";
 import BreakStatement from "../components/visitor/breakStatement";
 import CallableExpression from "../components/visitor/callableExpression";
+import ClassDeclaration from "../components/visitor/classDeclaration";
+import ClassStatement from "../components/visitor/classStatement";
 import ContinueStatement from "../components/visitor/continueStatement";
 import EmptyStatement from "../components/visitor/emptyStatement";
 import ExpressionStatement from "../components/visitor/expressionStatement";
@@ -55,6 +57,8 @@ export default class InterpreterModule {
     [NodeType.FunctionDeclaration]: new FunctionDeclaration(),
     [NodeType.CallableExpression]: new CallableExpression(),
     [NodeType.ReturnStatement]: new ReturnStatement(),
+    [NodeType.ClassStatement]: new ClassStatement(),
+    [NodeType.ClassDeclaration]: new ClassDeclaration(),
 
   } as Record<string, Visitor>;
 

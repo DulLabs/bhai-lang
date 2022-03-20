@@ -1,4 +1,5 @@
 import { ASTNode } from "bhai-lang-parser";
+import InterpreterModule from "../module/interpreterModule";
 import Scope from "./scope";
 
 export enum DataTypes{
@@ -27,7 +28,10 @@ export class DataObject {
   getType():string{
     return this._type;
   }
-  getStringValue():string{
+  valueOf(){
+    return this._value;
+  }
+  toString(){
     return this._value.toString();
   }
 }
@@ -36,7 +40,7 @@ export class BooleanObject extends DataObject{
   constructor(value: boolean) {
     super(value,DataTypes.Boolean);
   }
-  getStringValue(): string {
+  toString(): string {
     return this._value?"sahi":"galat";
   }
 }
@@ -57,7 +61,7 @@ export class NullObject extends DataObject{
     constructor() {
         super(null,DataTypes.Null);
     }
-    getStringValue(): string {
+    toString(): string {
         return "nalla";
     }
 }
@@ -68,6 +72,12 @@ export class CallableObject extends DataObject{
         code:(args:{identifier:string,value:DataObject}[])=>any
     }) {
         super(value,DataTypes.Callable);
+    }
+    getValue():{
+        args:(string|undefined)[],
+        code:(args:{identifier:string,value:DataObject}[])=>any
+    } {
+        return this._value
     }
 }
 
@@ -85,14 +95,54 @@ export class ClassObject extends DataObject{
     name:string;
     methods:ASTNode[];
     dataMembers:string[];
+    getMembers():string[]{
+        return this.dataMembers;
+    }
+    getMethods():ASTNode[]{
+        return this.methods;
+    }
 }
 export class ClassInstanceObject extends DataObject{
+    
     constructor(value:{
         className:string
         members:Scope
+        methods:{[identifier:string]:ASTNode}
+        superClasses?:ClassInstanceObject
     }) {
         super(value,DataTypes.ClassInsance);
+        
+        this._value.members.declare('iska',this);// defining this pointer
+
+        Object.keys(this._value.methods).forEach(methodName=>{
+            let methodAst=this._value.methods[methodName]
+            let currentScope=InterpreterModule.getCurrentScope()
+            InterpreterModule.setCurrentScope(this._value.members)
+            let method=sanatizeData(InterpreterModule.getVisitor(methodAst.type).visitNode(methodAst));
+            InterpreterModule.setCurrentScope(currentScope)
+            this._value.members.declare(methodName,method)
+        })
     }
+    getScope(){
+        return this._value.members
+    }
+    getMember(name:string):DataObject{
+        let member=this._value.members.get(name);
+        if(!member){
+            for (let i = 0; i < this._value.superClasses.length; i++) {
+                const superClass = this._value.superClasses[i];
+                member = superClass.getMember(name)
+                if(member){
+                    break;
+                }
+            }
+        }
+        return member;
+    }
+    toString() {
+        return `Class: ${this._value.className}`;
+    }
+    
 }
 
 export function sanatizeData(data:any|unknown):DataObject{

@@ -4,7 +4,8 @@ import { ASTNode, NodeType } from "bhai-lang-parser";
 import InvalidStateException from "../../exceptions/invalidStateException";
 import InterpreterModule from "../../module/interpreterModule";
 import Scope from "../scope";
-import { CallableObject, ClassInstanceObject, DataObject, NullObject, sanatizeData } from "../dataClass";
+import { CallableObject, ClassInstanceObject, ClassObject, DataObject, NullObject } from "../dataClass";
+
 
 export default class ClassDeclaration implements Visitor {
   visitNode(node: ASTNode) {
@@ -31,19 +32,14 @@ export default class ClassDeclaration implements Visitor {
     value={
       args:classConstructorArgs,
       code:(args:{identifier:string,value:DataObject}[]):any=>{
-        let oldScope=InterpreterModule.getCurrentScope()
-        const classInstance = this.createClassInstance(identifier,classVariables,classMethods,inherits as string[]);
-        const classScope=classInstance.getValue().members;
-        let newScope=new Scope(classScope)
-        args.forEach(arg=>{
-          newScope.declare(arg.identifier,arg.value)
-        })
-        newScope.declare("iska",classInstance)
-        newScope.setFunction(true);
-        InterpreterModule.setCurrentScope(newScope)
-        if(classConstructor)InterpreterModule.getVisitor(classConstructor.type).visitNode(classConstructor);
-        InterpreterModule.setCurrentScope(oldScope)
-        return classInstance
+        const classInsObj=this.createClassInstance(identifier,classVariables,classMethods,inherits as string[]);
+        if(classMethods["janam"]){
+          const constructor=classInsObj.getMember("janam")
+          if(constructor&&constructor instanceof CallableObject){
+            constructor.getValue().code(args);
+          }
+        }
+        return classInsObj
       }
     }
     const currentScope = InterpreterModule.getCurrentScope();
@@ -86,12 +82,14 @@ export default class ClassDeclaration implements Visitor {
     return {classMethods,classVariables};
   }
   createClassInstance(identifier:string,classVariables:string[],classMethods:{[identifier:string]:ASTNode},inherits:string[]){
+    const currentScope = InterpreterModule.getCurrentScope();
+    let classScope=new Scope(currentScope);
+    inherits.map(clsIds=>currentScope.get(clsIds)).filter(cls=>cls instanceof ClassObject)
 
-    let classScope=new Scope(InterpreterModule.getCurrentScope());
-    classVariables.forEach(variable=>{
-      classScope.declare(variable,new NullObject())
+    classVariables.forEach(member=>{
+      classScope.declare(member,new NullObject());
     })
-    let classInstance=new ClassInstanceObject({className:identifier,members:classScope});
+    let classInstance=new ClassInstanceObject({className:identifier,members:classScope,methods:classMethods});
     return classInstance;
   }
 }
