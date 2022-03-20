@@ -117,8 +117,9 @@ export default class BinaryExpression implements Visitor {
         `Kya kar rha hai tu??..${left.toString()} operand ni jamta "${node.operator}" ke sath`
       );
     }
-    if(node.right.type===NodeType.IdentifierExpression&&node?.right?.name)
+    if(node.right.type===NodeType.IdentifierExpression&&node?.right?.name){
       return left.getMember(node.right.name);
+    }
     
     if(node.right.type===NodeType.CallableExpression&&node?.right?.name){
       const member = left.getMember(node.right.name);

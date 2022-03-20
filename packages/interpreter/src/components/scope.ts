@@ -1,5 +1,5 @@
 import RuntimeException from "../exceptions/runtimeException";
-import { DataObject, NullObject, sanatizeData } from "./dataClass";
+import { ClassInstanceObject, DataObject, DataTypes, NullObject, sanatizeData } from "./dataClass";
 
 
 export default class Scope {
@@ -60,7 +60,17 @@ export default class Scope {
   }
 
   get(identifier: string): DataObject {
-    if (this._variables.has(identifier)) {
+    let idChain=identifier.split(".");
+    let id=idChain[0];
+    if (this._variables.has(id)) {
+      let data = this._variables.get(id);
+      if(idChain.length>1&&data){
+        if(data.getType()==DataTypes.ClassInsance){
+          let classInstance=data as ClassInstanceObject;
+          let classScope=classInstance.getScope();
+          classScope.get(idChain.slice(1).join("."));
+        }
+      }
       let value = sanatizeData(this._variables.get(identifier));
       return value;
     }
@@ -69,22 +79,32 @@ export default class Scope {
       return this._parentScope.get(identifier);
     }
 
-    throw new RuntimeException(`Variable "${identifier}" bana to le pehle.`);
+    throw new RuntimeException(`Variable "${id}" bana to le pehle.`);
   }
 
   assign(identifier: string, value: DataObject) {
-    if (this._variables.has(identifier)) {
+    let idChain=identifier.split(".");
+    let id=idChain[0];
+    if (this._variables.has(id)) {
+      let data = this._variables.get(id);
+      if(idChain.length>1&&data){
+        if(data.getType()==DataTypes.ClassInsance){
+          let classInstance=data as ClassInstanceObject;
+          let classScope=classInstance.getScope();
+          classScope.assign(idChain.slice(1).join("."),value);
+        }
+        return
+      }
       this._variables.set(identifier, value);
       return;
     }
-
     if (this._parentScope !== null) {
       this._parentScope.assign(identifier, value);
       return;
     }
 
     throw new RuntimeException(
-      `Variable "${identifier}" bana to le pehle fir assign karna.`
+      `Variable "${id}" bana to le pehle fir assign karna.`
     );
   }
 
@@ -94,7 +114,7 @@ export default class Scope {
         `Variable "${identifier}" pehle se exist karta hai bhai. Check karle.`
       );
     }
-
+    value.setScopeRef(this);
     this._variables.set(identifier, value);
   }
 }

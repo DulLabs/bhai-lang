@@ -14,12 +14,14 @@ export enum DataTypes{
 export class DataObject {
   protected _value: any;
   protected _type:string;
+  protected _scopeRef:Scope;
   public isDataObject:boolean;
 
   constructor(value: any,type:string) {
     this._value = value;
     this._type = type;
     this.isDataObject=true;
+    this._scopeRef=InterpreterModule.getCurrentScope();
   }
 
   getValue(): any {
@@ -34,6 +36,14 @@ export class DataObject {
   toString(){
     return this._value.toString();
   }
+  setScopeRef(scope:Scope){
+    this._scopeRef=scope;
+  }
+  getScopeRef(){
+    return this._scopeRef;
+  }
+
+    
 }
 
 export class BooleanObject extends DataObject{
@@ -123,7 +133,7 @@ export class ClassInstanceObject extends DataObject{
             this._value.members.declare(methodName,method)
         })
     }
-    getScope(){
+    getScope():Scope{
         return this._value.members
     }
     getMember(name:string):DataObject{

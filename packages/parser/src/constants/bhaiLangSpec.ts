@@ -115,7 +115,7 @@ export const SPEC = [
   { regex: /^\bsamajh le bhai\b/, tokenType: TokenTypes.SAMAJH_LE_BHAI },
   { regex: /^\bjo ki ek (bhai|)\b/, tokenType: TokenTypes.JO_KI_EK_BHAI },
   { regex: /^\bhai (bhai|)\b/, tokenType: TokenTypes.HAI_BHAI },
-  { regex: /^\biska\b/, tokenType: TokenTypes.ISKA },
+  // { regex: /^\biska\b/, tokenType: TokenTypes.ISKA },
   // scope resolution accessing members
   { regex: /^\.(?=\w+)/, tokenType: TokenTypes.DOT_OPERATOR },
 

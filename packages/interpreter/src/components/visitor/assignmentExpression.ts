@@ -1,12 +1,10 @@
 import Visitor from ".";
-import { ASTNode } from "bhai-lang-parser";
+import { ASTNode, NodeType} from "bhai-lang-parser";
 
 import InvalidStateException from "../../exceptions/invalidStateException";
-import NallaPointerException from "../../exceptions/nallaPointerException";
-import RuntimeException from "../../exceptions/runtimeException";
 import { getOperationValue } from "../../helpers";
 import InterpreterModule from "../../module/interpreterModule";
-import { DataObject, DataTypes, NullObject } from "../dataClass";
+import { DataObject, NullObject } from "../dataClass";
 
 
 export default class AssignmentExpression implements Visitor {
@@ -15,8 +13,7 @@ export default class AssignmentExpression implements Visitor {
       throw new InvalidStateException(
         `left node not present while executing: ${node.type}`
       );
-
-    let identifier = node.left.name;
+    const identifier=this.getIdentifier(node.left);
     let value: DataObject|null|void=null;
     const currentScope = InterpreterModule.getCurrentScope();
 
@@ -28,18 +25,6 @@ export default class AssignmentExpression implements Visitor {
     if(value==null) value =new NullObject()
 
     if (identifier && node.operator) {
-      const left = currentScope.get(identifier);
-
-      if (left === null && node.operator !== "=")
-        throw new NallaPointerException(
-          `Nalla operand ni jamta "${node.operator}" ke sath`
-        );
-
-      if (left.getType()==DataTypes.Boolean && node.operator !== "=")
-        throw new RuntimeException(
-          `Boolean operand ni jamta "${node.operator}" ke sath`
-        );
-
       const newValue = getOperationValue(
         { left: currentScope.get(identifier), right: value },
         node.operator
@@ -48,6 +33,16 @@ export default class AssignmentExpression implements Visitor {
 
       return currentScope.get(identifier);
     }
-
+  }
+  getIdentifier(node: ASTNode): string {
+    if (node.type===NodeType.IdentifierExpression&&node.name){
+      return node.name;
+    }
+    else if (node.type===NodeType.BinaryExpression&&node.operator==="."){
+      if(node?.left?.name==null) throw new InvalidStateException(`Left Identifier not found for: ${node.type}`);
+      if(node?.right==null) throw new InvalidStateException(`right expression not found for: ${node.type}`);
+      if(node.left?.name&&node.right)return node.left.name+"."+this.getIdentifier(node.right);
+    }
+    throw new InvalidStateException(`Identifier not found for: ${node.type}`);
   }
 }

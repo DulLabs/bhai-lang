@@ -84,12 +84,14 @@ export default class ClassDeclaration implements Visitor {
   createClassInstance(identifier:string,classVariables:string[],classMethods:{[identifier:string]:ASTNode},inherits:string[]){
     const currentScope = InterpreterModule.getCurrentScope();
     let classScope=new Scope(currentScope);
+    InterpreterModule.setCurrentScope(classScope);
     inherits.map(clsIds=>currentScope.get(clsIds)).filter(cls=>cls instanceof ClassObject)
 
     classVariables.forEach(member=>{
       classScope.declare(member,new NullObject());
     })
     let classInstance=new ClassInstanceObject({className:identifier,members:classScope,methods:classMethods});
+    InterpreterModule.setCurrentScope(currentScope);
     return classInstance;
   }
 }
