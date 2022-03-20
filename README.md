@@ -8,7 +8,7 @@
   
 </p>
 <p align="center">
-  This is official repository for bhai-lang.<br><br>
+  This is the official repository for bhai-lang.<br><br>
   <b>Bhai lang is a toy programming language written in Typescript.</b>
 </p>
 <br>
@@ -25,7 +25,7 @@ npm i -g bhailang
 
 
 <h4 align="left">Edit the file with a text editor.
-You can also try out your code on <a href="https://bhailang.js.org/#playground">Bhai Lang PlayGround</a></h4>
+You can also try out your code at <a href="https://bhailang.js.org/#playground">Bhai Lang PlayGround</a></h4>
 
 ```
 hi bhai
@@ -43,17 +43,17 @@ bhailang test.bhai
 <h4 align="left">Output</h4>
 
 ```
-hello bhai
+Hello bhai
 ```
 
 <h2 align="center">Documentation</h2>
 
 <h3 align="center">General</h3>
-<p align="center"><code>hi bhai</code> is the entrypoint for the program and all program must end with <code>bye bhai</code>. Anything outside of it will be ignored.</p>
+<p align="center"><code>hi bhai</code> is the entrypoint for the program and all programmes must end with <code>bye bhai</code>. Anything outside of it will be ignored.</p>
 
 ```
 
-This will be ignored
+This will be ignored.
 
 hi bhai
 // Write code here
@@ -125,7 +125,7 @@ bye bhai
 ```
 
 <h3 align="center">Loops</h3>
-<p align="center">Statements inside <code>jab tak bhai</code> blocks are executed as long as a specified condition evaluates to sahi. If the condition becomes <code>galat</code>, statement within the loop stops executing and control passes to the statement following the loop. Use <code>bas kar bhai</code> to break the loop and <code className="language-cpp">agla dekh bhai</code> to continue within loop.</p>
+<p align="center">Statements inside <code>jab tak bhai</code> blocks are executed as long as a specified condition evaluates to sahi. If the condition becomes <code>galat</code>, statement within the loop stops executing and control passes to the statement following the loop. Use <code>bas kar bhai</code> to break the loop and <code className="language-cpp">agla dekh bhai</code> to continue within the loop.</p>
 
 
 ```
@@ -152,6 +152,9 @@ bye bhai
 
 
 
+<h2 align="center">License</h2>
+
+`bhailang` was released under [MIT License](LICENSE)
 
 
 
