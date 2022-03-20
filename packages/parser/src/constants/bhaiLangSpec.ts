@@ -89,7 +89,7 @@ export const SPEC = [
   { regex: /^\bagla dekh bhai\b/, tokenType: TokenTypes.AGLA_DEKH_BHAI },
 
   // Number
-  { regex: /^-?\d+/, tokenType: TokenTypes.NUMBER_TYPE },
+  { regex: /^-?[\d.]+/, tokenType: TokenTypes.NUMBER_TYPE },
 
   // Boolean
   { regex: /^\bsahi\b/, tokenType: TokenTypes.BOOLEAN_TYPE },
