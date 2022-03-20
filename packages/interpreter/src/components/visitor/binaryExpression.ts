@@ -6,7 +6,7 @@ import NallaPointerException from "../../exceptions/nallaPointerException";
 import RuntimeException from "../../exceptions/runtimeException";
 import { getOperationValue } from "../../helpers";
 import InterpreterModule from "../../module/interpreterModule";
-import { BooleanObject, DataObject, NullObject, sanatizeData } from "../dataClass";
+import { sanatizeData } from "../dataClass";
 
 
 export default class BinaryExpression implements Visitor {
@@ -17,32 +17,17 @@ export default class BinaryExpression implements Visitor {
       );
     }
 
-    let left:DataObject=new NullObject(), right:DataObject=new NullObject();
-
     // handling logical & binary both at the same place as both operate on two operands
     if (node.type == NodeType.BinaryExpression) {
       if (node.operator !== "==" && node.operator !== "!=") {
         this._checkNalla(node);
         this._checkBoolean(node);
       } 
-      left = this._getNodeValue(node.left);
-      right = this._getNodeValue(node.right);
     } else if (node.type == NodeType.LogicalExpression) {
       this._checkNalla(node);
-
-      left = node.left.type == NodeType.BooleanLiteral ? 
-      new BooleanObject(node.left.value == "sahi" ? true : false) 
-      : sanatizeData(InterpreterModule.getVisitor(node.left.type).visitNode(
-        node.left
-      ));
-
-      right = node.right.type == NodeType.BooleanLiteral ? 
-      new BooleanObject(node.right.value == "sahi" ? true : false) 
-      : sanatizeData(InterpreterModule.getVisitor(node.right.type).visitNode(
-        node.right
-      ));
-
     }
+    const left = sanatizeData(InterpreterModule.getVisitor(node.left.type).visitNode(node.left));
+    const right = sanatizeData(InterpreterModule.getVisitor(node.right.type).visitNode(node.right));
     return getOperationValue({ left, right }, node.operator);
   }
 
@@ -102,22 +87,4 @@ export default class BinaryExpression implements Visitor {
       if (value.getValue() === true || value.getValue() === false) throw runtimeException;
     }
   }
-
-  private _getNodeValue(node: ASTNode) {
-
-    if (node.type === NodeType.NullLiteral)
-      return new NullObject();
-
-    if (node.type === NodeType.BooleanLiteral) {
-      return new BooleanObject(node.value === "sahi" ? true : false);
-    }
-
-    if (node.type === NodeType.IdentifierExpression && node.name)
-      return InterpreterModule.getCurrentScope().get(node.name);
-
-    return sanatizeData(InterpreterModule.getVisitor(node.type).visitNode(
-      node
-    ));
-  }
-
 }

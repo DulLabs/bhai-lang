@@ -22,7 +22,7 @@ export default class WhileStatement implements Visitor {
 
 
       for (let testResult = getConditionValue(), executions = 0; 
-            testResult.getValue() === true; 
+            testResult.getValue(); 
             testResult = getConditionValue(), executions++) {
 
         if (InterpreterModule.getCurrentScope().isBreakStatement()) {

@@ -3,7 +3,7 @@ import { ASTNode } from "bhai-lang-parser";
 
 import InterpreterModule from "../../module/interpreterModule";
 import Scope from "../scope";
-import { DataTypes, sanatizeData } from "../dataClass";
+import { sanatizeData } from "../dataClass";
 
 
 export default class IfStatement implements Visitor {
@@ -12,7 +12,7 @@ export default class IfStatement implements Visitor {
     const parentScope = InterpreterModule.getCurrentScope();
     if (test) {
       const testResult = sanatizeData(InterpreterModule.getVisitor(test.type).visitNode(test));
-      if (testResult.getType() !== DataTypes.Null && testResult.getValue() === true) {
+      if (testResult.getValue()) {
         const consequent = node.consequent;
         if (consequent) {
           InterpreterModule.setCurrentScope(new Scope(parentScope));
