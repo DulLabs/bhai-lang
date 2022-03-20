@@ -94,26 +94,12 @@ export function getOperationValue(
       throw exception;
 
     case "==":
-      if (checkNumberOperands(operands)) {
-        return operands.left === operands.right;
-      }
-
-      if (checkStringOperands(operands)) {
-        return operands.left === operands.right;
-      }
-
-      throw exception;
+      
+      return operands.left === operands.right;
     
     case "!=":
-      if (checkNumberOperands(operands)) {
-        return operands.left !== operands.right;
-      }
 
-      if (checkStringOperands(operands)) {
-        return operands.left !== operands.right;
-      }
-
-      throw exception;
+      return operands.left !== operands.right;
     
     case ">":
       if (checkNumberOperands(operands)) {
