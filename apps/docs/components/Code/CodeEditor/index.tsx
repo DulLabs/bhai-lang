@@ -26,9 +26,9 @@ const CodeEditor = (props: Props) => {
       .join("\n");
 
   return (
-    <div className="playground-editor">
+    <div className="playground-editor group">
       {/* Wrapping Editor component in a separate div to control its height and overflow */}
-      <div className="editor-container"> 
+      <div className="editor-container">
         <Editor
           value={code}
           onValueChange={(code) => handleChange(code)}

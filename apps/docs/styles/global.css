@@ -84,3 +84,16 @@ html {
 .documentation-code {
   font-family: monospace;
 }
+
+.copied-text::after {
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  content: "";
+  width: 0px;
+  height: 0px;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid #666;
+}

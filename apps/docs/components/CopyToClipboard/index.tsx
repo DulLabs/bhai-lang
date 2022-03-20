@@ -21,7 +21,7 @@ export default function CopyToClipboard(props: Props) {
 
   function copyToClipboard(e: React.MouseEvent) {
     e.stopPropagation();
-    if (text)  {
+    if (text) {
       navigator.clipboard?.writeText(text).then(() => {
         setCopySuccess(true);
       }).catch(error => {
@@ -34,13 +34,18 @@ export default function CopyToClipboard(props: Props) {
     <>
       <button
         ref={buttonRef}
-        className="absolute top-2 right-2 sm:top-4 sm:right-4 flex items-center justify-center p-1 sm:p-2 border border-transparent text-base font-medium rounded-md text-bhagwa-700 bg-bhagwa-300 hover:bg-bhagwa-400 cursor-pointer"
+        className={"hidden absolute top-2 right-2 sm:top-4 sm:right-4 group-hover:flex items-center justify-center p-1 sm:p-2 border border-[#f0f6fc1a] text-base font-medium rounded-md text-gray-400 bg-[#333] hover:bg-[#4d4d4d] cursor-pointer transition-all duration-100 " + (copySuccess ? 'text-bhagwa-300 border-bhagwa-300' : '')}
         onClick={copyToClipboard}
       >
-        {copySuccess ? <TickIcon /> : <CopyIcon />}
+        {copySuccess ?
+          <>
+            <TickIcon />
+            <span className="copied-text absolute right-[calc(100%+8px)] p-1 rounded-md text-xs font-normal text-bhagwa-300 bg-[#666] border border-transparent">
+              Copied!
+            </span>
+          </>
+          : <CopyIcon />}
       </button>
     </>
   );
-  
-  return null;
 }
