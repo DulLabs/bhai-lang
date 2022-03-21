@@ -12,6 +12,10 @@ const Editor = dynamic(() => import("react-simple-code-editor"), {
   ssr: false,
 });
 
+const CopyToClipboard = dynamic(() => import("../../CopyToClipboard"), {
+  ssr: false,
+});
+
 const CodeEditor = (props: Props) => {
   const { handleChange, code } = props;
 
@@ -22,20 +26,24 @@ const CodeEditor = (props: Props) => {
       .join("\n");
 
   return (
-    <div className="editorContainer">
-      <Editor
-        value={code}
-        onValueChange={(code) => handleChange(code)}
-        highlight={(code) => highlightWithLineNumbers(code)}
-        padding={10}
-        textareaClassName="codeArea"
-        className="editor"
-        id="codeEditor"
-        style={{
-          fontFamily: "monospace",
-          fontSize: 16,
-        }}
-      />
+    <div className="playground-editor group">
+      {/* Wrapping Editor component in a separate div to control its height and overflow */}
+      <div className="editor-container">
+        <Editor
+          value={code}
+          onValueChange={(code) => handleChange(code)}
+          highlight={(code) => highlightWithLineNumbers(code)}
+          padding={10}
+          textareaClassName="codeArea"
+          className="editor"
+          id="codeEditor"
+          style={{
+            fontFamily: "monospace",
+            fontSize: 16,
+          }}
+        />
+      </div>
+      <CopyToClipboard text={code} />
     </div>
   );
 };

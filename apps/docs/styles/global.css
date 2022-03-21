@@ -17,10 +17,14 @@ html {
 	min-height: 70vh;
 }
 
-.editorContainer{
-	tab-size: 4ch;
+.playground-editor{
+	position: relative;
+}
+
+.editor-container {
 	height: 60vh;
 	overflow: auto;
+	tab-size: 4ch;
 	color: #fff;
 	background-color: #333;
 }
@@ -48,7 +52,7 @@ html {
 	outline: none;
 	padding-top: 1rem;
 	padding-left: 5rem !important;
-	z-index: 999999999;
+	/* z-index: 999999999; */
 	white-space: nowrap;
 }
 
@@ -79,4 +83,17 @@ html {
 
 .documentation-code {
   font-family: monospace;
+}
+
+.copied-text::after {
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  content: "";
+  width: 0px;
+  height: 0px;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid #666;
 }
