@@ -6,43 +6,62 @@ import TokenExecutor from "../tokenExecutor";
 import { ASTNode } from "../types/nodeTypes";
 
 import Expression from "./expression";
-import NullLiteral from "./expression/literals/nullLiteral";
 
+const HANDLED_LOOP_TOKEN_TYPES = [TokenTypes.WARNA_BHAI, TokenTypes.NAHI_TO_BHAI];
 
 export default class IfStatement extends Statement {
 
-  private _nullLiteral: NullLiteral;
-
-  constructor(tokenExecutor: TokenExecutor, nullLiteral: NullLiteral) {
-      super(tokenExecutor);
-      this._nullLiteral = nullLiteral;
+  constructor(tokenExecutor: TokenExecutor) {
+    super(tokenExecutor);
   }
 
-  getStatement(): ASTNode {
-
-    this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.AGAR_BHAI);
+  private getConditionalStatement(tokenType: string): ASTNode {
+    this._tokenExecutor.eatTokenAndForwardLookahead(tokenType);
 
     this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.OPEN_PARENTHESIS_TYPE);
 
     const test = Expression.getExpressionImpl(
-    NodeType.AssignmentExpression
+      NodeType.AssignmentExpression
     ).getExpression();
 
     this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.CLOSED_PARENTHESIS_TYPE);
 
     if (this._tokenExecutor.getLookahead() == null) {
-      throw new SyntaxError(`Unexpected end of "agar bhai" statement`);
+      throw new SyntaxError(`Unexpected end of "${tokenType}" statement`);
     }
 
     const consequent = Statement.getStatementImpl(this._tokenExecutor.getLookahead()!).getStatement();
 
-    const alternate = this._tokenExecutor.getLookahead() != null && this._tokenExecutor.getLookahead()!.type === TokenTypes.WARNA_BHAI ? this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.WARNA_BHAI) && Statement.getStatementImpl(this._tokenExecutor.getLookahead()!).getStatement() : this._nullLiteral.getLiteral();
+    return {
+      type: NodeType.IfStatement,
+      test,
+      consequent
+    }
+  }
+
+  getStatement(): ASTNode {
+
+    const ifStatement = this.getConditionalStatement(TokenTypes.AGAR_BHAI);
+    const alternates: ASTNode[] = [];
+
+    // Loop until we keep getting "nahi to bhai" or "warna bhai"
+    // Break as soon as we get the first "warna bhai" instance
+    for (
+      let lookahead = this._tokenExecutor.getLookahead();
+      lookahead !== null && HANDLED_LOOP_TOKEN_TYPES.includes(lookahead.type);
+      lookahead = this._tokenExecutor.getLookahead()
+    ) {
+      if (lookahead.type === TokenTypes.WARNA_BHAI) {
+        alternates.push(this._tokenExecutor.eatTokenAndForwardLookahead(lookahead.type) && Statement.getStatementImpl(this._tokenExecutor.getLookahead()!).getStatement());
+        break;
+      } else if (lookahead.type === TokenTypes.NAHI_TO_BHAI) {
+        alternates.push(this.getConditionalStatement(TokenTypes.NAHI_TO_BHAI));
+      }
+    }
 
     return {
-        type: NodeType.IfStatement,
-        test,
-        consequent,
-        alternate
+      ...ifStatement,
+      alternates
     }
   }
 }

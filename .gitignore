@@ -36,3 +36,6 @@ yarn-error.log*
 
 # turbo
 .turbo
+
+# history vscode extension
+.history/
