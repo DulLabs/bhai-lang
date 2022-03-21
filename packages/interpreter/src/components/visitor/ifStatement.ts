@@ -36,11 +36,15 @@ export default class IfStatement implements Visitor {
             } else {
               // Evaluate the "test" condition of the "nahi to bhai" node
               // If the condition is true, evaluate the node and break
-              const testResult = sanatizeData((InterpreterModule.getVisitor(alternateTest!.type).visitNode(alternateTest));
+              const testResult = sanatizeData(InterpreterModule.getVisitor(alternateTest!.type).visitNode(alternateTest));
               if (testResult.getValue()) {
-                this.evaluateNode(alternate.consequent, parentScope);
+                this.evaluateNode(alternate, parentScope);
                 break;
               }
+            }
+            if (testResult.getValue()) {
+              this.evaluateNode(alternate.consequent, parentScope);
+              break;
             }
           }
         }
