@@ -265,6 +265,15 @@ export const ExpressionsTests = [
     `,
     output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"ExpressionStatement\",\"expression\":{\"type\":\"AssignmentExpression\",\"operator\":\"*=\",\"left\":{\"type\":\"IdentifierExpression\",\"name\":\"a\"},\"right\":{\"type\":\"NumericLiteral\",\"value\":4}}}]}}`,
   },
+  {
+    name: "float number assignment expression test, should success",
+    input: `
+      hi bhai
+      a = 1.2;
+      bye bhai
+    `,
+    output: `{\"type\":\"Program\",\"body\":{\"type\":\"InitStatement\",\"body\":[{\"type\":\"ExpressionStatement\",\"expression\":{\"type\":\"AssignmentExpression\",\"operator\":\"=\",\"left\":{\"type\":\"IdentifierExpression\",\"name\":\"a\"},\"right\":{\"type\":\"NumericLiteral\",\"value\":1.2}}}]}}`,
+  },
   // paranthesized expression tests
   {
     name: "paranthesized expression test with one parenthesis and simple expression, should success",
