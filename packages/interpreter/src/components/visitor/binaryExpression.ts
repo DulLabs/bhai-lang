@@ -17,8 +17,6 @@ export default class BinaryExpression implements Visitor {
       );
     }
 
-    let left:DataObject=new NullObject(), right:DataObject=new NullObject();
-
     // handling logical & binary both at the same place as both operate on two operands
     if (node.type == NodeType.BinaryExpression) {
       if (node.operator !== "==" && node.operator !== "!="&&node.operator !==".") {
@@ -27,14 +25,13 @@ export default class BinaryExpression implements Visitor {
       } 
       else if (node.operator === ".") {
         return this.performDotOperation(node);
-        
       }
     } else if (node.type == NodeType.LogicalExpression) {
       this._checkNalla(node);
     }
     
-    left = sanatizeData(InterpreterModule.getVisitor(node.left.type).visitNode(node.left));
-    right = sanatizeData(InterpreterModule.getVisitor(node.right.type).visitNode(node.right));
+    const left = sanatizeData(InterpreterModule.getVisitor(node.left.type).visitNode(node.left));
+    const right = sanatizeData(InterpreterModule.getVisitor(node.right.type).visitNode(node.right));
 
     return getOperationValue({ left, right }, node.operator);
   }

@@ -171,7 +171,7 @@ export function sanatizeData(data:any|unknown):DataObject{
     if(typeof data=='function'){
         return new CallableObject(data);
     }
-    if(typeof data=='object' && data.isDataObject){
+    if(data.isDataObject==true){
         return data as DataObject;
     }
     else  throw new Error(`Ye kya kar raha hai: "${data}" sahi nhi hai. ye konsa data type hai bhai`);

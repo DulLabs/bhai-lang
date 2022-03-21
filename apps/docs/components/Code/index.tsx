@@ -22,8 +22,10 @@ hi bhai
   jab tak bhai (b < 5) {
     bol bhai square(b);
 
-    agar bhai (b == a){
+    agar bhai (b == a) {
       bol bhai "b is equal to a";
+    } nahi to bhai (b == 0) {
+      bol bhai "b is equal to zero";
     }
 
     b += 1;

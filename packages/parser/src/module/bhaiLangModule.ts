@@ -130,7 +130,7 @@ export default class BhaiLangModule {
 
   static getIfStatement() {
     if (!this._ifStatement) {
-      this._ifStatement = new IfStatement(this.getTokenExecutor(), this.getNullLiteral());
+      this._ifStatement = new IfStatement(this.getTokenExecutor());
     }
 
     return this._ifStatement;

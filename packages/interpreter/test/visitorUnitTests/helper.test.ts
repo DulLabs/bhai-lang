@@ -1,5 +1,6 @@
 import { RuntimeException } from "../../src";
 import InvalidStateException from "../../src/exceptions/invalidStateException";
+import {BooleanObject, DataObject, NullObject, NumericObject, StringObject} from "../../src/components/dataClass";
 import {
   checkNumberOperands,
   checkStringOperands,
@@ -12,8 +13,8 @@ const testCaseProvider = [
   {
     name: "test checkNumberOperands with number oprands, should return true",
     input: {
-      left: 45,
-      right: 67,
+      left: new NumericObject(45),
+      right: new NumericObject(67),
     },
     output: true,
     function: checkNumberOperands,
@@ -21,8 +22,8 @@ const testCaseProvider = [
   {
     name: "test checkNumberOperands without number oprands, should return false",
     input: {
-      left: "hello",
-      right: "67",
+      left: new StringObject("hello"),
+      right: new StringObject("67"),
     },
     output: false,
     function: checkNumberOperands,
@@ -30,8 +31,8 @@ const testCaseProvider = [
   {
     name: "test checkNumberOperands with one number oprand and one non-number operand, should return false",
     input: {
-      left: 90,
-      right: "67",
+      left: new NumericObject(90),
+      right: new StringObject("67"),
     },
     output: false,
     function: checkNumberOperands,
@@ -39,8 +40,8 @@ const testCaseProvider = [
   {
     name: "test checkNumberOperands with one number oprand and one non-number operand - 2, should return false",
     input: {
-      left: "67",
-      right: 5678,
+      left: new StringObject("67"),
+      right: new NumericObject(5678),
     },
     output: false,
     function: checkNumberOperands,
@@ -49,8 +50,8 @@ const testCaseProvider = [
   {
     name: "test checkStringOperands with string oprands, should return true",
     input: {
-      left: "45",
-      right: "asdasdas",
+      left: new StringObject("45"),
+      right: new StringObject("asdasdas"),
     },
     output: true,
     function: checkStringOperands,
@@ -58,8 +59,8 @@ const testCaseProvider = [
   {
     name: "test checkStringOperands without string oprands, should return false",
     input: {
-      left: 23432,
-      right: null,
+      left: new NumericObject(23432),
+      right: new NullObject(),
     },
     output: false,
     function: checkStringOperands,
@@ -67,8 +68,8 @@ const testCaseProvider = [
   {
     name: "test checkStringOperands with one string oprand and one non-string operand, should return false",
     input: {
-      left: 90,
-      right: "67",
+      left: new NumericObject(90),
+      right: new StringObject("67"),
     },
     output: false,
     function: checkStringOperands,
@@ -76,419 +77,437 @@ const testCaseProvider = [
   {
     name: "test checkStringOperands with one number string and one non-string operand - 2, should return false",
     input: {
-      left: "67",
-      right: 5678,
+      left: new StringObject("67"),
+      right: new NumericObject(5678),
     },
     output: false,
     function: checkStringOperands,
   },
 ];
 
-const getOperationValuePosTestCasesProvider = [
+const getOperationValuePosTestCasesProvider:{
+  name: string,
+    input1: {
+      left: DataObject,
+      right: DataObject,
+    },
+    input2: string,
+    output: DataObject,
+    function: Function,
+}[] = [
   // getOperationValue tests
   {
     name: `test getOperationValue "=" operator with string oprands, should return value of right operand - number`,
     input1: {
-      left: 23432,
-      right: 890,
+      left: new NumericObject(23432),
+      right: new NumericObject(890),
     },
     input2: "=",
-    output: 890,
+    output: new NumericObject(890),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue "=" operator with string oprands, should return value of right operand - null`,
     input1: {
-      left: 23432,
-      right: null,
+      left: new NumericObject(23432),
+      right: new NullObject(),
     },
     input2: "=",
-    output: null,
+    output: new NullObject(),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue "=" operator with string oprands, should return value of right operand - string`,
     input1: {
-      left: 23432,
-      right: "hello",
+      left: new NumericObject(23432),
+      right: new StringObject("hello"),
     },
     input2: "=",
-    output: "hello",
+    output: new StringObject("hello"),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue "+" operator with string oprands, should success`,
     input1: {
-      left: "hello",
-      right: "crap",
+      left: new StringObject("hello"),
+      right: new StringObject("crap"),
     },
     input2: "+",
-    output: "hellocrap",
+    output: new StringObject("hellocrap"),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue "+" operator with number oprands, should success`,
     input1: {
-      left: 2,
-      right: 3,
+      left: new NumericObject(2),
+      right: new NumericObject(3),
     },
     input2: "+",
-    output: 5,
+    output: new NumericObject(5),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue "+" operator with one number and one string oprands, should success`,
     input1: {
-      left: 15,
-      right: "hello",
+      left: new NumericObject(15),
+      right: new StringObject("hello"),
     },
     input2: "+",
-    output: "15hello",
+    output: new StringObject("15hello"),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue "+" operator with second operand number and first string, should success`,
     input1: {
-      left: "hello",
-      right: 15,
+      left: new StringObject("hello"),
+      right: new NumericObject(15),
     },
     input2: "+",
-    output: "hello15",
+    output: new StringObject("hello15"),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue "+" operator with one very large number and one string oprands, should success`,
     input1: {
-      left: 15378247823432,
-      right: "hello",
+      left: new NumericObject(15378247823432),
+      right: new StringObject("hello"),
     },
     input2: "+",
-    output: "15378247823432hello",
+    output: new StringObject("15378247823432hello"),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue "+=" operator with number oprands, should success`,
     input1: {
-      left: 2,
-      right: 3,
+      left: new NumericObject(2),
+      right: new NumericObject(3),
     },
     input2: "+=",
-    output: 5,
+    output: new NumericObject(5),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue "+=" operator with string oprands, should success`,
     input1: {
-      left: "hello",
-      right: "crap",
+      left: new StringObject("hello"),
+      right: new StringObject("crap"),
     },
     input2: "+=",
-    output: "hellocrap",
+    output: new StringObject("hellocrap"),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue "+=" operator with one number and one string oprands, should success`,
     input1: {
-      left: 15,
-      right: "hello",
+      left: new NumericObject(15),
+      right: new StringObject("hello"),
     },
     input2: "+=",
-    output: "15hello",
+    output: new StringObject("15hello"),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue "+=" operator with second operand number and first string, should success`,
     input1: {
-      left: "hello",
-      right: 15,
+      left: new StringObject("hello"),
+      right: new NumericObject(15),
     },
     input2: "+=",
-    output: "hello15",
+    output: new StringObject("hello15"),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue "+=" operator with one very large number and one string oprands, should success`,
     input1: {
-      left: 15378247823432,
-      right: "hello",
+      left: new NumericObject(15378247823432),
+      right: new StringObject("hello"),
     },
     input2: "+",
-    output: "15378247823432hello",
+    output: new StringObject("15378247823432hello"),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue "-" operator with number oprands, should success`,
     input1: {
-      left: 5,
-      right: 3,
+      left: new NumericObject(5),
+      right: new NumericObject(3),
     },
     input2: "-",
-    output: 2,
+    output: new NumericObject(2),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue "-=" operator with number oprands, should success`,
     input1: {
-      left: 5,
-      right: 3,
+      left: new NumericObject(5),
+      right: new NumericObject(3),
     },
     input2: "-=",
-    output: 2,
+    output: new NumericObject(2),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue "*=" operator with number oprands, should success`,
     input1: {
-      left: 5,
-      right: 3,
+      left: new NumericObject(5),
+      right: new NumericObject(3),
     },
     input2: "*=",
-    output: 15,
+    output: new NumericObject(15),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue "*" operator with number oprands, should success`,
     input1: {
-      left: 5,
-      right: 3,
+      left: new NumericObject(5),
+      right: new NumericObject(3),
     },
     input2: "*",
-    output: 15,
+    output: new NumericObject(15),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue "/=" operator with number oprands, should success`,
     input1: {
-      left: 15,
-      right: 3,
+      left: new NumericObject(15),
+      right: new NumericObject(3),
     },
     input2: "/=",
-    output: 5,
+    output: new NumericObject(5),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue "/" operator with number oprands, should success`,
     input1: {
-      left: 15,
-      right: 3,
+      left: new NumericObject(15),
+      right: new NumericObject(3),
     },
     input2: "/",
-    output: 5,
+    output: new NumericObject(5),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue "==" operator with number oprands, should success`,
     input1: {
-      left: 3,
-      right: 3,
+      left: new NumericObject(3),
+      right: new NumericObject(3),
     },
     input2: "==",
-    output: true,
+    output: new BooleanObject(true),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue "==" operator with number oprands unequal, should success`,
     input1: {
-      left: 5,
-      right: 3,
+      left: new NumericObject(5),
+      right: new NumericObject(3),
     },
     input2: "==",
-    output: false,
+    output: new BooleanObject(false),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue "==" operator with string oprands, should success`,
     input1: {
-      left: "hell",
-      right: "hell",
+      left: new StringObject("hell"),
+      right: new StringObject("hell"),
     },
     input2: "==",
-    output: true,
+    output: new BooleanObject(true),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue "==" operator with string oprands unequal, should success`,
     input1: {
-      left: "crap",
-      right: "hell",
+      left: new StringObject("crap"),
+      right: new StringObject("hell"),
     },
     input2: "==",
-    output: false,
+    output: new BooleanObject(false),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue "==" operator with one string & one number, should success`,
     input1: {
-      left: 15,
-      right: "hell",
+      left: new NumericObject(15),
+      right: new StringObject("hell"),
     },
     input2: "==",
-    output: false,
+    output: new BooleanObject(false),
     function: getOperationValue,
   },
   // !=
   {
     name: `test getOperationValue "!=" operator with number oprands, should success`,
     input1: {
-      left: 3,
-      right: 3,
+      left: new NumericObject(3),
+      right: new NumericObject(3),
     },
     input2: "!=",
-    output: false,
+    output: new BooleanObject(false),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue "!=" operator with number oprands unequal, should success`,
     input1: {
-      left: 5,
-      right: 3,
+      left: new NumericObject(5),
+      right: new NumericObject(3),
     },
     input2: "!=",
-    output: true,
+    output: new BooleanObject(true),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue "!=" operator with string oprands, should success`,
     input1: {
-      left: "hell",
-      right: "hell",
+      left: new StringObject("hell"),
+      right: new StringObject("hell"),
     },
     input2: "!=",
-    output: false,
+    output: new BooleanObject(false),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue "!=" operator with string oprands unequal, should success`,
     input1: {
-      left: "crap",
-      right: "hell",
+      left: new StringObject("crap"),
+      right: new StringObject("hell"),
     },
     input2: "!=",
-    output: true,
+    output: new BooleanObject(true),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue "!=" operator with one string & one number, should success`,
     input1: {
-      left: 15,
-      right: "hell",
+      left: new NumericObject(15),
+      right: new StringObject("hell"),
     },
     input2: "!=",
-    output: true,
+    output: new BooleanObject(true),
     function: getOperationValue,
   },
   // >
   {
     name: `test getOperationValue ">" operator with number oprands, should success`,
     input1: {
-      left: 3,
-      right: 3,
+      left: new NumericObject(3),
+      right: new NumericObject(3),
     },
     input2: ">",
-    output: false,
+    output: new BooleanObject(false),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue ">" operator with number oprands left greater, should success`,
     input1: {
-      left: 5,
-      right: 3,
+      left: new NumericObject(5),
+      right: new NumericObject(3),
     },
     input2: ">",
-    output: true,
+    output: new BooleanObject(true),
     function: getOperationValue,
   },
   // <
   {
     name: `test getOperationValue "<" operator with number oprands, should success`,
     input1: {
-      left: 3,
-      right: 3,
+      left: new NumericObject(3),
+      right: new NumericObject(3),
     },
     input2: "<",
-    output: false,
+    output: new BooleanObject(false),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue "<" operator with number oprands left smaller, should success`,
     input1: {
-      left: 1,
-      right: 3,
+      left: new NumericObject(1),
+      right: new NumericObject(3),
     },
     input2: "<",
-    output: true,
+    output: new BooleanObject(true),
     function: getOperationValue,
   },
   // >=
   {
     name: `test getOperationValue ">=" operator with number oprands equal, should success`,
     input1: {
-      left: 3,
-      right: 3,
+      left: new NumericObject(3),
+      right: new NumericObject(3),
     },
     input2: ">=",
-    output: true,
+    output: new BooleanObject(true),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue ">=" operator with number oprands left greater, should success`,
     input1: {
-      left: 5,
-      right: 3,
+      left: new NumericObject(5),
+      right: new NumericObject(3),
     },
     input2: ">=",
-    output: true,
+    output: new BooleanObject(true),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue ">=" operator with number oprands left smaller, should success`,
     input1: {
-      left: 1,
-      right: 3,
+      left: new NumericObject(1),
+      right: new NumericObject(3),
     },
     input2: ">=",
-    output: false,
+    output: new BooleanObject(false),
     function: getOperationValue,
   },
   // <=
   {
     name: `test getOperationValue "<=" operator with number oprands equal, should success`,
     input1: {
-      left: 3,
-      right: 3,
+      left: new NumericObject(3),
+      right: new NumericObject(3),
     },
     input2: "<=",
-    output: true,
+    output: new BooleanObject(true),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue "<=" operator with number oprands left greater, should success`,
     input1: {
-      left: 5,
-      right: 3,
+      left: new NumericObject(5),
+      right: new NumericObject(3),
     },
     input2: "<=",
-    output: false,
+    output: new BooleanObject(false),
     function: getOperationValue,
   },
   {
     name: `test getOperationValue "<=" operator with number oprands left smaller, should success`,
     input1: {
-      left: 1,
-      right: 3,
+      left: new NumericObject(1),
+      right: new NumericObject(3),
     },
     input2: "<=",
-    output: true,
+    output: new BooleanObject(true),
     function: getOperationValue,
   }
 ];
 
-const getOperationValueNegTestCasesProvider = [
+const getOperationValueNegTestCasesProvider:{
+  name: string,
+    input1: {
+      left: DataObject,
+      right: DataObject,
+    },
+    input2: string,
+    function: Function,
+    exception: any,
+}[] = [
   {
     name: `test getOperationValue "+" operator with one boolean and one string oprands, should throw an exception`,
     input1: {
-      left: true,
-      right: "hello",
+      left: new BooleanObject(true),
+      right: new StringObject("hello"),
     },
     input2: "+",
     exception: RuntimeException,
@@ -497,8 +516,8 @@ const getOperationValueNegTestCasesProvider = [
   {
     name: `test getOperationValue "+" operator with second operand boolean and first string, should throw an exception`,
     input1: {
-      left: "true",
-      right: false,
+      left: new StringObject("true"),
+      right: new BooleanObject(false),
     },
     input2: "+",
     exception: RuntimeException,
@@ -507,8 +526,8 @@ const getOperationValueNegTestCasesProvider = [
   {
     name: `test getOperationValue "+=" operator with one boolean and one string oprands, should throw an exception`,
     input1: {
-      left: true,
-      right: "hello",
+      left: new BooleanObject(true),
+      right: new StringObject("hello"),
     },
     input2: "+=",
     exception: RuntimeException,
@@ -517,8 +536,8 @@ const getOperationValueNegTestCasesProvider = [
   {
     name: `test getOperationValue "+=" operator with second operand boolean and first string, should throw an exception`,
     input1: {
-      left: "true",
-      right: false,
+      left: new StringObject("true"),
+      right: new BooleanObject(false),
     },
     input2: "+=",
     exception: RuntimeException,
@@ -527,8 +546,8 @@ const getOperationValueNegTestCasesProvider = [
   {
     name: `test getOperationValue "-" operator with one number and one string oprands, should throw an exception`,
     input1: {
-      left: 15,
-      right: "hello",
+      left: new NumericObject(15),
+      right: new StringObject("hello"),
     },
     input2: "-",
     exception: RuntimeException,
@@ -537,8 +556,8 @@ const getOperationValueNegTestCasesProvider = [
   {
     name: `test getOperationValue "-=" operator with one number and one string oprands, should throw an exception`,
     input1: {
-      left: 15,
-      right: "hello",
+      left: new NumericObject(15),
+      right: new StringObject("hello"),
     },
     input2: "-=",
     exception: RuntimeException,
@@ -547,8 +566,8 @@ const getOperationValueNegTestCasesProvider = [
   {
     name: `test getOperationValue "-=" operator with both strings oprands, should throw an exception`,
     input1: {
-      left: "15",
-      right: "hello",
+      left: new StringObject("15"),
+      right: new StringObject("hello"),
     },
     input2: "-=",
     exception: RuntimeException,
@@ -557,8 +576,8 @@ const getOperationValueNegTestCasesProvider = [
   {
     name: `test getOperationValue "*" operator with one number and one string oprands, should throw an exception`,
     input1: {
-      left: 15,
-      right: "hello",
+      left: new NumericObject(15),
+      right: new StringObject("hello"),
     },
     input2: "*",
     exception: RuntimeException,
@@ -567,8 +586,8 @@ const getOperationValueNegTestCasesProvider = [
   {
     name: `test getOperationValue "*=" operator with one number and one string oprands, should throw an exception`,
     input1: {
-      left: 15,
-      right: "hello",
+      left: new NumericObject(15),
+      right: new StringObject("hello"),
     },
     input2: "*=",
     exception: RuntimeException,
@@ -577,8 +596,8 @@ const getOperationValueNegTestCasesProvider = [
   {
     name: `test getOperationValue "/" operator with one number and one string oprands, should throw an exception`,
     input1: {
-      left: 15,
-      right: "hello",
+      left: new NumericObject(15),
+      right: new StringObject("hello"),
     },
     input2: "/",
     exception: RuntimeException,
@@ -587,8 +606,8 @@ const getOperationValueNegTestCasesProvider = [
   {
     name: `test getOperationValue "/=" operator with one number and one string oprands, should throw an exception`,
     input1: {
-      left: 15,
-      right: "hello",
+      left: new NumericObject(15),
+      right: new StringObject("hello"),
     },
     input2: "/=",
     exception: RuntimeException,
@@ -597,8 +616,8 @@ const getOperationValueNegTestCasesProvider = [
   {
     name: `test getOperationValue "/" operator with zero divisor, should throw an exception`,
     input1: {
-      left: 15,
-      right: 0,
+      left: new NumericObject(15),
+      right: new NumericObject(0),
     },
     input2: "/",
     exception: RuntimeException,
@@ -607,8 +626,8 @@ const getOperationValueNegTestCasesProvider = [
   {
     name: `test getOperationValue "/=" operator with zero divisor, should throw an exception`,
     input1: {
-      left: 15,
-      right: 0,
+      left: new NumericObject(15),
+      right: new NumericObject(0),
     },
     input2: "/",
     exception: RuntimeException,
@@ -617,8 +636,8 @@ const getOperationValueNegTestCasesProvider = [
   {
     name: `test getOperationValue "#" operator, should throw an exception`,
     input1: {
-      left: 15,
-      right: 5,
+      left: new NumericObject(15),
+      right: new NumericObject(5),
     },
     input2: "#",
     exception: InvalidStateException,
@@ -627,8 +646,8 @@ const getOperationValueNegTestCasesProvider = [
   {
     name: `test getOperationValue ">" operator with one string & one number, should throw an exception`,
     input1: {
-      left: 15,
-      right: "hell",
+      left: new NumericObject(15),
+      right: new StringObject("hell"),
     },
     input2: ">",
     exception: RuntimeException,
@@ -637,8 +656,8 @@ const getOperationValueNegTestCasesProvider = [
   {
     name: `test getOperationValue ">" operator with both string , should throw an exception`,
     input1: {
-      left: "cap",
-      right: "hell",
+      left: new StringObject("cap"),
+      right: new StringObject("hell"),
     },
     input2: ">",
     exception: RuntimeException,
@@ -647,8 +666,8 @@ const getOperationValueNegTestCasesProvider = [
   {
     name: `test getOperationValue "<" operator with one string & one number, should throw an exception`,
     input1: {
-      left: 15,
-      right: "hell",
+      left: new NumericObject(15),
+      right: new StringObject("hell"),
     },
     input2: "<",
     exception: RuntimeException,
@@ -657,8 +676,8 @@ const getOperationValueNegTestCasesProvider = [
   {
     name: `test getOperationValue "<" operator with both string , should throw an exception`,
     input1: {
-      left: "cap",
-      right: "hell",
+      left: new StringObject("cap"),
+      right: new StringObject("hell"),
     },
     input2: "<",
     exception: RuntimeException,
@@ -667,8 +686,8 @@ const getOperationValueNegTestCasesProvider = [
   {
     name: `test getOperationValue ">=" operator with one string & one number, should throw an exception`,
     input1: {
-      left: 15,
-      right: "hell",
+      left: new NumericObject(15),
+      right: new StringObject("hell"),
     },
     input2: ">=",
     exception: RuntimeException,
@@ -677,8 +696,8 @@ const getOperationValueNegTestCasesProvider = [
   {
     name: `test getOperationValue ">=" operator with both string , should throw an exception`,
     input1: {
-      left: "cap",
-      right: "hell",
+      left: new StringObject("cap"),
+      right: new StringObject("hell"),
     },
     input2: ">=",
     exception: RuntimeException,
@@ -687,8 +706,8 @@ const getOperationValueNegTestCasesProvider = [
   {
     name: `test getOperationValue "<=" operator with one string & one number, should throw an exception`,
     input1: {
-      left: 15,
-      right: "hell",
+      left: new NumericObject(15),
+      right: new StringObject("hell"),
     },
     input2: "<=",
     exception: RuntimeException,
@@ -697,8 +716,8 @@ const getOperationValueNegTestCasesProvider = [
   {
     name: `test getOperationValue "<=" operator with both string , should throw an exception`,
     input1: {
-      left: "cap",
-      right: "hell",
+      left: new StringObject("cap"),
+      right: new StringObject("hell"),
     },
     input2: "<=",
     exception: RuntimeException,
@@ -707,8 +726,8 @@ const getOperationValueNegTestCasesProvider = [
   {
     name: `test getOperationValue "**" operator with unsupported operator , should throw an exception`,
     input1: {
-      left: "cap",
-      right: "hell",
+      left: new StringObject("cap"),
+      right: new StringObject("hell"),
     },
     input2: "**",
     exception: InvalidStateException,

@@ -131,16 +131,21 @@ export function getOperationValue(
       throw exception;
 
     case "&&":
-      // if (operands.left.getType() !== DataTypes.Boolean || operands.right.getType() !== DataTypes.Boolean) {
-      //   throw exception;
-      // }
-      return new BooleanObject(operands.left.getValue() && operands.right.getValue());
+      if(operands.left.getValue()){
+        return operands.right;
+      }
+      else {
+        return operands.left;
+      }
 
     case "||":
-      return new BooleanObject((operands.left.getValue() || operands.right.getValue())==true);
-
-    case ".":
-
+      if(operands.left.getValue()){
+        return operands.left;
+      }
+      else{
+        return operands.right;
+      }
+        
     default:
       throw new InvalidStateException(`Unsupported operator: ${operator}`);
   }
