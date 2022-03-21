@@ -1,6 +1,7 @@
 import { NodeType } from "bhai-lang-parser";
 
 import { RuntimeException } from "../../src";
+import { NumericObject } from "../../src/components/dataClass";
 import Scope from "../../src/components/scope";
 import AssignmentExpression from "../../src/components/visitor/assignmentExpression";
 import BinaryExpression from "../../src/components/visitor/binaryExpression";
@@ -160,7 +161,7 @@ test("interpreter test PrintStatement without expressions should throw an except
 });
 
 test("interpreter test Scope assign with undeclared variable should throw an exception", () => {
-  expect(() => scope.assign("undeclared_identifier", 45)).toThrow(
+  expect(() => scope.assign("undeclared_identifier", new NumericObject(45))).toThrow(
     RuntimeException
   );
 });
