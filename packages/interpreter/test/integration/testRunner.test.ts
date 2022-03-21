@@ -227,6 +227,29 @@ test("whileStatement test with infinite loop, should throw runtime exception aft
   expect(console.log).toHaveBeenCalledWith("bhai");
 });
 
+test("if-else ladders one after the other, should be evaluated separately", () => {
+  expect(() =>
+    interpreter.interpret(`
+    hi bhai
+    bhai ye hai x = 6;
+    agar bhai (x < 5) {
+      bol bhai "x < 5";
+    } nahi to bhai (x < 8) {
+      bol bhai "x < 8";
+    } agar bhai (x < 4) {
+      bol bhai "x < 4";
+    } warna bhai {
+      bol bhai "x > 4";
+    }
+    bye bhai;
+    
+    `)
+  ).not.toThrowError();
+
+  expect(console.log).toHaveBeenCalledWith("x < 8");
+  expect(console.log).toHaveBeenCalledWith("x > 4");
+});
+
 // test("jest", () => {
 //     interpreter.interpret(`
 //     hi bhai

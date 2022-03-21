@@ -14,6 +14,6 @@ export type ASTNode = {
   declaration?: ASTNode;
   test?: ASTNode;
   consequent?: ASTNode;
-  alternate?: ASTNode;
+  alternate?: ASTNode[];
   args?: ASTNode[];
 };

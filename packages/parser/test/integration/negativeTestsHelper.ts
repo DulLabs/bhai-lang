@@ -333,6 +333,75 @@ export const IfStatementNagativeTests = [
       `,
     output: SyntaxError,
   },
+  {
+    name: "Else-if statement test - else-if ladder without if condition first , should throw an exception",
+    input: `
+        hi bhai
+        nahi to bhai (sahi) {
+        }
+        bye bhai;
+      `,
+    output: SyntaxError,
+  },
+  {
+    name: "Else-if statement test - else-if ladder with multiple levels without if condition first , should throw an exception",
+    input: `
+        hi bhai
+        nahi to bhai (sahi) {
+        } nahi to bhai (sahi) {
+        }
+        bye bhai;
+      `,
+    output: SyntaxError,
+  },
+  {
+    name: "Else-if statement test - nothing after else-if ladder , should throw an exception",
+    input: `
+        hi bhai
+        agar bhai (sahi) {
+
+        } nahi to bhai (sahi)
+        bye bhai;
+      `,
+    output: SyntaxError,
+  },
+  {
+    name: "Else-if statement test - nothing after else-if ladder with multiple levels , should throw an exception",
+    input: `
+        hi bhai
+        agar bhai (sahi) {
+
+        } nahi to bhai (sahi) {
+
+        } nahi to bhai (sahi)
+        bye bhai;
+      `,
+    output: SyntaxError,
+  },
+  {
+    name: "Else-if statement test - else-if without a condition , should throw an exception",
+    input: `
+        hi bhai
+        agar bhai (sahi) {
+
+        } nahi to bhai
+        bye bhai;
+      `,
+    output: SyntaxError,
+  },
+  {
+    name: "Else-if statement test - else-if without a condition, multple levels , should throw an exception",
+    input: `
+        hi bhai
+        agar bhai (sahi) {
+
+        } nahi to bhai (sahi) {
+
+        } nahi to bhai
+        bye bhai;
+      `,
+    output: SyntaxError,
+  }
 ];
 
 export const ContinueStatementNegativeTests = [

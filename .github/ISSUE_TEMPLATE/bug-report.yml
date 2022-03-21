@@ -1,0 +1,36 @@
+name: Bug Report
+description: Create a report to help us improve
+title: "Bug: "
+labels: [bug]
+
+body:
+  - type: markdown
+    attributes:
+      value: Thank you for taking the time to file a Bug report.
+  - type: textarea
+    attributes:
+      label: Describe the bug.
+      description: 'A clear and concise description of what the bug is.'
+  - type: textarea
+    attributes:
+      label: Describe the steps to reproduce the behavior.
+      description: 'Be clear and concise while describing the steps to ensure that it can be reproduced and potentially fixed'
+  - type: textarea
+    attributes:
+      label: Expected behavior.
+      description: 'A clear and concise description of what you expected to happen.'
+  - type: textarea
+    attributes:
+      label: Screenshots.
+      description: 'If applicable, add screenshots to help explain your problem.'
+  - type: input
+    attributes:
+      label: Operating Environment
+      description: 'What operating system and version are you using? If you are running it on Cloud/Cluster do mention about that.'
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Additional Information
+      description: 'Any additional information that may help us reproduce the bug.'
+
