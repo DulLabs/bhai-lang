@@ -133,7 +133,7 @@ export const NegativeTestCases = [
     name: "interpreter printing variable before declaration test, should throw an exception",
     input: `
           vanakkam nanba;
-          bol bhai a;
+          sollu nanba a;
           nanri nanba;
         `,
     exception: RuntimeException,
@@ -142,7 +142,7 @@ export const NegativeTestCases = [
     name: "interpreter printing multiple variables before declaration test, should throw an exception",
     input: `
           vanakkam nanba;
-          bol bhai a, b;
+          sollu nanba a, b;
           nanri nanba;
         `,
     exception: RuntimeException,
@@ -152,7 +152,7 @@ export const NegativeTestCases = [
     input: `
           vanakkam nanba;
           nanba idhaan a = 8;
-          bol bhai a, b;
+          sollu nanba a, b;
           nanri nanba;
         `,
     exception: RuntimeException,
@@ -183,7 +183,7 @@ export const NegativeTestCases = [
     input: `
       vanakkam nanba;
       nanba idhaan a;
-      bol bhai a + 9;
+      sollu nanba a + 9;
       nanri nanba;
     `,
     exception: NallaPointerException,
@@ -193,7 +193,7 @@ export const NegativeTestCases = [
     input: `
       vanakkam nanba;
       nanba idhaan a = nalla;
-      bol bhai a + 9;
+      sollu nanba a + 9;
       nanri nanba;
     `,
     exception: NallaPointerException,
@@ -242,7 +242,7 @@ export const NegativeTestCases = [
     input: `
       vanakkam nanba;
       nanba idhaan a = sahi;
-      bol bhai a + 9;
+      sollu nanba a + 9;
       nanri nanba;
     `,
     exception: RuntimeException,
@@ -252,7 +252,7 @@ export const NegativeTestCases = [
     input: `
       vanakkam nanba;
       nanba idhaan a = galat;
-      bol bhai a + 9;
+      sollu nanba a + 9;
       nanri nanba;
     `,
     exception: RuntimeException,
@@ -403,7 +403,7 @@ export const NegativeTestCases = [
     name: "print statement test with expression containing nalla, should throw an exception",
     input: `
         vanakkam nanba
-        bol bhai nalla + 5;
+        sollu nanba nalla + 5;
         nanri nanba;
       `,
     output: NallaPointerException,
@@ -456,7 +456,7 @@ export const NegativeTestCases = [
         vanakkam nanba
         nanba idhaan a = 0;
         jab tak bhai (a < 2) {
-          bol bhai "bhai";
+          sollu nanba "bhai";
         }
         nanri nanba;
       `,
@@ -478,7 +478,7 @@ export const NegativeTestCases = [
     name: "use of nalla with &&, should throw an exception",
     input: `
         vanakkam nanba
-        bol bhai nalla && 90;
+        sollu nanba nalla && 90;
         nanri nanba;
       `,
     output: NallaPointerException,
@@ -488,7 +488,7 @@ export const NegativeTestCases = [
     input: `
         vanakkam nanba
         nanba idhaan a;
-        bol bhai a && 90;
+        sollu nanba a && 90;
         nanri nanba;
       `,
     output: NallaPointerException,
@@ -498,7 +498,7 @@ export const NegativeTestCases = [
     name: `modulus operator test with invalid operand, should throw an exception`,
     input: `
       vanakkam nanba;
-      bol bhai "sahi" % 9;
+      sollu nanba "sahi" % 9;
       nanri nanba;
     `,
     output: RuntimeException,

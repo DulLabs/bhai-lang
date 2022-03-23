@@ -45,9 +45,9 @@ test("test redeclaring & printing variables in different scopes", () => {
     nanba idhaan a = 4;
     {
       nanba idhaan a = 90;
-      bol bhai a;
+      sollu nanba a;
     }
-    bol bhai a;
+    sollu nanba a;
     nanri nanba;`)
   ).not.toThrowError();
   expect(console.log).toHaveBeenCalledWith("90");
@@ -60,9 +60,9 @@ test("test assigning variable in parent scope", () => {
     nanba idhaan a = 4;
     {
       a = 90;
-      bol bhai a;
+      sollu nanba a;
     }
-    bol bhai a;
+    sollu nanba a;
     nanri nanba;`)
   ).not.toThrowError();
   expect(console.log).toHaveBeenCalledWith("90");
@@ -74,9 +74,9 @@ test("test accessing variable in parent scope", () => {
     interpreter.interpret(`vanakkam nanba;
     nanba idhaan a = 4;
     {
-      bol bhai a;
+      sollu nanba a;
     }
-    bol bhai a;
+    sollu nanba a;
     nanri nanba;`)
   ).not.toThrowError();
   expect(console.log).toHaveBeenCalledWith("4");
@@ -89,7 +89,7 @@ test("whileStatement test with 2 times loop, should success", () => {
     vanakkam nanba;
     nanba idhaan a = 0;
     jab tak bhai (a < 2) {
-      bol bhai "bhai";
+      sollu nanba "bhai";
       a += 1;
     }
     nanri nanba;`)
@@ -105,7 +105,7 @@ test("whileStatement test with nested loops - 2, should success", () => {
     nanba idhaan a = 0, b = 0;
     jab tak bhai (a < 2) {
       jab tak bhai (b < 1) {
-        bol bhai "bhai";
+        sollu nanba "bhai";
         b += 1;
       }
       a += 1;
@@ -124,7 +124,7 @@ test("whileStatement test with nested loops - 3, should success", () => {
     jab tak bhai (a < 2) {
       nanba idhaan b = 0;
       jab tak bhai (b < 2) {
-        bol bhai "bhai";
+        sollu nanba "bhai";
         b += 1;
         agar bhai (b == 1)
           bas kar bhai;
@@ -145,13 +145,13 @@ test("whileStatement test with nested loops - 4, should success", () => {
     vanakkam nanba
     nanba idhaan a = 0;
     jab tak bhai (a < 10) {
-      bol bhai a;
+      sollu nanba a;
       a += 1;
       agar bhai (a == 6) {
         bas kar bhai;
       }
     }
-    bol bhai "done";
+    sollu nanba "done";
     nanri nanba
     `)
   ).not.toThrowError();
@@ -169,12 +169,12 @@ test("whileStatement test with nested loops - 5, should success", () => {
     vanakkam nanba
     nanba idhaan a = 0;
     jab tak bhai (a < 10) {
-      bol bhai a;
+      sollu nanba a;
       a += 1;
       agar bhai (a == 6)
         bas kar bhai;
     }
-    bol bhai "done";
+    sollu nanba "done";
     nanri nanba
     `)
   ).not.toThrowError();
@@ -192,14 +192,14 @@ test("whileStatement test with nested loops - 6, should success", () => {
     vanakkam nanba
     nanba idhaan a = 0;
     jab tak bhai (a < 10) {
-      bol bhai a;
+      sollu nanba a;
       a += 1;
       agar bhai (a == 3) {
         bas kar bhai;
       }
-      bol bhai "2 baar hi chapunga";
+      sollu nanba "2 baar hi chapunga";
     }
-    bol bhai "done";
+    sollu nanba "done";
     nanri nanba
     `)
   ).not.toThrowError();
@@ -216,7 +216,7 @@ test("whileStatement test with infinite loop, should throw runtime exception aft
     vanakkam nanba
     
     jab tak bhai (sahi) {
-      bol bhai "bhai";
+      sollu nanba "bhai";
     }
     nanri nanba;
     
@@ -233,13 +233,13 @@ test("if-else ladders one after the other, should be evaluated separately", () =
     vanakkam nanba
     nanba idhaan x = 6;
     agar bhai (x < 5) {
-      bol bhai "x < 5";
+      sollu nanba "x < 5";
     } nahi to bhai (x < 8) {
-      bol bhai "x < 8";
+      sollu nanba "x < 8";
     } agar bhai (x < 4) {
-      bol bhai "x < 4";
+      sollu nanba "x < 4";
     } warna bhai {
-      bol bhai "x > 4";
+      sollu nanba "x > 4";
     }
     nanri nanba;
     
@@ -255,14 +255,14 @@ test("if-else ladders one after the other, should be evaluated separately", () =
 //     vanakkam nanba
 //     nanba idhaan a = 0;
 //     jab tak bhai (a < 10) {
-//       bol bhai a;
+//       sollu nanba a;
 //       a += 1;
 //       agar bhai (a == 3) {
 //         bas kar bhai;
 //       }
-//       bol bhai "2 baar hi chapunga";
+//       sollu nanba "2 baar hi chapunga";
 //     }
-//     bol bhai "done";
+//     sollu nanba "done";
 //     nanri nanba
 //     `);
 // });

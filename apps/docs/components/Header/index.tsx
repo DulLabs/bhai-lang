@@ -32,7 +32,7 @@ export default function Header() {
                   <a
                     target="_blank"
                     rel="noopener noreferrer"
-                    href="https://github.com/DulLabs/bhai-lang"
+                    href="https://github.com/shankarkrupa/nanba-lang"
                     className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-bhagwa-700 bg-bhagwa-300 hover:bg-bhagwa-400 md:py-4 md:text-lg md:px-10"
                   >
                     View Source

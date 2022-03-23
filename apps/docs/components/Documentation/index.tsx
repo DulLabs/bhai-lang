@@ -65,18 +65,18 @@ nanri nanba
     name: "Built-ins",
     description: (
       <>
-        Use <code className="language-cpp">bol bhai</code> to print anything to
+        Use <code className="language-cpp">sollu nanba</code> to print anything to
         console.
       </>
     ),
     code: `vanakkam nanba
-    bol bhai "Hello World";
+    sollu nanba "Hello World";
     nanba idhaan a = 10;
     {
        nanba idhaan b = 20;
-       bol bhai a + b;
+       sollu nanba a + b;
     }
-    bol bhai 5, 'ok', nalla , sahi , galat;
+    sollu nanba 5, 'ok', nalla , sahi , galat;
 nanri nanba
     `,
   },
@@ -90,11 +90,11 @@ nanri nanba
     code: `vanakkam nanba
     nanba idhaan a = 10;
     agar bhai (a < 20) {
-      bol bhai "a is less than 20";
+      sollu nanba "a is less than 20";
     } nahi to bhai ( a < 25 ) {
-      bol bhai "a is less than 25";
+      sollu nanba "a is less than 25";
     } warna bhai {
-      bol bhai "a is greater than or equal to 25";
+      sollu nanba "a is greater than or equal to 25";
     }
 nanri nanba
     `
@@ -112,15 +112,15 @@ nanri nanba
     jab tak bhai (a < 10) {
       a += 1;
       agar bhai (a == 5) {
-        bol bhai "andar se bol bhai ", a;
+        sollu nanba "andar se sollu nanba ", a;
         agla dekh bhai;
       }
       agar bhai (a == 6) {
         bas kar bhai;
       }
-      bol bhai a;
+      sollu nanba a;
     }
-    bol bhai "done";
+    sollu nanba "done";
 nanri nanba
     `
   }

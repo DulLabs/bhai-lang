@@ -10,18 +10,18 @@ import Terminal from "./Terminal";
 
 const initialCode = `
 vanakkam nanba
- bol bhai "Hello World";
+ sollu nanba "Hello World";
  
   nanba idhaan a = 3;
   nanba idhaan b = 0;
 
   jab tak bhai (b < 5) {
-    bol bhai b;
+    sollu nanba b;
 
     agar bhai (b == a) {
-      bol bhai "b is equal to a";
+      sollu nanba "b is equal to a";
     } nahi to bhai (b == 0) {
-      bol bhai "b is equal to zero";
+      sollu nanba "b is equal to zero";
     }
 
     b += 1;
