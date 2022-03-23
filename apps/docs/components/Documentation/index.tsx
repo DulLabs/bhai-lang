@@ -7,17 +7,17 @@ const features = [
     name: "General",
     description: (
       <>
-        <code className="language-cpp">hi bhai</code> is the entrypoint for the
+        <code className="language-cpp">vanakkam nanba</code> is the entrypoint for the
         program and all program must end with{" "}
-        <code className="language-cpp">bye bhai</code>. Anything outside of it
+        <code className="language-cpp">nanri nanba</code>. Anything outside of it
         will be ignored.
       </>
     ),
     code: `This will be ignored
 
-hi bhai
+vanakkam nanba
   // Write code here
-bye bhai
+nanri nanba
 
 This too
     `,
@@ -27,17 +27,17 @@ This too
     description: (
       <>
         Variables can be declared using{" "}
-        <code className="language-cpp">bhai ye hai</code>.
+        <code className="language-cpp">nanba idhaan</code>.
       </>
     ),
-    code: `hi bhai
-    bhai ye hai a = 10;
-    bhai ye hai b = "two";
-    bhai ye hai c = 15;
+    code: `vanakkam nanba
+    nanba idhaan a = 10;
+    nanba idhaan b = "two";
+    nanba idhaan c = 15;
     a = a + 1;
     b = 21;
     c *= 2;
-bye bhai
+nanri nanba
     `,
   },
   {
@@ -50,15 +50,15 @@ bye bhai
         <code className="language-cpp">galat</code> are the boolean values.
       </>
     ),
-    code: `hi bhai
-    bhai ye hai a = 10;
-    bhai ye hai b = 10 + (15*20);
-    bhai ye hai c = "two";
-    bhai ye hai d = 'ok';
-    bhai ye hai e = nalla;
-    bhai ye hai f = sahi;
-    bhai ye hai g = galat;
-bye bhai
+    code: `vanakkam nanba
+    nanba idhaan a = 10;
+    nanba idhaan b = 10 + (15*20);
+    nanba idhaan c = "two";
+    nanba idhaan d = 'ok';
+    nanba idhaan e = nalla;
+    nanba idhaan f = sahi;
+    nanba idhaan g = galat;
+nanri nanba
     `,
   },
   {
@@ -69,15 +69,15 @@ bye bhai
         console.
       </>
     ),
-    code: `hi bhai
+    code: `vanakkam nanba
     bol bhai "Hello World";
-    bhai ye hai a = 10;
+    nanba idhaan a = 10;
     {
-       bhai ye hai b = 20;
+       nanba idhaan b = 20;
        bol bhai a + b;
     }
     bol bhai 5, 'ok', nalla , sahi , galat;
-bye bhai
+nanri nanba
     `,
   },
   {
@@ -87,8 +87,8 @@ bye bhai
         Bhailang supports if-else-if ladder construct , <code className="language-cpp">agar bhai</code> block will execute if condition is <code className="language-cpp">sahi</code>, otherwise one of the subsequently added <code className="language-cpp">nahi to bhai</code> blocks will execute if their respective condition is <code className="language-cpp">sahi</code>, and the <code className="language-cpp">warna bhai</code> block will eventually execute if all of the above conditions are <code className="language-cpp">galat</code>.
       </>
     ),
-    code: `hi bhai
-    bhai ye hai a = 10;
+    code: `vanakkam nanba
+    nanba idhaan a = 10;
     agar bhai (a < 20) {
       bol bhai "a is less than 20";
     } nahi to bhai ( a < 25 ) {
@@ -96,7 +96,7 @@ bye bhai
     } warna bhai {
       bol bhai "a is greater than or equal to 25";
     }
-bye bhai
+nanri nanba
     `
   },
   {
@@ -107,8 +107,8 @@ bye bhai
         Use <code className="language-cpp">bas kar bhai</code> to break the loop and <code className="language-cpp">agla dekh bhai</code> to continue within loop.
       </>
     ),
-    code: `hi bhai
-    bhai ye hai a = 0;
+    code: `vanakkam nanba
+    nanba idhaan a = 0;
     jab tak bhai (a < 10) {
       a += 1;
       agar bhai (a == 5) {
@@ -121,7 +121,7 @@ bye bhai
       bol bhai a;
     }
     bol bhai "done";
-bye bhai
+nanri nanba
     `
   }
 

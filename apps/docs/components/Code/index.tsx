@@ -9,11 +9,11 @@ import Terminal from "./Terminal";
 
 
 const initialCode = `
-hi bhai
+vanakkam nanba
  bol bhai "Hello World";
  
-  bhai ye hai a = 3;
-  bhai ye hai b = 0;
+  nanba idhaan a = 3;
+  nanba idhaan b = 0;
 
   jab tak bhai (b < 5) {
     bol bhai b;
@@ -27,7 +27,7 @@ hi bhai
     b += 1;
   }
 
-bye bhai
+nanri nanba
 `;
 
 const Code = (props: Props) => {

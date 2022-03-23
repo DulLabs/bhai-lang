@@ -27,9 +27,9 @@ npm i -g bhailang
 You can also try out your code on <a href="https://bhailang.js.org/#playground">Bhai Lang PlayGround</a></h4>
 
 ```
-hi bhai
+vanakkam nanba
   bol bhai "Hello bhai";
-bye bhai
+nanri nanba
 
 ```
 
@@ -50,32 +50,32 @@ hello bhai
 <h2 align="center">Documentation</h2>
 
 <h3 align="center">General</h3>
-<p align="center"><code>hi bhai</code> is the entrypoint for the program and all program must end with <code>bye bhai</code>. Anything outside of it will be ignored.</p>
+<p align="center"><code>vanakkam nanba</code> is the entrypoint for the program and all program must end with <code>nanri nanba</code>. Anything outside of it will be ignored.</p>
 
 ```
 
 This will be ignored
 
-hi bhai
+vanakkam nanba
 // Write code here
-bye bhai
+nanri nanba
 
 This too
 ```
 
 <h3 align="center">Variables</h3>
-<p align="center">Variables can be declared using <code>bhai ye hai</code>.</p>
+<p align="center">Variables can be declared using <code>nanba idhaan</code>.</p>
 
 ```
 
-hi bhai
-  bhai ye hai a = 10;
-  bhai ye hai b = "two";
-  bhai ye hai c = 15;
+vanakkam nanba
+  nanba idhaan a = 10;
+  nanba idhaan b = "two";
+  nanba idhaan c = 15;
   a = a + 1;
   b = 21;
   c *= 2;
-bye bhai
+nanri nanba
 ```
 
 <h3 align="center">Types</h3>
@@ -83,15 +83,15 @@ bye bhai
 
 ```
 
-hi bhai
-  bhai ye hai a = 10;
-  bhai ye hai b = 10 + (15*20);
-  bhai ye hai c = "two";
-  bhai ye hai d = 'ok';
-  bhai ye hai e = nalla;
-  bhai ye hai f = sahi;
-  bhai ye hai g = galat;
-bye bhai
+vanakkam nanba
+  nanba idhaan a = 10;
+  nanba idhaan b = 10 + (15*20);
+  nanba idhaan c = "two";
+  nanba idhaan d = 'ok';
+  nanba idhaan e = nalla;
+  nanba idhaan f = sahi;
+  nanba idhaan g = galat;
+nanri nanba
 ```
 
 <h3 align="center">Built-ins</h3>
@@ -99,15 +99,15 @@ bye bhai
 
 ```
 
-hi bhai
+vanakkam nanba
   bol bhai "Hello World";
-  bhai ye hai a = 10;
+  nanba idhaan a = 10;
   {
-    bhai ye hai b = 20;
+    nanba idhaan b = 20;
     bol bhai a + b;
   }
   bol bhai 5, 'ok', nalla , sahi , galat;
-bye bhai
+nanri nanba
 ```
 
 <h3 align="center">Conditionals</h3>
@@ -115,14 +115,14 @@ bye bhai
 
 ```
 
-hi bhai
-  bhai ye hai a = 10;
+vanakkam nanba
+  nanba idhaan a = 10;
   agar bhai (a < 25) {
    bol bhai "a is less than 25";
   } warna bhai {
    bol bhai "a is greater than or equal to 25";
   }
-bye bhai
+nanri nanba
 ```
 
 <h3 align="center">Loops</h3>
@@ -131,8 +131,8 @@ bye bhai
 
 ```
 
-hi bhai
-  bhai ye hai a = 0;
+vanakkam nanba
+  nanba idhaan a = 0;
   jab tak bhai (a < 10) {
    a += 1;
    agar bhai (a == 5) {
@@ -145,7 +145,7 @@ hi bhai
    bol bhai a;
   }
   bol bhai "done";
-bye bhai
+nanri nanba
 ```
 
 
