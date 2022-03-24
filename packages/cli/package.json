@@ -2,9 +2,9 @@
   "name": "bhailang",
   "version": "0.1.0",
   "description": "CLI for bhai-lang",
-  "source": "src/index.ts",
-  "typings": "typings/index.d.ts",
-  "main": "bin/index.js",
+  "source": "src/index",
+  "typings": "typings/index",
+  "main": "bin/index",
   "bin": {
     "bhailang": "./bin/index.js"
   },
