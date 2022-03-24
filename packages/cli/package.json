@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "CLI for bhai-lang",
   "source": "src/index.ts",
+  "typings": "typings/index.d.ts",
   "main": "bin/index.js",
   "bin": {
     "bhailang": "./bin/index.js"

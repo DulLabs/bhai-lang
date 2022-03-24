@@ -5,6 +5,7 @@
   "source": "src/index.ts",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
+  "typings": "typings/index.d.js",
   "module": "dist/module.js",
   "scripts": {
     "dev": "ts-node src/index.ts",
