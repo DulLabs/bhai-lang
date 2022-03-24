@@ -19,8 +19,6 @@ https://github.com/DulLabs/bhai-lang
 `)
 );
 
-yargs.version(version);
-
 const cl = console.log;
 
 console.log = function (...args) {
@@ -39,6 +37,7 @@ const filePath = yargs(hideBin(process.argv))
       console.info(argv);
     }
   )
+  .version(version)
   .demandCommand(1).argv._[0];
 
 fs.readFile(filePath, "utf8", (err, data) => {
