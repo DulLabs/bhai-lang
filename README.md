@@ -43,7 +43,7 @@ bhailang test.bhai
 <h4 align="left">Output</h4>
 
 ```
-hello bhai
+Hello bhai
 ```
 
 <h2 align="center">Documentation</h2>
