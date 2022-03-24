@@ -41,14 +41,14 @@ NegativeTestCases.forEach((testCase) => {
 
 test("test redeclaring & printing variables in different scopes", () => {
   expect(() =>
-    interpreter.interpret(`vanakkam nanba;
-    nanba idhaan a = 4;
+    interpreter.interpret(`வணக்கம் நண்பா;
+    இதான் நண்பா a = 4;
     {
-      nanba idhaan a = 90;
-      sollu nanba a;
+      இதான் நண்பா a = 90;
+      சொல்லு நண்பா a;
     }
-    sollu nanba a;
-    nanri nanba;`)
+    சொல்லு நண்பா a;
+    நன்றி நண்பா;`)
   ).not.toThrowError();
   expect(console.log).toHaveBeenCalledWith("90");
   expect(console.log).toHaveBeenCalledWith("4");
@@ -56,14 +56,14 @@ test("test redeclaring & printing variables in different scopes", () => {
 
 test("test assigning variable in parent scope", () => {
   expect(() =>
-    interpreter.interpret(`vanakkam nanba;
-    nanba idhaan a = 4;
+    interpreter.interpret(`வணக்கம் நண்பா;
+    இதான் நண்பா a = 4;
     {
       a = 90;
-      sollu nanba a;
+      சொல்லு நண்பா a;
     }
-    sollu nanba a;
-    nanri nanba;`)
+    சொல்லு நண்பா a;
+    நன்றி நண்பா;`)
   ).not.toThrowError();
   expect(console.log).toHaveBeenCalledWith("90");
   expect(console.log).toHaveBeenCalledWith("90");
@@ -71,13 +71,13 @@ test("test assigning variable in parent scope", () => {
 
 test("test accessing variable in parent scope", () => {
   expect(() =>
-    interpreter.interpret(`vanakkam nanba;
-    nanba idhaan a = 4;
+    interpreter.interpret(`வணக்கம் நண்பா;
+    இதான் நண்பா a = 4;
     {
-      sollu nanba a;
+      சொல்லு நண்பா a;
     }
-    sollu nanba a;
-    nanri nanba;`)
+    சொல்லு நண்பா a;
+    நன்றி நண்பா;`)
   ).not.toThrowError();
   expect(console.log).toHaveBeenCalledWith("4");
   expect(console.log).toHaveBeenCalledWith("4");
@@ -86,13 +86,13 @@ test("test accessing variable in parent scope", () => {
 test("whileStatement test with 2 times loop, should success", () => {
   expect(() =>
     interpreter.interpret(`
-    vanakkam nanba;
-    nanba idhaan a = 0;
-    jab tak bhai (a < 2) {
-      sollu nanba "bhai";
+    வணக்கம் நண்பா;
+    இதான் நண்பா a = 0;
+    இதுவரைக்கும் சுத்து நண்பா (a < 2) {
+      சொல்லு நண்பா "bhai";
       a += 1;
     }
-    nanri nanba;`)
+    நன்றி நண்பா;`)
   ).not.toThrowError();
   expect(console.log).toHaveBeenCalledWith("bhai");
   expect(console.log).toHaveBeenCalledWith("bhai");
@@ -101,16 +101,16 @@ test("whileStatement test with 2 times loop, should success", () => {
 test("whileStatement test with nested loops - 2, should success", () => {
   expect(() =>
     interpreter.interpret(`
-    vanakkam nanba;
-    nanba idhaan a = 0, b = 0;
-    jab tak bhai (a < 2) {
-      jab tak bhai (b < 1) {
-        sollu nanba "bhai";
+    வணக்கம் நண்பா;
+    இதான் நண்பா a = 0, b = 0;
+    இதுவரைக்கும் சுத்து நண்பா (a < 2) {
+      இதுவரைக்கும் சுத்து நண்பா (b < 1) {
+        சொல்லு நண்பா "bhai";
         b += 1;
       }
       a += 1;
     }
-    nanri nanba;
+    நன்றி நண்பா;
     `)
   ).not.toThrowError();
   expect(console.log).toHaveBeenCalledWith("bhai");
@@ -119,19 +119,19 @@ test("whileStatement test with nested loops - 2, should success", () => {
 test("whileStatement test with nested loops - 3, should success", () => {
   expect(() =>
     interpreter.interpret(`
-    vanakkam nanba;
-    nanba idhaan a = 0;
-    jab tak bhai (a < 2) {
-      nanba idhaan b = 0;
-      jab tak bhai (b < 2) {
-        sollu nanba "bhai";
+    வணக்கம் நண்பா;
+    இதான் நண்பா a = 0;
+    இதுவரைக்கும் சுத்து நண்பா (a < 2) {
+      இதான் நண்பா b = 0;
+      இதுவரைக்கும் சுத்து நண்பா (b < 2) {
+        சொல்லு நண்பா "bhai";
         b += 1;
-        agar bhai (b == 1)
-          bas kar bhai;
+        இப்படின்னா நண்பா (b == 1)
+          போதும் நண்பா;
       }
       a += 1;
     }
-    nanri nanba;
+    நன்றி நண்பா;
     `)
   ).not.toThrowError();
   expect(console.log).toHaveBeenCalledWith("bhai");
@@ -142,17 +142,17 @@ test("whileStatement test with nested loops - 3, should success", () => {
 test("whileStatement test with nested loops - 4, should success", () => {
   expect(() =>
     interpreter.interpret(`
-    vanakkam nanba
-    nanba idhaan a = 0;
-    jab tak bhai (a < 10) {
-      sollu nanba a;
+    வணக்கம் நண்பா
+    இதான் நண்பா a = 0;
+    இதுவரைக்கும் சுத்து நண்பா (a < 10) {
+      சொல்லு நண்பா a;
       a += 1;
-      agar bhai (a == 6) {
-        bas kar bhai;
+      இப்படின்னா நண்பா (a == 6) {
+        போதும் நண்பா;
       }
     }
-    sollu nanba "done";
-    nanri nanba
+    சொல்லு நண்பா "done";
+    நன்றி நண்பா
     `)
   ).not.toThrowError();
   expect(console.log).toHaveBeenCalledWith("0");
@@ -166,16 +166,16 @@ test("whileStatement test with nested loops - 4, should success", () => {
 test("whileStatement test with nested loops - 5, should success", () => {
   expect(() =>
     interpreter.interpret(`
-    vanakkam nanba
-    nanba idhaan a = 0;
-    jab tak bhai (a < 10) {
-      sollu nanba a;
+    வணக்கம் நண்பா
+    இதான் நண்பா a = 0;
+    இதுவரைக்கும் சுத்து நண்பா (a < 10) {
+      சொல்லு நண்பா a;
       a += 1;
-      agar bhai (a == 6)
-        bas kar bhai;
+      இப்படின்னா நண்பா (a == 6)
+        போதும் நண்பா;
     }
-    sollu nanba "done";
-    nanri nanba
+    சொல்லு நண்பா "done";
+    நன்றி நண்பா
     `)
   ).not.toThrowError();
   expect(console.log).toHaveBeenCalledWith("0");
@@ -189,18 +189,18 @@ test("whileStatement test with nested loops - 5, should success", () => {
 test("whileStatement test with nested loops - 6, should success", () => {
   expect(() =>
     interpreter.interpret(`
-    vanakkam nanba
-    nanba idhaan a = 0;
-    jab tak bhai (a < 10) {
-      sollu nanba a;
+    வணக்கம் நண்பா
+    இதான் நண்பா a = 0;
+    இதுவரைக்கும் சுத்து நண்பா (a < 10) {
+      சொல்லு நண்பா a;
       a += 1;
-      agar bhai (a == 3) {
-        bas kar bhai;
+      இப்படின்னா நண்பா (a == 3) {
+        போதும் நண்பா;
       }
-      sollu nanba "2 baar hi chapunga";
+      சொல்லு நண்பா "2 baar hi chapunga";
     }
-    sollu nanba "done";
-    nanri nanba
+    சொல்லு நண்பா "done";
+    நன்றி நண்பா
     `)
   ).not.toThrowError();
   expect(console.log).toHaveBeenCalledWith("0");
@@ -213,12 +213,12 @@ test("whileStatement test with nested loops - 6, should success", () => {
 test("whileStatement test with infinite loop, should throw runtime exception after 5000 executions", () => {
   expect(() =>
     interpreter.interpret(`
-    vanakkam nanba
+    வணக்கம் நண்பா
     
-    jab tak bhai (sahi) {
-      sollu nanba "bhai";
+    இதுவரைக்கும் சுத்து நண்பா (sahi) {
+      சொல்லு நண்பா "bhai";
     }
-    nanri nanba;
+    நன்றி நண்பா;
     
     `)
   ).toThrowError(RuntimeException);
@@ -230,18 +230,18 @@ test("whileStatement test with infinite loop, should throw runtime exception aft
 test("if-else ladders one after the other, should be evaluated separately", () => {
   expect(() =>
     interpreter.interpret(`
-    vanakkam nanba
-    nanba idhaan x = 6;
-    agar bhai (x < 5) {
-      sollu nanba "x < 5";
-    } nahi to bhai (x < 8) {
-      sollu nanba "x < 8";
-    } agar bhai (x < 4) {
-      sollu nanba "x < 4";
-    } warna bhai {
-      sollu nanba "x > 4";
+    வணக்கம் நண்பா
+    இதான் நண்பா x = 6;
+    இப்படின்னா நண்பா (x < 5) {
+      சொல்லு நண்பா "x < 5";
+    } இல்ல ஒருவேளை (x < 8) {
+      சொல்லு நண்பா "x < 8";
+    } இப்படின்னா நண்பா (x < 4) {
+      சொல்லு நண்பா "x < 4";
+    } அப்படி இல்லேன்னா {
+      சொல்லு நண்பா "x > 4";
     }
-    nanri nanba;
+    நன்றி நண்பா;
     
     `)
   ).not.toThrowError();
@@ -252,17 +252,17 @@ test("if-else ladders one after the other, should be evaluated separately", () =
 
 // test("jest", () => {
 //     interpreter.interpret(`
-//     vanakkam nanba
-//     nanba idhaan a = 0;
-//     jab tak bhai (a < 10) {
-//       sollu nanba a;
+//     வணக்கம் நண்பா
+//     இதான் நண்பா a = 0;
+//     இதுவரைக்கும் சுத்து நண்பா (a < 10) {
+//       சொல்லு நண்பா a;
 //       a += 1;
-//       agar bhai (a == 3) {
-//         bas kar bhai;
+//       இப்படின்னா நண்பா (a == 3) {
+//         போதும் நண்பா;
 //       }
-//       sollu nanba "2 baar hi chapunga";
+//       சொல்லு நண்பா "2 baar hi chapunga";
 //     }
-//     sollu nanba "done";
-//     nanri nanba
+//     சொல்லு நண்பா "done";
+//     நன்றி நண்பா
 //     `);
 // });

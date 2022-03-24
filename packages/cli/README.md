@@ -27,9 +27,9 @@ npm i -g bhailang
 You can also try out your code on <a href="https://bhailang.js.org/#playground">Bhai Lang PlayGround</a></h4>
 
 ```
-vanakkam nanba
-  sollu nanba "Hello bhai";
-nanri nanba
+வணக்கம் நண்பா
+  சொல்லு நண்பா "Hello bhai";
+நன்றி நண்பா
 
 ```
 
@@ -50,102 +50,102 @@ hello bhai
 <h2 align="center">Documentation</h2>
 
 <h3 align="center">General</h3>
-<p align="center"><code>vanakkam nanba</code> is the entrypoint for the program and all program must end with <code>nanri nanba</code>. Anything outside of it will be ignored.</p>
+<p align="center"><code>வணக்கம் நண்பா</code> is the entrypoint for the program and all program must end with <code>நன்றி நண்பா</code>. Anything outside of it will be ignored.</p>
 
 ```
 
 This will be ignored
 
-vanakkam nanba
+வணக்கம் நண்பா
 // Write code here
-nanri nanba
+நன்றி நண்பா
 
 This too
 ```
 
 <h3 align="center">Variables</h3>
-<p align="center">Variables can be declared using <code>nanba idhaan</code>.</p>
+<p align="center">Variables can be declared using <code>இதான் நண்பா</code>.</p>
 
 ```
 
-vanakkam nanba
-  nanba idhaan a = 10;
-  nanba idhaan b = "two";
-  nanba idhaan c = 15;
+வணக்கம் நண்பா
+  இதான் நண்பா a = 10;
+  இதான் நண்பா b = "two";
+  இதான் நண்பா c = 15;
   a = a + 1;
   b = 21;
   c *= 2;
-nanri nanba
+நன்றி நண்பா
 ```
 
 <h3 align="center">Types</h3>
-<p align="center">Numbers and strings are like other languages. Null values can be denoted using <code>nalla. sahi and galat</code> are the boolean values.</p>
+<p align="center">Numbers and strings are like other languages. Null values can be denoted using <code>ஒன்னுமேயில்லை நண்பா. sahi and galat</code> are the boolean values.</p>
 
 ```
 
-vanakkam nanba
-  nanba idhaan a = 10;
-  nanba idhaan b = 10 + (15*20);
-  nanba idhaan c = "two";
-  nanba idhaan d = 'ok';
-  nanba idhaan e = nalla;
-  nanba idhaan f = sahi;
-  nanba idhaan g = galat;
-nanri nanba
+வணக்கம் நண்பா
+  இதான் நண்பா a = 10;
+  இதான் நண்பா b = 10 + (15*20);
+  இதான் நண்பா c = "two";
+  இதான் நண்பா d = 'ok';
+  இதான் நண்பா e = ஒன்னுமேயில்லை நண்பா;
+  இதான் நண்பா f = sahi;
+  இதான் நண்பா g = galat;
+நன்றி நண்பா
 ```
 
 <h3 align="center">Built-ins</h3>
-<p align="center">Use <code>sollu nanba</code> to print anything to console.</p>
+<p align="center">Use <code>சொல்லு நண்பா</code> to print anything to console.</p>
 
 ```
 
-vanakkam nanba
-  sollu nanba "Hello World";
-  nanba idhaan a = 10;
+வணக்கம் நண்பா
+  சொல்லு நண்பா "வணக்கமுங்க";
+  இதான் நண்பா a = 10;
   {
-    nanba idhaan b = 20;
-    sollu nanba a + b;
+    இதான் நண்பா b = 20;
+    சொல்லு நண்பா a + b;
   }
-  sollu nanba 5, 'ok', nalla , sahi , galat;
-nanri nanba
+  சொல்லு நண்பா 5, 'ok', ஒன்னுமேயில்லை நண்பா , sahi , galat;
+நன்றி நண்பா
 ```
 
 <h3 align="center">Conditionals</h3>
-<p align="center">Bhailang supports simple if else construct , <code>agar bhai</code> block will execute if condition is <code>sahi</code> and <code>warna bhai</code> block will execute if condition is <code>galat</code>.</p>
+<p align="center">Bhailang supports simple if else construct , <code>இப்படின்னா நண்பா</code> block will execute if condition is <code>sahi</code> and <code>அப்படி இல்லேன்னா</code> block will execute if condition is <code>galat</code>.</p>
 
 ```
 
-vanakkam nanba
-  nanba idhaan a = 10;
-  agar bhai (a < 25) {
-   sollu nanba "a is less than 25";
-  } warna bhai {
-   sollu nanba "a is greater than or equal to 25";
+வணக்கம் நண்பா
+  இதான் நண்பா a = 10;
+  இப்படின்னா நண்பா (a < 25) {
+   சொல்லு நண்பா "a is less than 25";
+  } அப்படி இல்லேன்னா {
+   சொல்லு நண்பா "a is greater than or equal to 25";
   }
-nanri nanba
+நன்றி நண்பா
 ```
 
 <h3 align="center">Loops</h3>
-<p align="center">Statements inside <code>jab tak bhai</code> blocks are executed as long as a specified condition evaluates to sahi. If the condition becomes <code>galat</code>, statement within the loop stops executing and control passes to the statement following the loop. Use <code>bas kar bhai</code> to break the loop and <code className="language-cpp">agla dekh bhai</code> to continue within loop.</p>
+<p align="center">Statements inside <code>இதுவரைக்கும் சுத்து நண்பா</code> blocks are executed as long as a specified condition evaluates to sahi. If the condition becomes <code>galat</code>, statement within the loop stops executing and control passes to the statement following the loop. Use <code>போதும் நண்பா</code> to break the loop and <code className="language-cpp">அடுத்தது நண்பா</code> to continue within loop.</p>
 
 
 ```
 
-vanakkam nanba
-  nanba idhaan a = 0;
-  jab tak bhai (a < 10) {
+வணக்கம் நண்பா
+  இதான் நண்பா a = 0;
+  இதுவரைக்கும் சுத்து நண்பா (a < 10) {
    a += 1;
-   agar bhai (a == 5) {
-    sollu nanba "andar se sollu nanba ", a;
-    agla dekh bhai;
+   இப்படின்னா நண்பா (a == 5) {
+    சொல்லு நண்பா "andar se சொல்லு நண்பா ", a;
+    அடுத்தது நண்பா;
    }
-   agar bhai (a == 6) {
-    bas kar bhai;
+   இப்படின்னா நண்பா (a == 6) {
+    போதும் நண்பா;
    }
-   sollu nanba a;
+   சொல்லு நண்பா a;
   }
-  sollu nanba "done";
-nanri nanba
+  சொல்லு நண்பா "done";
+நன்றி நண்பா
 ```
 
 

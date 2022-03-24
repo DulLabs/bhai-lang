@@ -12,7 +12,7 @@ export default class IdentifierExpression implements Visitor {
 
     let value = InterpreterModule.getCurrentScope().get(node.name);
 
-    if (value === null) value = "nalla";
+    if (value === null) value = "ஒன்னுமேயில்லை நண்பா";
     else if (value === true) value = "sahi";
     else if (value === false) value = "galat";
 

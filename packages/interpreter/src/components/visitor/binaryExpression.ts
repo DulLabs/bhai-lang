@@ -49,7 +49,7 @@ export default class BinaryExpression implements Visitor {
     }
 
     const nallaException = new NallaPointerException(
-      `Nalla operand ni jamta "${node.operator}" ke sath`
+      `ஒன்னுமேயில்லை நண்பா operand ni jamta "${node.operator}" ke sath`
     );
 
     if (

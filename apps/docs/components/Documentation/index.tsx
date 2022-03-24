@@ -7,17 +7,17 @@ const features = [
     name: "General",
     description: (
       <>
-        <code className="language-cpp">vanakkam nanba</code> is the entrypoint for the
+        <code className="language-cpp">வணக்கம் நண்பா</code> is the entrypoint for the
         program and all program must end with{" "}
-        <code className="language-cpp">nanri nanba</code>. Anything outside of it
+        <code className="language-cpp">நன்றி நண்பா</code>. Anything outside of it
         will be ignored.
       </>
     ),
     code: `This will be ignored
 
-vanakkam nanba
+வணக்கம் நண்பா
   // Write code here
-nanri nanba
+நன்றி நண்பா
 
 This too
     `,
@@ -27,17 +27,17 @@ This too
     description: (
       <>
         Variables can be declared using{" "}
-        <code className="language-cpp">nanba idhaan</code>.
+        <code className="language-cpp">இதான் நண்பா</code>.
       </>
     ),
-    code: `vanakkam nanba
-    nanba idhaan a = 10;
-    nanba idhaan b = "two";
-    nanba idhaan c = 15;
+    code: `வணக்கம் நண்பா
+    இதான் நண்பா a = 10;
+    இதான் நண்பா b = "two";
+    இதான் நண்பா c = 15;
     a = a + 1;
     b = 21;
     c *= 2;
-nanri nanba
+நன்றி நண்பா
     `,
   },
   {
@@ -45,83 +45,83 @@ nanri nanba
     description: (
       <>
         Numbers and strings are like other languages. Null values can be denoted
-        using <code className="language-cpp">nalla</code>.{" "}
+        using <code className="language-cpp">ஒன்னுமேயில்லை நண்பா</code>.{" "}
         <code className="language-cpp">sahi</code> and{" "}
         <code className="language-cpp">galat</code> are the boolean values.
       </>
     ),
-    code: `vanakkam nanba
-    nanba idhaan a = 10;
-    nanba idhaan b = 10 + (15*20);
-    nanba idhaan c = "two";
-    nanba idhaan d = 'ok';
-    nanba idhaan e = nalla;
-    nanba idhaan f = sahi;
-    nanba idhaan g = galat;
-nanri nanba
+    code: `வணக்கம் நண்பா
+    இதான் நண்பா a = 10;
+    இதான் நண்பா b = 10 + (15*20);
+    இதான் நண்பா c = "two";
+    இதான் நண்பா d = 'ok';
+    இதான் நண்பா e = ஒன்னுமேயில்லை நண்பா;
+    இதான் நண்பா f = sahi;
+    இதான் நண்பா g = galat;
+நன்றி நண்பா
     `,
   },
   {
     name: "Built-ins",
     description: (
       <>
-        Use <code className="language-cpp">sollu nanba</code> to print anything to
+        Use <code className="language-cpp">சொல்லு நண்பா</code> to print anything to
         console.
       </>
     ),
-    code: `vanakkam nanba
-    sollu nanba "Hello World";
-    nanba idhaan a = 10;
+    code: `வணக்கம் நண்பா
+    சொல்லு நண்பா "வணக்கமுங்க";
+    இதான் நண்பா a = 10;
     {
-       nanba idhaan b = 20;
-       sollu nanba a + b;
+       இதான் நண்பா b = 20;
+       சொல்லு நண்பா a + b;
     }
-    sollu nanba 5, 'ok', nalla , sahi , galat;
-nanri nanba
+    சொல்லு நண்பா 5, 'ok', ஒன்னுமேயில்லை நண்பா , sahi , galat;
+நன்றி நண்பா
     `,
   },
   {
     name: "Conditionals",
     description: (
       <>
-        Bhailang supports if-else-if ladder construct , <code className="language-cpp">agar bhai</code> block will execute if condition is <code className="language-cpp">sahi</code>, otherwise one of the subsequently added <code className="language-cpp">nahi to bhai</code> blocks will execute if their respective condition is <code className="language-cpp">sahi</code>, and the <code className="language-cpp">warna bhai</code> block will eventually execute if all of the above conditions are <code className="language-cpp">galat</code>.
+        Bhailang supports if-else-if ladder construct , <code className="language-cpp">இப்படின்னா நண்பா</code> block will execute if condition is <code className="language-cpp">sahi</code>, otherwise one of the subsequently added <code className="language-cpp">இல்ல ஒருவேளை</code> blocks will execute if their respective condition is <code className="language-cpp">sahi</code>, and the <code className="language-cpp">அப்படி இல்லேன்னா</code> block will eventually execute if all of the above conditions are <code className="language-cpp">galat</code>.
       </>
     ),
-    code: `vanakkam nanba
-    nanba idhaan a = 10;
-    agar bhai (a < 20) {
-      sollu nanba "a is less than 20";
-    } nahi to bhai ( a < 25 ) {
-      sollu nanba "a is less than 25";
-    } warna bhai {
-      sollu nanba "a is greater than or equal to 25";
+    code: `வணக்கம் நண்பா
+    இதான் நண்பா a = 10;
+    இப்படின்னா நண்பா (a < 20) {
+      சொல்லு நண்பா "a is less than 20";
+    } இல்ல ஒருவேளை ( a < 25 ) {
+      சொல்லு நண்பா "a is less than 25";
+    } அப்படி இல்லேன்னா {
+      சொல்லு நண்பா "a is greater than or equal to 25";
     }
-nanri nanba
+நன்றி நண்பா
     `
   },
   {
     name: "Loops",
     description: (
       <>
-        Statements inside <code className="language-cpp">jab tak bhai</code> blocks are executed as long as a specified condition evaluates to <code className="language-cpp">sahi</code>. If the condition becomes <code className="language-cpp">galat</code>, statement within the loop stops executing and control passes to the statement following the loop. 
-        Use <code className="language-cpp">bas kar bhai</code> to break the loop and <code className="language-cpp">agla dekh bhai</code> to continue within loop.
+        Statements inside <code className="language-cpp">இதுவரைக்கும் சுத்து நண்பா</code> blocks are executed as long as a specified condition evaluates to <code className="language-cpp">sahi</code>. If the condition becomes <code className="language-cpp">galat</code>, statement within the loop stops executing and control passes to the statement following the loop. 
+        Use <code className="language-cpp">போதும் நண்பா</code> to break the loop and <code className="language-cpp">அடுத்தது நண்பா</code> to continue within loop.
       </>
     ),
-    code: `vanakkam nanba
-    nanba idhaan a = 0;
-    jab tak bhai (a < 10) {
+    code: `வணக்கம் நண்பா
+    இதான் நண்பா a = 0;
+    இதுவரைக்கும் சுத்து நண்பா (a < 10) {
       a += 1;
-      agar bhai (a == 5) {
-        sollu nanba "andar se sollu nanba ", a;
-        agla dekh bhai;
+      இப்படின்னா நண்பா (a == 5) {
+        சொல்லு நண்பா "andar se சொல்லு நண்பா ", a;
+        அடுத்தது நண்பா;
       }
-      agar bhai (a == 6) {
-        bas kar bhai;
+      இப்படின்னா நண்பா (a == 6) {
+        போதும் நண்பா;
       }
-      sollu nanba a;
+      சொல்லு நண்பா a;
     }
-    sollu nanba "done";
-nanri nanba
+    சொல்லு நண்பா "done";
+நன்றி நண்பா
     `
   }
 

@@ -6,233 +6,233 @@ export const NegativeTestCases = [
   {
     name: "interpreter assigning variable before declaration test, should throw an exception",
     input: `
-          vanakkam nanba;
+          வணக்கம் நண்பா;
           a = 4;
-          nanri nanba;
+          நன்றி நண்பா;
         `,
     exception: RuntimeException,
   },
   {
     name: "interpreter assigning variable before declaration test with addition, should throw an exception",
     input: `
-          vanakkam nanba;
+          வணக்கம் நண்பா;
           a += 4;
-          nanri nanba;
+          நன்றி நண்பா;
         `,
     exception: RuntimeException,
   },
   {
     name: "interpreter assigning variable before declaration test with subtraction, should throw an exception",
     input: `
-          vanakkam nanba;
+          வணக்கம் நண்பா;
           a -= 4;
-          nanri nanba;
+          நன்றி நண்பா;
         `,
     exception: RuntimeException,
   },
   {
     name: "interpreter assigning variable before declaration test with multiplication, should throw an exception",
     input: `
-          vanakkam nanba;
+          வணக்கம் நண்பா;
           a -= 4;
-          nanri nanba;
+          நன்றி நண்பா;
         `,
     exception: RuntimeException,
   },
   {
     name: "interpreter assigning variable before declaration test with division, should throw an exception",
     input: `
-          vanakkam nanba;
+          வணக்கம் நண்பா;
           a /= 4;
-          nanri nanba;
+          நன்றி நண்பா;
         `,
     exception: RuntimeException,
   },
   {
     name: "interpreter assigning variable before declaration test - 2, should throw an exception",
     input: `
-          vanakkam nanba;
+          வணக்கம் நண்பா;
           a;
-          nanri nanba;
+          நன்றி நண்பா;
         `,
     exception: RuntimeException,
   },
   {
     name: "interpreter adding two variables before declaration test, should throw an exception",
     input: `
-          vanakkam nanba;
+          வணக்கம் நண்பா;
           a + b;
-          nanri nanba;
+          நன்றி நண்பா;
         `,
     exception: RuntimeException,
   },
   {
     name: "interpreter adding variable with constant before declaration test, should throw an exception",
     input: `
-          vanakkam nanba;
+          வணக்கம் நண்பா;
           a + 4;
-          nanri nanba;
+          நன்றி நண்பா;
         `,
     exception: RuntimeException,
   },
   {
     name: "interpreter subtracting variable with constant before declaration test, should throw an exception",
     input: `
-          vanakkam nanba;
+          வணக்கம் நண்பா;
           a - 4;
-          nanri nanba;
+          நன்றி நண்பா;
         `,
     exception: RuntimeException,
   },
   {
     name: "interpreter subtracting two variables before declaration test, should throw an exception",
     input: `
-          vanakkam nanba;
+          வணக்கம் நண்பா;
           a - b;
-          nanri nanba;
+          நன்றி நண்பா;
         `,
     exception: RuntimeException,
   },
   {
     name: "interpreter multiplying variable with constant before declaration test, should throw an exception",
     input: `
-          vanakkam nanba;
+          வணக்கம் நண்பா;
           a * 4;
-          nanri nanba;
+          நன்றி நண்பா;
         `,
     exception: RuntimeException,
   },
   {
     name: "interpreter multiplying two variables before declaration test, should throw an exception",
     input: `
-          vanakkam nanba;
+          வணக்கம் நண்பா;
           a * b;
-          nanri nanba;
+          நன்றி நண்பா;
         `,
     exception: RuntimeException,
   },
   {
     name: "interpreter dividing variable with constant before declaration test, should throw an exception",
     input: `
-          vanakkam nanba;
+          வணக்கம் நண்பா;
           a / 4;
-          nanri nanba;
+          நன்றி நண்பா;
         `,
     exception: RuntimeException,
   },
   {
     name: "interpreter dividing two variables before declaration test, should throw an exception",
     input: `
-          vanakkam nanba;
+          வணக்கம் நண்பா;
           a / b;
-          nanri nanba;
+          நன்றி நண்பா;
         `,
     exception: RuntimeException,
   },
   {
     name: "interpreter printing variable before declaration test, should throw an exception",
     input: `
-          vanakkam nanba;
-          sollu nanba a;
-          nanri nanba;
+          வணக்கம் நண்பா;
+          சொல்லு நண்பா a;
+          நன்றி நண்பா;
         `,
     exception: RuntimeException,
   },
   {
     name: "interpreter printing multiple variables before declaration test, should throw an exception",
     input: `
-          vanakkam nanba;
-          sollu nanba a, b;
-          nanri nanba;
+          வணக்கம் நண்பா;
+          சொல்லு நண்பா a, b;
+          நன்றி நண்பா;
         `,
     exception: RuntimeException,
   },
   {
     name: "interpreter printing multiple variables with only one of them declared, should throw an exception",
     input: `
-          vanakkam nanba;
-          nanba idhaan a = 8;
-          sollu nanba a, b;
-          nanri nanba;
+          வணக்கம் நண்பா;
+          இதான் நண்பா a = 8;
+          சொல்லு நண்பா a, b;
+          நன்றி நண்பா;
         `,
     exception: RuntimeException,
   },
   {
     name: "interpreter declaring multiple variables with chain assignment, should throw an exception",
     input: `
-          vanakkam nanba;
-          nanba idhaan a = b = 8;
-          nanri nanba;
+          வணக்கம் நண்பா;
+          இதான் நண்பா a = b = 8;
+          நன்றி நண்பா;
         `,
     exception: RuntimeException,
   },
   {
     name: "interpreter re declare already declared variable, should throw an exception",
     input: `
-        vanakkam nanba;
-        nanba idhaan a;
+        வணக்கம் நண்பா;
+        இதான் நண்பா a;
         a = 9;
-        nanba idhaan a = 0;
-        nanri nanba;
+        இதான் நண்பா a = 0;
+        நன்றி நண்பா;
       `,
     exception: RuntimeException,
   },
-  // cases with nalla
+  // cases with ஒன்னுமேயில்லை நண்பா
   {
-    name: "interpreter use nalla variable in expression, should throw an exception",
+    name: "interpreter use ஒன்னுமேயில்லை நண்பா variable in expression, should throw an exception",
     input: `
-      vanakkam nanba;
-      nanba idhaan a;
-      sollu nanba a + 9;
-      nanri nanba;
+      வணக்கம் நண்பா;
+      இதான் நண்பா a;
+      சொல்லு நண்பா a + 9;
+      நன்றி நண்பா;
     `,
     exception: NallaPointerException,
   },
   {
-    name: "interpreter use nalla variable in expression - 2, should throw an exception",
+    name: "interpreter use ஒன்னுமேயில்லை நண்பா variable in expression - 2, should throw an exception",
     input: `
-      vanakkam nanba;
-      nanba idhaan a = nalla;
-      sollu nanba a + 9;
-      nanri nanba;
+      வணக்கம் நண்பா;
+      இதான் நண்பா a = ஒன்னுமேயில்லை நண்பா;
+      சொல்லு நண்பா a + 9;
+      நன்றி நண்பா;
     `,
     exception: NallaPointerException,
   },
   {
-    name: "interpreter use nalla in variable initialisation expression, should throw an exception",
+    name: "interpreter use ஒன்னுமேயில்லை நண்பா in variable initialisation expression, should throw an exception",
     input: `
-      vanakkam nanba;
-      nanba idhaan a = nalla + 80;
-      nanri nanba;
+      வணக்கம் நண்பா;
+      இதான் நண்பா a = ஒன்னுமேயில்லை நண்பா + 80;
+      நன்றி நண்பா;
     `,
     exception: NallaPointerException,
   },
   {
-    name: "interpreter use nalla in variable initialisation expression - 2, should throw an exception",
+    name: "interpreter use ஒன்னுமேயில்லை நண்பா in variable initialisation expression - 2, should throw an exception",
     input: `
-      vanakkam nanba;
-      nanba idhaan a = nalla + "jam";
-      nanri nanba;
+      வணக்கம் நண்பா;
+      இதான் நண்பா a = ஒன்னுமேயில்லை நண்பா + "jam";
+      நன்றி நண்பா;
     `,
     exception: NallaPointerException,
   },
   {
-    name: "interpreter use nalla variable in another variable initialisation expression, should throw an exception",
+    name: "interpreter use ஒன்னுமேயில்லை நண்பா variable in another variable initialisation expression, should throw an exception",
     input: `
-      vanakkam nanba;
-      nanba idhaan a;
-      nanba idhaan b = a + "hello";
-      nanri nanba;
+      வணக்கம் நண்பா;
+      இதான் நண்பா a;
+      இதான் நண்பா b = a + "hello";
+      நன்றி நண்பா;
     `,
     exception: NallaPointerException,
   },
   {
-    name: "interpreter use nalla variable in complex expression, should throw an exception",
+    name: "interpreter use ஒன்னுமேயில்லை நண்பா variable in complex expression, should throw an exception",
     input: `
-      vanakkam nanba;
-      nanba idhaan a;
-      nanba idhaan b = ((a*9) * a + "hello");
-      nanri nanba;
+      வணக்கம் நண்பா;
+      இதான் நண்பா a;
+      இதான் நண்பா b = ((a*9) * a + "hello");
+      நன்றி நண்பா;
     `,
     exception: NallaPointerException,
   },
@@ -240,201 +240,201 @@ export const NegativeTestCases = [
   {
     name: "interpreter use sahi variable in expression, should throw an exception",
     input: `
-      vanakkam nanba;
-      nanba idhaan a = sahi;
-      sollu nanba a + 9;
-      nanri nanba;
+      வணக்கம் நண்பா;
+      இதான் நண்பா a = sahi;
+      சொல்லு நண்பா a + 9;
+      நன்றி நண்பா;
     `,
     exception: RuntimeException,
   },
   {
     name: "interpreter use galat variable in expression, should throw an exception",
     input: `
-      vanakkam nanba;
-      nanba idhaan a = galat;
-      sollu nanba a + 9;
-      nanri nanba;
+      வணக்கம் நண்பா;
+      இதான் நண்பா a = galat;
+      சொல்லு நண்பா a + 9;
+      நன்றி நண்பா;
     `,
     exception: RuntimeException,
   },
   {
     name: "interpreter use sahi in variable initialisation expression, should throw an exception",
     input: `
-      vanakkam nanba;
-      nanba idhaan a = sahi + 80;
-      nanri nanba;
+      வணக்கம் நண்பா;
+      இதான் நண்பா a = sahi + 80;
+      நன்றி நண்பா;
     `,
     exception: RuntimeException,
   },
   {
     name: "interpreter use galat in variable initialisation expression, should throw an exception",
     input: `
-      vanakkam nanba;
-      nanba idhaan a = galat + 80;
-      nanri nanba;
+      வணக்கம் நண்பா;
+      இதான் நண்பா a = galat + 80;
+      நன்றி நண்பா;
     `,
     exception: RuntimeException,
   },
   {
     name: "interpreter use sahi variable in another variable initialisation expression, should throw an exception",
     input: `
-      vanakkam nanba;
-      nanba idhaan a = sahi;
-      nanba idhaan b = a + "hello";
-      nanri nanba;
+      வணக்கம் நண்பா;
+      இதான் நண்பா a = sahi;
+      இதான் நண்பா b = a + "hello";
+      நன்றி நண்பா;
     `,
     exception: RuntimeException,
   },
   {
     name: "interpreter use galat variable in complex expression, should throw an exception",
     input: `
-      vanakkam nanba;
-      nanba idhaan a = galat;
-      nanba idhaan b = ((a*9) * a + "hello");
-      nanri nanba;
+      வணக்கம் நண்பா;
+      இதான் நண்பா a = galat;
+      இதான் நண்பா b = ((a*9) * a + "hello");
+      நன்றி நண்பா;
     `,
     exception: RuntimeException,
   },
   // ##########
 
   {
-    name: "complex expression test with one nalla operand, should throw an exception",
+    name: "complex expression test with one ஒன்னுமேயில்லை நண்பா operand, should throw an exception",
     input: `
-        vanakkam nanba
-        (nalla * (4 + 8 + 10));
-        nanri nanba
+        வணக்கம் நண்பா
+        (ஒன்னுமேயில்லை நண்பா * (4 + 8 + 10));
+        நன்றி நண்பா
       `,
     output: NallaPointerException,
   },
   {
-    name: "complex expression test with one nalla operand and one boolean operand, should throw an exception",
+    name: "complex expression test with one ஒன்னுமேயில்லை நண்பா operand and one boolean operand, should throw an exception",
     input: `
-        vanakkam nanba
-        (nalla * (sahi + 8 + 10));
-        nanri nanba
+        வணக்கம் நண்பா
+        (ஒன்னுமேயில்லை நண்பா * (sahi + 8 + 10));
+        நன்றி நண்பா
       `,
     output: RuntimeException,
   },
   {
-    name: "complex expression test with one nalla operand and one boolean operand - 2, should throw nalla pointer exception",
+    name: "complex expression test with one ஒன்னுமேயில்லை நண்பா operand and one boolean operand - 2, should throw ஒன்னுமேயில்லை நண்பா pointer exception",
     input: `
-        vanakkam nanba
-        (sahi * (nalla + 8 + 10));
-        nanri nanba
+        வணக்கம் நண்பா
+        (sahi * (ஒன்னுமேயில்லை நண்பா + 8 + 10));
+        நன்றி நண்பா
       `,
     output: NallaPointerException,
   },
   {
-    name: "complex expression test with one nalla operand and one boolean operand - 3, should throw nalla pointer exception",
+    name: "complex expression test with one ஒன்னுமேயில்லை நண்பா operand and one boolean operand - 3, should throw ஒன்னுமேயில்லை நண்பா pointer exception",
     input: `
-        vanakkam nanba
-        (nalla + sahi);
-        nanri nanba
+        வணக்கம் நண்பா
+        (ஒன்னுமேயில்லை நண்பா + sahi);
+        நன்றி நண்பா
       `,
     output: NallaPointerException,
   },
   {
     name: "complex expression test with one boolean operand, should throw an exception",
     input: `
-        vanakkam nanba
+        வணக்கம் நண்பா
         (sahi * (4 + 8 + 10));
-        nanri nanba
+        நன்றி நண்பா
       `,
     output: RuntimeException,
   },
   {
     name: "additive expression test with only boolean operand, should throw an exception",
     input: `
-        vanakkam nanba
+        வணக்கம் நண்பா
         sahi + galat;
-        nanri nanba
+        நன்றி நண்பா
       `,
     output: RuntimeException,
   },
   {
     name: "additive expression test with only variable boolean operand, should throw an exception",
     input: `
-        vanakkam nanba
-        nanba idhaan a = sahi, b = galat;
+        வணக்கம் நண்பா
+        இதான் நண்பா a = sahi, b = galat;
         a + b;
-        nanri nanba
+        நன்றி நண்பா
       `,
     output: RuntimeException,
   },
   {
     name: "multiplicative expression test with only boolean operand, should throw an exception",
     input: `
-        vanakkam nanba
+        வணக்கம் நண்பா
         sahi * galat;
-        nanri nanba
+        நன்றி நண்பா
       `,
     output: RuntimeException,
   },
   {
     name: "multiplicative expression test with only variable boolean operand, should throw an exception",
     input: `
-        vanakkam nanba
-        nanba idhaan a = sahi, b = galat;
+        வணக்கம் நண்பா
+        இதான் நண்பா a = sahi, b = galat;
         a * b;
-        nanri nanba
+        நன்றி நண்பா
       `,
     output: RuntimeException,
   },
   {
     name: "division expression test with only boolean operand, should throw an exception",
     input: `
-        vanakkam nanba
+        வணக்கம் நண்பா
         sahi / galat;
-        nanri nanba
+        நன்றி நண்பா
       `,
     output: RuntimeException,
   },
   {
     name: "division expression test with only variable boolean operand, should throw an exception",
     input: `
-        vanakkam nanba
-        nanba idhaan a = sahi, b = galat;
+        வணக்கம் நண்பா
+        இதான் நண்பா a = sahi, b = galat;
         a / b;
-        nanri nanba
+        நன்றி நண்பா
       `,
     output: RuntimeException,
   },
   {
-    name: "print statement test with expression containing nalla, should throw an exception",
+    name: "print statement test with expression containing ஒன்னுமேயில்லை நண்பா, should throw an exception",
     input: `
-        vanakkam nanba
-        sollu nanba nalla + 5;
-        nanri nanba;
+        வணக்கம் நண்பா
+        சொல்லு நண்பா ஒன்னுமேயில்லை நண்பா + 5;
+        நன்றி நண்பா;
       `,
     output: NallaPointerException,
   },
   {
-    name: "complex assign test with expression containing nalla, should throw an exception",
+    name: "complex assign test with expression containing ஒன்னுமேயில்லை நண்பா, should throw an exception",
     input: `
-        vanakkam nanba
-        nanba idhaan a;
+        வணக்கம் நண்பா
+        இதான் நண்பா a;
         a *= 5;
-        nanri nanba;
+        நன்றி நண்பா;
       `,
     output: NallaPointerException,
   },
   {
     name: "complex assign test with expression containing sahi, should throw an exception",
     input: `
-        vanakkam nanba
-        nanba idhaan a = sahi;
+        வணக்கம் நண்பா
+        இதான் நண்பா a = sahi;
         a *= 5;
-        nanri nanba;
+        நன்றி நண்பா;
       `,
     output: NallaPointerException,
   },
   {
-    name: "complex assign test with expression containing nalla - 2, should throw an exception",
+    name: "complex assign test with expression containing ஒன்னுமேயில்லை நண்பா - 2, should throw an exception",
     input: `
-        vanakkam nanba
-        nanba idhaan a = nalla;
+        வணக்கம் நண்பா
+        இதான் நண்பா a = ஒன்னுமேயில்லை நண்பா;
         a /= 5;
-        nanri nanba;
+        நன்றி நண்பா;
       `,
     output: NallaPointerException,
   },
@@ -442,54 +442,54 @@ export const NegativeTestCases = [
   {
     name: "infinite while loop, should throw an exception",
     input: `
-        vanakkam nanba
-        jab tak bhai (sahi) {
+        வணக்கம் நண்பா
+        இதுவரைக்கும் சுத்து நண்பா (sahi) {
 
         }
-        nanri nanba;
+        நன்றி நண்பா;
       `,
     output: RuntimeException,
   },
   {
     name: "infinite condition while loop, should throw an exception",
     input: `
-        vanakkam nanba
-        nanba idhaan a = 0;
-        jab tak bhai (a < 2) {
-          sollu nanba "bhai";
+        வணக்கம் நண்பா
+        இதான் நண்பா a = 0;
+        இதுவரைக்கும் சுத்து நண்பா (a < 2) {
+          சொல்லு நண்பா "bhai";
         }
-        nanri nanba;
+        நன்றி நண்பா;
       `,
     output: RuntimeException,
   },
   {
     name: "invalid use of break, should throw an exception",
     input: `
-        vanakkam nanba
-        nanba idhaan a = 0;
-        agar bhai (sahi)
-          bas kar bhai;
-        nanri nanba;
+        வணக்கம் நண்பா
+        இதான் நண்பா a = 0;
+        இப்படின்னா நண்பா (sahi)
+          போதும் நண்பா;
+        நன்றி நண்பா;
       `,
     output: RuntimeException,
   },
   // logical expression negative tests
   {
-    name: "use of nalla with &&, should throw an exception",
+    name: "use of ஒன்னுமேயில்லை நண்பா with &&, should throw an exception",
     input: `
-        vanakkam nanba
-        sollu nanba nalla && 90;
-        nanri nanba;
+        வணக்கம் நண்பா
+        சொல்லு நண்பா ஒன்னுமேயில்லை நண்பா && 90;
+        நன்றி நண்பா;
       `,
     output: NallaPointerException,
   },
   {
-    name: "use of nalla variable with &&, should throw an exception",
+    name: "use of ஒன்னுமேயில்லை நண்பா variable with &&, should throw an exception",
     input: `
-        vanakkam nanba
-        nanba idhaan a;
-        sollu nanba a && 90;
-        nanri nanba;
+        வணக்கம் நண்பா
+        இதான் நண்பா a;
+        சொல்லு நண்பா a && 90;
+        நன்றி நண்பா;
       `,
     output: NallaPointerException,
   },
@@ -497,9 +497,9 @@ export const NegativeTestCases = [
   {
     name: `modulus operator test with invalid operand, should throw an exception`,
     input: `
-      vanakkam nanba;
-      sollu nanba "sahi" % 9;
-      nanri nanba;
+      வணக்கம் நண்பா;
+      சொல்லு நண்பா "sahi" % 9;
+      நன்றி நண்பா;
     `,
     output: RuntimeException,
   },
@@ -507,24 +507,24 @@ export const NegativeTestCases = [
   {
     name: "infinite condition while loop with continue, should throw an exception",
     input: `
-        vanakkam nanba
-        nanba idhaan a = 0;
-        jab tak bhai (a < 2) {
-          agla dekh bhai;
+        வணக்கம் நண்பா
+        இதான் நண்பா a = 0;
+        இதுவரைக்கும் சுத்து நண்பா (a < 2) {
+          அடுத்தது நண்பா;
           a = 5;
         }
-        nanri nanba;
+        நன்றி நண்பா;
       `,
     output: RuntimeException,
   },
   {
     name: "invalid use of continue, should throw an exception",
     input: `
-        vanakkam nanba
-        nanba idhaan a = 0;
-        agar bhai (sahi)
-          agla dekh bhai
-        nanri nanba;
+        வணக்கம் நண்பா
+        இதான் நண்பா a = 0;
+        இப்படின்னா நண்பா (sahi)
+          அடுத்தது நண்பா
+        நன்றி நண்பா;
       `,
     output: RuntimeException,
   },

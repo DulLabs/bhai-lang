@@ -1,27 +1,27 @@
 export const TokenTypes = {
   NULL_TYPE: null,
 
-  HI_BHAI_TYPE: "vanakkam nanba",
+  HI_BHAI_TYPE: "வணக்கம் நண்பா",
   
-  BYE_BHAI_TYPE: "nanri nanba",
+  BYE_BHAI_TYPE: "நன்றி நண்பா",
 
-  BOL_BHAI_TYPE: "sollu nanba",
+  BOL_BHAI_TYPE: "சொல்லு நண்பா",
 
-  BHAI_YE_HAI_TYPE: "nanba idhaan",
+  BHAI_YE_HAI_TYPE: "இதான் நண்பா",
 
-  AGAR_BHAI: "agar bhai",
+  AGAR_BHAI: "இப்படின்னா நண்பா",
 
-  WARNA_BHAI: "warna bhai",
+  WARNA_BHAI: "அப்படி இல்லேன்னா",
 
-  NAHI_TO_BHAI: "nahi to bhai",
+  NAHI_TO_BHAI: "இல்ல ஒருவேளை",
 
-  JAB_TAK_BHAI: "jab tak bhai",
+  JAB_TAK_BHAI: "இதுவரைக்கும் சுத்து நண்பா",
 
-  BAS_KAR_BHAI: "bas kar bhai",
+  BAS_KAR_BHAI: "போதும் நண்பா",
 
-  AGLA_DEKH_BHAI: "agla dekh bhai",
+  AGLA_DEKH_BHAI: "அடுத்தது நண்பா",
 
-  NALLA_TYPE: "NALLA",
+  NALLA_TYPE: "ஒன்னுமேயில்லை நண்பா",
 
   SEMI_COLON_TYPE: ";",
 
@@ -79,17 +79,17 @@ export const SPEC = [
   { regex: /^,/, tokenType: TokenTypes.COMMA_TYPE },
   
   //Keywords
-  { regex: /^(?!\\S)vanakkam nanba(?!\\S)/u, tokenType: TokenTypes.HI_BHAI_TYPE },
-  { regex: /^\bnanri nanba\b/, tokenType: TokenTypes.BYE_BHAI_TYPE },
-  { regex: /^\bsollu nanba\b/, tokenType: TokenTypes.BOL_BHAI_TYPE },
-  { regex: /^\bnanba idhaan\b/, tokenType: TokenTypes.BHAI_YE_HAI_TYPE },
-  { regex: /^\bagar bhai\b/, tokenType: TokenTypes.AGAR_BHAI },
-  { regex: /^\bnahi to bhai\b/, tokenType: TokenTypes.NAHI_TO_BHAI },
-  { regex: /^\bwarna bhai\b/, tokenType: TokenTypes.WARNA_BHAI },
-  { regex: /^\bnalla\b/, tokenType: TokenTypes.NALLA_TYPE },
-  { regex: /^\bjab tak bhai\b/, tokenType: TokenTypes.JAB_TAK_BHAI },
-  { regex: /^\bbas kar bhai\b/, tokenType: TokenTypes.BAS_KAR_BHAI },
-  { regex: /^\bagla dekh bhai\b/, tokenType: TokenTypes.AGLA_DEKH_BHAI },
+  { regex: /^(?!\\S)வணக்கம் நண்பா(?!\\S)/u, tokenType: TokenTypes.HI_BHAI_TYPE },
+  { regex: /^(?!\\S)நன்றி நண்பா(?!\\S)/u, tokenType: TokenTypes.BYE_BHAI_TYPE },
+  { regex: /^(?!\\S)சொல்லு நண்பா(?!\\S)/u, tokenType: TokenTypes.BOL_BHAI_TYPE },
+  { regex: /^(?!\\S)இதான் நண்பா(?!\\S)/u, tokenType: TokenTypes.BHAI_YE_HAI_TYPE },
+  { regex: /^(?!\\S)இப்படின்னா நண்பா(?!\\S)/u, tokenType: TokenTypes.AGAR_BHAI },
+  { regex: /^(?!\\S)இல்ல ஒருவேளை(?!\\S)/u, tokenType: TokenTypes.NAHI_TO_BHAI },
+  { regex: /^(?!\\S)அப்படி இல்லேன்னா(?!\\S)/u, tokenType: TokenTypes.WARNA_BHAI },
+  { regex: /^(?!\\S)ஒன்னுமேயில்லை நண்பா(?!\\S)/u, tokenType: TokenTypes.NALLA_TYPE },
+  { regex: /^(?!\\S)இதுவரைக்கும் சுத்து நண்பா(?!\\S)/u, tokenType: TokenTypes.JAB_TAK_BHAI },
+  { regex: /^(?!\\S)போதும் நண்பா(?!\\S)/u, tokenType: TokenTypes.BAS_KAR_BHAI },
+  { regex: /^(?!\\S)அடுத்தது நண்பா(?!\\S)/u, tokenType: TokenTypes.AGLA_DEKH_BHAI },
 
   // Number
   { regex: /^-?\d+/, tokenType: TokenTypes.NUMBER_TYPE },
@@ -100,6 +100,7 @@ export const SPEC = [
 
   // Identifier
   { regex: /^[\p{Alphabetic}\p{Mark}\p{Decimal_Number}\p{Connector_Punctuation}]+/u, tokenType: TokenTypes.IDENTIFIER_TYPE },
+  //{ regex: /^\w+/, tokenType: TokenTypes.IDENTIFIER_TYPE },
 
 
   // Equality operator: ==, !=
