@@ -2,7 +2,7 @@ export const TokenTypes = {
   NULL_TYPE: null,
 
   HI_BHAI_TYPE: "vanakkam nanba",
-
+  
   BYE_BHAI_TYPE: "nanri nanba",
 
   BOL_BHAI_TYPE: "sollu nanba",
@@ -77,9 +77,9 @@ export const SPEC = [
   { regex: /^\(/, tokenType: TokenTypes.OPEN_PARENTHESIS_TYPE },
   { regex: /^\)/, tokenType: TokenTypes.CLOSED_PARENTHESIS_TYPE },
   { regex: /^,/, tokenType: TokenTypes.COMMA_TYPE },
-
+  
   //Keywords
-  { regex: /^\bvanakkam nanba\b/, tokenType: TokenTypes.HI_BHAI_TYPE },
+  { regex: /^(?!\\S)vanakkam nanba(?!\\S)/u, tokenType: TokenTypes.HI_BHAI_TYPE },
   { regex: /^\bnanri nanba\b/, tokenType: TokenTypes.BYE_BHAI_TYPE },
   { regex: /^\bsollu nanba\b/, tokenType: TokenTypes.BOL_BHAI_TYPE },
   { regex: /^\bnanba idhaan\b/, tokenType: TokenTypes.BHAI_YE_HAI_TYPE },
@@ -99,7 +99,8 @@ export const SPEC = [
   { regex: /^\bgalat\b/, tokenType: TokenTypes.BOOLEAN_TYPE },
 
   // Identifier
-  { regex: /^\w+/, tokenType: TokenTypes.IDENTIFIER_TYPE },
+  { regex: /^[\p{Alphabetic}\p{Mark}\p{Decimal_Number}\p{Connector_Punctuation}]+/u, tokenType: TokenTypes.IDENTIFIER_TYPE },
+
 
   // Equality operator: ==, !=
   {regex: /^[=!]=/, tokenType: TokenTypes.EQUALITY_OPERATOR},
