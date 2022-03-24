@@ -4,6 +4,7 @@ import chalk from "chalk";
 import fs from "fs";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
+import { version } from "../package.json";
 
 console.info(
   chalk.hex("#83aaff")(`
@@ -17,6 +18,8 @@ console.info(
 https://github.com/DulLabs/bhai-lang
 `)
 );
+
+yargs.version(version);
 
 const cl = console.log;
 
