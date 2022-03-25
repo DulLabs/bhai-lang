@@ -6,10 +6,10 @@ import { sendEvents } from "../../helpers";
 
 import CodeEditor from "./CodeEditor";
 import Terminal from "./Terminal";
+import MonacoCodeEditor from "./CodeEditor/MonacoCodeEditor";
+import { OnChange } from "@monaco-editor/react";
 
-
-const initialCode = `
-hi bhai
+const initialCode = `hi bhai
  bol bhai "Hello World";
  
   bhai ye hai a = 3;
@@ -38,8 +38,9 @@ const Code = (props: Props) => {
   );
   const [isSuccess, setIsSuccess] = useState<boolean | null>(null);
 
-  const handleChange = (newCode: string) => {
-    setCode(newCode);
+  // Onchange is the event handler interface for React Monaco Editor
+  const handleChange: OnChange = (newCode, event) => {
+    setCode(newCode || "");
   };
 
   const executeCode = () => {
@@ -61,7 +62,7 @@ const Code = (props: Props) => {
       }
     }
 
-    sendEvents("CodeExecuted", {success: isExecusionSuccess});
+    sendEvents("CodeExecuted", { success: isExecusionSuccess });
 
     setIsSuccess(isExecusionSuccess);
     setOutput(outputList);
@@ -98,7 +99,8 @@ const Code = (props: Props) => {
           </button>
         </div>
       </div>
-      <CodeEditor handleChange={handleChange} code={code} />
+      {/* <CodeEditor handleChange={handleChange} code={code} /> */}
+      <MonacoCodeEditor handleChange={handleChange} code={code} />
       <Terminal output={output} isSuccess={isSuccess} />
     </div>
   );

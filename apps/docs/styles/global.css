@@ -1,84 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 @import "prismjs/themes/prism-tomorrow.css";
 
 html {
-	scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
-	html {
-		scroll-behavior: auto;
-	}
+  html {
+    scroll-behavior: auto;
+  }
 }
 
-.header{
-	min-height: 70vh;
+.header {
+  min-height: 70vh;
 }
 
-.playground-editor{
-	position: relative;
+.playground-editor {
+  position: relative;
 }
 
 .editor-container {
-	height: 60vh;
-	overflow: auto;
-	tab-size: 4ch;
-	color: #fff;
-	background-color: #333;
+  height: 60vh;
+  overflow: auto;
+  tab-size: 4ch;
+  color: #fff;
+  background-color: #333;
 }
 
 .editorLineNumber {
-	position: absolute;
-	left: 0px;
-	color: #8a8a8a;
-	text-align: right;
-	width: 40px;
+  position: absolute;
+  left: 0px;
+  color: #8a8a8a;
+  text-align: right;
+  width: 40px;
 }
 
 .editor {
-	counter-reset: line;
+  counter-reset: line;
 }
 
-.editor pre{
-	padding-left: 5rem !important;
-	height: 100%
+.editor pre {
+  padding-left: 5rem !important;
+  height: 100%;
 }
 
 .codeArea {
-	overflow-wrap: normal !important;
-	word-break: keep-all !important;
-	outline: none;
-	padding-top: 1rem;
-	padding-left: 5rem !important;
-	/* z-index: 999999999; */
-	white-space: nowrap;
+  overflow-wrap: normal !important;
+  word-break: keep-all !important;
+  outline: none;
+  padding-top: 1rem;
+  padding-left: 5rem !important;
+  /* z-index: 999999999; */
+  white-space: nowrap;
 }
 
 .terminal {
   overflow-y: scroll;
-  transition-property: max-height, padding; 
-	transition-duration: 0.2s;
-	transition-timing-function: ease-in-out;
-  height:auto;
+  transition-property: max-height, padding;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+  height: auto;
   max-height: 30rem;
-	padding: 2rem;
-	opacity: 1;
+  padding: 1rem 2rem;
+  opacity: 1;
 }
 
-.terminal .output{
-	opacity: 1;
-	transition: opacity 0.5s;
-	transition-delay: 0.3s;
+.terminal::-webkit-scrollbar {
+  width: 6px;
+  height: 80%;
+}
+
+.terminal::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.terminal::-webkit-scrollbar-thumb {
+  background-color: hsla(150, 70%, 60%, 0.8);
+  border-radius: 4px;
+}
+.terminal:hover::-webkit-scrollbar-thumb {
+  background-color: hsl(150, 70%, 60%);
+  border-radius: 4px;
+}
+
+.terminal::-webkit-scrollbar-track-piece:end {
+  background: transparent;
+  margin-bottom: 10px;
+}
+
+.terminal::-webkit-scrollbar-track-piece:start {
+  background: transparent;
+  margin-top: 10px;
+}
+
+.terminal .output {
+  opacity: 1;
+  transition: opacity 0.5s;
+  transition-delay: 0.3s;
 }
 
 .terminal-collapsed {
-  max-height:0;
-	padding:0;
-	transition-property: max-height, padding; 
-	transition-duration: 0.2s;
-	transition-timing-function: ease-out;
+  max-height: 0;
+  padding: 0;
+  transition-property: max-height, padding;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
 }
 
 .documentation-code {
