@@ -10,7 +10,7 @@ interface Props {
 
 const MonacoCodeEditor = (props: Props) => {
   return (
-    <div className="rounded-xl shadow-md overflow-hidden">
+    <div className="shadow-md">
       <Editor
         height="50vh"
         language="javascript"
