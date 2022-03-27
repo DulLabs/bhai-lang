@@ -1,6 +1,6 @@
 import Statement from ".";
 
-import { TokenTypes } from "../../../constants/bhaiLangSpec";
+import { TokenTypes } from "../../../constants/didiLangSpec";
 import { NodeType } from "../../../constants/constants";
 import { ASTNode } from "../types/nodeTypes";
 
@@ -9,7 +9,7 @@ import Expression from "./expression";
 
 export default class PrintStatement extends Statement {
   getStatement(): ASTNode {
-    this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.BOL_BHAI_TYPE);
+    this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.BOL_didi_TYPE);
 
     const expressions = this._getExpressionList();
 

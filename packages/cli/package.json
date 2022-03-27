@@ -1,11 +1,11 @@
 {
-  "name": "bhailang",
+  "name": "didilang",
   "version": "0.1.0",
-  "description": "CLI for bhai-lang",
+  "description": "CLI for didi-lang",
   "source": "src/index.ts",
   "main": "bin/index.js",
   "bin": {
-    "bhailang": "./bin/index.js"
+    "didilang": "./bin/index.js"
   },
   "files": [
     "bin"
@@ -16,12 +16,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DulLabs/bhai-lang.git"
+    "url": "git+https://github.com/DulLabs/didi-lang.git"
   },
   "keywords": [
     "programming",
     "language",
-    "bhai-lang",
+    "didi-lang",
     "bl",
     "javascript",
     "typescript"
@@ -38,9 +38,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/DulLabs/bhai-lang/issues"
+    "url": "https://github.com/DulLabs/didi-lang/issues"
   },
-  "homepage": "https://github.com/DulLabs/bhai-lang#readme",
+  "homepage": "https://github.com/DulLabs/didi-lang#readme",
   "devDependencies": {
     "ts-node": "^10.4.0",
     "ts-jest": "^27.1.2",
@@ -51,6 +51,6 @@
     "@types/jest": "^27.4.0",
     "config": "*",
     "tsconfig": "*",
-    "bhai-lang-interpreter": "*"
+    "didi-lang-interpreter": "*"
   }
 }

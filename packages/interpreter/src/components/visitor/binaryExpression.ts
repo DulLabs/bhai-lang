@@ -1,5 +1,5 @@
 import Visitor from ".";
-import { ASTNode, NodeType } from "bhai-lang-parser";
+import { ASTNode, NodeType } from "didi-lang-parser";
 
 import InvalidStateException from "../../exceptions/invalidStateException";
 import NallaPointerException from "../../exceptions/nallaPointerException";

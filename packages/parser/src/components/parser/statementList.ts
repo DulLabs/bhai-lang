@@ -1,5 +1,5 @@
-import { TokenTypes } from "../../constants/bhaiLangSpec";
-import BhaiLangModule from "../../module/bhaiLangModule";
+import { TokenTypes } from "../../constants/didiLangSpec";
+import didiLangModule from "../../module/didiLangModule";
 
 import Statement from "./statement";
 import TokenExecutor from "./tokenExecutor";
@@ -14,13 +14,13 @@ export default class StatementList {
   getInitialStatementList() {
     for (
       let lookahead = this._tokenExecutor.getLookahead();
-      lookahead !== null && lookahead.type !== TokenTypes.HI_BHAI_TYPE;
+      lookahead !== null && lookahead.type !== TokenTypes.HI_didi_TYPE;
       lookahead = this._tokenExecutor.getLookahead()
     ) {
       this._tokenExecutor.eatTokenAndForwardLookahead(lookahead.type);
     }
 
-    return BhaiLangModule.getInitStatement().getStatement();
+    return didiLangModule.getInitStatement().getStatement();
   }
 
   getStatementList(stopLookaheadType: string) {

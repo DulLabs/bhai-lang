@@ -1,5 +1,5 @@
-import { TokenTypes } from "../../../constants/bhaiLangSpec";
-import BhaiLangModule from "../../../module/bhaiLangModule";
+import { TokenTypes } from "../../../constants/didiLangSpec";
+import didiLangModule from "../../../module/didiLangModule";
 import { Token } from "../../tokenizer/types";
 import TokenExecutor from "../tokenExecutor";
 import { ASTNode } from "../types/nodeTypes";
@@ -16,32 +16,32 @@ export default abstract class Statement {
 
   static getStatementImpl(lookahead: Token): Statement {
     switch (lookahead.type) {
-      case TokenTypes.BOL_BHAI_TYPE:
-        return BhaiLangModule.getPrintStatement();
+      case TokenTypes.BOL_didi_TYPE:
+        return didiLangModule.getPrintStatement();
 
       case TokenTypes.SEMI_COLON_TYPE:
-        return BhaiLangModule.getEmptyStatement();
+        return didiLangModule.getEmptyStatement();
 
       case TokenTypes.OPEN_CURLY_BRACE_TYPE:
-        return BhaiLangModule.getBlockStatement();
+        return didiLangModule.getBlockStatement();
 
-      case TokenTypes.BHAI_YE_HAI_TYPE:
-        return BhaiLangModule.getVariableStatement();
+      case TokenTypes.didi_YE_HAI_TYPE:
+        return didiLangModule.getVariableStatement();
 
-      case TokenTypes.AGAR_BHAI:
-        return BhaiLangModule.getIfStatement();
+      case TokenTypes.AGAR_didi:
+        return didiLangModule.getIfStatement();
 
-      case TokenTypes.JAB_TAK_BHAI:
-        return BhaiLangModule.getWhileStatement();
+      case TokenTypes.JAB_TAK_didi:
+        return didiLangModule.getWhileStatement();
 
-      case TokenTypes.BAS_KAR_BHAI:
-        return BhaiLangModule.getBreakStatement();
+      case TokenTypes.BAS_KAR_didi:
+        return didiLangModule.getBreakStatement();
       
-      case TokenTypes.AGLA_DEKH_BHAI:
-        return BhaiLangModule.getContinueStatement();
+      case TokenTypes.AGLA_DEKH_didi:
+        return didiLangModule.getContinueStatement();
 
       default:
-        return BhaiLangModule.getExpressionStatement();
+        return didiLangModule.getExpressionStatement();
     }
   }
 }

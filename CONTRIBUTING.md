@@ -18,9 +18,9 @@ Below you will find the process and workflow used to review and merge your chang
 ## Step 2 : Fork the Project
 - Fork this Repository. This will create a Local Copy of this Repository on your Github Profile. Keep a reference to the original project in `upstream` remote.
 ```
-$ git clone https://github.com/<your-username>/bhai-lang
-$ cd bhai-lang
-$ git remote add upstream https://github.com/DulLabs/bhai-lang
+$ git clone https://github.com/<your-username>/didi-lang
+$ cd didi-lang
+$ git remote add upstream https://github.com/DulLabs/didi-lang
 ```
 ![Screenshot (13)](https://user-images.githubusercontent.com/55774240/158111282-7f46c21f-c42e-4715-af06-4a92b8fc2162.png)
 

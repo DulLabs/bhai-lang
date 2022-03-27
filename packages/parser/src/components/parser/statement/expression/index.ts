@@ -1,5 +1,5 @@
 import { NodeType } from "../../../../constants/constants";
-import BhaiLangModule from "../../../../module/bhaiLangModule";
+import didiLangModule from "../../../../module/didiLangModule";
 import TokenExecutor from "../../tokenExecutor";
 import { ASTNode } from "../../types/nodeTypes";
 
@@ -16,34 +16,34 @@ export default abstract class Expression {
   static getExpressionImpl(expressionType: keyof typeof NodeType): Expression {
     switch (expressionType) {
       case NodeType.AdditiveExpression:
-        return BhaiLangModule.getAdditiveExpression();
+        return didiLangModule.getAdditiveExpression();
 
       case NodeType.MultiplicativeExpression:
-        return BhaiLangModule.getMultiplicativeExpression();
+        return didiLangModule.getMultiplicativeExpression();
 
       case NodeType.PrimaryExpression:
-        return BhaiLangModule.getPrimaryExpression();
+        return didiLangModule.getPrimaryExpression();
 
       case NodeType.ParanthesizedExpression:
-        return BhaiLangModule.getParanthesizedExpression();
+        return didiLangModule.getParanthesizedExpression();
 
       case NodeType.AssignmentExpression:
-        return BhaiLangModule.getAssignmentExpression();
+        return didiLangModule.getAssignmentExpression();
 
       case NodeType.EqualityExpression:
-        return BhaiLangModule.getEqualityExpression();
+        return didiLangModule.getEqualityExpression();
 
       case NodeType.LogicalANDExpression:
-        return BhaiLangModule.getLogicalANDExpression();
+        return didiLangModule.getLogicalANDExpression();
 
       case NodeType.LogicalORExpression:
-        return BhaiLangModule.getLogicalORExpression();
+        return didiLangModule.getLogicalORExpression();
 
       case NodeType.RelationalExpression:
-        return BhaiLangModule.getRelationalExpression();
+        return didiLangModule.getRelationalExpression();
 
       default:
-        return BhaiLangModule.getIndentifierExpression();
+        return didiLangModule.getIndentifierExpression();
     }
   }
 

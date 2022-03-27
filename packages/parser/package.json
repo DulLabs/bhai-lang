@@ -1,7 +1,7 @@
 {
-  "name": "bhai-lang-parser",
+  "name": "didi-lang-parser",
   "version": "0.0.2",
-  "description": "Parser for bhai-lang",
+  "description": "Parser for didi-lang",
   "source": "src/index.ts",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
@@ -15,21 +15,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DulLabs/bhai-lang.git"
+    "url": "git+https://github.com/DulLabs/didi-lang.git"
   },
   "keywords": [
     "programming",
     "language",
-    "bhai-lang",
+    "didi-lang",
     "bl",
     "javascript",
     "typescript"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/DulLabs/bhai-lang/issues"
+    "url": "https://github.com/DulLabs/didi-lang/issues"
   },
-  "homepage": "https://github.com/DulLabs/bhai-lang#readme",
+  "homepage": "https://github.com/DulLabs/didi-lang#readme",
   "devDependencies": {
     "string-width": "^5.1.0",
     "ts-node": "^10.4.0",

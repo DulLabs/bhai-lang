@@ -1,5 +1,5 @@
 {
-  "name": "bhai-lang",
+  "name": "didi-lang",
   "version": "0.0.1",
   "private": true,
   "workspaces": [
@@ -21,7 +21,7 @@
     "typescript": "^4.5.4"
   },
   "keywords": [
-    "bhai-lang",
+    "didi-lang",
     "programming language",
     "compiler",
     "parser",

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import interpreter from "bhai-lang-interpreter";
+import interpreter from "didi-lang-interpreter";
 
 import { sendEvents } from "../../helpers";
 
@@ -9,25 +9,25 @@ import Terminal from "./Terminal";
 
 
 const initialCode = `
-hi bhai
- bol bhai "Hello World";
+hi didi
+ bol didi "Hello World";
  
-  bhai ye hai a = 3;
-  bhai ye hai b = 0;
+  didi ye hai a = 3;
+  didi ye hai b = 0;
 
-  jab tak bhai (b < 5) {
-    bol bhai b;
+  jab tak didi (b < 5) {
+    bol didi b;
 
-    agar bhai (b == a) {
-      bol bhai "b is equal to a";
-    } nahi to bhai (b == 0) {
-      bol bhai "b is equal to zero";
+    agar didi (b == a) {
+      bol didi "b is equal to a";
+    } nahi to didi (b == 0) {
+      bol didi "b is equal to zero";
     }
 
     b += 1;
   }
 
-bye bhai
+bye didi
 `;
 
 const Code = (props: Props) => {

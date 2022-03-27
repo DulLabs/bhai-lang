@@ -1,5 +1,5 @@
 #! /usr/bin/env node
-import interpreter from "bhai-lang-interpreter";
+import interpreter from "didi-lang-interpreter";
 import chalk from "chalk";
 import fs from "fs";
 import yargs from "yargs";
@@ -14,7 +14,7 @@ console.info(
 ██████╦╝██║░░██║██║░░██║██║███████╗██║░░██║██║░╚███║╚██████╔╝
 ╚═════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝╚══════╝╚═╝░░╚═╝╚═╝░░╚══╝░╚═════╝░
 
-https://github.com/DulLabs/bhai-lang
+https://github.com/DulLabs/didi-lang
 `)
 );
 

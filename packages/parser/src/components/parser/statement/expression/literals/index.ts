@@ -1,6 +1,6 @@
-import { TokenTypes } from "../../../../../constants/bhaiLangSpec";
+import { TokenTypes } from "../../../../../constants/didiLangSpec";
 import UnsupportedTypeException from "../../../../../exceptions/unsupportedTypeException";
-import BhaiLangModule from "../../../../../module/bhaiLangModule";
+import didiLangModule from "../../../../../module/didiLangModule";
 import TokenExecutor from "../../../tokenExecutor";
 import { ASTNode } from "../../../types/nodeTypes";
 
@@ -16,16 +16,16 @@ export default abstract class Literal {
   static getLiteralImpl(tokenType?: string): Literal {
     switch (tokenType) {
       case TokenTypes.NUMBER_TYPE:
-        return BhaiLangModule.getNumericLiteral();
+        return didiLangModule.getNumericLiteral();
 
       case TokenTypes.BOOLEAN_TYPE:
-        return BhaiLangModule.getBooleanLiteral();
+        return didiLangModule.getBooleanLiteral();
 
       case TokenTypes.STRING_TYPE:
-        return BhaiLangModule.getStringLiteral();
+        return didiLangModule.getStringLiteral();
 
       case TokenTypes.NALLA_TYPE:
-        return BhaiLangModule.getNullLiteral();
+        return didiLangModule.getNullLiteral();
 
       default:
         throw new UnsupportedTypeException(

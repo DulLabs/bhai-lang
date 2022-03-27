@@ -1,5 +1,5 @@
 import Visitor from ".";
-import { ASTNode } from "bhai-lang-parser";
+import { ASTNode } from "didi-lang-parser";
 
 import RuntimeException from "../../exceptions/runtimeException";
 import InterpreterModule from "../../module/interpreterModule";

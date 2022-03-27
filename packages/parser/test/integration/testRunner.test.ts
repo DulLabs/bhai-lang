@@ -1,5 +1,5 @@
 import NallaPointerException from "../../src/exceptions/nallaPointerException";
-import bhaiLangModule from "../../src/module/bhaiLangModule";
+import didiLangModule from "../../src/module/didiLangModule";
 
 import {
   IfStatementNagativeTests,
@@ -52,7 +52,7 @@ NegativeExpressionsTests.forEach((testCase) => {
 
 function _runPositiveTests(testCase: posTestObjType) {
   test(testCase.name, () => {
-    const parser = bhaiLangModule.getParser();
+    const parser = didiLangModule.getParser();
     const ast = parser.parse(testCase.input);
     expect(JSON.stringify(ast)).toBe(testCase.output);
   });
@@ -60,16 +60,16 @@ function _runPositiveTests(testCase: posTestObjType) {
 
 function _runNegativeTests(testCase: negTestObjType) {
   test(testCase.name, () => {
-    const parser = bhaiLangModule.getParser();
+    const parser = didiLangModule.getParser();
     expect(() => parser.parse(testCase.input)).toThrow(testCase.output);
   });
 }
 
 // test("jest test", () => {
-//   const parser = bhaiLangModule.getParser();
+//   const parser = didiLangModule.getParser();
 //   console.debug(JSON.stringify(parser.parse(`
-//   hi bhai
-//       bol bhai 9 == 90;
-//       bye bhai
+//   hi didi
+//       bol didi 9 == 90;
+//       bye didi
 //   `)));
 // })

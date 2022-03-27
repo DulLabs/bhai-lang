@@ -1,6 +1,6 @@
 import Statement from ".";
 
-import { TokenTypes } from "../../../constants/bhaiLangSpec";
+import { TokenTypes } from "../../../constants/didiLangSpec";
 import { NodeType } from "../../../constants/constants";
 import { ASTNode } from "../types/nodeTypes";
 

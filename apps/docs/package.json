@@ -1,5 +1,5 @@
 {
-  "name": "bhai-lang-docs",
+  "name": "didi-lang-docs",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -14,7 +14,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-simple-code-editor": "^0.11.0",
-    "bhai-lang-interpreter": "*"
+    "didi-lang-interpreter": "*"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.1",

@@ -3,7 +3,7 @@ import React from "react";
 import dynamic from "next/dynamic";
 import { highlight } from "prismjs";
 
-import { bhaiLangSyntax } from "../../common/syntax";
+import { didiLangSyntax } from "../../common/syntax";
 
 import "prismjs/themes/prism-tomorrow.css";
 
@@ -20,7 +20,7 @@ const CodeEditor = (props: Props) => {
   const { handleChange, code } = props;
 
   const highlightWithLineNumbers = (input: string) =>
-    highlight(input, bhaiLangSyntax, "bhaiLang")
+    highlight(input, didiLangSyntax, "didiLang")
       .split("\n")
       .map((line, i) => `<span class='editorLineNumber'>${i + 1}</span>${line}`)
       .join("\n");
