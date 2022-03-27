@@ -53,7 +53,7 @@ html {
 }
 
 .terminal {
-  overflow-y: scroll;
+  overflow-y: auto;
   transition-property: max-height, padding; 
 	transition-duration: 0.2s;
 	transition-timing-function: ease-in-out;
