@@ -155,8 +155,3 @@ bye bhai
 <h2 align="center">License</h2>
 
 <p align="center"> <code>bhailang</code> was released under <a href="https://github.com/DulLabs/bhai-lang/blob/develop/LICENSE" target="_blank">MIT License</a></p>
-
-
-
-
-
