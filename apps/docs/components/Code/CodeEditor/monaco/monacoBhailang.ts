@@ -1,7 +1,7 @@
 import monaco from "monaco-editor";
 
-const bhailangKeywords =
-  "hi|bye|bol|bhai|agar|nahi|to|warna|jab|tak|bas|kar|bhai|agla|dekh".split(
+export const bhailangKeywords =
+  "hi|bye|bol|bhai|agar|nahi|to|warna|jab|tak|bas|kar|hai|agla|dekh|ye".split(
     "|"
   );
 

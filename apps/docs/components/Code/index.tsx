@@ -6,7 +6,7 @@ import { sendEvents } from "../../helpers";
 
 import CodeEditor from "./CodeEditor";
 import Terminal from "./Terminal";
-import MonacoCodeEditor from "./CodeEditor/MonacoCodeEditor";
+import MonacoCodeEditor from "./CodeEditor/monaco/MonacoCodeEditor";
 import { OnChange } from "@monaco-editor/react";
 
 const initialCode = `hi bhai

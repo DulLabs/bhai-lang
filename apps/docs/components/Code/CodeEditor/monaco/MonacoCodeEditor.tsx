@@ -1,10 +1,15 @@
 import * as React from "react";
 import { OnChange } from "@monaco-editor/react";
-import monacoOptions from "./monacoOptions";
+import monacoOptions from "./options";
 import Editor from "@monaco-editor/react";
-import monaco from "monaco-editor";
 import { bhailangConfig, bhailangSyntax } from "./monacoBhailang";
 import { useMonaco } from "@monaco-editor/react";
+import {
+  reservedValueCompletions,
+  keywordCompletions,
+  snippetCompletions,
+} from "./completions";
+import { theme } from "./theme";
 
 interface Props {
   handleChange: OnChange;
@@ -12,12 +17,24 @@ interface Props {
 }
 
 const MonacoCodeEditor = (props: Props) => {
-  const monaco = useMonaco()!;
+  const monaco = useMonaco();
   React.useEffect(() => {
     if (monaco) {
       monaco.languages.register({ id: "bhailang" });
       monaco.languages.setMonarchTokensProvider("bhailang", bhailangSyntax);
       monaco.languages.setLanguageConfiguration("bhailang", bhailangConfig);
+      monaco.languages.registerCompletionItemProvider("bhailang", {
+        provideCompletionItems: () => {
+          var suggestions = [
+            ...keywordCompletions(monaco),
+            ...snippetCompletions(monaco),
+            ...reservedValueCompletions(monaco),
+          ];
+          return { suggestions: suggestions };
+        },
+      });
+      monaco.editor.defineTheme("my-theme", theme);
+      monaco.editor.setTheme("my-theme");
     }
   }, [monaco]);
 
