@@ -300,6 +300,34 @@ export const NegativeExpressionsTests = [
       `,
     output: SyntaxError,
   },
+  // float expression test
+  {
+    name: "float expression test with multiple continuous decimal points - 1, should throw an exception",
+    input: `
+    hi bhai
+    bhai ye hai a = 1..2;
+    bye bhai;
+      `,
+    output: SyntaxError,
+  },
+  {
+    name: "float expression test with multiple continuous decimal points - 2, should throw an exception",
+    input: `
+    hi bhai
+    bhai ye hai a = ..2;
+    bye bhai;
+      `,
+    output: SyntaxError,
+  },
+  {
+    name: "float expression test with multiple decimal points at different places, should throw an exception",
+    input: `
+    hi bhai
+    bhai ye hai a = 1.2.3;
+    bye bhai;
+      `,
+    output: SyntaxError,
+  },
 ];
 
 export const IfStatementNagativeTests = [
