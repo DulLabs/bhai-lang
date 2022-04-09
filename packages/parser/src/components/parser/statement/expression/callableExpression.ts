@@ -16,7 +16,6 @@ export default class CallableExpression extends Expression {
 				args.push(this._getArgs());
 			} while (
 				this._tokenExecutor.getLookahead()?.type === TokenTypes.COMMA_TYPE && 
-				this._tokenExecutor.getLookahead()?.type !== TokenTypes.CLOSED_PARENTHESIS_TYPE&&
 				this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.COMMA_TYPE)
 			);
 		}

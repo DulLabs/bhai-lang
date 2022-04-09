@@ -23,8 +23,6 @@ export default class FunctionStatement extends Statement {
 
     const declaration = this._getFunctionDeclaration();
 
-    // this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.SEMI_COLON_TYPE);
-
     return {
       type: NodeType.FunctionStatement,
       declaration,
@@ -33,21 +31,23 @@ export default class FunctionStatement extends Statement {
 
 
   private _getFunctionDeclaration(): ASTNode {
-    const id = Expression.getExpressionImpl(
-      NodeType.CallableExpression
-    ).getExpression();
+    const functionSigneture = Expression.getExpressionImpl( NodeType.CallableExpression).getExpression();
+
     let lookahead=this._tokenExecutor.getLookahead()
+    
     if (lookahead == null) {
-      throw new SyntaxError(`Unexpected end of "jab tak bhai" statement`);
+      throw new SyntaxError(`Unexpected end of "apna funda" statement`);
     }
+    
     if(lookahead.type!==TokenTypes.OPEN_CURLY_BRACE_TYPE){
-      throw new SyntaxError(`Unexpected token after funda signature ${id.name}, got "${lookahead.value}" : expected "{"`);
+      throw new SyntaxError(`Unexpected token after funda signature ${functionSigneture.name}, got "${lookahead.value}" : expected "{"`);
     }
+    
     const body=Statement.getStatementImpl(this._tokenExecutor.getLookahead()!).getStatement();
 
     return {
       type: NodeType.FunctionDeclaration,
-      id,
+      declaration:functionSigneture,
       body
     };
   }

@@ -100,7 +100,7 @@ export const SPEC = [
   //functional programming
   { regex: /^\bapna funda\b/, tokenType: TokenTypes.FUNDA_TYPE },
   { regex: /^\brakh le bhai\b/, tokenType: TokenTypes.RAKH_LE_BHAI },
-  { regex: /^\w+(?=\(.*\))/, tokenType: TokenTypes.CALLABLE_TYPE },
+  { regex: /^\w+(?=[ ]*\(.*\))/, tokenType: TokenTypes.CALLABLE_TYPE },
 
   // Number
   { regex: /^-?\d+/, tokenType: TokenTypes.NUMBER_TYPE },

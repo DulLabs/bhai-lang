@@ -84,7 +84,7 @@ export default class BhaiLangModule {
   private static _continueStatement?: ContinueStatement;
   private static _whileStatement?: WhileStatement;
   private static _functionStatement: FunctionStatement;
-  static _returnStatement: ReturnStatement;
+  private static _returnStatement: ReturnStatement;
 
   static getTokenizer() {
     if (!this._tokenizer) this._tokenizer = new TokenizerImpl(SPEC);
