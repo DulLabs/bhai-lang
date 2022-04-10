@@ -17,7 +17,7 @@
     "@parcel/packager-ts": "^2.2.0",
     "@parcel/transformer-typescript-types": "^2.2.0",
     "prettier": "^2.5.1",
-    "turbo": "^1.1.10",
+    "turbo": "latest",
     "typescript": "^4.5.4"
   },
   "keywords": [
