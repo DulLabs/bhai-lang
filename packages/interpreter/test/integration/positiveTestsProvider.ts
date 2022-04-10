@@ -804,6 +804,74 @@ export const WithOutputPositiveTests = [
     `,
     output: "5",
   },
+  // else-if statement tests
+  {
+    name: `else-if statement success test - 1: if with one else-if, should success`,
+    input: `
+    hi bhai
+    agar bhai (galat) {
+      bol bhai "galat";
+    } nahi to bhai (sahi) {
+      bol bhai "sahi";
+    }
+    bye bhai;
+    `,
+    output: "sahi",
+  },
+  {
+    name: `else-if statement success test - 2: if with multiple else-ifs, should success`,
+    input: `
+    hi bhai
+    bhai ye hai x = 10;
+    agar bhai (x < 5) {
+      bol bhai "x < 5";
+    } nahi to bhai (x < 8) {
+      bol bhai "x < 8";
+    } nahi to bhai (x < 12) {
+      bol bhai "x < 12";
+    } nahi to bhai (x < 15) {
+      bol bhai "x < 15";
+    }
+    bye bhai;
+    `,
+    output: "x < 12",
+  },
+  {
+    name: `else-if statement success test - 3: nested if-else-if ladder, should success`,
+    input: `
+    hi bhai
+    bhai ye hai a = 15;
+    agar bhai (a < 0) {
+      bol bhai "a < 0";
+    } nahi to bhai (a > 0) {
+      agar bhai (a < 10) {
+        bol bhai "a < 10";
+      } nahi to bhai (a < 20) {
+        bol bhai "a < 20";
+      }
+    }
+    bye bhai
+    `,
+    output: "a < 20",
+  },
+  {
+    name: `else-if statement success test - 4: if-else-if ladder evaluating to else, should success`,
+    input: `
+    hi bhai
+    bhai ye hai x = 15;
+    agar bhai (x < 5) {
+      bol bhai "x < 5";
+    } nahi to bhai (x < 8) {
+      bol bhai "x < 8";
+    } nahi to bhai (x < 12) {
+      bol bhai "x < 12";
+    } warna bhai {
+      bol bhai "x > 12";
+    }
+    bye bhai;
+    `,
+    output: "x > 12",
+  },
   // logical expression test
   {
     name: `logical "&&" test with sahi galat, should success`,
