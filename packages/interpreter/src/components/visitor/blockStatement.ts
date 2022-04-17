@@ -11,6 +11,7 @@ export default class BlockStatement implements Visitor {
     InterpreterModule.setCurrentScope(new Scope(parentScope));
 
     InterpreterModule.getCurrentScope().setLoop(parentScope.isLoop());
+    InterpreterModule.getCurrentScope().setFunction(parentScope.isFunction());
 
     if (Array.isArray(node.body)) {
       node.body.every((statement: ASTNode) => {
@@ -19,6 +20,11 @@ export default class BlockStatement implements Visitor {
         }
         if (InterpreterModule.getCurrentScope().isContinueStatement()) {
           parentScope.setContinueStatement(true);
+          return false;
+        }
+        if(InterpreterModule.getCurrentScope().isReturnStatement()&&parentScope.isFunction()){
+          let retValue=InterpreterModule.getCurrentScope().getReturnValue();
+          parentScope.setReturnStatement(true,retValue);
           return false;
         }
         InterpreterModule.getVisitor(statement.type).visitNode(statement);

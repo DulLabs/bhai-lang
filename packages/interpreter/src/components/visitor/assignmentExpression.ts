@@ -6,6 +6,7 @@ import NallaPointerException from "../../exceptions/nallaPointerException";
 import RuntimeException from "../../exceptions/runtimeException";
 import { getOperationValue } from "../../helpers";
 import InterpreterModule from "../../module/interpreterModule";
+import { DataObject, DataTypes, NullObject } from "../dataClass";
 
 
 export default class AssignmentExpression implements Visitor {
@@ -16,7 +17,7 @@ export default class AssignmentExpression implements Visitor {
       );
 
     let identifier = node.left.name;
-    let value: unknown;
+    let value: DataObject|null|void=null;
     const currentScope = InterpreterModule.getCurrentScope();
 
     if (node.right) {
@@ -24,6 +25,7 @@ export default class AssignmentExpression implements Visitor {
         node.right
       );
     }
+    if(value==null) value =new NullObject()
 
     if (identifier && node.operator) {
       const left = currentScope.get(identifier);
@@ -33,7 +35,7 @@ export default class AssignmentExpression implements Visitor {
           `Nalla operand ni jamta "${node.operator}" ke sath`
         );
 
-      if ((left === true || left === false) && node.operator !== "=")
+      if (left.getType()==DataTypes.Boolean && node.operator !== "=")
         throw new RuntimeException(
           `Boolean operand ni jamta "${node.operator}" ke sath`
         );
@@ -46,5 +48,6 @@ export default class AssignmentExpression implements Visitor {
 
       return currentScope.get(identifier);
     }
+
   }
 }

@@ -4,13 +4,15 @@ import { ASTNode } from "bhai-lang-parser";
 import RuntimeException from "../../exceptions/runtimeException";
 import InterpreterModule from "../../module/interpreterModule";
 import Scope from "../scope";
+import { sanatizeData } from "../dataClass";
 
 
 export default class WhileStatement implements Visitor {
   visitNode(node: ASTNode) {
     const test = node.test;
     if (test) {
-      const getConditionValue = ()=> InterpreterModule.getVisitor(test.type).visitNode(test);
+      const getConditionValue = ()=> sanatizeData(InterpreterModule.getVisitor(test.type).visitNode(test));
+      
 
       const parentScope = InterpreterModule.getCurrentScope();
 
@@ -19,7 +21,9 @@ export default class WhileStatement implements Visitor {
       InterpreterModule.getCurrentScope().setLoop(true);
 
 
-      for (let testResult = getConditionValue(), executions = 0; testResult === true || testResult === "sahi"; testResult = getConditionValue(), executions++) {
+      for (let testResult = getConditionValue(), executions = 0; 
+            testResult.getValue(); 
+            testResult = getConditionValue(), executions++) {
 
         if (InterpreterModule.getCurrentScope().isBreakStatement()) {
           break;
@@ -45,3 +49,4 @@ export default class WhileStatement implements Visitor {
     }
   }
 }
+
