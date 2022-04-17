@@ -812,7 +812,7 @@ export const WithOutputPositiveTests = [
     output: "sahi",
   },
   {
-    name: `if statement success test - 3: if only with comarison condn, should success`,
+    name: `if statement success test - 3: if only with comparison condition, should success`,
     input: `
     hi bhai
     bhai ye hai x = 9;
@@ -905,6 +905,30 @@ export const WithOutputPositiveTests = [
         bye bhai;
       `,
     output: `galat`,
+  },
+  {
+    name: "non-boolean (numeric) condition test - 1, should success",
+    input: `
+      hi bhai
+      agar bhai (1) {
+        bol bhai "barabar";
+      }
+      bye bhai;
+    `,
+    output: `barabar`,
+  },
+  {
+    name: "non-boolean (numeric) condition test - 2, should success",
+    input: `
+      hi bhai
+      agar bhai (0) {
+        bol bhai "barabar";
+      } warna bhai {
+        bol bhai "sahi he";
+      }
+      bye bhai;
+    `,
+    output: `sahi he`,
   },
   // modulus operator test
   {

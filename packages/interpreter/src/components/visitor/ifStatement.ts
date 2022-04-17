@@ -20,9 +20,7 @@ export default class IfStatement implements Visitor {
     const parentScope = InterpreterModule.getCurrentScope();
     if (test) {
       const testResult = InterpreterModule.getVisitor(test.type).visitNode(test);
-      if (testResult === true || testResult === "sahi") {
-        this.evaluateNode(node.consequent, parentScope);
-      } else {
+      if (testResult === "galat" || testResult === "nalla" || !testResult) {
         const alternates = node.alternates;
         if (alternates && alternates.length > 0) {
           for (var alternate of alternates) {
@@ -42,6 +40,8 @@ export default class IfStatement implements Visitor {
             }
           }
         }
+      } else {
+        this.evaluateNode(node.consequent, parentScope);
       }
     }
     parentScope.setBreakStatement(InterpreterModule.getCurrentScope().isBreakStatement());
