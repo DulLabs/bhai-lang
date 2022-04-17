@@ -482,6 +482,26 @@ export const WithOutputPositiveTests = [
     output: "nahi galat",
   },
   {
+    name: "float value addition with integer value test, should success",
+    input: `
+      hi bhai
+      bhai ye hai a = 1.2, b = 2;
+      bol bhai a + b;
+      bye bhai
+    `,
+    output: "3.2"
+  },
+  {
+    name: "float value addition with float value value test, should success",
+    input: `
+      hi bhai
+      bhai ye hai a = 1.2, b = 2.3;
+      bol bhai a + b;
+      bye bhai
+    `,
+    output: "3.5"
+  },
+  {
     name: "printStatement test with multiple expressions, should success",
     input: `
       hi bhai;
