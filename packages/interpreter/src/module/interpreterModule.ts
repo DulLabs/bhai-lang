@@ -8,9 +8,14 @@ import BinaryExpression from "../components/visitor/binaryExpression";
 import BlockStatement from "../components/visitor/blockStatement";
 import BooleanLiteral from "../components/visitor/booleanLiteral";
 import BreakStatement from "../components/visitor/breakStatement";
+import CallableExpression from "../components/visitor/callableExpression";
+import ClassDeclaration from "../components/visitor/classDeclaration";
+import ClassStatement from "../components/visitor/classStatement";
 import ContinueStatement from "../components/visitor/continueStatement";
 import EmptyStatement from "../components/visitor/emptyStatement";
 import ExpressionStatement from "../components/visitor/expressionStatement";
+import FunctionDeclaration from "../components/visitor/functionDeclaration";
+import FunctionStatement from "../components/visitor/functionStatement";
 import IdentifierExpression from "../components/visitor/identifierExpression";
 import IfStatement from "../components/visitor/ifStatement";
 import InitStatement from "../components/visitor/initStatement";
@@ -18,6 +23,7 @@ import NullLiteral from "../components/visitor/nullLiteral";
 import NumericLiteral from "../components/visitor/numericLiteral";
 import PrintStatement from "../components/visitor/printStatement";
 import Program from "../components/visitor/program";
+import ReturnStatement from "../components/visitor/returnStatement";
 import StringLiteral from "../components/visitor/stringLiteral";
 import VariableDeclaration from "../components/visitor/variableDeclaration";
 import VariableStatement from "../components/visitor/variableStatement";
@@ -47,6 +53,13 @@ export default class InterpreterModule {
     [NodeType.WhileStatement]: new WhileStatement(),
     [NodeType.BreakStatement]: new BreakStatement(),
     [NodeType.ContinueStatement]: new ContinueStatement(),
+    [NodeType.FunctionStatement]: new FunctionStatement(),
+    [NodeType.FunctionDeclaration]: new FunctionDeclaration(),
+    [NodeType.CallableExpression]: new CallableExpression(),
+    [NodeType.ReturnStatement]: new ReturnStatement(),
+    [NodeType.ClassStatement]: new ClassStatement(),
+    [NodeType.ClassDeclaration]: new ClassDeclaration(),
+
   } as Record<string, Visitor>;
 
   private static _currentScope: Scope;

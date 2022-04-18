@@ -6,19 +6,14 @@ import InterpreterModule from "../../module/interpreterModule";
 import { sanatizeData } from "../dataClass";
 
 
-export default class PrintStatement implements Visitor {
+export default class ReturnStatement implements Visitor {
   visitNode(node: ASTNode) {
-    if (!node.expressions)
+    if (!node.expression)
       throw new InvalidStateException(
         `No expressions to print: ${node.expressions}`
       );
-
-    const value = node.expressions
-      .map((expression: ASTNode) => {
-          let currentNodeOutput = sanatizeData(InterpreterModule.getVisitor(expression.type).visitNode(expression));
-          return currentNodeOutput.toString();
-        }
-      ).join(" ");
-    console.log(value);
+      let retVal= sanatizeData(InterpreterModule.getVisitor(node.expression.type).visitNode(node.expression));
+      InterpreterModule.getCurrentScope().setReturnStatement(true,retVal);
+      return retVal;
   }
 }
