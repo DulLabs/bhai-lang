@@ -52,5 +52,3 @@ type Props = {
   code: string;
 };
 export default React.memo(CodeEditor);
-
-
