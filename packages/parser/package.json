@@ -2,9 +2,9 @@
   "name": "bhai-lang-parser",
   "version": "0.0.2",
   "description": "Parser for bhai-lang",
-  "source": "src/index.ts",
-  "types": "dist/index.d.ts",
-  "main": "dist/index.js",
+  "source": "src/index",
+  "types": "dist/index",
+  "main": "dist/index",
   "files": [
     "dist"
   ],

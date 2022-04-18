@@ -4,6 +4,7 @@ import chalk from "chalk";
 import fs from "fs";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
+import { version } from "../package.json";
 
 console.info(
   chalk.hex("#83aaff")(`
@@ -36,6 +37,7 @@ const filePath = yargs(hideBin(process.argv))
       console.info(argv);
     }
   )
+  .version(version)
   .demandCommand(1).argv._[0];
 
 fs.readFile(filePath, "utf8", (err, data) => {
