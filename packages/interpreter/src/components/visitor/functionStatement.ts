@@ -13,7 +13,7 @@ export default class FunctionStatement implements Visitor {
       );    
       let functionObject=sanatizeData(InterpreterModule.getVisitor(node.declaration.type).visitNode(node.declaration));
       
-      const identifier=node?.declaration?.id?.name
+      const identifier=node?.declaration?.id?.signature?.name
       if(identifier){
         let scope=InterpreterModule.getCurrentScope();
         scope.declare(identifier,functionObject);

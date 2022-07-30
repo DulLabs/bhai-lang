@@ -27,7 +27,7 @@ export default class ClassDeclaration implements Visitor {
     const classConstructor=classMethods["janam"];
     let classConstructorArgs:string[]=[];
     if(classConstructor){
-      classConstructorArgs=(classConstructor?.id?.args?.map(param=>param?.name).filter(arg => arg)||[])as string[];
+      classConstructorArgs=(classConstructor?.signature?.args?.map(param=>param?.id?.name).filter(arg => arg)||[])as string[];
     }
     value={
       args:classConstructorArgs,
@@ -69,8 +69,8 @@ export default class ClassDeclaration implements Visitor {
         throw new InvalidStateException(`Sirf funda or variable me shamjha na bhai`);
       }
       if(member.type==NodeType.FunctionStatement){
-        if(member?.declaration?.id?.name)
-          classMethods[member?.declaration?.id?.name]=member.declaration;
+        if(member?.declaration?.signature?.name)
+          classMethods[member?.declaration?.signature?.name]=member.declaration;
       }
       else {
         let dataMembers=member.declarations?.map(declaration=>declaration?.id?.name)||[];
