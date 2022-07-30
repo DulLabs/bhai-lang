@@ -30,6 +30,7 @@ export const NodeType = {
   VariableDeclaration: "VariableDeclaration",
   FunctionStatement: "FunctionStatement",
   FunctionDeclaration: "FunctionDeclaration",
+  FunctionSignature: "FunctionSignature",
   ReturnStatement: "ReturnStatement",
   ClassStatement: "ClassStatement", 
   ClassDeclaration: "ClassDeclaration",

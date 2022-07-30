@@ -178,6 +178,26 @@ export const NegativeStatementTests = [
       `,
     output: SyntaxError,
   },
+  // Function statement negative tests
+  {
+    name: "Function statement test - bad augument syntax",
+    input: `
+        hi bhai
+          apna funda add(a+b){
+            rakh le bhai;
+          }
+        bye bhai
+      `,
+    output: SyntaxError,
+  },{
+    name: "Function statement test - no body",
+    input: `
+        hi bhai
+          apna funda add(a,b)
+        bye bhai
+      `,
+    output: SyntaxError,
+  },
 ];
 
 export const NegativeExpressionsTests = [

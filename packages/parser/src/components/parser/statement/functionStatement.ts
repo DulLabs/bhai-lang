@@ -23,8 +23,6 @@ export default class FunctionStatement extends Statement {
 
     const declaration = this._getFunctionDeclaration();
 
-    // this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.SEMI_COLON_TYPE);
-
     return {
       type: NodeType.FunctionStatement,
       declaration,
@@ -33,22 +31,82 @@ export default class FunctionStatement extends Statement {
 
 
   private _getFunctionDeclaration(): ASTNode {
-    const id = Expression.getExpressionImpl(
-      NodeType.CallableExpression
-    ).getExpression();
+    
+    const functionSigneture = this._getFunctionSignature();
+
     let lookahead=this._tokenExecutor.getLookahead()
+    
     if (lookahead == null) {
       throw new SyntaxError(`Unexpected end of "apna funda" statement`);
     }
+    
     if(lookahead.type!==TokenTypes.OPEN_CURLY_BRACE_TYPE){
-      throw new SyntaxError(`Unexpected token after funda signature ${id.name}, got "${lookahead.value}" : expected "{"`);
+      throw new SyntaxError(`Unexpected token after funda signature ${functionSigneture.name}, got "${lookahead.value}" : expected "{"`);
     }
+    
     const body=Statement.getStatementImpl(this._tokenExecutor.getLookahead()!).getStatement();
 
     return {
       type: NodeType.FunctionDeclaration,
-      id,
+      signature:functionSigneture,
       body
     };
   }
+
+  private _getFunctionSignature(): ASTNode {
+    const functionName = this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.CALLABLE_TYPE).value;
+    this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.OPEN_PARENTHESIS_TYPE);
+
+    let args:ASTNode[]=[]
+    if(this._tokenExecutor.getLookahead()?.type!=TokenTypes.CLOSED_PARENTHESIS_TYPE){
+      args=this._getFunctionArguments();
+    }
+    
+    this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.CLOSED_PARENTHESIS_TYPE);
+    return {
+      type: NodeType.FunctionSignature,
+      name:functionName,
+      args
+    };
+  }
+
+  private _getFunctionArguments(): ASTNode[] {
+    const declarations: ASTNode[] = [];
+    do {
+      declarations.push(this._getArgumentDeclaration());
+    } while (
+      this._tokenExecutor.getLookahead()?.type === TokenTypes.COMMA_TYPE &&
+      this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.COMMA_TYPE)
+    );
+    return declarations;
+  }
+
+  private _getArgumentDeclaration(): ASTNode {
+    const id = Expression.getExpressionImpl(
+      NodeType.IdentifierExpression
+    ).getExpression();
+
+    // Optional VariableInitializer
+    const init =
+      this._tokenExecutor.getLookahead()?.type !== TokenTypes.CLOSED_PARENTHESIS_TYPE &&
+      this._tokenExecutor.getLookahead()?.type !== TokenTypes.COMMA_TYPE
+        ? this._getArgumentInitializer()
+        : this._nullLiteral.getLiteral();
+
+    return {
+      type: NodeType.VariableDeclaration,
+      id,
+      init,
+    };
+  }
+  private _getArgumentInitializer() {
+    this._tokenExecutor.eatTokenAndForwardLookahead(
+      TokenTypes.SIMPLE_ASSIGN_TYPE
+    );
+
+    return Expression.getExpressionImpl(
+      NodeType.PrimaryExpression
+    ).getExpression();
+  }
+
 }
