@@ -56,7 +56,12 @@ export default class FunctionStatement extends Statement {
   private _getFunctionSignature(): ASTNode {
     const functionName = this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.CALLABLE_TYPE).value;
     this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.OPEN_PARENTHESIS_TYPE);
-    const args=this._getFunctionArguments();
+
+    let args:ASTNode[]=[]
+    if(this._tokenExecutor.getLookahead()?.type!=TokenTypes.CLOSED_PARENTHESIS_TYPE){
+      args=this._getFunctionArguments();
+    }
+    
     this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.CLOSED_PARENTHESIS_TYPE);
     return {
       type: NodeType.FunctionSignature,
