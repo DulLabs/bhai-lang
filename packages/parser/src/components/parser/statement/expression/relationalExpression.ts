@@ -7,6 +7,6 @@ import { ASTNode } from "../../types/nodeTypes";
 
 export default class RelationalExpression extends Expression {
     getExpression(): ASTNode {
-        return this.getBinaryExpression(NodeType.AdditiveExpression, TokenTypes.RELATIONAL_OPERATOR);
+        return this.getBinaryExpression(NodeType.AdditiveExpression, TokenTypes.RELATIONAL_OPERATOR_TYPE);
     }
 }

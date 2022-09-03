@@ -9,7 +9,7 @@ import Expression from "./expression";
 
 export default class WhileStatement extends Statement {
     getStatement(): ASTNode {
-        this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.JAB_TAK_BHAI);
+        this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.JAB_TAK_BHAI_TYPE);
 
         this._tokenExecutor.eatTokenAndForwardLookahead(TokenTypes.OPEN_PARENTHESIS_TYPE);
 

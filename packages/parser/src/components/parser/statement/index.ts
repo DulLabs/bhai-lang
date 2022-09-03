@@ -28,16 +28,16 @@ export default abstract class Statement {
       case TokenTypes.BHAI_YE_HAI_TYPE:
         return BhaiLangModule.getVariableStatement();
 
-      case TokenTypes.AGAR_BHAI:
+      case TokenTypes.AGAR_BHAI_TYPE:
         return BhaiLangModule.getIfStatement();
 
-      case TokenTypes.JAB_TAK_BHAI:
+      case TokenTypes.JAB_TAK_BHAI_TYPE:
         return BhaiLangModule.getWhileStatement();
 
-      case TokenTypes.BAS_KAR_BHAI:
+      case TokenTypes.BAS_KAR_BHAI_TYPE:
         return BhaiLangModule.getBreakStatement();
-      
-      case TokenTypes.AGLA_DEKH_BHAI:
+
+      case TokenTypes.AGLA_DEKH_BHAI_TYPE:
         return BhaiLangModule.getContinueStatement();
 
       default:
