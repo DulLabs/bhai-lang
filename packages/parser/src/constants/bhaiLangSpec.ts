@@ -9,17 +9,17 @@ export const TokenTypes = {
 
   BHAI_YE_HAI_TYPE: "bhai ye hai",
 
-  AGAR_BHAI: "agar bhai",
+  AGAR_BHAI_TYPE: "agar bhai",
 
-  WARNA_BHAI: "warna bhai",
+  WARNA_BHAI_TYPE: "warna bhai",
 
-  NAHI_TO_BHAI: "nahi to bhai",
+  NAHI_TO_BHAI_TYPE: "nahi to bhai",
 
-  JAB_TAK_BHAI: "jab tak bhai",
+  JAB_TAK_BHAI_TYPE: "jab tak bhai",
 
-  BAS_KAR_BHAI: "bas kar bhai",
+  BAS_KAR_BHAI_TYPE: "bas kar bhai",
 
-  AGLA_DEKH_BHAI: "agla dekh bhai",
+  AGLA_DEKH_BHAI_TYPE: "agla dekh bhai",
 
   NALLA_TYPE: "NALLA",
 
@@ -47,17 +47,17 @@ export const TokenTypes = {
 
   MULTIPLICATIVE_OPERATOR_TYPE: "MULTIPLICATIVE_OPERATOR",
 
-  RELATIONAL_OPERATOR: "RELATIONAL_OPERATOR",
+  RELATIONAL_OPERATOR_TYPE: "RELATIONAL_OPERATOR",
 
-  EQUALITY_OPERATOR: "EQUALITY_OPERATOR",
+  EQUALITY_OPERATOR_TYPE: "EQUALITY_OPERATOR",
 
   STRING_TYPE: "STRING",
 
   BOOLEAN_TYPE: "BOOLEAN",
 
-  LOGICAL_AND: "LOGICAL_AND",
+  LOGICAL_AND_TYPE: "LOGICAL_AND",
 
-  LOGICAL_OR: "LOGICAL_OR"
+  LOGICAL_OR_TYPE: "LOGICAL_OR",
 };
 
 export const SPEC = [
@@ -83,13 +83,13 @@ export const SPEC = [
   { regex: /^\bbye bhai\b/, tokenType: TokenTypes.BYE_BHAI_TYPE },
   { regex: /^\bbol bhai\b/, tokenType: TokenTypes.BOL_BHAI_TYPE },
   { regex: /^\bbhai ye hai\b/, tokenType: TokenTypes.BHAI_YE_HAI_TYPE },
-  { regex: /^\bagar bhai\b/, tokenType: TokenTypes.AGAR_BHAI },
-  { regex: /^\bnahi to bhai\b/, tokenType: TokenTypes.NAHI_TO_BHAI },
-  { regex: /^\bwarna bhai\b/, tokenType: TokenTypes.WARNA_BHAI },
+  { regex: /^\bagar bhai\b/, tokenType: TokenTypes.AGAR_BHAI_TYPE },
+  { regex: /^\bnahi to bhai\b/, tokenType: TokenTypes.NAHI_TO_BHAI_TYPE },
+  { regex: /^\bwarna bhai\b/, tokenType: TokenTypes.WARNA_BHAI_TYPE },
   { regex: /^\bnalla\b/, tokenType: TokenTypes.NALLA_TYPE },
-  { regex: /^\bjab tak bhai\b/, tokenType: TokenTypes.JAB_TAK_BHAI },
-  { regex: /^\bbas kar bhai\b/, tokenType: TokenTypes.BAS_KAR_BHAI },
-  { regex: /^\bagla dekh bhai\b/, tokenType: TokenTypes.AGLA_DEKH_BHAI },
+  { regex: /^\bjab tak bhai\b/, tokenType: TokenTypes.JAB_TAK_BHAI_TYPE },
+  { regex: /^\bbas kar bhai\b/, tokenType: TokenTypes.BAS_KAR_BHAI_TYPE },
+  { regex: /^\bagla dekh bhai\b/, tokenType: TokenTypes.AGLA_DEKH_BHAI_TYPE },
 
   // Number
   { regex: /^[+-]?([\d]*[.])?[\d]+/, tokenType: TokenTypes.NUMBER_TYPE },
@@ -102,7 +102,7 @@ export const SPEC = [
   { regex: /^\w+/, tokenType: TokenTypes.IDENTIFIER_TYPE },
 
   // Equality operator: ==, !=
-  {regex: /^[=!]=/, tokenType: TokenTypes.EQUALITY_OPERATOR},
+  {regex: /^[=!]=/, tokenType: TokenTypes.EQUALITY_OPERATOR_TYPE},
 
   // Assignment operators: =, *=, /=, +=, -=
   { regex: /^=/, tokenType: TokenTypes.SIMPLE_ASSIGN_TYPE },
@@ -111,11 +111,11 @@ export const SPEC = [
   // operator
   { regex: /^[+\-]/, tokenType: TokenTypes.ADDITIVE_OPERATOR_TYPE },
   { regex: /^[*\/\%]/, tokenType: TokenTypes.MULTIPLICATIVE_OPERATOR_TYPE },
-  {regex: /^[><]=?/, tokenType: TokenTypes.RELATIONAL_OPERATOR},
+  {regex: /^[><]=?/, tokenType: TokenTypes.RELATIONAL_OPERATOR_TYPE},
 
   // logical operators: &&, ||
-  {regex: /^&&/, tokenType: TokenTypes.LOGICAL_AND},
-  {regex: /^\|\|/, tokenType: TokenTypes.LOGICAL_OR},
+  {regex: /^&&/, tokenType: TokenTypes.LOGICAL_AND_TYPE},
+  {regex: /^\|\|/, tokenType: TokenTypes.LOGICAL_OR_TYPE},
 
   // String
   { regex: /^"[^"]*"/, tokenType: TokenTypes.STRING_TYPE },
