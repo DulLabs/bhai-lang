@@ -7,6 +7,6 @@ import { ASTNode } from "../../types/nodeTypes";
 
 export default class LogicalANDExpression extends Expression {
     getExpression(): ASTNode {
-        return this.getLogicalExpression(NodeType.EqualityExpression, TokenTypes.LOGICAL_AND);
+        return this.getLogicalExpression(NodeType.EqualityExpression, TokenTypes.LOGICAL_AND_TYPE);
     }
 }
