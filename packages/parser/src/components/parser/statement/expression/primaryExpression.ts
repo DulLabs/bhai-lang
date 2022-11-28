@@ -21,6 +21,10 @@ export default class PrimaryExpression extends Expression {
         return Literal.getLiteralImpl(token.type).getLiteral();
       case TokenTypes.NALLA_TYPE:
         return this._getNallaLiteral();
+      case TokenTypes.CALLABLE_TYPE:
+        return Expression.getExpressionImpl(
+          NodeType.CallableExpression
+        ).getExpression();
       default:
         return this._getLeftHandSideExpression();
     }

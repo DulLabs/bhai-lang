@@ -3,6 +3,7 @@ import { ASTNode } from "bhai-lang-parser";
 
 import InvalidStateException from "../../exceptions/invalidStateException";
 import InterpreterModule from "../../module/interpreterModule";
+import { sanatizeData } from "../dataClass";
 
 
 export default class PrintStatement implements Visitor {
@@ -14,15 +15,10 @@ export default class PrintStatement implements Visitor {
 
     const value = node.expressions
       .map((expression: ASTNode) => {
-        let currentNodeOutput = InterpreterModule.getVisitor(expression.type).visitNode(expression);
-        if (currentNodeOutput === true)
-          currentNodeOutput = "sahi";
-        else if (currentNodeOutput === false)
-          currentNodeOutput = "galat";
-        return currentNodeOutput;
-      }
-      )
-      .join(" ");
+          let currentNodeOutput = sanatizeData(InterpreterModule.getVisitor(expression.type).visitNode(expression));
+          return currentNodeOutput.toString();
+        }
+      ).join(" ");
     console.log(value);
   }
 }

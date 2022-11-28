@@ -7,101 +7,86 @@ import { sendEvents } from "../../helpers";
 import CodeEditor from "./CodeEditor";
 import Terminal from "./Terminal";
 
-
 const initialCode = `
 hi bhai
- bol bhai "Hello World";
- 
-  bhai ye hai a = 3;
-  bhai ye hai b = 0;
-
-  jab tak bhai (b < 5) {
-    bol bhai b;
-
-    agar bhai (b == a) {
-      bol bhai "b is equal to a";
-    } nahi to bhai (b == 0) {
-      bol bhai "b is equal to zero";
+  samajh le bhai kutta{
+    bhai ye hai nam;
+    apna funda janam(nam){
+      iska.nam = nam;
+      bol bhai iska.nam,":kau kau";
     }
-
-    b += 1;
+    apna funda bhouk(){
+      bol bhai iska.nam+":bhou bhou";
+    }
   }
+  bhai ye hai jimmi = kutta("jimmi");
+  jimmi.bhouk();
+  bol bhai "iska name hai",jimmi.nam;
 
 bye bhai
 `;
 
 const Code = (props: Props) => {
-  const {} = props;
-  const [code, setCode] = useState(initialCode);
-  const [output, setOutput] = useState<{ value: string; isError: boolean }[]>(
-    []
-  );
-  const [isSuccess, setIsSuccess] = useState<boolean | null>(null);
+	const {} = props;
+	const [code, setCode] = useState(initialCode);
+	const [output, setOutput] = useState<{ value: string; isError: boolean }[]>([]);
+	const [isSuccess, setIsSuccess] = useState<boolean | null>(null);
 
-  const handleChange = (newCode: string) => {
-    setCode(newCode);
-  };
+	const handleChange = (newCode: string) => {
+		setCode(newCode);
+	};
 
-  const executeCode = () => {
-    let orignalConsoleLog = console.log;
-    const outputList = [];
-    let isExecusionSuccess = true;
-    console.log = function (...args) {
-      outputList.push({ value: args.join("\n"), isError: false });
-    };
+	const executeCode = () => {
+		let orignalConsoleLog = console.log;
+		const outputList = [];
+		let isExecusionSuccess = true;
+		console.log = function (...args) {
+			outputList.push({ value: args.join("\n"), isError: false });
+		};
 
-    try {
-      interpreter.interpret(code);
-    } catch (e) {
-      if (e instanceof Error) {
-        isExecusionSuccess = false;
-        outputList.push({ value: e.message, isError: true });
-      } else {
-        console.error(e);
-      }
-    }
+		try {
+			interpreter.interpret(code);
+		} catch (e) {
+			if (e instanceof Error) {
+				isExecusionSuccess = false;
+				outputList.push({ value: e.message, isError: true });
+			} else {
+				console.error(e);
+			}
+		}
 
-    sendEvents("CodeExecuted", {success: isExecusionSuccess});
+		sendEvents("CodeExecuted", { success: isExecusionSuccess });
 
-    setIsSuccess(isExecusionSuccess);
-    setOutput(outputList);
-    console.log = orignalConsoleLog;
-  };
+		setIsSuccess(isExecusionSuccess);
+		setOutput(outputList);
+		console.log = orignalConsoleLog;
+	};
 
-  const clearCode = () => {
-    sendEvents("CodeCleared");
-    setCode("");
-    setIsSuccess(null);
-    setOutput([]);
-  };
+	const clearCode = () => {
+		sendEvents("CodeCleared");
+		setCode("");
+		setIsSuccess(null);
+		setOutput([]);
+	};
 
-  return (
-    <div id="playground" className="mx-4 sm:mx-12">
-      <div className="sm:flex justify-between items-center">
-        <h2 className="text-3xl font-extrabold tracking-tight text-gray-100 sm:text-4xl my-4">
-          Playground
-        </h2>
-        <div className="flex">
-          <button
-            disabled={!code}
-            onClick={executeCode}
-            className="mx-2 flex items-center justify-center px-8 border border-transparent text-base font-medium rounded-md text-white bg-bhagwa-600 hover:bg-bhagwa-700 md:text-lg md:px-10 my-4 sm:my-8 sm:py-3 disabled:opacity-40"
-          >
-            Run
-          </button>
+	return (
+		<div id="playground" className="mx-4 sm:mx-12">
+			<div className="sm:flex justify-between items-center">
+				<h2 className="text-3xl font-extrabold tracking-tight text-gray-100 sm:text-4xl my-4">Playground</h2>
+				<div className="flex">
+					<button disabled={!code} onClick={executeCode} className="mx-2 flex items-center justify-center px-8 border border-transparent text-base font-medium rounded-md text-white bg-bhagwa-600 hover:bg-bhagwa-700 md:text-lg md:px-10 my-4 sm:my-8 sm:py-3 disabled:opacity-40">
+						Run
+					</button>
 
-          <button
-            onClick={clearCode}
-            className="mx-2 flex items-center justify-center px-8 border border-transparent text-base font-medium rounded-md text-bhagwa-700 bg-bhagwa-300 hover:bg-bhagwa-400 md:text-lg md:px-10 my-4 sm:my-8 sm:py-3"
-          >
-            Clear
-          </button>
-        </div>
-      </div>
-      <CodeEditor handleChange={handleChange} code={code} />
-      <Terminal output={output} isSuccess={isSuccess} />
-    </div>
-  );
+					<button onClick={clearCode} className="mx-2 flex items-center justify-center px-8 border border-transparent text-base font-medium rounded-md text-bhagwa-700 bg-bhagwa-300 hover:bg-bhagwa-400 md:text-lg md:px-10 my-4 sm:my-8 sm:py-3">
+						Clear
+					</button>
+				</div>
+			</div>
+			<CodeEditor handleChange={handleChange} code={code} />
+			<Terminal output={output} isSuccess={isSuccess} />
+		</div>
+	);
 };
 type Props = {};
 export default React.memo(Code);

@@ -3,6 +3,7 @@ import { ASTNode } from "bhai-lang-parser";
 
 import InterpreterModule from "../../module/interpreterModule";
 import Scope from "../scope";
+import { sanatizeData } from "../dataClass";
 
 
 export default class IfStatement implements Visitor {
@@ -19,10 +20,11 @@ export default class IfStatement implements Visitor {
     const test = node.test;
     const parentScope = InterpreterModule.getCurrentScope();
     if (test) {
-      const testResult = InterpreterModule.getVisitor(test.type).visitNode(test);
-      if (testResult === true || testResult === "sahi") {
+      const testResult = sanatizeData(InterpreterModule.getVisitor(test.type).visitNode(test));
+      if (testResult.getValue()) {
         this.evaluateNode(node.consequent, parentScope);
-      } else {
+      } 
+      else {
         const alternates = node.alternates;
         if (alternates && alternates.length > 0) {
           for (var alternate of alternates) {
@@ -34,11 +36,15 @@ export default class IfStatement implements Visitor {
             } else {
               // Evaluate the "test" condition of the "nahi to bhai" node
               // If the condition is true, evaluate the node and break
-              const testResult = InterpreterModule.getVisitor(alternateTest!.type).visitNode(alternateTest);
-              if (testResult === true || testResult === "sahi") {
-                this.evaluateNode(alternate.consequent, parentScope);
+              const testResult = sanatizeData(InterpreterModule.getVisitor(alternateTest!.type).visitNode(alternateTest));
+              if (testResult.getValue()) {
+                this.evaluateNode(alternate, parentScope);
                 break;
               }
+            }
+            if (testResult.getValue()) {
+              this.evaluateNode(alternate.consequent, parentScope);
+              break;
             }
           }
         }

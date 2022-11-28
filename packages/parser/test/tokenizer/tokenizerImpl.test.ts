@@ -76,3 +76,4 @@ test("test Tokenizer.hasMoreTokens without initTokenizer should success", () => 
 
   expect(tokenizer.hasMoreTokens()).toStrictEqual(false);
 });
+

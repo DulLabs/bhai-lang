@@ -2,6 +2,7 @@ import { Parser } from "../components/parser";
 import Program from "../components/parser/program";
 import BlockStatement from "../components/parser/statement/blockStatement";
 import BreakStatement from "../components/parser/statement/breakStatement";
+import ClassStatement from "../components/parser/statement/classStatement";
 import ContinueStatement
   from "../components/parser/statement/continueStatement";
 import EmptyStatement from "../components/parser/statement/emptyStatement";
@@ -9,6 +10,9 @@ import AdditiveExpression
   from "../components/parser/statement/expression/addititveExpression";
 import AssignmentExpression
   from "../components/parser/statement/expression/assignmentExpression";
+import CallableExpression 
+  from "../components/parser/statement/expression/callableExpression";
+import DotExpression from "../components/parser/statement/expression/dotExpression";
 import EqualityExpression
   from "../components/parser/statement/expression/equalityExpression";
 import IdentifierExpression
@@ -35,9 +39,11 @@ import RelationalExpression
   from "../components/parser/statement/expression/relationalExpression";
 import ExpressionStatement
   from "../components/parser/statement/expressionStatement";
+import FunctionStatement from "../components/parser/statement/functionStatement";
 import IfStatement from "../components/parser/statement/ifStatement";
 import InitStatement from "../components/parser/statement/initStatement";
 import PrintStatement from "../components/parser/statement/printStatement";
+import ReturnStatement from "../components/parser/statement/returnStatement";
 import VariableStatement
   from "../components/parser/statement/variableStatement";
 import WhileStatement from "../components/parser/statement/whileStatement";
@@ -69,6 +75,7 @@ export default class BhaiLangModule {
   private static _variableStatement?: VariableStatement;
   private static _ifStatement?: IfStatement;
   private static _assignmentExpression?: AssignmentExpression;
+  private static _callableExpression?: CallableExpression;
   private static _booleanLiteral?: BooleanLiteral;
   private static _nullLiteral?: NullLiteral;
   private static _equalityExpression?: EqualityExpression;
@@ -78,6 +85,10 @@ export default class BhaiLangModule {
   private static _breakStatement?: BreakStatement;
   private static _continueStatement?: ContinueStatement;
   private static _whileStatement?: WhileStatement;
+  private static _functionStatement: FunctionStatement;
+  private static _returnStatement: ReturnStatement;
+  private static _classStatement: ClassStatement;
+  private static _dotExpression: DotExpression;
 
   static getTokenizer() {
     if (!this._tokenizer) this._tokenizer = new TokenizerImpl(SPEC);
@@ -187,6 +198,33 @@ export default class BhaiLangModule {
 
     return this._variableStatement;
   }
+  static getFunctionStatement() {
+    if (!this._functionStatement)
+      this._functionStatement = new FunctionStatement(
+        this.getTokenExecutor(),
+        this.getNullLiteral()
+      );
+
+    return this._functionStatement;
+  }
+  static getReturnStatement() {
+    if (!this._returnStatement)
+      this._returnStatement = new ReturnStatement(
+        this.getTokenExecutor()
+      );
+
+    return this._returnStatement;
+  }
+
+  static getClassStatement() {
+    if (!this._classStatement)
+      this._classStatement = new ClassStatement(
+        this.getTokenExecutor()
+      );
+
+    return this._classStatement;
+  }
+  
 
   static getAdditiveExpression() {
     if (!this._additiveExpression) {
@@ -206,6 +244,15 @@ export default class BhaiLangModule {
     }
 
     return this._multiplicativeExpression;
+  }
+  static getDotExpression() {
+    if (!this._dotExpression) {
+      this._dotExpression = new DotExpression(
+        this.getTokenExecutor()
+      );
+    }
+
+    return this._dotExpression;
   }
 
   static getPrimaryExpression() {
@@ -278,6 +325,15 @@ export default class BhaiLangModule {
       );
 
     return this._assignmentExpression;
+  }
+
+  static getCallableExpression() {
+    if (!this._callableExpression)
+      this._callableExpression = new CallableExpression(
+        this.getTokenExecutor()
+      );
+
+    return this._callableExpression;
   }
 
   static getNumericLiteral() {

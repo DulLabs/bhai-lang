@@ -21,6 +21,22 @@ export const TokenTypes = {
 
   AGLA_DEKH_BHAI: "agla dekh bhai",
 
+  FUNDA_TYPE: "bhai ye apna funda", //functional programming
+
+  RAKH_LE_BHAI:"rakh le bhai",// return statement
+
+  SAMAJH_LE_BHAI:"samajh le bhai",// class statement
+
+  JO_KI_EK_BHAI:"jo ki ek bhai",// implements statement
+
+  HAI_BHAI: "hai bhai", //implements ends statement
+
+  ISKA: "iska", //This Operator
+
+  CONSTRUCTOR_TYPE: "janam", //constructor
+
+  DOT_OPERATOR: ".",
+
   NALLA_TYPE: "NALLA",
 
   SEMI_COLON_TYPE: ";",
@@ -38,6 +54,8 @@ export const TokenTypes = {
   NUMBER_TYPE: "NUMBER",
 
   IDENTIFIER_TYPE: "IDENTIFIER",
+
+  CALLABLE_TYPE: "CALLABLE",
 
   SIMPLE_ASSIGN_TYPE: "SIMPLE_ASSIGN",
 
@@ -91,12 +109,27 @@ export const SPEC = [
   { regex: /^\bbas kar bhai\b/, tokenType: TokenTypes.BAS_KAR_BHAI },
   { regex: /^\bagla dekh bhai\b/, tokenType: TokenTypes.AGLA_DEKH_BHAI },
 
+  //functional programming
+  { regex: /^\bapna funda\b/, tokenType: TokenTypes.FUNDA_TYPE },
+  { regex: /^\brakh le bhai\b/, tokenType: TokenTypes.RAKH_LE_BHAI },
+  { regex: /^\w+(?=[ ]*\(.*\))/, tokenType: TokenTypes.CALLABLE_TYPE },
+
+  // object oriented programming
+  { regex: /^\bsamajh le bhai\b/, tokenType: TokenTypes.SAMAJH_LE_BHAI },
+  { regex: /^\bjo ki ek (bhai|)\b/, tokenType: TokenTypes.JO_KI_EK_BHAI },
+  { regex: /^\bhai (bhai|)\b/, tokenType: TokenTypes.HAI_BHAI },
+  // { regex: /^\biska\b/, tokenType: TokenTypes.ISKA },
+  // scope resolution accessing members
+  { regex: /^\.(?=\w+)/, tokenType: TokenTypes.DOT_OPERATOR },
+
   // Number
   { regex: /^[+-]?([\d]*[.])?[\d]+/, tokenType: TokenTypes.NUMBER_TYPE },
 
   // Boolean
   { regex: /^\bsahi\b/, tokenType: TokenTypes.BOOLEAN_TYPE },
   { regex: /^\bgalat\b/, tokenType: TokenTypes.BOOLEAN_TYPE },
+
+  
 
   // Identifier
   { regex: /^\w+/, tokenType: TokenTypes.IDENTIFIER_TYPE },

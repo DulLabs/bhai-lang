@@ -57,7 +57,10 @@ export default class AssignmentExpression extends Expression {
    */
   private _checkValidAssignmentTarget(node: any) {
     if (node.type === NodeType.IdentifierExpression) return node;
-
+    if (node.type === NodeType.BinaryExpression
+      &&node.operator===TokenTypes.DOT_OPERATOR
+      &&node.right.type===NodeType.IdentifierExpression) return node;
+    
     throw new SyntaxError("Invalid left hand side in assignment expression");
   }
 }
