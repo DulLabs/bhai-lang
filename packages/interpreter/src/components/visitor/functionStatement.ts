@@ -10,13 +10,13 @@ export default class FunctionStatement implements Visitor {
     if (!node.declaration)
       throw new InvalidStateException(
         `funda declarations in funda statement is not present: ${node.declaration}`
-      );    
-      let functionObject=sanatizeData(InterpreterModule.getVisitor(node.declaration.type).visitNode(node.declaration));
-      
-      const identifier=node?.declaration?.id?.signature?.name
-      if(identifier){
-        let scope=InterpreterModule.getCurrentScope();
-        scope.declare(identifier,functionObject);
-      }
+      );
+    let functionObject = sanatizeData(InterpreterModule.getVisitor(node.declaration.type).visitNode(node.declaration));
+
+    const identifier = node?.declaration?.signature?.name
+    if (identifier) {
+      let scope = InterpreterModule.getCurrentScope();
+      scope.declare(identifier, functionObject);
+    }
   }
 }
