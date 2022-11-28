@@ -15,6 +15,8 @@ export default class BlockStatement implements Visitor {
 
     if (Array.isArray(node.body)) {
       node.body.every((statement: ASTNode) => {
+        InterpreterModule.getVisitor(statement.type).visitNode(statement);
+
         if (InterpreterModule.getCurrentScope().isBreakStatement()) {
           return false;
         }
@@ -22,12 +24,12 @@ export default class BlockStatement implements Visitor {
           parentScope.setContinueStatement(true);
           return false;
         }
-        if(InterpreterModule.getCurrentScope().isReturnStatement()&&parentScope.isFunction()){
-          let retValue=InterpreterModule.getCurrentScope().getReturnValue();
-          parentScope.setReturnStatement(true,retValue);
+        if (InterpreterModule.getCurrentScope().isReturnStatement() && parentScope.isFunction()) {
+          let retValue = InterpreterModule.getCurrentScope().getReturnValue();
+          parentScope.setReturnStatement(true, retValue);
           return false;
         }
-        InterpreterModule.getVisitor(statement.type).visitNode(statement);
+
         return true;
       });
     }
