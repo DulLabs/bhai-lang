@@ -136,7 +136,7 @@ bye bhai
 		name: "Class",
 		description: (
 			<>
-				Define Class using <code className="language-cpp">samajh le bhai</code> then the class name, inside {} you can provide constructor as <code className="language-cpp">janam</code> and access class member functions and variables with <code className="language-cpp">iska</code> similar to "this" pointer in most languages.
+				Define Class using <code className="language-cpp">samajh le bhai</code> then the class name, inside {} you can provide constructor as <code className="language-cpp">janam</code> and access class member functions and variables with <code className="language-cpp">iska</code> similar to &quotthis&quot pointer in most languages.
 			</>
 		),
 		code: `hi bhai
