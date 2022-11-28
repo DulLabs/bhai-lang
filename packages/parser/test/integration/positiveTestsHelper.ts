@@ -720,5 +720,52 @@ export const WhileStatementTests = [
     bye bhai;
       `,
     output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"WhileStatement","test":{"type":"BinaryExpression","operator":">","left":{"type":"IdentifierExpression","name":"x"},"right":{"type":"NumericLiteral","value":9}},"body":{"type":"BlockStatement","body":[{"type":"ContinueStatement"},{"type":"EmptyStatement"}]}},{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"a"},"init":{"type":"NumericLiteral","value":90}}]}]}}`,
-  },
+  }
 ];
+
+export const FunctionStatementTests = [
+  {
+    name: "function statement success test: function calling with print statement",
+    input: `
+    hi bhai
+      apna funda janam(nam){
+        bol bhai nam;
+      }
+      janam("test");
+    bye bhai;
+      `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"FunctionStatement","declaration":{"type":"FunctionDeclaration","signature":{"type":"FunctionSignature","name":"janam","args":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"nam"},"init":{"type":"NullLiteral","value":"nalla"}}]},"body":{"type":"BlockStatement","body":[{"type":"PrintStatement","expressions":[{"type":"IdentifierExpression","name":"nam"}]}]}}},{"type":"ExpressionStatement","expression":{"type":"CallableExpression","name":"janam","args":[{"type":"StringLiteral","value":"test"}]}}]}}`,
+  },
+  ,{
+    name: "function statement success test: function calling with return statement",
+    input: `
+    hi bhai
+      apna funda add(a,b){
+        rakh le bhai a+b;
+      }
+      bol bhai add(10,20);
+    bye bhai;
+      `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"FunctionStatement","declaration":{"type":"FunctionDeclaration","signature":{"type":"FunctionSignature","name":"add","args":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"a"},"init":{"type":"NullLiteral","value":"nalla"}},{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"b"},"init":{"type":"NullLiteral","value":"nalla"}}]},"body":{"type":"BlockStatement","body":[{"type":"ReturnStatement","expression":{"type":"BinaryExpression","operator":"+","left":{"type":"IdentifierExpression","name":"a"},"right":{"type":"IdentifierExpression","name":"b"}}},{"type":"EmptyStatement"}]}}},{"type":"PrintStatement","expressions":[{"type":"CallableExpression","name":"add","args":[{"type":"NumericLiteral","value":10},{"type":"NumericLiteral","value":20}]}]}]}}`,
+  },{
+    name: "function statement success test: function closures",
+    input: `
+    hi bhai
+      apna funda Counter() { 
+        bhai ye hai count = 1;
+        
+        apna funda increment() {
+          count += 1;
+          rakh le bhai count;
+        }
+        
+        rakh le bhai increment;
+      }
+
+      bhai ye hai tick = Counter();
+      bol bhai tick();
+    bye bhai;
+      `,
+    output: `{"type":"Program","body":{"type":"InitStatement","body":[{"type":"FunctionStatement","declaration":{"type":"FunctionDeclaration","signature":{"type":"FunctionSignature","name":"Counter","args":[]},"body":{"type":"BlockStatement","body":[{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"count"},"init":{"type":"NumericLiteral","value":1}}]},{"type":"FunctionStatement","declaration":{"type":"FunctionDeclaration","signature":{"type":"FunctionSignature","name":"increment","args":[]},"body":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"+=","left":{"type":"IdentifierExpression","name":"count"},"right":{"type":"NumericLiteral","value":1}}},{"type":"ReturnStatement","expression":{"type":"IdentifierExpression","name":"count"}},{"type":"EmptyStatement"}]}}},{"type":"ReturnStatement","expression":{"type":"IdentifierExpression","name":"increment"}},{"type":"EmptyStatement"}]}}},{"type":"VariableStatement","declarations":[{"type":"VariableDeclaration","id":{"type":"IdentifierExpression","name":"tick"},"init":{"type":"CallableExpression","name":"Counter","args":[]}}]},{"type":"PrintStatement","expressions":[{"type":"CallableExpression","name":"tick","args":[]}]}]}}`,
+  },
+]

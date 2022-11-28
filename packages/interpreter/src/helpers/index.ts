@@ -1,40 +1,42 @@
+import { BooleanObject, DataObject, DataTypes, NumericObject, StringObject } from "../components/dataClass";
 import InvalidStateException from "../exceptions/invalidStateException";
 import RuntimeException from "../exceptions/runtimeException";
 
 
 export function checkNumberOperands(operands: {
-  left: unknown;
-  right: unknown;
-}): operands is { left: number; right: number } {
+  left: DataObject;
+  right: DataObject;
+}):boolean{
   return (
-    typeof operands.left === "number" && typeof operands.right === "number"
+    operands.left.getType() === DataTypes.Numeric && operands.right.getType() === DataTypes.Numeric
   );
 }
 
 export function checkStringOperands(operands: {
-  left: unknown;
-  right: unknown;
-}): operands is { left: string; right: string } {
+  left: DataObject;
+  right: DataObject;
+}):boolean{
   return (
-    typeof operands.left === "string" && typeof operands.right === "string"
+    operands.left.getType() === DataTypes.String && operands.right.getType() === DataTypes.String
   );
 }
 
 export function checkNumberAndStringOperands(operands: {
-  left: unknown;
-  right: unknown;
-}): operands is { left: string; right: string } {
+  left: DataObject;
+  right: DataObject;
+}): operands is { left: StringObject; right: NumericObject }|{ left: NumericObject; right: StringObject } {
   return (
-    (typeof operands.left === "string" && typeof operands.right === "number") || (typeof operands.right === "string" && typeof operands.left === "number")
+    (operands.left.getType() === DataTypes.String && operands.right.getType() === DataTypes.Numeric) ||
+    (operands.right.getType() === DataTypes.String && operands.left.getType() === DataTypes.Numeric)
   );
 } 
 
 export function getOperationValue(
-  operands: { left: unknown; right: unknown },
+  operands: { left: DataObject; right: DataObject },
   operator: string
 ) {
   const exception = new RuntimeException(
-    `Ye kya kar raha hai: "${operator}" ke sath "${typeof operands.left}" aur "${typeof operands.right}" nahi jamte.`
+    `Ye kya kar raha hai: "${operator}" ke sath "${typeof operands.left.getStringValue()}" aur "${typeof operands.right.getStringValue()}" nahi jamte.`
   );
 
   switch (operator) {
@@ -44,15 +46,15 @@ export function getOperationValue(
     case "+=":
     case "+":
       if (checkNumberOperands(operands)) {
-        return operands.left + operands.right;
+        return new NumericObject(operands.left.getValue() + operands.right.getValue());
       }
 
       if (checkStringOperands(operands)) {
-        return operands.left + operands.right;
+        return new StringObject(operands.left.getValue() + operands.right.getValue());
       }
 
       if (checkNumberAndStringOperands(operands)) {
-        return operands.left.toString() + operands.right.toString();
+        return new StringObject(operands.left.getStringValue() + operands.right.getStringValue());
       }
 
       throw exception;
@@ -60,7 +62,7 @@ export function getOperationValue(
     case "-=":
     case "-":
       if (checkNumberOperands(operands)) {
-        return operands.left - operands.right;
+        return new NumericObject(operands.left.getValue() - operands.right.getValue());
       }
 
       throw exception;
@@ -68,19 +70,19 @@ export function getOperationValue(
     case "*=":
     case "*":
       if (checkNumberOperands(operands)) {
-        return operands.left * operands.right;
+        return new NumericObject(operands.left.getValue() * operands.right.getValue());
       }
 
       throw exception;
 
     case "/=":
     case "/":
-      if (operands.right === 0) {
+      if (operands.right.getValue() === 0) {
         throw new RuntimeException(`Kya kar rha hai tu??...zero se divide ni karte`);
       }
       
       if (checkNumberOperands(operands)) {
-        return operands.left / operands.right;
+        return new NumericObject(operands.left.getValue() / operands.right.getValue());
       }
 
       throw exception;
@@ -88,53 +90,60 @@ export function getOperationValue(
     case "%=":
     case "%":
       if (checkNumberOperands(operands)) {
-        return operands.left % operands.right;
+        return new NumericObject(operands.left.getValue() % operands.right.getValue());
       }
 
       throw exception;
 
     case "==":
-      
-      return operands.left === operands.right;
-    
+      return new BooleanObject(operands.left.getValue() === operands.right.getValue());    
     case "!=":
-
-      return operands.left !== operands.right;
-    
+      return new BooleanObject(operands.left.getValue() !== operands.right.getValue());
+   
     case ">":
       if (checkNumberOperands(operands)) {
-        return operands.left > operands.right;
+        return new BooleanObject(operands.left.getValue() > operands.right.getValue());
       }
 
       throw exception;
     
     case "<":
       if (checkNumberOperands(operands)) {
-        return operands.left < operands.right;
+        return new BooleanObject(operands.left.getValue() < operands.right.getValue());
       }
 
       throw exception;
     
     case ">=":
       if (checkNumberOperands(operands)) {
-        return operands.left >= operands.right;
+        return new BooleanObject(operands.left.getValue() >= operands.right.getValue());
       }
 
       throw exception;
 
     case "<=":
       if (checkNumberOperands(operands)) {
-        return operands.left <= operands.right;
+        return new BooleanObject(operands.left.getValue() <= operands.right.getValue());
       }
 
       throw exception;
 
     case "&&":
-      return operands.left && operands.right;
+      if(operands.left.getValue()){
+        return operands.right;
+      }
+      else {
+        return operands.left;
+      }
 
     case "||":
-      return operands.left || operands.right;
-
+        if(operands.left.getValue()){
+          return operands.left;
+        }
+        else{
+          return operands.right;
+        }
+        
     default:
       throw new InvalidStateException(`Unsupported operator: ${operator}`);
   }
