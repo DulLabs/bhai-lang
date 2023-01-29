@@ -27,6 +27,12 @@ export default abstract class Expression {
       case NodeType.ParanthesizedExpression:
         return BhaiLangModule.getParanthesizedExpression();
 
+      case NodeType.ArrayExpression:
+        return BhaiLangModule.getArrayExpression();
+
+      case NodeType.ArrayAccessExpression:
+        return BhaiLangModule.getArrayAccessExpression();
+
       case NodeType.AssignmentExpression:
         return BhaiLangModule.getAssignmentExpression();
 

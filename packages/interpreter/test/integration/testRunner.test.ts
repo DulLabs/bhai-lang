@@ -5,7 +5,8 @@ import InterpreterModule from "../../src/module/interpreterModule";
 import { NegativeTestCases } from "./negativeTestsProvider";
 import {
   NoOutputPositiveTests,
-  WithOutputPositiveTests
+  WithOutputPositiveTests,
+  WithMultilineOutputPositiveTests
 } from "./positiveTestsProvider";
 
 
@@ -28,6 +29,16 @@ WithOutputPositiveTests.forEach((testCase) => {
     expect(() => interpreter.interpret(testCase.input)).not.toThrowError();
 
     expect(console.log).toHaveBeenCalledWith(testCase.output);
+  });
+});
+
+WithMultilineOutputPositiveTests.forEach((testCase) => {
+  test(testCase.name, () => {
+    expect(() => interpreter.interpret(testCase.input)).not.toThrowError();
+
+    testCase.outputs.forEach(output => {
+      expect(console.log).toHaveBeenCalledWith(output);
+    });
   });
 });
 

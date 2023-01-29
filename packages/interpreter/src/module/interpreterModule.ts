@@ -3,6 +3,8 @@ import parser, { NodeType } from "bhai-lang-parser";
 import Interpreter from "../components/interpreter";
 import Scope from "../components/scope";
 import Visitor from "../components/visitor";
+import ArrayExpression from "../components/visitor/arrayExpression";
+import ArrayAccessExpression from "../components/visitor/arrayAccessExpression";
 import AssignmentExpression from "../components/visitor/assignmentExpression";
 import BinaryExpression from "../components/visitor/binaryExpression";
 import BlockStatement from "../components/visitor/blockStatement";
@@ -35,6 +37,9 @@ export default class InterpreterModule {
     [NodeType.VariableStatement]: new VariableStatement(),
     [NodeType.IdentifierExpression]: new IdentifierExpression(),
     [NodeType.VariableDeclaration]: new VariableDeclaration(),
+    [NodeType.ArrayExpression]: new ArrayExpression(),
+    [NodeType.ArrayAccessExpression]: new ArrayAccessExpression(),
+    [NodeType.AssignmentExpression]: new AssignmentExpression(),
     [NodeType.AssignmentExpression]: new AssignmentExpression(),
     [NodeType.ExpressionStatement]: new ExpressionStatement(),
     [NodeType.BinaryExpression]: new BinaryExpression(),
