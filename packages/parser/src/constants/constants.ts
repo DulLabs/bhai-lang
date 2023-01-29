@@ -2,6 +2,7 @@ export const NodeType = {
   AdditiveExpression: "AdditiveExpression",
   ArrayExpression: "ArrayExpression",
   ArrayAccessExpression: "ArrayAccessExpression",
+  ArrayLengthExpression: "ArrayLengthExpression",
   MultiplicativeExpression: "MultiplicativeExpression",
   PrimaryExpression: "PrimaryExpression",
   ParanthesizedExpression: "ParanthesizedExpression",

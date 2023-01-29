@@ -11,6 +11,8 @@ import ArrayExpression
   from "../components/parser/statement/expression/arrayExpression";
 import ArrayAccessExpression
   from "../components/parser/statement/expression/arrayAccessExpression";
+import ArrayLengthExpression
+  from "../components/parser/statement/expression/arrayLengthExpression";
 import AssignmentExpression
   from "../components/parser/statement/expression/assignmentExpression";
 import EqualityExpression
@@ -68,6 +70,7 @@ export default class BhaiLangModule {
   private static _primaryExpression?: PrimaryExpression;
   private static _arrayExpression?: ArrayExpression;
   private static _arrayAccessExpression?: ArrayAccessExpression;
+  private static _arrayLengthExpression?: ArrayLengthExpression;
   private static _paranthesizedExpression?: ParanthesizedExpression;
   private static _numericLiteral?: NumericLiteral;
   private static _stringLiteral?: StringLiteral;
@@ -240,6 +243,16 @@ export default class BhaiLangModule {
     }
 
     return this._arrayAccessExpression;
+  }
+
+  static getArrayLengthExpression() {
+    if (!this._arrayLengthExpression) {
+      this._arrayLengthExpression = new ArrayLengthExpression(
+        this.getTokenExecutor()
+      );
+    }
+
+    return this._arrayLengthExpression;
   }
 
   static getArrayExpression() {

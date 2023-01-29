@@ -33,6 +33,9 @@ export default abstract class Expression {
       case NodeType.ArrayAccessExpression:
         return BhaiLangModule.getArrayAccessExpression();
 
+      case NodeType.ArrayLengthExpression:
+        return BhaiLangModule.getArrayLengthExpression();
+
       case NodeType.AssignmentExpression:
         return BhaiLangModule.getAssignmentExpression();
 

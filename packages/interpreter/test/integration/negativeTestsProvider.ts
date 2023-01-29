@@ -528,4 +528,17 @@ export const NegativeTestCases = [
       `,
     output: RuntimeException,
   },
+  {
+    name: "array invalid index",
+    input: `
+      hi bhai
+        bhai ye hai a = [-1, 0, 3, 5];
+        bhai ye hai k = "invalid";
+        a[k] = -5;
+
+        bol bhai a;
+      bye bhai
+    `,
+    output: RuntimeException
+  }
 ];

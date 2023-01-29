@@ -44,7 +44,7 @@ export default class AssignmentExpression implements Visitor {
     }
 
     if (identifier && node.operator) {
-      if (index) {
+      if (index !== undefined) {
         // assign array
         const array: any[] = currentScope.get(identifier) as any[];
         if (!Array.isArray(array)) {

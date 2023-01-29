@@ -37,7 +37,7 @@ export default class PrimaryExpression extends Expression {
 
   private _getLeftHandSideExpression() {
     return Expression.getExpressionImpl(
-      NodeType.ArrayAccessExpression
+      NodeType.ArrayLengthExpression
     ).getExpression();
   }
 }
