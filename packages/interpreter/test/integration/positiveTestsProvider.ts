@@ -1012,7 +1012,7 @@ export const WithMultilineOutputPositiveTests = [
         bol bhai a[3];
       bye bhai
     `,
-    outputs: [`1,4,3`, `1`, `4`, `3`]
+    outputs: [`[1, 4, 3]`, `1`, `4`, `3`]
   },
   {
     name: "array access and length loop test",
@@ -1032,7 +1032,20 @@ export const WithMultilineOutputPositiveTests = [
         bol bhai a;
       bye bhai
     `,
-    outputs: [`-1,0,3,-5`,`0`,`1,2,5,-3`]
+    outputs: [`[-1, 0, 3, -5]`,`0`,`[1, 2, 5, -3]`]
+  },
+  {
+    name: "inner arrays test",
+    input: `
+      hi bhai
+        bhai ye hai a = [-1, 0, 3, [1, 2]];
+        bhai ye hai k = a[3];
+        k[0] = -5;
+
+        bol bhai a;
+      bye bhai
+    `,
+    outputs: [`[-1, 0, 3, [-5, 2]]`]
   }
 ];
 
