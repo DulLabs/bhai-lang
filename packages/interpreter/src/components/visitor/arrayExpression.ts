@@ -15,4 +15,3 @@ export default class ArrayExpression implements Visitor {
     return values;
   }
 }
-

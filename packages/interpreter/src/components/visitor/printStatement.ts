@@ -19,10 +19,25 @@ export default class PrintStatement implements Visitor {
           currentNodeOutput = "sahi";
         else if (currentNodeOutput === false)
           currentNodeOutput = "galat";
+        else if (Array.isArray(currentNodeOutput)) {
+          currentNodeOutput = this._getArrayOutput(currentNodeOutput);
+        }
         return currentNodeOutput;
       }
       )
       .join(" ");
     console.log(value);
+  }
+
+  _getArrayOutput(values: any[]): string {
+    let output = values.map((value) => {
+      if (Array.isArray(value)) {
+        return this._getArrayOutput(value);
+      } else {
+        return value;
+      }
+    });
+
+    return "[" +  output.join(", ") + "]";
   }
 }
