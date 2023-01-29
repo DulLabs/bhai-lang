@@ -64,6 +64,23 @@ export default class Scope {
     );
   }
 
+  assignArray(identifier: string, index: number, value: unknown) {
+    if (this._variables.has(identifier)) {
+      let arr: any[] = this._variables.get(identifier) as any[];
+      arr[index] = value;
+      return;
+    }
+
+    if (this._parentScope !== null) {
+      this._parentScope.assignArray(identifier, index, value);
+      return;
+    }
+
+    throw new RuntimeException(
+      `Variable "${identifier}" bana to le pehle fir assign karna.`
+    );
+  }
+
   declare(identifier: string, value: unknown) {
     if (this._variables.has(identifier)) {
       throw new RuntimeException(
