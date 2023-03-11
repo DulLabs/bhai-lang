@@ -15,6 +15,10 @@ export default class PrimaryExpression extends Expression {
         return Expression.getExpressionImpl(
           NodeType.ParanthesizedExpression
         ).getExpression();
+      case TokenTypes.OPEN_BRACKET_TYPE:
+        return Expression.getExpressionImpl(
+          NodeType.ArrayExpression
+        ).getExpression();
       case TokenTypes.STRING_TYPE:
       case TokenTypes.NUMBER_TYPE:
       case TokenTypes.BOOLEAN_TYPE:
@@ -33,7 +37,7 @@ export default class PrimaryExpression extends Expression {
 
   private _getLeftHandSideExpression() {
     return Expression.getExpressionImpl(
-      NodeType.IdentifierExpression
+      NodeType.ArrayLengthExpression
     ).getExpression();
   }
 }

@@ -997,3 +997,55 @@ export const WithOutputPositiveTests = [
     output: "1",
   },
 ];
+
+export const WithMultilineOutputPositiveTests = [
+  {
+    name: "basic arrays test",
+    input: `
+      hi bhai
+        bhai ye hai b = 2;
+        bhai ye hai a = [1, b + 2, 3];
+        bol bhai a;
+        bol bhai a[0];
+        bol bhai a[1];
+        bol bhai a[2];
+        bol bhai a[3];
+      bye bhai
+    `,
+    outputs: [`[1, 4, 3]`, `1`, `4`, `3`]
+  },
+  {
+    name: "array access and length loop test",
+    input: `
+      hi bhai
+        bhai ye hai a = [-1, 0, 3, 5];
+        a[3] = -5;
+
+        bol bhai a;
+        bol bhai a[1];
+
+        bhai ye hai i = 0;
+        jab tak bhai (i < a ka lambai) {
+          a[i] += 2;
+          i += 1;
+        }
+        bol bhai a;
+      bye bhai
+    `,
+    outputs: [`[-1, 0, 3, -5]`,`0`,`[1, 2, 5, -3]`]
+  },
+  {
+    name: "inner arrays test",
+    input: `
+      hi bhai
+        bhai ye hai a = [-1, 0, 3, [1, 2]];
+        bhai ye hai k = a[3];
+        k[0] = -5;
+
+        bol bhai a;
+      bye bhai
+    `,
+    outputs: [`[-1, 0, 3, [-5, 2]]`]
+  }
+];
+

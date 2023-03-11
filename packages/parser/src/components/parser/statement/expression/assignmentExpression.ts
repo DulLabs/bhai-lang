@@ -57,7 +57,8 @@ export default class AssignmentExpression extends Expression {
    */
   private _checkValidAssignmentTarget(node: any) {
     if (node.type === NodeType.IdentifierExpression) return node;
+    if (node.type === NodeType.ArrayAccessExpression) return node;
 
-    throw new SyntaxError("Invalid left hand side in assignment expression");
+    throw new SyntaxError(`bhai kya kar raha hai tu?? Left side mein ${node.type} ho hi nahi sakta`);
   }
 }

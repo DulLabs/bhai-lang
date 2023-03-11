@@ -7,6 +7,12 @@ import ContinueStatement
 import EmptyStatement from "../components/parser/statement/emptyStatement";
 import AdditiveExpression
   from "../components/parser/statement/expression/addititveExpression";
+import ArrayExpression
+  from "../components/parser/statement/expression/arrayExpression";
+import ArrayAccessExpression
+  from "../components/parser/statement/expression/arrayAccessExpression";
+import ArrayLengthExpression
+  from "../components/parser/statement/expression/arrayLengthExpression";
 import AssignmentExpression
   from "../components/parser/statement/expression/assignmentExpression";
 import EqualityExpression
@@ -62,6 +68,9 @@ export default class BhaiLangModule {
   private static _additiveExpression?: AdditiveExpression;
   private static _multiplicativeExpression?: MultiplicativeExpression;
   private static _primaryExpression?: PrimaryExpression;
+  private static _arrayExpression?: ArrayExpression;
+  private static _arrayAccessExpression?: ArrayAccessExpression;
+  private static _arrayLengthExpression?: ArrayLengthExpression;
   private static _paranthesizedExpression?: ParanthesizedExpression;
   private static _numericLiteral?: NumericLiteral;
   private static _stringLiteral?: StringLiteral;
@@ -224,6 +233,36 @@ export default class BhaiLangModule {
     }
 
     return this._paranthesizedExpression;
+  }
+
+  static getArrayAccessExpression() {
+    if (!this._arrayAccessExpression) {
+      this._arrayAccessExpression = new ArrayAccessExpression(
+        this.getTokenExecutor()
+      );
+    }
+
+    return this._arrayAccessExpression;
+  }
+
+  static getArrayLengthExpression() {
+    if (!this._arrayLengthExpression) {
+      this._arrayLengthExpression = new ArrayLengthExpression(
+        this.getTokenExecutor()
+      );
+    }
+
+    return this._arrayLengthExpression;
+  }
+
+  static getArrayExpression() {
+    if (!this._arrayExpression) {
+      this._arrayExpression = new ArrayExpression(
+        this.getTokenExecutor()
+      );
+    }
+
+    return this._arrayExpression;
   }
 
   static getIndentifierExpression() {

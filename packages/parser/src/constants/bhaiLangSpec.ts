@@ -21,6 +21,8 @@ export const TokenTypes = {
 
   AGLA_DEKH_BHAI: "agla dekh bhai",
 
+  KA_LAMBAI: "ka lambai",
+
   NALLA_TYPE: "NALLA",
 
   SEMI_COLON_TYPE: ";",
@@ -32,6 +34,10 @@ export const TokenTypes = {
   OPEN_PARENTHESIS_TYPE: "(",
 
   CLOSED_PARENTHESIS_TYPE: ")",
+
+  OPEN_BRACKET_TYPE: "[",
+
+  CLOSED_BRACKET_TYPE: "]",
 
   COMMA_TYPE: ",",
 
@@ -76,6 +82,8 @@ export const SPEC = [
   { regex: /^\}/, tokenType: TokenTypes.CLOSED_CURLY_BRACE_TYPE },
   { regex: /^\(/, tokenType: TokenTypes.OPEN_PARENTHESIS_TYPE },
   { regex: /^\)/, tokenType: TokenTypes.CLOSED_PARENTHESIS_TYPE },
+  { regex: /^\[/, tokenType: TokenTypes.OPEN_BRACKET_TYPE },
+  { regex: /^\]/, tokenType: TokenTypes.CLOSED_BRACKET_TYPE },
   { regex: /^,/, tokenType: TokenTypes.COMMA_TYPE },
 
   //Keywords
@@ -90,6 +98,7 @@ export const SPEC = [
   { regex: /^\bjab tak bhai\b/, tokenType: TokenTypes.JAB_TAK_BHAI },
   { regex: /^\bbas kar bhai\b/, tokenType: TokenTypes.BAS_KAR_BHAI },
   { regex: /^\bagla dekh bhai\b/, tokenType: TokenTypes.AGLA_DEKH_BHAI },
+  { regex: /^\bka lambai\b/, tokenType: TokenTypes.KA_LAMBAI },
 
   // Number
   { regex: /^[+-]?([\d]*[.])?[\d]+/, tokenType: TokenTypes.NUMBER_TYPE },
