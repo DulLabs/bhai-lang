@@ -76,7 +76,7 @@ export function getOperationValue(
     case "/=":
     case "/":
       if (operands.right === 0) {
-        throw new RuntimeException(`Kya kar rha hai tu??...zero se divide ni karte`);
+        throw new RuntimeException(`Kya kar rhe ho tum??...zero se divide ni karte`);
       }
       
       if (checkNumberOperands(operands)) {
