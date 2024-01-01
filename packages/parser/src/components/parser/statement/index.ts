@@ -16,6 +16,9 @@ export default abstract class Statement {
 
   static getStatementImpl(lookahead: Token): Statement {
     switch (lookahead.type) {
+      case TokenTypes.BOL_BHAI_ABHI_TYPE:
+        return BhaiLangModule.getSameLinePrintStatement();
+
       case TokenTypes.BOL_BHAI_TYPE:
         return BhaiLangModule.getPrintStatement();
 

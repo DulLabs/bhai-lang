@@ -16,6 +16,7 @@ export const NodeType = {
   ExpressionStatement: "ExpressionStatement",
   InitStatement: "InitStatement",
   PrintStatement: "PrintStatement",
+  SameLinePrintStatement: "SameLinePrintStatement",
   IfStatement: "IfStatement",
   WhileStatement: "WhileStatement",
   BreakStatement: "BreakStatement",

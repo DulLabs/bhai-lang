@@ -38,6 +38,7 @@ import ExpressionStatement
 import IfStatement from "../components/parser/statement/ifStatement";
 import InitStatement from "../components/parser/statement/initStatement";
 import PrintStatement from "../components/parser/statement/printStatement";
+import SameLinePrintStatement from "../components/parser/statement/sameLinePrintStatement";
 import VariableStatement
   from "../components/parser/statement/variableStatement";
 import WhileStatement from "../components/parser/statement/whileStatement";
@@ -49,6 +50,7 @@ import { SPEC } from "../constants/bhaiLangSpec";
 
 
 export default class BhaiLangModule {
+  
   private static _tokenizer?: Tokenizer;
   private static _initStatement?: InitStatement;
   private static _parser?: Parser;
@@ -57,6 +59,7 @@ export default class BhaiLangModule {
   private static _tokenExecutor?: TokenExecutor;
   private static _expresionStatement?: ExpressionStatement;
   private static _printStatement?: PrintStatement;
+  private static _sameLinePrintStatement?: SameLinePrintStatement;
   private static _emptyStatement?: EmptyStatement;
   private static _blockStatement?: BlockStatement;
   private static _additiveExpression?: AdditiveExpression;
@@ -115,6 +118,14 @@ export default class BhaiLangModule {
     }
 
     return this._printStatement;
+  }
+
+  static getSameLinePrintStatement(){
+    if (!this._sameLinePrintStatement) {
+      this._sameLinePrintStatement = new SameLinePrintStatement(this.getTokenExecutor());
+    }
+
+    return this._sameLinePrintStatement;
   }
 
   static getIfStatement() {
