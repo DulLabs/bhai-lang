@@ -7,6 +7,8 @@ export const TokenTypes = {
 
   BOL_BHAI_TYPE: "bol bhai",
 
+  BOL_BHAI_ABHI_TYPE: "bol bhai abhi",
+
   BHAI_YE_HAI_TYPE: "bhai ye hai",
 
   AGAR_BHAI: "agar bhai",
